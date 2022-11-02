@@ -3,17 +3,48 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Chef here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho 
+ * @version V.1
  */
 public class Chef extends People
 {
-    /**
-     * Act - do whatever the Chef wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     public void act()
     {
-        // Add your action code here.
+        canPickUpPizza();
+        
+    }
+    
+    public void moveToOven(int ovenXCoord, int ovenYCoord)
+    {
+        
+    }
+    
+    public void moveToCounter(int counterXCoord, int counterYCoord)
+    {
+        
+    }
+    
+    public boolean canPickUpPizza()
+    {
+        boolean canPickUpPizza;
+        Pizza pizza = (Pizza)getOneObjectAtOffset(getX(), getY() + getImage().getHeight() / 2, Pizza.class);
+        if(pizza != null)
+        {
+            if(pizza.isFinished())
+            {
+                canPickUpPizza = true;
+            }
+        }
+        else
+        {
+            canPickUpPizza = false;
+        }
+        return canPickUpPizza;
+    }
+    
+    public void putPizzaInOven()
+    {
+        
     }
 }

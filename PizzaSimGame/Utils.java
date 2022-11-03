@@ -8,10 +8,34 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Utils extends Actor
 {
-    public static int resturantMoneyOne = 0;
-    public static int resturantMoneyTwo = 0;
-    public static int resturantLevelOne = 1;
-    public static int resturantLevelTwo = 1;
-    public static int moveSpeed = 1;
-  
+    private static int resturantMoneyOne = 0;
+    private static int resturantMoneyTwo = 0;
+    private static int resturantLevelOne = 1;
+    private static int resturantLevelTwo = 1;
+    private static int moveSpeed = 1;
+      
+    public static int getResturantMoneyOne()
+    {
+        return resturantMoneyOne;
+    }
+    
+    public static int getResturantMoneyTwo()
+    {
+        return resturantMoneyTwo;
+    }
+    
+    public static int getResturantLevelOne()
+    {
+        return resturantLevelOne;
+    }
+    
+    public static int getResturantLevelTwo()
+    {
+        return resturantLevelTwo;
+    }
+    
+    public static int getMoveSeed()
+    {
+        return moveSpeed;
+    }
 }

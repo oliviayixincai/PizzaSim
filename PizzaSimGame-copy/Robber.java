@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Robber here.
  * 
@@ -15,19 +15,13 @@ public class Robber extends People
      */
     public Robber()
     {
-        if(getX()<getWorld().getWidth()/2)
-        {
-            resturant = 1;
-        }
-        else if(getY()>getWorld().getWidth()/2)
-        {
-            resturant = 2;
-        }
+        
     }
 
     public void act()
     {
         // Add your action code here.
+        checkRes();
         checkLocation();
         goForMoney();
         stealMoney();
@@ -52,11 +46,12 @@ public class Robber extends People
     }
 
     public void goForMoney(){
-        Cashier c = (Cashier) getObjectsInRange(10,Cashier.class);
+        ArrayList<Cashier> c = (ArrayList<Cashier>) getObjectsInRange(10,Cashier.class);
+        for(Cashier ca : c)
         {
-            if(c != null)
+            if(ca != null)
             {
-                setLocation(c.getX(),c.getY());
+                setLocation(ca.getX(),ca.getY());
                 getWorld().removeObject(this);
             }
         }
@@ -76,6 +71,17 @@ public class Robber extends People
     public void spawnRobber(int x , int y)
     {
         getWorld().addObject(new Robber(),x,y);
+    }
+    public void checkRes()
+    {
+        if(getX()<getWorld().getWidth()/2)
+        {
+            resturant = 1;
+        }
+        else if(getY()>getWorld().getWidth()/2)
+        {
+            resturant = 2;
+        }
     }
 
     }

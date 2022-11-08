@@ -14,4 +14,6 @@ comment5.params=
 comment5.target=void\ stealMoney()
 comment6.params=x\ y
 comment6.target=void\ spawnRobber(int,\ int)
-numComments=7
+comment7.params=
+comment7.target=void\ checkRes()
+numComments=8

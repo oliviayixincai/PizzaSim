@@ -25,6 +25,7 @@ public class MyWorld extends World
         {
             spawnRobber(700,200);
         }
+        addObject(new Robber(),100,200);
     }
     public void spawnRobber(int x , int y)
     {

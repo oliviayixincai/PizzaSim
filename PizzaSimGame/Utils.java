@@ -13,6 +13,7 @@ public class Utils extends Actor
     private static int resturantLevelOne = 1;
     private static int resturantLevelTwo = 1;
     private static int moveSpeed = 1;
+    private static boolean ovenOneEmpty, ovenTwoEmpty, ovenThreeEmpty;
       
     public static int getResturantMoneyOne()
     {

@@ -8,15 +8,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Oven extends Target
 {
-    private static int ovenOneXCoord, ovenTwoXCoord, ovenThreeXCoord;
-    private static int ovenOneYCoord, ovenTwoYCoord, ovenThreeYCoord;
+    private boolean isEmpty, isReserved = false;
     
-    /**
-     * Act - do whatever the Oven wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
+    public Oven()
     {
-        // Add your action code here.
+        getImage().scale(50, 50);
+    }
+    
+    public boolean checkIfEmpty()
+    {
+        if(isTouching(Pizza.class))
+        {
+            isEmpty = false;
+        }
+        else
+        {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+    
+    public void reserve(boolean reservation)
+    {
+        isReserved = reservation;
+    }
+    
+    public boolean isReserved()
+    {
+        return isReserved;
     }
 }

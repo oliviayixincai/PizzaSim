@@ -16,4 +16,9 @@ public class Pizza extends Ingredients
     {
         // Add your action code here.
     }
+    
+    public boolean isFinished()
+    {
+        return true;
+    }
 }

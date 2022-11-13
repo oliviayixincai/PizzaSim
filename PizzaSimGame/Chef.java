@@ -9,7 +9,13 @@ import java.lang.Math.*;
  */
 public class Chef extends People
 {
-    private int rotationIndex = 270;
+    //oven locations
+    /*
+        addObject(new Oven(), 140, 190);
+        addObject(new Oven(), 210, 190);
+        addObject(new Oven(), 280, 190);
+     */
+    private int rotationIndex = 270, imageIndex = 0;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven;
     private int pizzaXOffset = -50, pizzaYOffset = 0;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
@@ -18,6 +24,7 @@ public class Chef extends People
     private static Oven oven1, oven2, oven3;
     
     private SimpleTimer timer = new SimpleTimer();
+    private SimpleTimer animationTimer = new SimpleTimer();
     
     GreenfootImage walkUp[] = new GreenfootImage[9];
     GreenfootImage walkDown[] = new GreenfootImage[9];
@@ -58,6 +65,7 @@ public class Chef extends People
     
     public void act()
     {
+        animate();
         if(!checkedOvenLocation)
         {
             oven1 = (Oven)getWorld().getObjectsAt(140, 190, Oven.class).get(0);
@@ -79,7 +87,32 @@ public class Chef extends People
     
     public void animate()
     {
-        //to do
+        if(animationTimer.millisElapsed() < 100)
+        {
+            return;
+        }
+        animationTimer.mark();
+        //Changes actor's image depending on conditions to create animation
+        if(rotationIndex == 0)
+        {
+            setImage(walkUp[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkUp.length;
+        }
+        if(rotationIndex == 90)
+        {
+            setImage(walkRight[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkRight.length;
+        }
+        if(rotationIndex == 180)
+        {
+            setImage(walkDown[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkDown.length;
+        }
+        if(rotationIndex == 270) 
+        {
+            setImage(walkLeft[imageIndex]);
+            imageIndex = (imageIndex + 1) % walkLeft.length;
+        }
     }
 
     public void moveToOven()

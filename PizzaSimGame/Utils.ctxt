@@ -1,14 +1,4 @@
 #BlueJ class context
 comment0.target=Utils
 comment0.text=\r\n\ Class\ used\ for\ editing\ and\ containing\ global\ static\ variables\ such\ as\ money\ of\ resturants\ and\ speed\ of\ characters.\r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ V1.0\r\n
-comment1.params=
-comment1.target=int\ getResturantMoneyOne()
-comment2.params=
-comment2.target=int\ getResturantMoneyTwo()
-comment3.params=
-comment3.target=int\ getResturantLevelOne()
-comment4.params=
-comment4.target=int\ getResturantLevelTwo()
-comment5.params=
-comment5.target=int\ getMoveSeed()
-numComments=6
+numComments=1

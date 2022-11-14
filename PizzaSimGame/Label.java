@@ -1,94 +1,69 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 /**
- * A Label class that allows you to display a textual value on screen.
+ * Class Label represents a text label on the world.
  * 
- * The Label is an actor, so you will need to create it, and then add it to the world
- * in Greenfoot.  If you keep a reference to the Label then you can change the text it
- * displays.  
- *
- * @author Amjad Altadmri 
- * @version 1.1
+ * @author Yixin Cai
+ * @version 2022-11-10
  */
-public class Label extends Actor
-{
-    private String value;
-    private int fontSize;
-    private Color lineColor = Color.BLACK;
-    private Color fillColor = Color.WHITE;
-    
-    private static final Color transparent = new Color(0,0,0,0);
 
+public class Label extends Actor {
+    // instance variables
+    private String labelText;
+    private int labelSize;
+    private Color labelColor;
     
     /**
-     * Create a new label, initialise it with the int value to be shown and the font size 
+     * Constructors of Label
      */
-    public Label(int value, int fontSize)
-    {
-        this(Integer.toString(value), fontSize);
+    public Label(int labelText) {
+        this(labelText + "");
     }
     
     /**
-     * Create a new label, initialise it with the needed text and the font size 
+     * Constructors of Label
      */
-    public Label(String value, int fontSize)
-    {
-        this.value = value;
-        this.fontSize = fontSize;
-        updateImage();
-    }
-
-    /**
-     * Sets the value  as text
-     * 
-     * @param value the text to be show
-     */
-    public void setValue(String value)
-    {
-        this.value = value;
-        updateImage();
+    public Label(String labelText) {
+        this(labelText, 40);
     }
     
     /**
-     * Sets the value as integer
-     * 
-     * @param value the value to be show
+     * Constructors of Label
      */
-    public void setValue(int value)
-    {
-        this.value = Integer.toString(value);
-        updateImage();
+    public Label(String labelText, int labelSize) {
+        this(labelText, labelSize, Color.BLACK);
     }
     
     /**
-     * Sets the line color of the text
-     * 
-     * @param lineColor the line color of the text
+     * King Constructors of Label
      */
-    public void setLineColor(Color lineColor)
-    {
-        this.lineColor = lineColor;
-        updateImage();
+    public Label(String labelText, int labelSize, Color labelColor) {
+        this.labelText = labelText;
+        this.labelSize = labelSize;
+        this.labelColor = labelColor;
+        setLabelImage();
     }
     
     /**
-     * Sets the fill color of the text
-     * 
-     * @param fillColor the fill color of the text
+     * Mehtod to set the text to image
      */
-    public void setFillColor(Color fillColor)
-    {
-        this.fillColor = fillColor;
-        updateImage();
+    private void setLabelImage() {
+        setImage(new GreenfootImage(this.labelText, this.labelSize, this.labelColor, new Color(0, 0, 0, 0)));
     }
     
-
     /**
-     * Update the image on screen to show the current value.
+     * Method to update the Label
      */
-    private void updateImage()
-    {
-        setImage(new GreenfootImage(value, fontSize, fillColor, transparent, lineColor));
+    public void updateLabel(int labelText) {
+        this.labelText = labelText + "";
+        setLabelImage();
+    }
+    
+    /**
+     * Method to update the Label
+     */
+    public void updateLabel(String labelText) {
+        this.labelText = labelText;
+        setLabelImage();
     }
 }

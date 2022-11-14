@@ -136,7 +136,7 @@ public class SettingWorld extends World
     }
     
     public void stopped() {
-        BackgroundSound.getInstance().stopSound();
+        BackgroundSound.getInstance().pauseSound();
     }
     
     public int getChefNum() {

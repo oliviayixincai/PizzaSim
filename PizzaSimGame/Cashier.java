@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Cashier here.
+ * Write a description of class Oven here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Cashier extends People
 {
     /**
-     * Act - do whatever the Cashier wants to do. This method is called whenever
+     * Act - do whatever the Order wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

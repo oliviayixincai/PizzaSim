@@ -140,8 +140,31 @@ public class Pizza extends Actor
         inOven=true;
     }
     
-    public void setBurn(){
-        burn=true;
+    /**
+     * dough finished getter method
+     */
+    public boolean isDoughFinished(){
+        return doughFinished;
+    }
+    /**
+     * finished adding toppings getter method
+     */
+    public boolean isFirstStageFinished(){
+        return firstStage_finished;
+    }
+    
+    /**
+     * check if the pizza is burned
+     */
+    public boolean isBurned(){
+        return burn;
+    }
+    
+    /**
+     * check if the pizza is cooked 
+     */
+    public boolean isCooked(){
+        return cooked;
     }
     
     public void burnPizza(){

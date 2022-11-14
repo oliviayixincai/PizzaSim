@@ -15,11 +15,11 @@ public class Cashier extends People
         addObject(new Oven(), 210, 190);
         addObject(new Oven(), 280, 190);
      */
-    private int rotationIndex = 0, imageIndex = 0;
+    private int rotationIndex = 180, imageIndex = 0;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
-    private boolean currentlyMovingPizza = false;
+    private boolean currentlyMovingToOven = false;
     private boolean canPickUp, checkedOvenLocation = false;
     private static Oven oven1, oven2, oven3;
     
@@ -60,7 +60,7 @@ public class Cashier extends People
             leftIdle[i].mirrorHorizontally();
         }
         */
-        setImage(walkUp[0]);
+        setImage(walkDown[0]);
     }
     
     public void act()
@@ -73,7 +73,16 @@ public class Cashier extends People
             oven3 = (Oven)getWorld().getObjectsAt(280, 190, Oven.class).get(0);
             checkedOvenLocation = true;
         }
-        moveToCounter(330, 200);
+        
+        if(openOven != 4 || currentlyMovingToOven)
+        {
+            currentlyMovingToOven = true;
+            moveToOven();
+        }
+        
+        
+        //moveToCounter(330, 460);
+        //moveToCashierCounter(530, 460);
     }
     
     public void animate()
@@ -108,9 +117,6 @@ public class Cashier extends People
 
     public void moveToOven()
     {
-        Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
-        ovenXCoord = 280;
-        ovenYCoord = 190;
         //rotate chef and pizza 
         if(rotationIndex != 0 && timer.millisElapsed() > 200 && getX() != ovenXCoord && getY() != ovenYCoord + 50)
         {
@@ -136,6 +142,7 @@ public class Cashier extends People
         if(getY() == ovenYCoord + 50 && getX() == ovenXCoord && rotationIndex != 0)
         {
             rotate(90);
+            currentlyMovingToOven = false;
         }
     }
     
@@ -150,7 +157,7 @@ public class Cashier extends People
             rotate(90);
             rotationIndexRadians = Math.toRadians(rotationIndex);
             pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
-            pizzaYCoord = getY() + (50 * Math.cos(rotationIndexRadians));
+            pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
             pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
             pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
             pizza.setLocation(pizzaXCoord, pizzaYCoord);  
@@ -166,50 +173,60 @@ public class Cashier extends People
     
     public void moveToCashierCounter(int counterXCoord, int counterYCoord)
     {
-        
-    }
-    /*
-    public boolean canPickUpPizza()
-    {
-        Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);        
-        if(pizza != null)
+        //rotate chef and pizza 
+        if(rotationIndex != 90 && timer.millisElapsed() > 200 && getX() != counterXCoord)
         {
-            if(pizza.isCooked())
-            {
-                canPickUp = true;
-            }
+            timer.mark();
+            rotate(-90); 
         }
-        else
+        //move x axis to oven
+        if(getX() != counterXCoord && rotationIndex == 90)
         {
-            canPickUp = false;
+            setLocation(getX(), getY() - 1);
         }
-        return canPickUp;
+        //rotate to walk to oven
+        if(getX() == counterXCoord && rotationIndex != 180)
+        {
+            rotate(90);
+            
+        }
     }
-    */
     
-    public void checkOpenOven()
+    public void checkCookedPizza()
     {
         //checks for empty oven and reserves it
-        if(oven1.checkIfEmpty() && !oven1.isReserved())
+        if(!oven1.checkIfEmpty() && !oven1.isReserved())
         {
             openOven = 1;
-            oven1.reserve(true);
             ovenXCoord = oven1.getX();
             ovenYCoord = oven1.getY();
+            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            if(pizza.isCooked())
+            {
+                oven1.reserve(true);
+            }
         }
-        else if(oven2.checkIfEmpty() && !oven2.isReserved())
+        else if(!oven1.checkIfEmpty() && !oven2.isReserved())
         {
             openOven = 2;
-            oven2.reserve(true);
             ovenXCoord = oven2.getX();
             ovenYCoord = oven2.getY();
+            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            if(pizza.isCooked())
+            {
+                oven2.reserve(true);
+            }
         }
-        else if(oven3.checkIfEmpty() && !oven3.isReserved())
+        else if(!oven1.checkIfEmpty() && !oven3.isReserved())
         {
             openOven = 3;
-            oven3.reserve(true);
             ovenXCoord = oven3.getX();
             ovenYCoord = oven3.getY();
+            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            if(pizza.isCooked())
+            {
+                oven3.reserve(true);
+            }
         }
         else
         {

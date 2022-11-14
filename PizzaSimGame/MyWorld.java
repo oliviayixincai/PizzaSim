@@ -26,7 +26,7 @@ public class MyWorld extends World
         addObject(new Oven(), 140, 190);
         addObject(new Oven(), 210, 190);
         addObject(new Oven(), 280, 190);
-        addObject(new Cashier(340, 430, 100, 100), 280, 240);
+        addObject(new Cashier(340, 430, 100, 100), 330, 460);
         addObject(new Pizza(), 280, 190);
     }
     

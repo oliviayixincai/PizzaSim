@@ -13,6 +13,11 @@ public class Pizza extends Actor
     {
         
     }
+    
+    public boolean isCooked()
+    {
+        return true;
+    }
     /**
      * Act - do whatever the Pizza wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

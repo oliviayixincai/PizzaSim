@@ -1,5 +1,7 @@
 #Greenfoot project file
-class.MyWorld.image=PizzaSim.png
+class.Chef.image=baby2.png
+class.MyWorld.image=pizzaKitchen.png
+class.Pizza.image=pizza_cheese.png
 dependency1.from=MyWorld
 dependency1.to=SettingWorld
 dependency1.type=UsesDependency

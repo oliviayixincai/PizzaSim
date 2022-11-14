@@ -1,11 +1,17 @@
 #Greenfoot project file
 class.MyWorld.image=pizzaKitchen.png
+dependency1.from=MyWorld
+dependency1.to=Robber
+dependency1.type=UsesDependency
+dependency2.from=MyWorld
+dependency2.to=Utils
+dependency2.type=UsesDependency
 editor.fx.0.height=699
 editor.fx.0.width=814
 editor.fx.0.x=360
 editor.fx.0.y=23
-height=800
-package.numDependencies=0
+height=699
+package.numDependencies=2
 package.numTargets=22
 project.charset=UTF-8
 publish.hasSource=false
@@ -178,4 +184,4 @@ target9.y=0
 version=3.0.0
 width=1280
 xPosition=0
-yPosition=0
+yPosition=23

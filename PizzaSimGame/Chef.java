@@ -128,7 +128,7 @@ public class Chef extends People
             pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
             pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
             pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
-            pizza.setLocation(pizzaXCoord, (pizzaYCoord);  
+            pizza.setLocation(pizzaXCoord, pizzaYCoord);  
         }
         //move x axis to oven
         if(getX() != ovenXCoord && rotationIndex == 90)

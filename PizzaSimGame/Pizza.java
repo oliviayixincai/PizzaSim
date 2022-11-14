@@ -35,6 +35,9 @@ public class Pizza extends Actor
     private int imageIndex;
     private int changeTime;
     private boolean hasChef;
+    
+    private double exactX;
+    private double exactY;
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders

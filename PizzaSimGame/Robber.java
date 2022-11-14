@@ -13,75 +13,72 @@ public class Robber extends People
      * Act - do whatever the Robber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Robber()
+    public Robber(int resturant)
     {
-        
+        this.resturant = resturant;
+
     }
 
     public void act()
     {
         // Add your action code here.
-        checkRes();
-        checkLocation();
-        goForMoney();
+        moveToDoorAndMoney();
+
         stealMoney();
     }
 
-    public void checkLocation()
+    public void moveToDoorAndMoney()
     {
-        if(resturant ==1)
+        if(getY() != 710)
         {
-            if(getX() != 780)
+            setLocation(getX(),getY()+1);
+        }
+        else if(getY() == 710)
+        {
+            if(resturant ==1)
             {
-                setLocation(getX()+1,getY());
+                if(getX() != 610)
+                {
+                    setLocation(getX()+1,getY());
+                }
+            }
+            else if(resturant == 2)
+            {
+                if(getX() != 400)
+                {
+                    setLocation(getX()-1,getY());
+                }
             }
         }
-        else if(resturant == 2)
+        if(getY() == 710 && (getX() == 400 || getX() == 610))
         {
-            if(getX() != 256)
+            if(getY() != 630)
             {
-                setLocation(getX()-1,getY());
+             setLocation(getX(),getY()-1);
             }
         }
     }
 
-    public void goForMoney(){
-        ArrayList<Cashier> c = (ArrayList<Cashier>) getObjectsInRange(10,Cashier.class);
-        for(Cashier ca : c)
+    public void stealMoney()
+    {
+        if(resturant ==1)
         {
-            if(ca != null)
+
+            if(getX()==400&&getY()==630)
             {
-                setLocation(ca.getX(),ca.getY());
+                Utils.resturantMoneyOne--;
+                getWorld().removeObject(this);
+            }
+        }
+        if(resturant ==2)
+        {
+
+            if(getX()==610&&getY()==630)
+            {
+                Utils.resturantMoneyTwo--;
                 getWorld().removeObject(this);
             }
         }
     }
-    public void stealMoney()
-    {
-        if(getX()<getWorld().getWidth()/2)
-        {
-            Utils.resturantMoneyOne--;
-        }
-        else if(getY()>getWorld().getWidth()/2)
-        {
-            Utils.resturantMoneyTwo--;
-            getWorld().removeObject(this);
-        }
-    }
-    public void spawnRobber(int x , int y)
-    {
-        getWorld().addObject(new Robber(),x,y);
-    }
-    public void checkRes()
-    {
-        if(getX()<getWorld().getWidth()/2)
-        {
-            resturant = 1;
-        }
-        else if(getY()>getWorld().getWidth()/2)
-        {
-            resturant = 2;
-        }
-    }
 
-    }
+}

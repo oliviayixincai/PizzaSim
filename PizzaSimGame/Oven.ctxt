@@ -2,6 +2,11 @@
 comment0.target=Oven
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Oven\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Oven\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=2
+comment1.target=Oven()
+comment2.params=
+comment2.target=boolean\ checkIfEmpty()
+comment3.params=reservation
+comment3.target=void\ reserve(boolean)
+comment4.params=
+comment4.target=boolean\ isReserved()
+numComments=5

@@ -18,7 +18,7 @@ public interface ISoundCentre
     public void playSound();
     
     /**
-     * Stop sound
+     * Pause sound
      */
-    public void stopSound();
+    public void pauseSound();
 }

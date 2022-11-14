@@ -60,11 +60,11 @@ public abstract class Button extends Actor implements ISoundCentre
     }
     
     /**
-     * Stop playing sound if there is sound
+     * Pause playing sound if there is sound
      */
-    public void stopSound() {
+    public void pauseSound() {
         if (sound != null) {
-            sound.stop();
+            sound.pause();
         }
     }
     

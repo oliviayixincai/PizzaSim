@@ -47,10 +47,10 @@ public class MyWorld extends World
         // stop all sounds
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
-            sound.stopSound();
+            sound.pauseSound();
         }
         // stop background sound
-        BackgroundSound.getInstance().stopSound();
+        BackgroundSound.getInstance().pauseSound();
     }
     
     public void started() {

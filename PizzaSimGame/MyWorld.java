@@ -22,6 +22,12 @@ public class MyWorld extends World
         super(1024, 800, 1);
         this.settingWorld = settingWorld;
         isSimOver = false;
+        
+        addObject(new Oven(), 140, 190);
+        addObject(new Oven(), 210, 190);
+        addObject(new Oven(), 280, 190);
+        addObject(new Cashier(340, 430, 100, 100), 330, 460);
+        addObject(new Pizza(), 280, 190);
     }
     
     public void act() {

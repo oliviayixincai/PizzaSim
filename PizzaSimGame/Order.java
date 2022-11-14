@@ -16,14 +16,17 @@ public class Order extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private String[] toppings;
+    private String sauce;
     private GreenfootImage chatBox=getImage();
     private GreenfootImage topping;
+    private GreenfootImage theSauce;
     private GreenfootImage dough;
     private int a;
-    public Order(String[] strings){
-        toppings=strings;
+    public Order(String sauceType, String[] toppingTypes){
+        toppings=toppingTypes;
+        sauce=sauceType;
         dough=new GreenfootImage("dough.png");
-        chatBox.drawImage(dough, 25, 0);
+        chatBox.drawImage(dough, 12, 2);
         a=0;
         
     }
@@ -31,9 +34,11 @@ public class Order extends Actor
      * draw the order picture above the head of each customer
      */
     public void drawOrder(){
+        theSauce=new GreenfootImage("sauce"+sauce+".png");
+        chatBox.drawImage(theSauce,12,2);
         for(int i=0; i<toppings.length; i++){
             topping = new GreenfootImage(toppings[i] + ".png");
-            chatBox.drawImage(topping, 25, 0);
+            chatBox.drawImage(topping, 12, 2);
         }
     }
     public void addedToWorld(World w){

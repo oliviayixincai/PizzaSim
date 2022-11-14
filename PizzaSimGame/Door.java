@@ -1,20 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
 
 /**
- * Write a description of class CashierCounter here.
+ * Write a description of class Door here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class CashierCounter extends Target
-{
+public class Door extends Target
+{    
     /**
-     * Act - do whatever the CashierCounter wants to do. This method is called whenever
+     * Act - do whatever the Door wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-
-    public void act()
-    {
+    public Door (){
     }
 }

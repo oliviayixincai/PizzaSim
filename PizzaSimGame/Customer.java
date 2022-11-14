@@ -9,10 +9,12 @@ import java.util.List;
  */
 public class Customer extends People
 {
-    private int dir, storeRNG, store;
+    private int dir, storeRNG, store, toppingRNG;
     
     private boolean inStore, ordered, pickedUp;
     
+    private String[] order = new String[3];
+    private String dough = "thin", sauce = "tomato", topping;
     
     private int imageRNG, rotation;
     private String gender;
@@ -29,6 +31,7 @@ public class Customer extends People
             
         storeRNG = Greenfoot.getRandomNumber(2);
         imageRNG = Greenfoot.getRandomNumber(2);
+        toppingRNG = Greenfoot.getRandomNumber(3);
         
         if (storeRNG == 0){
             store = -1;
@@ -45,6 +48,22 @@ public class Customer extends People
         downIMG = new GreenfootImage(gender + "_D.png");
         leftIMG = new GreenfootImage(gender + "_L.png");
         rightIMG = new GreenfootImage(gender + "_R.png");
+        
+        switch (toppingRNG){
+            case 0:
+                topping = "pepporoni";
+                break;
+            case 1:
+                topping = "mushroom";
+                break;
+            case 2:
+                topping = "green peppers";
+                break;
+        }
+        
+        order[0] = dough;
+        order[1] = sauce;
+        order[2] = topping;
     }
     
     public void act (){
@@ -159,7 +178,7 @@ public class Customer extends People
     }
     
     public void order (){
-        
+        getWorld().addObject(new Order(order), getX(), getY() - (getImage().getHeight() / 2));
     }
     
     public void lineUp(){

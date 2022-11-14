@@ -22,15 +22,6 @@ public class MyWorld extends World
         super(1024, 800, 1);
         this.settingWorld = settingWorld;
         isSimOver = false;
-        
-        // unnecessary labels to show settings passed in
-        // TODO: remove
-        int x = getWidth() / 2;
-        int y = getHeight() / 2;
-        addObject(new Label("ChefNum " + settingWorld.getChefNum()), x, y - 150);
-        addObject(new Label("CashierNum " + settingWorld.getCashierNum()), x, y - 50);
-        addObject(new Label("MoneyNum " + settingWorld.getMoneyNum()), x, y + 50);
-        addObject(new Label("RobberCost " + settingWorld.getRobberCost()), x, y + 150);
     }
     
     public void act() {

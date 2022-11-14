@@ -22,11 +22,18 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
         
-        addObject(new Door(), Utils.door1X, Utils.doorY);
-        addObject(new Door(), Utils.door2X, Utils.doorY);
+        addObject(new Door(), Utils.door1X, Utils.enterY);
+        addObject(new Door(), Utils.door1X, Utils.exitY);
         
-        addObject(new CashierCounter(), Utils.cashier1X, Utils.cashierY);
-        addObject(new CashierCounter(), Utils.cashier2X, Utils.cashierY);
+        addObject(new Door(), Utils.door2X, Utils.enterY);
+        addObject(new Door(), Utils.door2X, Utils.exitY);
+        
+        addObject(new CashierCounter(), Utils.cashier1X, Utils.counterY);
+        addObject(new CashierCounter(), Utils.cashier2X, Utils.counterY);
+        
+        addObject(new WaitingLine(), Utils.wait1X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait2X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait3X, Utils.counterY);
     }
     
     public void act () {
@@ -38,7 +45,7 @@ public class MyWorld extends World
         
         if(dirRNG == 1){
             dir = 1;
-            startingY = 153;
+            startingY = 81;
         } else if (dirRNG == 0) {
             dir = -1;
             startingY = getHeight();
@@ -47,7 +54,7 @@ public class MyWorld extends World
         int rng = Greenfoot.getRandomNumber(60);
         
         if (rng == 0){
-            addObject(new Customer(dir), Greenfoot.getRandomNumber(160) + 440, startingY);
+            addObject(new Customer(dir), Greenfoot.getRandomNumber(124) + 449, startingY);
         }
     }
 }

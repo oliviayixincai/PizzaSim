@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Robber extends People
 {
     private int resturant;
+    private int location;
     /**
      * Act - do whatever the Robber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,33 +30,18 @@ public class Robber extends People
 
     public void moveToDoorAndMoney()
     {
-        if(getY() != 710)
+        checkLocation();
+        if(location ==1)
         {
-            setLocation(getX(),getY()+1);
+            move1();
         }
-        else if(getY() == 710)
+        else if(location ==2)
         {
-            if(resturant ==1)
-            {
-                if(getX() != 610)
-                {
-                    setLocation(getX()+1,getY());
-                }
-            }
-            else if(resturant == 2)
-            {
-                if(getX() != 400)
-                {
-                    setLocation(getX()-1,getY());
-                }
-            }
+            move2();
         }
-        if(getY() == 710 && (getX() == 400 || getX() == 610))
+        if(location ==3)
         {
-            if(getY() != 630)
-            {
-             setLocation(getX(),getY()-1);
-            }
+            move3();
         }
     }
 
@@ -79,6 +65,53 @@ public class Robber extends People
                 getWorld().removeObject(this);
             }
         }
+    }
+    public void checkLocation()
+    {
+        if(getX()==500&&getY()==100)
+        {
+            location =1;
+        }
+        else if(getX() == 500&&getY()==710)
+        {
+            location = 2;
+        }
+        else if((getX()==400||getX()==610)&&getY() ==710)
+        {
+            location =3;
+        }
+        
+    }
+    public void move1()
+    {
+        if(getY() != 710)
+        {
+            setLocation(getX(),getY()+1);
+        }
+    }
+    public void move2()
+    {
+        if(resturant ==1)
+            {
+                if(getX() != 610)
+                {
+                    setLocation(getX()+1,getY());
+                }
+            }
+            else if(resturant == 2)
+            {
+                if(getX() != 400)
+                {
+                    setLocation(getX()-1,getY());
+                }
+            }
+    }
+    public void move3()
+    {
+        if(getY() != 630)
+            {
+             setLocation(getX(),getY()-1);
+            }
     }
 
 }

@@ -9,6 +9,10 @@ import java.util.ArrayList;
  */ 
 public class Pizza extends Actor
 {
+    public Pizza()
+    {
+        
+    }
     /**
      * Act - do whatever the Pizza wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -16,6 +20,7 @@ public class Pizza extends Actor
     // constructor 
     // variables: burn, firstStage finish, fully cooked, discard or not
     // attached to chef, cookTime, burnTime
+
     private String[] toppings;
     private boolean burn;
     private boolean firstStage_finished;
@@ -25,6 +30,7 @@ public class Pizza extends Actor
     private int chef_Xoffset=50, chef_Yoffset=0;
     private Customer customer;
     private boolean inOven;
+    /*
     private static GreenfootImage[] doughSequence={
         new GreenfootImage("dough1.png"),
         new GreenfootImage("dough2.png"),
@@ -32,16 +38,18 @@ public class Pizza extends Actor
         new GreenfootImage("dough4.png"),
         new GreenfootImage("dough5.png"),
     };
+    */
     private int imageIndex;
     private int changeTime;
     private boolean hasChef;
     
     private double exactX;
     private double exactY;
+    /*
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
-     */
+    
     public Pizza(String[] strings, Customer customer){
         firstStage_finished=false;
         doughFinished=false;
@@ -66,7 +74,7 @@ public class Pizza extends Actor
     }
     /**
      * check if there is a chef around counter
-     */
+     
     public boolean checkCounterChef(){
         Chef chef1=(Chef)getWorld().getObjectsAt(110, 300, Chef.class).get(0);
         Chef chef2=(Chef)getWorld().getObjectsAt(110, 380, Chef.class).get(0);
@@ -86,7 +94,7 @@ public class Pizza extends Actor
     }
     /**
      * an animation of the dough spreading process
-     */
+     
     public void spreadDough(){
         //If there is a chef next to a table
         //start spreading the dough
@@ -111,7 +119,7 @@ public class Pizza extends Actor
     }
     /**
      * calculate the cook time required for the pizza
-     */
+    
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
@@ -120,7 +128,7 @@ public class Pizza extends Actor
     /**
      * if the pizza is cooked and a chef comes, return has chef
      * if hasChef, the clocked will be removed
-     */
+     
     public boolean isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
         //find the chef picking up the pizza

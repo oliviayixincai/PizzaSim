@@ -73,6 +73,7 @@ public class Chef extends People
             oven3 = (Oven)getWorld().getObjectsAt(280, 190, Oven.class).get(0);
             checkedOvenLocation = true;
         }
+        /*
         if(!currentlyMovingPizza)
         {
             moveToCounter(counterXCoord, counterYCoord);
@@ -83,6 +84,7 @@ public class Chef extends People
             currentlyMovingPizza = true;
             moveToOven();
         }
+        */
     }
     
     public void animate()
@@ -188,7 +190,7 @@ public class Chef extends People
     }
     
     public boolean canPickUpPizza()
-    {
+    {/*
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);        
         if(pizza != null)
         {
@@ -202,8 +204,10 @@ public class Chef extends People
             canPickUp = false;
         }
         return canPickUp;
+        */
+       return true;
     }
-    
+        
     public void checkOpenOven()
     {
         //checks for empty oven and reserves it

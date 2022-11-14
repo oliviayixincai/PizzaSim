@@ -154,4 +154,17 @@ public class Pizza extends Actor
         //add a golden crust layer on pizza
         cooked=true;
     }
+    
+    /**
+     * Set the location using exact coordinates.
+     * 
+     * @param x the new x location
+     * @param y the new y location
+     */
+    public void setLocation(double x, double y) 
+    {
+        exactX = x;
+        exactY = y;
+        super.setLocation((int) (x + 0.5), (int) (y + 0.5));
+    }
 }

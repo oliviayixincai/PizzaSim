@@ -19,13 +19,12 @@ public class Utils extends Actor
     public static int door1X = 449, door2X = 573;
     
     public static int cashier1X = 333, cashier2X = 410;
+    public static int chefX = 120, chef1Y = 300, chef2Y = 400;
     
     public static int wait1X = 161, wait2X = 220, wait3X = 279;
     
+    public static int kitchenCounterX = 70, kitchenCounterY1 = 300, kitchenCounterY2 = 400;
     public static int counterY = 655;
     
-    public static int oven1XCoord = 140, oven2XCoord = 210, oven3XCoord = 280;
-    public static int ovenYCoord = 190;
-    
-    
+    public static int oven1X = 140, oven2X = 210, oven3X = 280, ovenY = 190;
 }

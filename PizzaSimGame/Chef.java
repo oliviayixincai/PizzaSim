@@ -10,7 +10,7 @@ import java.lang.Math.*;
 public class Chef extends People
 {
     private int rotationIndex = 270, imageIndex = 0;
-    private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven;
+    private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven = 4;
     private int pizzaXOffset = -50, pizzaYOffset = 0;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
     private boolean currentlyMovingPizza = false;
@@ -62,23 +62,21 @@ public class Chef extends People
         animate();
         if(!checkedOvenLocation)
         {
-            oven1 = (Oven)getWorld().getObjectsAt(140, 190, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(210, 190, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(280, 190, Oven.class).get(0);
+            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
+            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
+            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
             checkedOvenLocation = true;
         }
-        /*
+        
         if(!currentlyMovingPizza)
         {
             moveToCounter(counterXCoord, counterYCoord);
-            checkOpenOven();
         }
-        if((canPickUpPizza() || currentlyMovingPizza) && openOven != 4)
+        if(canPickUpPizza() || currentlyMovingPizza)
         {
             currentlyMovingPizza = true;
             moveToOven();
         }
-        */
     }
     
     public void animate()
@@ -114,53 +112,62 @@ public class Chef extends People
     public void moveToOven()
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
-        //rotate chef and pizza 
-        if(rotationIndex != 90 && timer.millisElapsed() > 200)
+        if(openOven == 4)
         {
-            timer.mark();
-            rotate(90);
-            rotationIndexRadians = Math.toRadians(rotationIndex);
-            pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
-            pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
-            pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
-            pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);  
+            checkOpenOven();
         }
-        //move x axis to oven
-        if(getX() != ovenXCoord && rotationIndex == 90)
+        //rotate chef and pizza
+        if(openOven != 4)
         {
-            setLocation(getX() + 1, getY());
-            pizzaXCoord += 1;   
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);
-        }
-        //rotate to face oven
-        if(getX() == ovenXCoord && rotationIndex != 0)
-        {
-            rotate(-90);
-            rotationIndexRadians = Math.toRadians(rotationIndex);
-            pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
-            pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
-            pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
-            pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);
-        }
-        //move y axis to oven
-        if(pizza.getY() != ovenYCoord && rotationIndex == 0 && getX() == ovenXCoord)
-        {
-            setLocation(getX(), getY() - 1);
-            pizzaYCoord -= 1;
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);
-        }
-        //reset boolean
-        if(pizza.getY() == ovenYCoord && pizza.getX() == ovenXCoord)
-        {
-            currentlyMovingPizza = false;
-            pizza.getImage().setTransparency(0);
+            if(rotationIndex != 90 && timer.millisElapsed() > 200)
+            {
+                timer.mark();
+                rotate(90);
+                rotationIndexRadians = Math.toRadians(rotationIndex);
+                pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
+                pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
+                pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
+                pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
+                pizza.setLocation(pizzaXCoord, pizzaYCoord);  
+            }
+            //move x axis to oven
+            if(getX() != ovenXCoord && rotationIndex == 90)
+            {
+                setLocation(getX() + 1, getY());
+                pizzaXCoord += 1;   
+                pizza.setLocation(pizzaXCoord, pizzaYCoord);
+            }
+            //rotate to face oven
+            if(getX() == ovenXCoord && rotationIndex != 0)
+            {
+                rotate(-90);
+                rotationIndexRadians = Math.toRadians(rotationIndex);
+                pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
+                pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
+                pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
+                pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
+                pizza.setLocation(pizzaXCoord, pizzaYCoord);
+            }
+            //move y axis to oven
+            if(pizza.getY() != ovenYCoord && rotationIndex == 0 && getX() == ovenXCoord)
+            {
+                setLocation(getX(), getY() - 1);
+                pizzaYCoord -= 1;
+                pizza.setLocation(pizzaXCoord, pizzaYCoord);
+            }
+            //reset boolean
+            if(pizza.getY() == ovenYCoord && pizza.getX() == ovenXCoord)
+            {
+                currentlyMovingPizza = false;
+                pizza.getImage().setTransparency(0);
+            }
         }
     }
     
     public void moveToCounter(int counterXCoord, int counterYCoord)
     {
+        pizzaXOffset = -50;
+        pizzaYOffset = 0;
         if(rotationIndex != 180 && timer.millisElapsed() > 200 && getX() != counterYCoord && getY() != counterYCoord)
         {
             timer.mark();
@@ -180,15 +187,16 @@ public class Chef extends People
         if(getX() != counterXCoord && rotationIndex == 270 && getY() == counterYCoord)
         {
             setLocation(getX() - 1, getY());
+            openOven = 4;
         }
     }
     
     public boolean canPickUpPizza()
-    {/*
+    {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);        
         if(pizza != null)
         {
-            if(pizza.isFinished())
+            if(pizza.toppingsFinished())
             {
                 canPickUp = true;
             }
@@ -198,8 +206,6 @@ public class Chef extends People
             canPickUp = false;
         }
         return canPickUp;
-        */
-       return true;
     }
         
     public void checkOpenOven()

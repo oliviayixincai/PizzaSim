@@ -4,6 +4,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class MyWorld here.
  * 
+ * 
  * @author (your name) 
  * @version (a version number or a date)
  */
@@ -29,11 +30,14 @@ public class MyWorld extends World
         addObject(new Oven(), 210, 190);
         addObject(new Oven(), 280, 190);
         //adds chef objects
-        addObject(new Chef(120, 350, 100, 100), 120, 350);
-        addObject(new Chef(120, 250, 100, 100), 120, 250);
+        addObject(new Chef(Utils.chefX, Utils.chef1Y, 100, 100), Utils.chefX, Utils.chef1Y);
+        addObject(new Chef(Utils.chefX, Utils.chef2Y, 100, 100), Utils.chefX, Utils.chef2Y);
         //adds cashier objects
-        addObject(new Cashier(Utils.cashier1X, 430, 100, 100), Utils.cashier1X, 460);
-        addObject(new Cashier(Utils.cashier2X, 430, 100, 100), Utils.cashier2X, 460);
+        //addObject(new Cashier(Utils.cashier1X, 430, 100, 100), Utils.cashier1X, 460);
+        //addObject(new Cashier(Utils.cashier2X, 430, 100, 100), Utils.cashier2X, 460);
+        //adds kitchen counters
+        addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY1);
+        addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY2);
         
         addObject(new Door(), Utils.door1X, Utils.enterY);
         addObject(new Door(), Utils.door1X, Utils.exitY);
@@ -48,13 +52,13 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait2X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait3X, Utils.counterY);
         
+        //addObject(new Pizza(
+        
     }
     
     public void act() {
         spawnCustomer();
     }
-        
-    
     
     public void spawnCustomer()
     {

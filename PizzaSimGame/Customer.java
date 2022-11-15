@@ -13,7 +13,7 @@ public class Customer extends People
     
     private boolean inStore, ordered, pickedUp;
     
-    private String[] order = new String[3];
+    private String[] order = new String[10];
     private String dough = "thin", sauce = "tomato", topping;
     
     private int imageRNG, rotation;
@@ -31,7 +31,6 @@ public class Customer extends People
             
         storeRNG = Greenfoot.getRandomNumber(2);
         imageRNG = Greenfoot.getRandomNumber(2);
-        toppingRNG = Greenfoot.getRandomNumber(3);
         
         if (storeRNG == 0){
             store = -1;
@@ -45,25 +44,30 @@ public class Customer extends People
             gender = "girl";
         }
         upIMG = new GreenfootImage(gender + "_U.png");
+        upIMG.scale(38, 70);
         downIMG = new GreenfootImage(gender + "_D.png");
+        downIMG.scale(38, 70);
         leftIMG = new GreenfootImage(gender + "_L.png");
+        leftIMG.scale(38, 70);
         rightIMG = new GreenfootImage(gender + "_R.png");
+        rightIMG.scale(38, 70);
         
-        switch (toppingRNG){
+        for(int i = 0; i < order.length; i++)
+        {
+            toppingRNG = Greenfoot.getRandomNumber(3);
+            switch (toppingRNG){
             case 0:
-                topping = "pepporoni";
+                topping = "pepperoni";
                 break;
             case 1:
-                topping = "mushroom";
+                topping = "peppers";
                 break;
             case 2:
-                topping = "green peppers";
+                topping = "ham";
                 break;
+            }
+            order[i] = topping;
         }
-        
-        order[0] = dough;
-        order[1] = sauce;
-        order[2] = topping;
     }
     
     public void act (){
@@ -167,7 +171,7 @@ public class Customer extends People
                 setLocation(getX(), getY() - 1);
             } else {
                 ordered = true;
-                
+                order();
                 if (getX() == Utils.cashier1X){
                     cash1IsFree = true;
                 } else {
@@ -178,7 +182,7 @@ public class Customer extends People
     }
     
     public void order (){
-        getWorld().addObject(new Order(order), getX(), getY() - (getImage().getHeight() / 2));
+        getWorld().addObject(new Order(sauce, order), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
     }
     
     public void lineUp(){

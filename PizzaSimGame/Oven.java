@@ -13,7 +13,7 @@ public class Oven extends Target
     public Oven()
     {
         getImage().scale(50, 50);
-        getImage().setTransparency(0);
+        getImage().setTransparency(255);
     }
     
     public boolean checkIfEmpty()

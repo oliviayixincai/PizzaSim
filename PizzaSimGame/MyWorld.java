@@ -11,7 +11,9 @@ public class MyWorld extends World
 {
     private boolean isSimOver;
     private SettingWorld settingWorld;
-    
+    private int customerSpawnRate, customerDir;
+    //variables for spawning customers
+    private int dir, startingY, dirRNG;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -22,15 +24,59 @@ public class MyWorld extends World
         super(1024, 800, 1);
         this.settingWorld = settingWorld;
         isSimOver = false;
-        
+        //adds oven objects
         addObject(new Oven(), 140, 190);
         addObject(new Oven(), 210, 190);
         addObject(new Oven(), 280, 190);
-        addObject(new Cashier(340, 430, 100, 100), 330, 460);
-        addObject(new Pizza(), 280, 190);
+        //adds chef objects
+        addObject(new Chef(120, 350, 100, 100), 120, 350);
+        addObject(new Chef(120, 250, 100, 100), 120, 250);
+        //adds cashier objects
+        addObject(new Cashier(Utils.cashier1X, 430, 100, 100), Utils.cashier1X, 460);
+        addObject(new Cashier(Utils.cashier2X, 430, 100, 100), Utils.cashier2X, 460);
+        
+        addObject(new Door(), Utils.door1X, Utils.enterY);
+        addObject(new Door(), Utils.door1X, Utils.exitY);
+
+        addObject(new Door(), Utils.door2X, Utils.enterY);
+        addObject(new Door(), Utils.door2X, Utils.exitY);
+
+        addObject(new CashierCounter(), Utils.cashier1X, Utils.counterY);
+        addObject(new CashierCounter(), Utils.cashier2X, Utils.counterY);
+
+        addObject(new WaitingLine(), Utils.wait1X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait2X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait3X, Utils.counterY);
+        
     }
     
     public void act() {
+        spawnCustomer();
+    }
+        
+    
+    
+    public void spawnCustomer()
+    {
+        dirRNG = Greenfoot.getRandomNumber(2);
+        
+        if(dirRNG == 1)
+        {
+            dir = 1;
+            startingY = 81;
+        }
+        else if(dirRNG == 0)
+        {
+            dir = -1;
+            startingY = getHeight();
+        }
+        
+        int rng = Greenfoot.getRandomNumber(120);
+        
+        if(rng == 0)
+        {
+            addObject(new Customer(dir), Greenfoot.getRandomNumber(124) + 449, startingY);
+        }
         
     }
     

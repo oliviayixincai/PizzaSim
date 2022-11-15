@@ -9,12 +9,6 @@ import java.lang.Math.*;
  */
 public class Chef extends People
 {
-    //oven locations
-    /*
-        addObject(new Oven(), 140, 190);
-        addObject(new Oven(), 210, 190);
-        addObject(new Oven(), 280, 190);
-     */
     private int rotationIndex = 270, imageIndex = 0;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven;
     private int pizzaXOffset = -50, pizzaYOffset = 0;

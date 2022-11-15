@@ -12,6 +12,6 @@ comment4.params=
 comment4.target=void\ playSound()
 comment4.text=\r\n\ Play\ sound\r\n
 comment5.params=
-comment5.target=void\ stopSound()
+comment5.target=void\ pauseSound()
 comment5.text=\r\n\ Stop\ sound\r\n
 numComments=6

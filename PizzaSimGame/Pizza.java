@@ -21,7 +21,7 @@ public class Pizza extends Actor
     private String sauce;
     private boolean burn = false;
     private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false;
-    private boolean cooked;
+    private boolean cooked = false;
     private Cashier cashier;
     private int chef_Xoffset = 50, chef_Yoffset = 0;
     private boolean inOven;

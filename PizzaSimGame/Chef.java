@@ -160,6 +160,7 @@ public class Chef extends People
             {
                 currentlyMovingPizza = false;
                 pizza.getImage().setTransparency(0);
+                pizza.cookPizza();
             }
         }
     }
@@ -187,6 +188,18 @@ public class Chef extends People
         if(getX() != counterXCoord && rotationIndex == 270 && getY() == counterYCoord)
         {
             setLocation(getX() - 1, getY());
+            if(openOven == 1)
+            {
+                oven1.reserve(false);
+            }
+            if(openOven == 2)
+            {
+                oven1.reserve(false);
+            }
+            if(openOven == 3)
+            {
+                oven1.reserve(false);
+            }
             openOven = 4;
         }
     }

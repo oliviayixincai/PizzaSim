@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Oven extends Target
 {
-    private boolean isEmpty, isReserved = false;
+    private boolean isEmpty, isReserved = false, isPickUpReserved = false;
     
     public Oven()
     {
@@ -18,7 +18,7 @@ public class Oven extends Target
     
     public boolean checkIfEmpty()
     {
-        if(isTouching(Pizza.class))
+        if(getOneObjectAtOffset(0, 0, Pizza.class) != null)
         {
             isEmpty = false;
         }
@@ -29,6 +29,11 @@ public class Oven extends Target
         return isEmpty;
     }
     
+    public void pickUpReserve(boolean reservation)
+    {
+        isPickUpReserved = reservation;
+    }
+    
     public void reserve(boolean reservation)
     {
         isReserved = reservation;
@@ -37,5 +42,10 @@ public class Oven extends Target
     public boolean isReserved()
     {
         return isReserved;
+    }
+    
+    public boolean isPickUpReserved()
+    {
+        return isPickUpReserved;
     }
 }

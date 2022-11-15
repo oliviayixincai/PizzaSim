@@ -16,12 +16,13 @@ public class Cashier extends People
         addObject(new Oven(), 280, 190);
      */
     private int rotationIndex = 180, imageIndex = 0;
-    private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven;
+    private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, cookedOven = 4;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
-    private boolean currentlyMovingToOven = false;
+    private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false;
     private boolean canPickUp, checkedOvenLocation = false;
     private static Oven oven1, oven2, oven3;
+    private boolean pizza1IsCooked, pizza2IsCooked, pizza3IsCooked;
     
     private SimpleTimer timer = new SimpleTimer();
     private SimpleTimer animationTimer = new SimpleTimer();
@@ -68,18 +69,26 @@ public class Cashier extends People
         animate();
         if(!checkedOvenLocation)
         {
-            oven1 = (Oven)getWorld().getObjectsAt(140, 190, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(210, 190, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(280, 190, Oven.class).get(0);
+            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
+            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
+            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
             checkedOvenLocation = true;
         }
         
-        if(openOven != 4 || currentlyMovingToOven)
+        if((checkCookedPizza() || currentlyMovingToOven) && !atCounter)
         {
             currentlyMovingToOven = true;
             moveToOven();
         }
-        
+        if(atOven || currentlyMovingPizza)
+        {
+            currentlyMovingPizza = true;
+            moveToCounter(counterYCoord);
+        }
+        if(atCounter)
+        {
+            moveToCashierCounter(counterXCoord, counterYCoord);
+        }
         
         //moveToCounter(330, 460);
         //moveToCashierCounter(530, 460);
@@ -117,39 +126,48 @@ public class Cashier extends People
 
     public void moveToOven()
     {
+        if(cookedOven == 4)
+        {
+            checkCookedOven();
+        }
         //rotate chef and pizza 
-        if(rotationIndex != 0 && timer.millisElapsed() > 200 && getX() != ovenXCoord && getY() != ovenYCoord + 50)
+        if(cookedOven != 4)
         {
-            timer.mark();
-            rotate(90); 
-        }
-        //move y axis to oven
-        if(getY() != ovenYCoord + 50 && rotationIndex == 0 && getX() != ovenXCoord)
-        {
-            setLocation(getX(), getY() - 1);
-        }
-        //rotate to walk to oven
-        if(getY() == ovenYCoord + 50 && getX() != ovenXCoord && rotationIndex != -90)
-        {
-            rotate(-90);
-        }
-        //move X axis to oven
-        if(getY() == ovenYCoord + 50 && rotationIndex == -90 && getX() != ovenXCoord)
-        {
-            setLocation(getX() - 1, getY());
-        }
-        //rotate to face oven
-        if(getY() == ovenYCoord + 50 && getX() == ovenXCoord && rotationIndex != 0)
-        {
-            rotate(90);
-            currentlyMovingToOven = false;
+            if(rotationIndex != 0 && timer.millisElapsed() > 200 && getX() != ovenXCoord && getY() != ovenYCoord + 50)
+            {
+                timer.mark();
+                rotate(90); 
+            }
+            //move y axis to oven
+            if(getY() != ovenYCoord + 50 && rotationIndex == 0 && getX() != ovenXCoord)
+            {
+                setLocation(getX(), getY() - 1);
+            }
+            //rotate to walk to oven
+            if(getY() == ovenYCoord + 50 && getX() != ovenXCoord && rotationIndex != -90)
+            {
+                rotate(-90);
+            }
+            //move X axis to oven
+            if(getY() == ovenYCoord + 50 && rotationIndex == -90 && getX() != ovenXCoord)
+            {
+                setLocation(getX() - 1, getY());
+            }
+            //rotate to face oven
+            if(getY() == ovenYCoord + 50 && getX() == ovenXCoord && rotationIndex != 0)
+            {
+                rotate(90);
+                currentlyMovingToOven = false;
+                atOven = true;
+            }
         }
     }
     
-    public void moveToCounter(int counterXCoord, int counterYCoord)
+    public void moveToCounter(int counterYCoord)
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
         pizza.getImage().setTransparency(255);
+        atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != 180 && timer.millisElapsed() > 200)
         {
@@ -169,6 +187,13 @@ public class Cashier extends People
             pizzaYCoord += 1;   
             pizza.setLocation(pizzaXCoord, pizzaYCoord);
         }
+        if(getY() == counterYCoord)
+        {
+            currentlyMovingPizza = false;
+            atCounter = true;
+            pizzaXOffset = 0;
+            pizzaYOffset = -50;
+        }
     }
     
     public void moveToCashierCounter(int counterXCoord, int counterYCoord)
@@ -182,55 +207,98 @@ public class Cashier extends People
         //move x axis to oven
         if(getX() != counterXCoord && rotationIndex == 90)
         {
-            setLocation(getX(), getY() - 1);
+            setLocation(getX() + 1, getY());
         }
         //rotate to walk to oven
         if(getX() == counterXCoord && rotationIndex != 180)
         {
             rotate(90);
-            
+            if(cookedOven == 1)
+            {
+                oven1.pickUpReserve(false);
+            }
+            if(cookedOven == 2)
+            {
+                oven1.pickUpReserve(false);
+            }
+            if(cookedOven == 3)
+            {
+                oven1.pickUpReserve(false);
+            }
+            cookedOven = 4;
+            atCounter = false;
         }
     }
     
-    public void checkCookedPizza()
+    public boolean checkCookedPizza()
     {
-        //checks for empty oven and reserves it
-        if(!oven1.checkIfEmpty() && !oven1.isReserved())
+        if(!oven1.checkIfEmpty())
         {
-            openOven = 1;
-            ovenXCoord = oven1.getX();
-            ovenYCoord = oven1.getY();
-            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Pizza.class).get(0);
             if(pizza.isCooked())
             {
-                oven1.reserve(true);
+                pizza1IsCooked = true;
+                return true;
             }
+            pizza1IsCooked = false;
+            return false;
         }
-        else if(!oven1.checkIfEmpty() && !oven2.isReserved())
+        else if(!oven2.checkIfEmpty())
         {
-            openOven = 2;
-            ovenXCoord = oven2.getX();
-            ovenYCoord = oven2.getY();
-            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Pizza.class).get(0);
             if(pizza.isCooked())
             {
-                oven2.reserve(true);
+                pizza2IsCooked = true;
+                return true;
             }
+            pizza2IsCooked = false;
+            return false;
         }
-        else if(!oven1.checkIfEmpty() && !oven3.isReserved())
+        else if(!oven3.checkIfEmpty())
         {
-            openOven = 3;
-            ovenXCoord = oven3.getX();
-            ovenYCoord = oven3.getY();
-            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Pizza.class).get(0);
             if(pizza.isCooked())
             {
-                oven3.reserve(true);
+                pizza3IsCooked = true;
+                return true;
             }
+            pizza3IsCooked = false;
+            return false;
         }
         else
         {
-            openOven = 4;
+            return false;
+        }
+    }
+    
+    public void checkCookedOven()
+    {
+        //checks for empty oven and reserves it
+        checkCookedPizza();
+        if(pizza1IsCooked && !oven1.isPickUpReserved())
+        {
+            oven1.pickUpReserve(true);
+            cookedOven = 1;
+            ovenXCoord = oven1.getX();
+            ovenYCoord = oven1.getY();
+        }
+        else if(pizza2IsCooked && !oven2.isPickUpReserved())
+        {
+            oven2.pickUpReserve(true);
+            cookedOven = 2;
+            ovenXCoord = oven2.getX();
+            ovenYCoord = oven2.getY();
+        }
+        else if(pizza3IsCooked && !oven3.isPickUpReserved())
+        {
+            oven3.pickUpReserve(true);
+            cookedOven = 3;
+            ovenXCoord = oven3.getX();
+            ovenYCoord = oven3.getY();
+        }
+        else
+        {
+            cookedOven = 4;
         }
     }
     

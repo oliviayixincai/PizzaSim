@@ -33,8 +33,8 @@ public class MyWorld extends World
         addObject(new Chef(Utils.chefX, Utils.chef1Y, 100, 100), Utils.chefX, Utils.chef1Y);
         addObject(new Chef(Utils.chefX, Utils.chef2Y, 100, 100), Utils.chefX, Utils.chef2Y);
         //adds cashier objects
-        //addObject(new Cashier(Utils.cashier1X, 430, 100, 100), Utils.cashier1X, 460);
-        //addObject(new Cashier(Utils.cashier2X, 430, 100, 100), Utils.cashier2X, 460);
+        addObject(new Cashier(Utils.cashier1X, 460, 100, 100), Utils.cashier1X, 460);
+        addObject(new Cashier(Utils.cashier2X, 460, 100, 100), Utils.cashier2X, 460);
         //adds kitchen counters
         addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY2);

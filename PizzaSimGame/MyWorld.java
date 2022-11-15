@@ -15,6 +15,8 @@ public class MyWorld extends World
     private int customerSpawnRate, customerDir;
     //variables for spawning customers
     private int dir, startingY, dirRNG;
+    private ArrayList<GreenfootSound> pausedSounds;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -101,9 +103,15 @@ public class MyWorld extends World
     
     public void stopped() {
         // stop all sounds
+        pausedSounds.clear();
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
-            sound.pauseSound();
+            int index = sound.getSoundNumber();
+            if (sound.isSoundPlaying(index)){
+                sound.pauseSound(index);
+                pausedSounds.add(sound.getSound(index));
+            }
+            
         }
         // stop background sound
         BackgroundSound.getInstance().pauseSound();
@@ -113,7 +121,8 @@ public class MyWorld extends World
         // play all sounds
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
-            sound.playSound();
+            
+            sound.playSound(sound.getSoundNumber());
         }
         // play background sound in loop
         BackgroundSound.getInstance().playSound();

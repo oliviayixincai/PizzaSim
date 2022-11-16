@@ -19,18 +19,22 @@ public class Order extends Actor
     private String sauce;
     private GreenfootImage chatBox = getImage();
     private GreenfootImage topping, theSauce, dough;
+    private Customer customer;
     private boolean madePizza = false;
     private static KitchenCounter kitchen1, kitchen2;
     
-    public Order(String sauceType, String[] toppingTypes){
+    public Order(String sauceType, String[] toppingTypes, Customer theCustomer){
         toppings = toppingTypes;
         sauce = sauceType;
+        customer=theCustomer;
         dough = new GreenfootImage("pizzaBase.png");
         chatBox.scale(60, 70);
         chatBox.drawImage(dough, 12, 5);
         
     }
-
+    public void act(){
+        moveMe();
+    }
     /**
      * draw the order picture above the head of each customer
      */
@@ -60,5 +64,12 @@ public class Order extends Actor
     public void addedToWorld(World w){
         drawOrder();
         makePizza();
+    }
+    
+    /**
+     * move the order with the customer
+     */
+    public void moveMe(){
+        setLocation(customer.getX(), customer.getY()-(customer.getImage()).getHeight()/2-20);
     }
 }

@@ -182,7 +182,7 @@ public class Customer extends People
     }
     
     public void order (){
-        getWorld().addObject(new Order(sauce, order), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+        getWorld().addObject(new Order(sauce, order, this), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
     }
     
     public void lineUp(){

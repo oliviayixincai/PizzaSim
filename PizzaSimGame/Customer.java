@@ -54,15 +54,18 @@ public class Customer extends People
         
         for(int i = 0; i < order.length; i++)
         {
-            toppingRNG = Greenfoot.getRandomNumber(3);
+            toppingRNG = Greenfoot.getRandomNumber(4);
             switch (toppingRNG){
             case 0:
-                topping = "pepperoni";
+                topping = "cheese";
                 break;
             case 1:
-                topping = "peppers";
+                topping = "pepperoni";
                 break;
             case 2:
+                topping = "peppers";
+                break;
+            case 3:
                 topping = "ham";
                 break;
             }

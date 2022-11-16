@@ -75,7 +75,7 @@ public class Cashier extends People
             checkedOvenLocation = true;
         }
         
-        if((checkCookedPizza() || currentlyMovingToOven) && !atCounter)
+        if((canPickUpPizza() || currentlyMovingToOven) && !atCounter)
         {
             currentlyMovingToOven = true;
             moveToOven();
@@ -216,80 +216,50 @@ public class Cashier extends People
             if(cookedOven == 1)
             {
                 oven1.pickUpReserve(false);
+                pizza1IsCooked = false;
             }
             if(cookedOven == 2)
             {
-                oven1.pickUpReserve(false);
+                oven2.pickUpReserve(false);
+                pizza2IsCooked = false;
             }
             if(cookedOven == 3)
             {
-                oven1.pickUpReserve(false);
+                oven3.pickUpReserve(false);
+                pizza3IsCooked = false;
             }
             cookedOven = 4;
             atCounter = false;
         }
     }
     
-    public boolean checkCookedPizza()
+    public boolean canPickUpPizza()
     {
-        if(!oven1.checkIfEmpty())
+        if(getX() == counterXCoord && getY() == counterYCoord)
         {
-            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Pizza.class).get(0);
-            if(pizza.isCooked())
-            {
-                pizza1IsCooked = true;
-                return true;
-            }
-            pizza1IsCooked = false;
-            return false;
+            return true;
         }
-        else if(!oven2.checkIfEmpty())
-        {
-            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Pizza.class).get(0);
-            if(pizza.isCooked())
-            {
-                pizza2IsCooked = true;
-                return true;
-            }
-            pizza2IsCooked = false;
-            return false;
-        }
-        else if(!oven3.checkIfEmpty())
-        {
-            Pizza pizza = (Pizza)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Pizza.class).get(0);
-            if(pizza.isCooked())
-            {
-                pizza3IsCooked = true;
-                return true;
-            }
-            pizza3IsCooked = false;
-            return false;
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
     
     public void checkCookedOven()
     {
         //checks for empty oven and reserves it
-        checkCookedPizza();
-        if(pizza1IsCooked && !oven1.isPickUpReserved())
+        if(oven1.canPickUp() && !oven1.isPickUpReserved())
         {
             oven1.pickUpReserve(true);
             cookedOven = 1;
             ovenXCoord = oven1.getX();
             ovenYCoord = oven1.getY();
         }
-        else if(pizza2IsCooked && !oven2.isPickUpReserved())
+        else if(oven2.canPickUp() && !oven2.isPickUpReserved())
         {
             oven2.pickUpReserve(true);
             cookedOven = 2;
             ovenXCoord = oven2.getX();
             ovenYCoord = oven2.getY();
         }
-        else if(pizza3IsCooked && !oven3.isPickUpReserved())
+        else if(oven3.canPickUp() && !oven3.isPickUpReserved())
         {
             oven3.pickUpReserve(true);
             cookedOven = 3;

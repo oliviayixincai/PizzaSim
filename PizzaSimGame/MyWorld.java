@@ -28,9 +28,9 @@ public class MyWorld extends World
         this.settingWorld = settingWorld;
         isSimOver = false;
         //adds oven objects
-        addObject(new Oven(), 140, 190);
-        addObject(new Oven(), 210, 190);
-        addObject(new Oven(), 280, 190);
+        addObject(new Oven(), Utils.oven1X, Utils.ovenY);
+        addObject(new Oven(), Utils.oven2X, Utils.ovenY);
+        addObject(new Oven(), Utils.oven3X, Utils.ovenY);
         //adds chef objects
         addObject(new Chef(Utils.chefX, Utils.chef1Y, 100, 100), Utils.chefX, Utils.chef1Y);
         addObject(new Chef(Utils.chefX, Utils.chef2Y, 100, 100), Utils.chefX, Utils.chef2Y);

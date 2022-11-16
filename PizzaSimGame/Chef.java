@@ -194,11 +194,11 @@ public class Chef extends People
             }
             if(openOven == 2)
             {
-                oven1.reserve(false);
+                oven2.reserve(false);
             }
             if(openOven == 3)
             {
-                oven1.reserve(false);
+                oven3.reserve(false);
             }
             openOven = 4;
         }

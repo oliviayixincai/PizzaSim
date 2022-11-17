@@ -27,6 +27,7 @@ public class MyWorld extends World
         super(1024, 800, 1);
         this.settingWorld = settingWorld;
         isSimOver = false;
+        pausedSounds = new ArrayList<GreenfootSound>();
         //adds oven objects
         addObject(new Oven(), Utils.oven1X, Utils.ovenY);
         addObject(new Oven(), Utils.oven2X, Utils.ovenY);
@@ -107,11 +108,10 @@ public class MyWorld extends World
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
             int index = sound.getSoundNumber();
-            if (sound.isSoundPlaying(index)){
+            if (sound.isSoundPlaying(index)) {
                 sound.pauseSound(index);
                 pausedSounds.add(sound.getSound(index));
             }
-            
         }
         // stop background sound
         BackgroundSound.getInstance().pauseSound();
@@ -121,8 +121,9 @@ public class MyWorld extends World
         // play all sounds
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
-            
-            sound.playSound(sound.getSoundNumber());
+            if (pausedSounds.contains(sound)) {
+                sound.playSound(sound.getSoundNumber());
+            }
         }
         // play background sound in loop
         BackgroundSound.getInstance().playSound();

@@ -59,6 +59,7 @@ public class Pizza extends Actor
     
     public void act()
     {
+        getCookTime(toppings);
         if(!doughFinished)
         {
             spreadDough();
@@ -136,16 +137,15 @@ public class Pizza extends Actor
      * if the pizza is cooked and a cashier comes, return has cashier
      * if hasCashier, the clocked will be removed
      */
-    public boolean isPickedUp(){
+    public void isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
         //find the chef picking up the pizza
-        if(cooked && inOven == true && hasChef == false){
-            ArrayList<Cashier> cashierNear = (ArrayList<Cashier>)getObjectsInRange(50, Cashier.class);
-            cashier = cashierNear.get(0);
-            hasCashier = true;
-            inOven = false;
-        }
-        return hasCashier;
+        inOven = false;
+
+    }
+    
+    public boolean isInOven(){
+        return inOven;
     }
     
     public void goInOven(){

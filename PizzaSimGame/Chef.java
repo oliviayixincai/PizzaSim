@@ -161,8 +161,11 @@ public class Chef extends People
                 currentlyMovingPizza = false;
                 pizza.getImage().setTransparency(0);
                 //pizza.cookPizza();
-                pizza.goInOven();
+                if(pizza.isInOven()==false){
+                    pizza.goInOven();
+                }
             }
+            
         }
     }
     

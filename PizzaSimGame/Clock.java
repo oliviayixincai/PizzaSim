@@ -90,7 +90,7 @@ public class Clock extends Actor
     // when the pizza is picked up by the cashier
     // remove clock
     public void removeClock(){
-        if(this.pizza.isPickedUp()){
+        if(this.pizza.isInOven()==false){
             getWorld().removeObject(this);
         }
     }

@@ -19,7 +19,7 @@ public class Cashier extends People
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, cookedOven = 4;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
-    private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false;
+    private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false, foundPizza = false;
     private boolean canPickUp, checkedOvenLocation = false;
     private static Oven oven1, oven2, oven3;
     private boolean pizza1IsCooked, pizza2IsCooked, pizza3IsCooked;
@@ -167,8 +167,12 @@ public class Cashier extends People
     
     public void moveToCounter(int counterYCoord)
     {
-        Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
-        assignPizza(pizza);
+        if(!foundPizza)
+        {
+            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            assignPizza(pizza);
+            foundPizza = true;
+        }
         assignedPizza.getImage().setTransparency(255);
         atOven = false; 
         //rotate chef and pizza 
@@ -238,6 +242,7 @@ public class Cashier extends People
             }
             cookedOven = 4;
             atCounter = false;
+            foundPizza = false;
         }
     }
     

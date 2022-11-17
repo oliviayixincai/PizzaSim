@@ -221,7 +221,7 @@ public class Chef extends People
     public boolean canPickUpPizza()
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);        
-        if(pizza != null)
+        if(pizza != null && getX() == counterXCoord)
         {
             if(pizza.toppingsFinished())
             {

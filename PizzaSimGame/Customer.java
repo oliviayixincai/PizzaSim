@@ -4,6 +4,10 @@ import java.util.List;
 /**
  * Write a description of class Customer here.
  * 
+ * I changed ur code a bit to add the cheese layer, 
+ * also the order is attached to ur customer objects and 
+ * it can move with the customer. From Yuxin
+ * 
  * @author (your name) 
  * @version (a version number or a date)
  */
@@ -96,9 +100,9 @@ public class Customer extends People
             } else if (ordered == true){
                 if (pickedUp == false){
                     lineUp();
-                } else {
-                    leave();
-                }
+                } //else {
+                    //leave();
+                //}
             }
         }
         
@@ -198,12 +202,14 @@ public class Customer extends People
                     setLocation(getX(), getY() - 1);
                 } else {
                     pickedUp = true;
-                    
-                    if (getX() == Utils.wait1X){
+                    Customer customer1 = (Customer)getWorld().getObjectsAt(Utils.wait1X, 655, Customer.class).get(0);
+                    Customer customer2 = (Customer)getWorld().getObjectsAt(Utils.wait2X, 655, Customer.class).get(0);
+                    Customer customer3 = (Customer)getWorld().getObjectsAt(Utils.wait3X, 655, Customer.class).get(0);
+                    if (getX() == Utils.wait1X&&customer1 == null){
                         wait1IsFree = true;
-                    } else if (getX() == Utils.wait2X){
+                    } else if (getX() == Utils.wait2X&&customer2 == null){
                         wait2IsFree = true;
-                    } else {
+                    } else if (getX() == Utils.wait3X&&customer3 == null){
                         wait3IsFree = true;
                     }
                 }

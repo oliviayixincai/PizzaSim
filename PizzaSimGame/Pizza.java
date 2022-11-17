@@ -186,7 +186,7 @@ public class Pizza extends Actor
     
     public void cookPizza(){
         //add a golden crust layer on pizza
-        crust.setTransparency(100);
+        crust.setTransparency(80);
         getImage().drawImage(crust,0,0);
         cooked=true;
     }

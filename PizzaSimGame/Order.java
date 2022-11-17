@@ -34,6 +34,7 @@ public class Order extends Actor
     }
     public void act(){
         moveMe();
+        
     }
     /**
      * draw the order picture above the head of each customer
@@ -72,4 +73,5 @@ public class Order extends Actor
     public void moveMe(){
         setLocation(customer.getX(), customer.getY()-(customer.getImage()).getHeight()/2-20);
     }
+    
 }

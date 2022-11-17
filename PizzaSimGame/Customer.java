@@ -15,7 +15,7 @@ public class Customer extends People
     
     private String[] order = new String[10];
     private String dough = "thin", sauce = "tomato", topping;
-    
+    private Order myOrder;
     private int imageRNG, rotation;
     private String gender;
     private GreenfootImage upIMG, downIMG, leftIMG, rightIMG;
@@ -185,7 +185,8 @@ public class Customer extends People
     }
     
     public void order (){
-        getWorld().addObject(new Order(sauce, order, this), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+        myOrder=new Order(sauce, order, this);
+        getWorld().addObject(myOrder, getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
     }
     
     public void lineUp(){
@@ -285,9 +286,12 @@ public class Customer extends People
     
     public void atEdge(){
         if (dir == 1 && getY() == 799){
+            getWorld().removeObject(myOrder);
             getWorld().removeObject(this);
         } else if (dir == -1 && getY() == 81){
+            getWorld().removeObject(myOrder);
             getWorld().removeObject(this);
+            
         }
     }
 }

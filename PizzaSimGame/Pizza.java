@@ -25,7 +25,7 @@ public class Pizza extends Actor
     private Cashier cashier;
     private int chef_Xoffset = 50, chef_Yoffset = 0;
     private boolean inOven;
-    
+    private int cookTime;
     private SimpleTimer timer = new SimpleTimer();
 
     
@@ -129,7 +129,8 @@ public class Pizza extends Actor
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
-        return 300;
+        cookTime=60*(strings.length+2);
+        return cookTime;
     }
     /**
      * if the pizza is cooked and a cashier comes, return has cashier
@@ -148,6 +149,7 @@ public class Pizza extends Actor
     }
     
     public void goInOven(){
+        getWorld().addObject(new Clock(cookTime, this), getX(), getY());
         inOven = true;
     }
     

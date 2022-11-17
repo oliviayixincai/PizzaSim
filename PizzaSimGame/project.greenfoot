@@ -1,5 +1,6 @@
 #Greenfoot project file
 class.Chef.image=baby2.png
+class.Clock.image=clock_1.png
 class.MyWorld.image=pizzaKitchen.png
 class.Order.image=chatbox.png
 class.Pizza.image=pizza_cheese.png
@@ -141,10 +142,10 @@ dependency8.type=UsesDependency
 dependency9.from=MyWorld
 dependency9.to=Customer
 dependency9.type=UsesDependency
-editor.fx.0.height=799
-editor.fx.0.width=1293
+editor.fx.0.height=872
+editor.fx.0.width=1440
 editor.fx.0.x=0
-editor.fx.0.y=25
+editor.fx.0.y=28
 height=872
 package.numDependencies=46
 package.numTargets=31

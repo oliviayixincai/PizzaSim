@@ -167,6 +167,7 @@ public class Cashier extends People
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
         pizza.getImage().setTransparency(255);
+        pizza.isPickedUp();
         atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != 180 && timer.millisElapsed() > 200)

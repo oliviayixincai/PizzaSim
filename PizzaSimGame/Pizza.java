@@ -23,6 +23,7 @@ public class Pizza extends Actor
     private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false;
     private boolean cooked = false;
     private Cashier cashier;
+    private Customer customer;
     private int chef_Xoffset = 50, chef_Yoffset = 0;
     private boolean inOven;
     private int cookTime;
@@ -44,6 +45,7 @@ public class Pizza extends Actor
     private int imageIndex = 0, toppingIndex = 0;
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
+    private boolean atCashierCounter = false;
     
     private double exactX;
     private double exactY;
@@ -52,9 +54,11 @@ public class Pizza extends Actor
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
     */
-    public Pizza(String[] strings, String sauce){
+    public Pizza(String[] strings, String sauce, Customer theCustomer){
         toppings = strings;
         this.sauce = sauce;
+        customer = theCustomer;
+        atCashierCounter = false;
     }
     
     public void act()
@@ -72,8 +76,15 @@ public class Pizza extends Actor
         {
             addToppings(toppings);
         }
+        moveMe();
     }
     
+    public void moveMe(){
+        if(atCashierCounter){
+            customer.setPickedUp();
+            setLocation(customer.getX(), customer.getY());
+        }
+    }
     /**
      * an animation of the dough spreading process
      */
@@ -179,7 +190,12 @@ public class Pizza extends Actor
     public boolean isCooked(){
         return cooked;
     }
-    
+    public void setAtCashierCounter(){
+        atCashierCounter=true;
+    }
+    public boolean isAtCashierCounter(){
+        return atCashierCounter;
+    }
     public void burnPizza(){
         //add a dark layer on the pizza
         //drawImage

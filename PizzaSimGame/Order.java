@@ -53,11 +53,15 @@ public class Order extends Actor
         kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterX, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
         if(kitchen1.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), Utils.kitchenCounterX, Utils.kitchenCounterY1);
+            Pizza pizza=new Pizza(toppings, sauce, customer);
+            customer.setPizza(pizza);
+            getWorld().addObject(pizza, Utils.kitchenCounterX, Utils.kitchenCounterY1);
         }
         else if(kitchen2.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), Utils.kitchenCounterX, Utils.kitchenCounterY2);
+            Pizza pizza=new Pizza(toppings, sauce, customer);
+            customer.setPizza(pizza);
+            getWorld().addObject(pizza, Utils.kitchenCounterX, Utils.kitchenCounterY2);
         }
         
     }

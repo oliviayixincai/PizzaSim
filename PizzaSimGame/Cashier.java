@@ -162,7 +162,7 @@ public class Cashier extends People
             }
         }
     }
-    
+    //*********
     public void moveToCounter(int counterYCoord)
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
@@ -190,10 +190,12 @@ public class Cashier extends People
         }
         if(getY() == counterYCoord)
         {
+            pizza.setAtCashierCounter();
             currentlyMovingPizza = false;
             atCounter = true;
             pizzaXOffset = 0;
             pizzaYOffset = -50;
+            
         }
     }
     

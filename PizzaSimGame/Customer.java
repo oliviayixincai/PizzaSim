@@ -6,7 +6,9 @@ import java.util.List;
  * 
  * I changed ur code a bit to add the cheese layer, 
  * also the order is attached to ur customer objects and 
- * it can move with the customer. From Yuxin
+ * it can move with the customer. I added some features in pizza,
+ * order, and customer class so the customer can pickup the pizza
+ * and leave the store. From Yuxin
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -20,6 +22,7 @@ public class Customer extends People
     private String[] order = new String[10];
     private String dough = "thin", sauce = "tomato", topping;
     private Order myOrder;
+    private Pizza myPizza;
     private int imageRNG, rotation;
     private String gender;
     private GreenfootImage upIMG, downIMG, leftIMG, rightIMG;
@@ -95,14 +98,15 @@ public class Customer extends People
         }
         
         if (inStore == true){
+            
             if (ordered == false && pickedUp == false){
                 moveToCashier();
             } else if (ordered == true){
                 if (pickedUp == false){
                     lineUp();
-                } //else {
-                    //leave();
-                //}
+                } else if (pickedUp == true){
+                    leave();
+                }
             }
         }
         
@@ -193,6 +197,13 @@ public class Customer extends People
         getWorld().addObject(myOrder, getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
     }
     
+    public void setPizza(Pizza pizza){
+        myPizza=pizza;
+    }
+    
+    public void setPickedUp(){
+        pickedUp=true;
+    }
     public void lineUp(){
         if (rotation == UP){
             if (getX() == Utils.cashier1X || getX() == Utils.cashier2X){
@@ -201,15 +212,12 @@ public class Customer extends People
                 if (getY() != Utils.counterY){
                     setLocation(getX(), getY() - 1);
                 } else {
-                    pickedUp = true;
-                    Customer customer1 = (Customer)getWorld().getObjectsAt(Utils.wait1X, 655, Customer.class).get(0);
-                    Customer customer2 = (Customer)getWorld().getObjectsAt(Utils.wait2X, 655, Customer.class).get(0);
-                    Customer customer3 = (Customer)getWorld().getObjectsAt(Utils.wait3X, 655, Customer.class).get(0);
-                    if (getX() == Utils.wait1X&&customer1 == null){
+                    //pickedUp = true;
+                    if (getX() == Utils.wait1X){
                         wait1IsFree = true;
-                    } else if (getX() == Utils.wait2X&&customer2 == null){
+                    } else if (getX() == Utils.wait2X){
                         wait2IsFree = true;
-                    } else if (getX() == Utils.wait3X&&customer3 == null){
+                    } else if (getX() == Utils.wait3X){
                         wait3IsFree = true;
                     }
                 }
@@ -293,9 +301,11 @@ public class Customer extends People
     public void atEdge(){
         if (dir == 1 && getY() == 799){
             getWorld().removeObject(myOrder);
+            getWorld().removeObject(myPizza);
             getWorld().removeObject(this);
         } else if (dir == -1 && getY() == 81){
             getWorld().removeObject(myOrder);
+            getWorld().removeObject(myPizza);
             getWorld().removeObject(this);
             
         }

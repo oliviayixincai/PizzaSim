@@ -22,13 +22,24 @@ public class Order extends Actor
     private boolean madePizza = false;
     private static KitchenCounter kitchen1, kitchen2;
     
-    public Order(String sauceType, String[] toppingTypes){
+    private Customer c;
+    
+    public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer){
         toppings = toppingTypes;
         sauce = sauceType;
         dough = new GreenfootImage("pizzaBase.png");
         chatBox.scale(60, 70);
-        chatBox.drawImage(dough, 12, 5);
+        chatBox.drawImage(dough, 12, 7);
         
+        c = customer;
+    }
+    
+    public void act(){
+        setLocation(c.getX() + 22, c.getY() - (c.getImage().getHeight() / 2) - (this.getImage().getHeight() / 2) + 16);
+        
+        if (c.getPickedUp()){
+            getWorld().removeObject(this);
+        }
     }
 
     /**
@@ -36,10 +47,10 @@ public class Order extends Actor
      */
     public void drawOrder(){
         theSauce = new GreenfootImage("sauce" + sauce + ".png");
-        chatBox.drawImage(theSauce, 12, 5);
+        chatBox.drawImage(theSauce, 12, 7);
         for(int i = 0; i < toppings.length - 1; i++){
             topping = new GreenfootImage(toppings[i] + ".png");
-            chatBox.drawImage(topping, 12, 5);
+            chatBox.drawImage(topping, 12, 7);
         }
     }
     public void makePizza()

@@ -134,6 +134,8 @@ public class SettingWorld extends World
             this.robberCost -= 5;
             this.robberCostLabel.updateLabel(this.robberCost);
         }
+        
+        Greenfoot.setWorld(new MyWorld(this));
     }
     
     public void started() {

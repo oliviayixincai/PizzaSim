@@ -9,16 +9,19 @@ import java.util.List;
  */
 public class Customer extends People
 {
-    private int dir, storeRNG, store, toppingRNG;
+    private int dir, storeRNG, store, toppingRNG, cheeseRNG, sauceRNG;
     
-    private boolean inStore, ordered, pickedUp;
+    private boolean inStore, ordered, pickedUp, cheese;
     
-    private String[] order = new String[10];
+    private String[] toppings = new String[3];
     private String dough = "thin", sauce = "tomato", topping;
     
     private int imageRNG, rotation;
     private String gender;
     private GreenfootImage upIMG, downIMG, leftIMG, rightIMG;
+    
+    private boolean chef1, chef2, cashier;
+    private Pizza pizza;
     
     public Customer (int dir) {
         this.dir = dir;
@@ -52,7 +55,7 @@ public class Customer extends People
         rightIMG = new GreenfootImage(gender + "_R.png");
         rightIMG.scale(38, 70);
         
-        for(int i = 0; i < order.length; i++)
+        for(int i = 0; i < toppings.length; i++)
         {
             toppingRNG = Greenfoot.getRandomNumber(3);
             switch (toppingRNG){
@@ -66,7 +69,21 @@ public class Customer extends People
                 topping = "ham";
                 break;
             }
-            order[i] = topping;
+            toppings[i] = topping;
+        }
+        
+        cheeseRNG = Greenfoot.getRandomNumber(2);
+        if (cheeseRNG == 0){
+            cheese = true;
+        } else {
+            cheese = false;
+        }
+        
+        sauceRNG = Greenfoot.getRandomNumber(2);
+        if (sauceRNG == 0){
+            sauce = "tomato";
+        } else {
+            sauce = "bbq";
         }
     }
     
@@ -170,19 +187,20 @@ public class Customer extends People
             if (getY() != Utils.counterY){
                 setLocation(getX(), getY() - 1);
             } else {
-                ordered = true;
-                order();
-                if (getX() == Utils.cashier1X){
-                    cash1IsFree = true;
-                } else {
-                    cash2IsFree = true;
-                }
+                cashier = getWorld().getObjectsAt(getX(), 460, Cashier.class).isEmpty();
+                chef1 = getWorld().getObjectsAt(Utils.chefX, Utils.chef1Y, Chef.class).isEmpty();
+                chef2 = getWorld().getObjectsAt(Utils.chefX, Utils.chef1Y, Chef.class).isEmpty();
+                
+                order(cashier, chef1, chef2);
             }
         }
     }
     
-    public void order (){
-        getWorld().addObject(new Order(sauce, order), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+    public void order (boolean cashier, boolean chef1, boolean chef2){
+        if (cashier == false && (chef1 == false || chef2 == false)){
+            getWorld().addObject(new Order(sauce, cheese, toppings, this), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+            ordered = true;
+        }
     }
     
     public void lineUp(){
@@ -195,7 +213,7 @@ public class Customer extends People
                 } else {
                     pickedUp = true;
                     
-                    if (getX() == Utils.wait1X){
+                    if (getX() != Utils.wait1X){
                         wait1IsFree = true;
                     } else if (getX() == Utils.wait2X){
                         wait2IsFree = true;
@@ -208,6 +226,13 @@ public class Customer extends People
         
         if (rotation == DOWN){
             setLocation(getX(), getY() + 1);
+            
+            if (getX() == Utils.cashier1X){
+                    cash1IsFree = true;
+                } else {
+                    cash2IsFree = true;
+                }
+            
             if (getY() == Utils.enterY){
                 rotation = LEFT;
             }
@@ -237,6 +262,10 @@ public class Customer extends People
                 }
             } 
         }
+    }
+    
+    public void pizzaPickup(Pizza p) {
+        
     }
     
     public void leave(){
@@ -286,5 +315,9 @@ public class Customer extends People
         } else if (dir == -1 && getY() == 81){
             getWorld().removeObject(this);
         }
+    }
+    
+    public boolean getPickedUp(){
+        return pickedUp;
     }
 }

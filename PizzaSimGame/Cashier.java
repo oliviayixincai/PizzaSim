@@ -187,7 +187,13 @@ public class Cashier extends People
             pizzaYCoord += 1;   
             pizza.setLocation(pizzaXCoord, pizzaYCoord);
         }
-        if(getY() == counterYCoord)
+        if(pizza.getY() != Utils.pizzaFinalY && getY() == counterYCoord)
+        {
+            pizzaYCoord += 1;
+            pizzaYOffset += 1;
+            pizza.setLocation(pizzaXCoord, pizzaYCoord);
+        }
+        if(pizza.getY() == Utils.pizzaFinalY)
         {
             currentlyMovingPizza = false;
             atCounter = true;

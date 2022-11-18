@@ -103,7 +103,7 @@ public class MyWorld extends World
     
     public void stopped() {
         // stop all sounds
-        pausedSounds.clear();
+        //pausedSounds.clear();
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
             int index = sound.getSoundNumber();

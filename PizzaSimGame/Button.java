@@ -43,7 +43,7 @@ public abstract class Button extends Actor implements ISoundCentre
     public void act()
     {
         if (Greenfoot.mouseClicked(this)) {
-            downTik = 20;
+            downTik = 5;
             onClick();
             playSound(soundIndex);
             soundIndex++;

@@ -19,7 +19,7 @@ public class Cashier extends People
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, cookedOven = 4;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
-    private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false;
+    private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false, foundPizza = false;
     private boolean canPickUp, checkedOvenLocation = false;
     private static Oven oven1, oven2, oven3;
     private boolean pizza1IsCooked, pizza2IsCooked, pizza3IsCooked;
@@ -33,6 +33,8 @@ public class Cashier extends People
     GreenfootImage walkLeft[] = new GreenfootImage[9];
     GreenfootImage leftInteract[] = new GreenfootImage[6];
     GreenfootImage rightInteract[] = new GreenfootImage[6];
+    
+    private Pizza assignedPizza;
     
     public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY)
     {
@@ -162,12 +164,16 @@ public class Cashier extends People
             }
         }
     }
-    //*********
+    
     public void moveToCounter(int counterYCoord)
     {
-        Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
-        pizza.getImage().setTransparency(255);
-        pizza.isPickedUp();
+        if(!foundPizza)
+        {
+            Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
+            assignPizza(pizza);
+            foundPizza = true;
+        }
+        assignedPizza.getImage().setTransparency(255);
         atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != 180 && timer.millisElapsed() > 200)
@@ -179,26 +185,29 @@ public class Cashier extends People
             pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians));
             pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
             pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * -1;
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);  
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);  
         }
         //move y axis to cashier counter
         if(getY() != counterYCoord && rotationIndex == 180)
         {
             setLocation(getX(), getY() + 1);
             pizzaYCoord += 1;   
-            pizza.setLocation(pizzaXCoord, pizzaYCoord);
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);
         }
-        if(getY() == counterYCoord)
+        if(assignedPizza.getY() != Utils.pizzaFinalY && getY() == counterYCoord)
         {
-            pizza.setAtCashierCounter();
+            pizzaYCoord += 1;
+            pizzaYOffset += 1;
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord); 
+        }
+        if(assignedPizza.getY() == Utils.pizzaFinalY)
+        {
             currentlyMovingPizza = false;
             atCounter = true;
             pizzaXOffset = 0;
             pizzaYOffset = -50;
-            
         }
     }
-    
     public void moveToCashierCounter(int counterXCoord, int counterYCoord)
     {
         //rotate chef and pizza 
@@ -233,6 +242,7 @@ public class Cashier extends People
             }
             cookedOven = 4;
             atCounter = false;
+            foundPizza = false;
         }
     }
     
@@ -243,6 +253,11 @@ public class Cashier extends People
             return true;
         }
         return false;
+    }
+    
+    public void assignPizza(Pizza pizza)
+    {
+        assignedPizza = pizza;
     }
     
     public void checkCookedOven()

@@ -12,8 +12,8 @@ public class MinusButton extends Button
         super();
         
         this.image = new GreenfootImage("minusButton.png");
-        this.downImage = new GreenfootImage("minusButtonDOWN.png");
-        this.hoverImage = new GreenfootImage("minusButtonHOVER.png");
+        this.downImage = new GreenfootImage("minusButtonDown.png");
+        this.hoverImage = new GreenfootImage("minusButtonHover.png");
     }
     
     protected void onClick() {   

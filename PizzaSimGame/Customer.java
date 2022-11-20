@@ -196,7 +196,7 @@ public class Customer extends People
     }
     
     public void order (){
-        myOrder=new Order(sauce, order, this);
+        myOrder=new Order(sauce, order, this, store);
         getWorld().addObject(myOrder, getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
     }
     

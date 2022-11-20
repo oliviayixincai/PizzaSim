@@ -9,19 +9,13 @@ import java.lang.Math.*;
  */
 public class Cashier extends People
 {
-    //oven locations
-    /*
-        addObject(new Oven(), 140, 190);
-        addObject(new Oven(), 210, 190);
-        addObject(new Oven(), 280, 190);
-     */
-    private int rotationIndex = 180, imageIndex = 0;
+    private int rotationIndex = 180, imageIndex = 0, pizzaria;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, cookedOven = 4;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
     private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
     private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false, foundPizza = false;
     private boolean canPickUp, checkedOvenLocation = false;
-    private static Oven oven1, oven2, oven3;
+    private Oven oven1, oven2, oven3;
     private boolean pizza1IsCooked, pizza2IsCooked, pizza3IsCooked;
     
     private SimpleTimer timer = new SimpleTimer();
@@ -36,10 +30,11 @@ public class Cashier extends People
     
     private Pizza assignedPizza;
     
-    public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY)
+    public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY, int pizzaria)
     {
         this.counterXCoord = counterXCoord;
         this.counterYCoord = counterYCoord;
+        this.pizzaria = pizzaria;
         
         for(int i = 0; i < walkUp.length; i++)
         {
@@ -69,7 +64,14 @@ public class Cashier extends People
     public void act()
     {
         animate();
-        if(!checkedOvenLocation)
+        if(pizzaria == -1 && !checkedOvenLocation)
+        {
+            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
+            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
+            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
+            checkedOvenLocation = true;
+        }
+        if(pizzaria == 1 && !checkedOvenLocation)
         {
             oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
             oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
@@ -138,7 +140,7 @@ public class Cashier extends People
             if(rotationIndex != 0 && timer.millisElapsed() > 200 && getX() != ovenXCoord && getY() != ovenYCoord + 50)
             {
                 timer.mark();
-                rotate(90); 
+                rotate(-90 * pizzaria); 
             }
             //move y axis to oven
             if(getY() != ovenYCoord + 50 && rotationIndex == 0 && getX() != ovenXCoord)
@@ -146,19 +148,19 @@ public class Cashier extends People
                 setLocation(getX(), getY() - 1);
             }
             //rotate to walk to oven
-            if(getY() == ovenYCoord + 50 && getX() != ovenXCoord && rotationIndex != -90)
+            if(getY() == ovenYCoord + 50 && getX() != ovenXCoord && rotationIndex != 90 * pizzaria)
             {
-                rotate(-90);
+                rotate(90 * pizzaria);
             }
             //move X axis to oven
-            if(getY() == ovenYCoord + 50 && rotationIndex == -90 && getX() != ovenXCoord)
+            if(getY() == ovenYCoord + 50 && rotationIndex == 90 * pizzaria && getX() != ovenXCoord)
             {
                 setLocation(getX() - 1, getY());
             }
             //rotate to face oven
             if(getY() == ovenYCoord + 50 && getX() == ovenXCoord && rotationIndex != 0)
             {
-                rotate(90);
+                rotate(-90 * pizzaria);
                 currentlyMovingToOven = false;
                 atOven = true;
             }

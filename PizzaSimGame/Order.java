@@ -22,15 +22,16 @@ public class Order extends Actor
     private Customer customer;
     private boolean madePizza = false;
     private static KitchenCounter kitchen1, kitchen2;
+    private int store;
     
-    public Order(String sauceType, String[] toppingTypes, Customer theCustomer){
+    public Order(String sauceType, String[] toppingTypes, Customer theCustomer, int store){
         toppings = toppingTypes;
         sauce = sauceType;
         customer=theCustomer;
         dough = new GreenfootImage("pizzaBase.png");
         chatBox.scale(60, 70);
         chatBox.drawImage(dough, 12, 5);
-        
+        this.store = store;
     }
     public void act(){
         moveMe();
@@ -49,21 +50,40 @@ public class Order extends Actor
     }
     public void makePizza()
     {
-        kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterX, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
-        kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterX, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
-        if(kitchen1.checkCanMakePizza())
+        if(store == -1)
         {
-            Pizza pizza=new Pizza(toppings, sauce, customer);
-            customer.setPizza(pizza);
-            getWorld().addObject(pizza, Utils.kitchenCounterX, Utils.kitchenCounterY1);
+            kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+            kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+            if(kitchen1.checkCanMakePizza())
+            {
+                Pizza pizza=new Pizza(toppings, sauce, customer);
+                customer.setPizza(pizza);
+                getWorld().addObject(pizza, Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
+            }
+            else if(kitchen2.checkCanMakePizza())
+            {
+                Pizza pizza=new Pizza(toppings, sauce, customer);
+                customer.setPizza(pizza);
+                getWorld().addObject(pizza, Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
+            }
         }
-        else if(kitchen2.checkCanMakePizza())
+        if(store == 1)
         {
-            Pizza pizza=new Pizza(toppings, sauce, customer);
-            customer.setPizza(pizza);
-            getWorld().addObject(pizza, Utils.kitchenCounterX, Utils.kitchenCounterY2);
+            kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+            kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+            if(kitchen1.checkCanMakePizza())
+            {
+                Pizza pizza=new Pizza(toppings, sauce, customer);
+                customer.setPizza(pizza);
+                getWorld().addObject(pizza, Utils.kitchenCounterXRight, Utils.kitchenCounterY1);
+            }
+            else if(kitchen2.checkCanMakePizza())
+            {
+                Pizza pizza=new Pizza(toppings, sauce, customer);
+                customer.setPizza(pizza);
+                getWorld().addObject(pizza, Utils.kitchenCounterXRight, Utils.kitchenCounterY2);
+            }
         }
-        
     }
     
     public void addedToWorld(World w){

@@ -174,6 +174,7 @@ public class Cashier extends People
             foundPizza = true;
         }
         assignedPizza.getImage().setTransparency(255);
+        assignedPizza.isPickedUp();
         atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != 180 && timer.millisElapsed() > 200)

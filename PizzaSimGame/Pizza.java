@@ -45,6 +45,7 @@ public class Pizza extends Actor
     */
     private GreenfootImage theSauce;
     private static GreenfootImage crust=new GreenfootImage("cooked.png");
+    private static GreenfootImage burned=new GreenfootImage("burned.png");
     private int imageIndex = 0, toppingIndex = 0;
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
@@ -63,7 +64,7 @@ public class Pizza extends Actor
         this.sauce = sauce;
         customer = theCustomer;
         atCashierCounter = false;
-        cookTime=60*(strings.length+2);
+        cookTime=540;
         firstStage_finished=false;
         doughFinished=false;
         imageIndex=0;
@@ -246,6 +247,9 @@ public class Pizza extends Actor
     public void burnPizza(){
         //add a dark layer on the pizza
         //drawImage
+        burned.scale(50,50);
+        burned.setTransparency(100);
+        getImage().drawImage(burned,0,0);
         burn=true;
     }
     

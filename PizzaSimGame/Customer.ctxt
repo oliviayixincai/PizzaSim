@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Customer
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Customer\ here.\r\n\ \r\n\ I\ changed\ ur\ code\ a\ bit\ to\ add\ the\ cheese\ layer,\ \r\n\ also\ the\ order\ is\ attached\ to\ ur\ customer\ objects\ and\ \r\n\ it\ can\ move\ with\ the\ customer.\ I\ added\ some\ features\ in\ pizza,\r\n\ order,\ and\ customer\ class\ so\ the\ customer\ can\ pickup\ the\ pizza\r\n\ and\ leave\ the\ store.\ From\ Yuxin\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Customer\ here.\n\ \n\ I\ changed\ ur\ code\ a\ bit\ to\ add\ the\ cheese\ layer,\ \n\ also\ the\ order\ is\ attached\ to\ ur\ customer\ objects\ and\ \n\ it\ can\ move\ with\ the\ customer.\ I\ added\ some\ features\ in\ pizza,\n\ order,\ and\ customer\ class\ so\ the\ customer\ can\ pickup\ the\ pizza\n\ and\ leave\ the\ store.\ From\ Yuxin\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=dir
 comment1.target=Customer(int)
 comment10.params=

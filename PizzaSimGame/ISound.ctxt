@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=ISoundCentre
-comment0.text=\n\ Write\ a\ description\ of\ class\ SoundCentre\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=volume\ soundIndex
-comment1.target=void\ setVolume(int,\ int)
+comment0.target=ISound
+comment0.text=\n\ Write\ a\ description\ of\ interface\ ISound\ here.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=volume
+comment1.target=void\ setVolume(int)
 comment1.text=\n\ Set\ volume\n\ @param\ volume\ The\ current\ volume\n
 comment2.params=soundIndex
 comment2.target=void\ playSound(int)

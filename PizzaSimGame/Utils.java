@@ -8,10 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Utils extends Actor
 {
-    private int resturantMoneyOne = 0;
-    private int resturantMoneyTwo = 0;
-    private int resturantLevelOne = 1;
-    private int resturantLevelTwo = 1;
+    public static int resturantMoneyOne = 0;
+    public static int resturantMoneyTwo = 0;
+    public static int resturantLevelOne = 1;
+    public static int resturantLevelTwo = 1;
+    
+    public static int volume = 60;
+    public static final GreenfootSound backgroundSound = new GreenfootSound("Run-Amok.wav");
+    
     public static final int moveSpeed = 1;
   
     public static final int enterY = 710;

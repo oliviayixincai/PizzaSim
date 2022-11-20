@@ -33,10 +33,10 @@ public class StartWorld extends World
     }
     
     public void started() {
-        BackgroundSound.getInstance().playSound();
+        Utils.backgroundSound.playLoop();
     }
     
     public void stopped() {
-        BackgroundSound.getInstance().pauseSound();
+        Utils.backgroundSound.pause();
     }
 }

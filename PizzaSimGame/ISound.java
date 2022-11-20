@@ -1,17 +1,17 @@
 import greenfoot.*;
 /**
- * Write a description of class SoundCentre here.
+ * Write a description of interface ISound here.
  * 
- * @author (your name) 
+ * @author Yixin Cai
  * @version (a version number or a date)
  */
-public interface ISoundCentre
+public interface ISound
 {
     /**
      * Set volume
      * @param volume The current volume
      */
-    public void setVolume(int volume, int soundIndex);
+    public void setVolume(int volume);
     
     /**
      * Play sound
@@ -23,7 +23,7 @@ public interface ISoundCentre
      */
     public void pauseSound(int soundIndex);
     
-    public int getSoundNumber ();
-    public boolean isSoundPlaying (int soundIndex);
-    public GreenfootSound getSound (int soundIndex);
+    public int getSoundNumber();
+    public boolean isSoundPlaying(int soundIndex);
+    public GreenfootSound getSound(int soundIndex);
 }

@@ -27,11 +27,12 @@ public class SettingWorld extends World
     private Label cashierNumLabel;
     private Label moneyNumLabel;
     private Label robberStealLabel;
+    private Label volumeLabel;
     
-    private final int DEFAULT_CHEF_NUM = 2;
+    private final int DEFAULT_CHEF_NUM = 1;
     private final int DEFAULT_CASHIER_NUM = 1;
-    private final int DEFAULT_MONEY_NUM = 30;
-    private final int DEFAULT_ROBBER_STEAL = 10;
+    private final int DEFAULT_MONEY_NUM = 0;
+    private final int DEFAULT_ROBBER_STEAL = 15;
     
     private int chefNumMama;
     private int cashierNumMama;
@@ -89,6 +90,11 @@ public class SettingWorld extends World
         this.robberStealMinus = new MinusButton();
         this.robberStealLabel = new Label("");
         
+        volumeLabel = new Label(Utils.volume + "%");
+        addObject(new VolumeButton(false), 850, 40);
+        addObject(new VolumeButton(true), 970, 40);
+        addObject(volumeLabel,910, 40);
+        
         addObject(this.chefPlus, 900, 310);
         addObject(this.chefMinus, 800, 310);
         addObject(this.chefNumLabel, 850, 310);
@@ -116,7 +122,7 @@ public class SettingWorld extends World
         }
 
         if (isMama) {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 10) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 3) {
                 this.chefNumMama++;
                 this.chefNumLabel.updateLabel(this.chefNumMama);
             }
@@ -124,7 +130,7 @@ public class SettingWorld extends World
                 this.chefNumMama--;
                 this.chefNumLabel.updateLabel(this.chefNumMama);
             }
-            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumMama < 10) {
+            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumMama < 2) {
                 this.cashierNumMama++;
                 this.cashierNumLabel.updateLabel(this.cashierNumMama);
             }
@@ -132,25 +138,25 @@ public class SettingWorld extends World
                 this.cashierNumMama--;
                 this.cashierNumLabel.updateLabel(this.cashierNumMama);
             }
-            if (Greenfoot.mouseClicked(moneyPlus) && moneyNumMama < 1000) {
+            if (Greenfoot.mouseClicked(moneyPlus) && moneyNumMama < 250) {
                 this.moneyNumMama += 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumMama);
             }
-            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumMama > 10) {
+            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumMama > 0) {
                 this.moneyNumMama -= 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumMama);
             }
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 100) {
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 25) {
                 this.robberStealMama += 5;
                 this.robberStealLabel.updateLabel(this.robberStealMama);
             }
-            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealMama > 5) {
+            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealMama > 10) {
                 this.robberStealMama -= 5;
                 this.robberStealLabel.updateLabel(this.robberStealMama);
             }
         }
         else {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 10) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 3) {
                 this.chefNumPapa++;
                 this.chefNumLabel.updateLabel(this.chefNumPapa);
             }
@@ -158,7 +164,7 @@ public class SettingWorld extends World
                 this.chefNumPapa--;
                 this.chefNumLabel.updateLabel(this.chefNumPapa);
             }
-            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumPapa < 10) {
+            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumPapa < 2) {
                 this.cashierNumPapa++;
                 this.cashierNumLabel.updateLabel(this.cashierNumPapa);
             }
@@ -166,19 +172,19 @@ public class SettingWorld extends World
                 this.cashierNumPapa--;
                 this.cashierNumLabel.updateLabel(this.cashierNumPapa);
             }
-            if (Greenfoot.mouseClicked(moneyPlus) && this.moneyNumPapa < 1000) {
+            if (Greenfoot.mouseClicked(moneyPlus) && this.moneyNumPapa < 250) {
                 this.moneyNumPapa += 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumPapa);
             }
-            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumPapa > 10) {
+            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumPapa > 0) {
                 this.moneyNumPapa -= 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumPapa);
             }
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 100) {
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 25) {
                 this.robberStealPapa += 5;
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }
-            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealPapa > 5) {
+            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealPapa > 10) {
                 this.robberStealPapa -= 5;
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }
@@ -186,11 +192,11 @@ public class SettingWorld extends World
     }
     
     public void started() {
-        BackgroundSound.getInstance().playSound();
+        Utils.backgroundSound.playLoop();
     }
     
     public void stopped() {
-        BackgroundSound.getInstance().pauseSound();
+        Utils.backgroundSound.pause();
     }
     
     private void switchSettings() {
@@ -275,5 +281,26 @@ public class SettingWorld extends World
     
     public int getRobberStealPapa() {
         return this.robberStealPapa;
+    }
+    
+    /**
+     * Update volume.
+     * @param isUp True if turn volume up, Flase otherwise.
+     */
+    public void updateVolume(boolean isUp) {
+        if(isUp) {
+            Utils.volume = Math.min(Utils.volume + 20, 100);
+        }
+        else {
+            Utils.volume = Math.max(Utils.volume - 20, 0);
+        }
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            sound.setVolume(Utils.volume);
+        }
+        //  Update background sound volume.
+        Utils.backgroundSound.setVolume(Utils.volume);
+        // Update volume label.
+        volumeLabel.updateLabel(Utils.volume + "%");
     }
 }

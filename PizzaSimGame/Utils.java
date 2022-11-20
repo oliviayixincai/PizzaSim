@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Utils extends Actor
 {
-    public static int resturantMoneyOne = 0;
-    public static int resturantMoneyTwo = 0;
-    public static int resturantLevelOne = 1;
-    public static int resturantLevelTwo = 1;
+    private int resturantMoneyOne = 0;
+    private int resturantMoneyTwo = 0;
+    private int resturantLevelOne = 1;
+    private int resturantLevelTwo = 1;
     public static final int moveSpeed = 1;
   
     public static final int enterY = 710;
@@ -28,4 +28,24 @@ public class Utils extends Actor
     
     public static final int oven1X = 160, oven2X = 222, oven3X = 280, ovenY = 190;
     public static final int pizzaFinalY = 550;
+    
+    public void resturantMoneyOneAdd(int money)
+    {
+        resturantMoneyOne += money;
+    }
+    
+    public void resturantMoneyTwoAdd(int money)
+    {
+        resturantMoneyTwo += money;
+    }
+    
+    public int getResturantMoneyOne()
+    {
+        return resturantMoneyOne;
+    }
+    
+    public int getResturantMoneyTwo()
+    {
+        return resturantMoneyTwo;
+    }
 }

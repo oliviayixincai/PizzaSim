@@ -19,7 +19,7 @@ public class Customer extends People
     
     private boolean inStore, ordered, pickedUp;
     
-    private String[] order = new String[10];
+    private String[] order = new String[3];
     private String dough = "thin", sauce = "tomato", topping;
     private Order myOrder;
     private Pizza myPizza;
@@ -61,7 +61,7 @@ public class Customer extends People
         
         for(int i = 0; i < order.length; i++)
         {
-            toppingRNG = Greenfoot.getRandomNumber(4);
+            toppingRNG = Greenfoot.getRandomNumber(5);
             switch (toppingRNG){
             case 0:
                 topping = "cheese";
@@ -74,6 +74,9 @@ public class Customer extends People
                 break;
             case 3:
                 topping = "ham";
+                break;
+            case 4:
+                topping = "olives";
                 break;
             }
             order[i] = topping;

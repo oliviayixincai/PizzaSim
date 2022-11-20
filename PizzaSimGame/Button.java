@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Yixin Cai
  * @version (a version number or a date)
  */
-public abstract class Button extends Actor implements ISoundCentre
+public abstract class Button extends Actor implements ISound
 {   
     protected GreenfootImage image;
     protected GreenfootImage downImage;
@@ -100,7 +100,7 @@ public abstract class Button extends Actor implements ISoundCentre
     
     public int getSoundNumber (){
         if (soundIndex == 0){
-            return sounds.length;
+            return sounds.length - 1;
         }
         return soundIndex - 1;
     }
@@ -109,9 +109,11 @@ public abstract class Button extends Actor implements ISoundCentre
      * Update volume of the sounds
      * @param volume The current volume
      */
-    public void setVolume(int volume, int soundIndex) {
+    public void setVolume(int volume) {
         if (sounds != null) {
-            sounds[soundIndex].setVolume(volume);
+            for (GreenfootSound sound : sounds) {
+                sound.setVolume(volume);
+            }
         }
     }
 }

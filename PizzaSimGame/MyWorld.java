@@ -43,11 +43,11 @@ public class MyWorld extends World
         addObject(new Chef(Utils.chefXRight, Utils.chef1Y, 100, 100, 1), Utils.chefXRight, Utils.chef1Y);
         addObject(new Chef(Utils.chefXRight, Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
         //adds cashier objects left
-        addObject(new Cashier(Utils.cashier1X, 460, 100, 100, -1), Utils.cashier1X, 460);
-        addObject(new Cashier(Utils.cashier2X, 460, 100, 100, -1), Utils.cashier2X, 460);
+        addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100, -1), Utils.cashier1X, 460);
+        addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
         //adds cashier objects right
-        addObject(new Cashier(Utils.cashier3X, 460, 100, 100, 1), Utils.cashier3X, 460);
-        addObject(new Cashier(Utils.cashier4X, 460, 100, 100, 1), Utils.cashier4X, 460);
+        addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
+        addObject(new Cashier(Utils.cashier4X, Utils.cashierY, 100, 100, 1), Utils.cashier4X, 460);
         //adds kitchen counters left
         addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
@@ -98,12 +98,12 @@ public class MyWorld extends World
         }
         
         int rng = Greenfoot.getRandomNumber(120);
+        int customerSpawnX = Greenfoot.getRandomNumber(100) + 473;
         
         if(rng == 0)
         {
-            addObject(new Customer(dir), Greenfoot.getRandomNumber(124) + 449, startingY);
+            addObject(new Customer(dir, customerSpawnX), customerSpawnX, startingY);
         }
-        
     }
     
     public void removeAllActors() {

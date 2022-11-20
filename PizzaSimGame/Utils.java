@@ -18,7 +18,7 @@ public class Utils extends Actor
     public static final int exitY = 760;
     public static final int door1X = 449, door2X = 573;
     
-    public static final int cashier1X = 333, cashier2X = 410, cashier3X = 614, cashier4X = 691;
+    public static final int cashier1X = 333, cashier2X = 410, cashier3X = 614, cashier4X = 691, cashierY = 460;
     public static final int chefXLeft = 120, chefXRight = 904, chef1Y = 300, chef2Y = 400;
     
     public static final int wait1X = 160, wait2X = 222, wait3X = 280, wait4X = 744, wait5X = 802, wait6X = 864;

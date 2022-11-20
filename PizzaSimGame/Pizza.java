@@ -50,41 +50,56 @@ public class Pizza extends Actor
     private double exactX;
     private double exactY;
     
+    // andy code
+    private boolean customerPickedUp = false;
+    
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
     */
-    public Pizza(String[] strings, String sauce, Customer theCustomer){
+    public Pizza(String[] strings, String sauce){
         toppings = strings;
         this.sauce = sauce;
-        customer = theCustomer;
         atCashierCounter = false;
     }
     
     public void act()
     {
-        getCookTime(toppings);
-        if(!doughFinished)
-        {
-            spreadDough();
+        if(customerPickedUp == false){
+            if (!doughFinished)
+            {
+                spreadDough();
+            }
+            if(doughFinished && !sauceFinished)
+            {   
+                addSauce(sauce);
+            }
+            if(doughFinished && sauceFinished && !toppingsFinished)
+            {
+                addToppings(toppings);
+            }
+        } else {
+            //andy code
+            //if picked up by a customer, set location based on customers direction
+            switch (customer.getRotation()){
+                case People.UP:
+                    setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
+                    break;
+                case People.DOWN:
+                    setLocation(customer.getX(), customer.getY() +  getImage().getHeight()/2);
+                    break;
+                case People.LEFT:
+                    setLocation(customer.getX() - getImage().getWidth() + 5, customer.getY());
+                    break;
+                case People.RIGHT:
+                    setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
+                    break;
+            }
+            //removes actor when at edge
+            atEdge();
         }
-        if(doughFinished && !sauceFinished)
-        {
-            addSauce(sauce);
-        }
-        if(doughFinished && sauceFinished && !toppingsFinished)
-        {
-            addToppings(toppings);
-        }
-        moveMe();
     }
     
-    public void moveMe(){
-        if(atCashierCounter){
-            customer.setPickedUp();
-            setLocation(customer.getX(), customer.getY());
-        }
-    }
     /**
      * an animation of the dough spreading process
      */
@@ -148,11 +163,16 @@ public class Pizza extends Actor
      * if the pizza is cooked and a cashier comes, return has cashier
      * if hasCashier, the clocked will be removed
      */
-    public void isPickedUp(){
+    public boolean isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
         //find the chef picking up the pizza
-        inOven = false;
-
+        if(cooked && inOven == true && hasChef == false){
+            ArrayList<Cashier> cashierNear = (ArrayList<Cashier>)getObjectsInRange(50, Cashier.class);
+            cashier = cashierNear.get(0);
+            hasCashier = true;
+            inOven = false;
+        }
+        return hasCashier;
     }
     
     public boolean isInOven(){
@@ -207,6 +227,26 @@ public class Pizza extends Actor
         crust.setTransparency(80);
         getImage().drawImage(crust,0,0);
         cooked=true;
+    }
+    
+    //andy code, setter called by customer to set locations
+    public void setCPU(Customer customer){
+        customerPickedUp = true;
+        this.customer = customer;
+    }
+    
+    public void atEdge(){
+        if(getY() == 81 || getY() == 799){
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public String[] getToppings(){
+        return toppings;
+    }
+    
+    public String getSauce(){
+        return sauce;
     }
     
     /**

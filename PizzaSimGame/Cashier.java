@@ -30,11 +30,18 @@ public class Cashier extends People
     
     private Pizza assignedPizza;
     
+    //andy code
+    private int startX, startY;
+    
     public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY, int pizzaria)
     {
         this.counterXCoord = counterXCoord;
         this.counterYCoord = counterYCoord;
         this.pizzaria = pizzaria;
+        
+        //andy code
+        startX = counterXCoord;
+        startY = counterYCoord;
         
         for(int i = 0; i < walkUp.length; i++)
         {
@@ -315,6 +322,15 @@ public class Cashier extends People
         if(rotationIndex == 270 || rotationIndex == -90)
         {
             setImage(walkLeft[0]);
+        }
+    }
+    
+    //andy code, checks if cashier has returned to starting position
+    public boolean atStart(){
+        if (getX() == startX && getY() == startY){
+            return true;
+        } else {
+            return false;
         }
     }
 }

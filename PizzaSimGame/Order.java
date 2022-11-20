@@ -15,20 +15,19 @@ public class Order extends Actor
      * Act - do whatever the Order wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private String[] toppings;
+    private String[] toppings = new String[1];
     private String sauce;
     private GreenfootImage chatBox = getImage();
     private GreenfootImage topping, theSauce, dough;
     private Customer customer;
     private boolean madePizza = false;
     private static KitchenCounter kitchen1, kitchen2;
-    
+    private int price=5;
     public Order(String sauceType, String[] toppingTypes, Customer theCustomer){
         toppings = toppingTypes;
         sauce = sauceType;
         customer=theCustomer;
         dough = new GreenfootImage("pizzaBase.png");
-        chatBox.scale(60, 70);
         chatBox.drawImage(dough, 12, 5);
         
     }
@@ -68,9 +67,38 @@ public class Order extends Actor
     
     public void addedToWorld(World w){
         drawOrder();
+        calculatePrice(sauce, toppings);
+        MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(150, 40, MoneyDisplayer.class).get(0);
+        money_displayer.setDisplayer(money_displayer.getMoney()+price);
         makePizza();
     }
     
+    public int calculatePrice(String order, String[] toppingTypes){
+        if(order=="bbq"){
+            price+=2;
+        }
+        if(order=="tomato"){
+            price+=1;
+        }
+        for(int i=0; i<toppingTypes.length; i++){
+            if(toppingTypes[i]=="cheese"){
+                price+=2;
+            }
+            if(toppingTypes[i]=="ham"){
+                price+=3;
+            }
+            if(toppingTypes[i]=="olives"){
+                price+=2;
+            }
+            if(toppingTypes[i]=="pepperoni"){
+                price+=1;
+            }
+            if(toppingTypes[i]=="peppers"){
+                price+=2;
+            }
+        }
+        return price;
+    }
     /**
      * move the order with the customer
      */

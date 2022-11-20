@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Yuxin Li(your name) 
  * @version (a version number or a date)
  */
-public class Money_displayer extends Actor
+public class MoneyDisplayer extends Actor
 {
     /**
      * Act - do whatever the Money_displayer wants to do. This method is called whenever
@@ -14,7 +14,7 @@ public class Money_displayer extends Actor
      */
     private int money;
     private static final Color transparent = new Color(0,0,0,0);
-    public Money_displayer(int value){
+    public MoneyDisplayer(int value){
         money=value;
     }
     public void addedToWorld(World w){

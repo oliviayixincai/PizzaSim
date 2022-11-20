@@ -34,10 +34,17 @@ public class Cashier extends People
     GreenfootImage leftInteract[] = new GreenfootImage[6];
     GreenfootImage rightInteract[] = new GreenfootImage[6];
     
+    //andy code
+    private int startX, startY;
+    
     public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY)
     {
         this.counterXCoord = counterXCoord;
         this.counterYCoord = counterYCoord;
+        
+        //andy code
+        startX = counterXCoord;
+        startY = counterYCoord;
         
         for(int i = 0; i < walkUp.length; i++)
         {
@@ -301,6 +308,15 @@ public class Cashier extends People
         if(rotationIndex == 270 || rotationIndex == -90)
         {
             setImage(walkLeft[0]);
+        }
+    }
+    
+    //andy code, checks if cashier has returned to starting position
+    public boolean atStart(){
+        if (getX() == startX && getY() == startY){
+            return true;
+        } else {
+            return false;
         }
     }
 }

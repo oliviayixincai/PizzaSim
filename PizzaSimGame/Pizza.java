@@ -48,6 +48,10 @@ public class Pizza extends Actor
     private double exactX;
     private double exactY;
     
+    // andy code
+    private boolean customerPickedUp = false;
+    private Customer customer;
+    
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
@@ -59,17 +63,38 @@ public class Pizza extends Actor
     
     public void act()
     {
-        if(!doughFinished)
-        {
-            spreadDough();
-        }
-        if(doughFinished && !sauceFinished)
-        {
-            addSauce(sauce);
-        }
-        if(doughFinished && sauceFinished && !toppingsFinished)
-        {
-            addToppings(toppings);
+        if(customerPickedUp == false){
+            if (!doughFinished)
+            {
+                spreadDough();
+            }
+            if(doughFinished && !sauceFinished)
+            {   
+                addSauce(sauce);
+            }
+            if(doughFinished && sauceFinished && !toppingsFinished)
+            {
+                addToppings(toppings);
+            }
+        } else {
+            //andy code
+            //if picked up by a customer, set location based on customers direction
+            switch (customer.getRotation()){
+                case People.UP:
+                    setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
+                    break;
+                case People.DOWN:
+                    setLocation(customer.getX(), customer.getY() +  getImage().getHeight()/2);
+                    break;
+                case People.LEFT:
+                    setLocation(customer.getX() - getImage().getWidth() + 5, customer.getY());
+                    break;
+                case People.RIGHT:
+                    setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
+                    break;
+            }
+            //removes actor when at edge
+            atEdge();
         }
     }
     
@@ -187,6 +212,26 @@ public class Pizza extends Actor
     public void cookPizza(){
         //add a golden crust layer on pizza
         cooked=true;
+    }
+    
+    //andy code, setter called by customer to set locations
+    public void setCPU(Customer customer){
+        customerPickedUp = true;
+        this.customer = customer;
+    }
+    
+    public void atEdge(){
+        if(getY() == 81 || getY() == 799){
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public String[] getToppings(){
+        return toppings;
+    }
+    
+    public String getSauce(){
+        return sauce;
     }
     
     /**

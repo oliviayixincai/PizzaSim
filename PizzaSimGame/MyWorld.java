@@ -16,7 +16,7 @@ public class MyWorld extends World
     //variables for spawning customers
     private int dir, startingY, dirRNG;
     private ArrayList<GreenfootSound> pausedSounds;
-    
+
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -35,8 +35,8 @@ public class MyWorld extends World
         addObject(new Chef(Utils.chefX, Utils.chef1Y, 100, 100), Utils.chefX, Utils.chef1Y);
         addObject(new Chef(Utils.chefX, Utils.chef2Y, 100, 100), Utils.chefX, Utils.chef2Y);
         //adds cashier objects
-        addObject(new Cashier(Utils.cashier1X, 460, 100, 100), Utils.cashier1X, 460);
-        addObject(new Cashier(Utils.cashier2X, 460, 100, 100), Utils.cashier2X, 460);
+        addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100), Utils.cashier1X, 460);
+        addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100), Utils.cashier2X, 460);
         //adds kitchen counters
         addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY2);
@@ -78,12 +78,12 @@ public class MyWorld extends World
         }
         
         int rng = Greenfoot.getRandomNumber(120);
+        int customerSpawnX = Greenfoot.getRandomNumber(100) + 473;
         
         if(rng == 0)
         {
-            addObject(new Customer(dir), Greenfoot.getRandomNumber(124) + 449, startingY);
+            addObject(new Customer(dir, customerSpawnX), customerSpawnX, startingY);
         }
-        
     }
     
     public void removeAllActors() {

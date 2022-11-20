@@ -15,7 +15,7 @@ public class Order extends Actor
      * Act - do whatever the Order wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private String[] toppings = new String[1];
+    private String[] toppings;
     private String sauce;
     private GreenfootImage chatBox = getImage();
     private GreenfootImage topping, theSauce, dough;

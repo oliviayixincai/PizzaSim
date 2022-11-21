@@ -16,14 +16,20 @@ public interface ISound
     /**
      * Play sound
      */
-    public void playSound(int soundIndex);
+    public void playSound();
     
     /**
      * Pause sound
      */
-    public void pauseSound(int soundIndex);
+    public void pauseSound();
     
-    public int getSoundNumber();
-    public boolean isSoundPlaying(int soundIndex);
-    public GreenfootSound getSound(int soundIndex);
+    /**
+     * Check if sound is playing
+     */
+    public boolean isSoundPlaying();
+    
+    /**
+     * Get sound
+     */
+    public GreenfootSound getSound();
 }

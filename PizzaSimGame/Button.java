@@ -36,6 +36,12 @@ public abstract class Button extends Actor implements ISound
         this.isHovered = false;
     }
     
+    public void addedToWorld(World w) {
+        for (GreenfootSound sound : sounds) {
+            sound.setVolume(Utils.volume);
+        }
+    }
+    
     /**
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -45,11 +51,7 @@ public abstract class Button extends Actor implements ISound
         if (Greenfoot.mouseClicked(this)) {
             downTik = 5;
             onClick();
-            playSound(soundIndex);
-            soundIndex++;
-            if (soundIndex > (sounds.length - 1)) {
-                soundIndex = 0;
-            }
+            playSound();
         }
         else if (Greenfoot.mouseMoved(this)) {
             isHovered = true;
@@ -71,38 +73,30 @@ public abstract class Button extends Actor implements ISound
     }
     
     protected abstract void onClick();
-    //protected abstract void onHover();
     
     /**
      * Start playing sound if there is sound
      */
-    public void playSound(int soundIndex) {
-        if (sounds != null) {
-            sounds[soundIndex].play();
+    public void playSound() {
+        soundIndex++;
+        if (soundIndex > (sounds.length - 1)) {
+            soundIndex = 0;
         }
+        sounds[soundIndex].play();
     }
     
     /**
      * Pause playing sound if there is sound
      */
-    public void pauseSound(int soundIndex) {
-        if (sounds != null) {
-            sounds[soundIndex].pause();
-        }
+    public void pauseSound() {
+        sounds[soundIndex].pause();
     }
-    public boolean isSoundPlaying (int index) {
-        return sounds[index].isPlaying();
+    public boolean isSoundPlaying () {
+        return sounds[soundIndex].isPlaying();
     }
     
-    public GreenfootSound getSound (int index){
-        return sounds[index];
-    }
-    
-    public int getSoundNumber (){
-        if (soundIndex == 0){
-            return sounds.length - 1;
-        }
-        return soundIndex - 1;
+    public GreenfootSound getSound (){
+        return sounds[soundIndex];
     }
     
     /**
@@ -110,10 +104,8 @@ public abstract class Button extends Actor implements ISound
      * @param volume The current volume
      */
     public void setVolume(int volume) {
-        if (sounds != null) {
-            for (GreenfootSound sound : sounds) {
-                sound.setVolume(volume);
-            }
+        for (GreenfootSound sound : sounds) {
+            sound.setVolume(volume);
         }
     }
 }

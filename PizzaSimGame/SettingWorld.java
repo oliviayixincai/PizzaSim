@@ -28,10 +28,10 @@ public class SettingWorld extends World
     private Label moneyNumLabel;
     private Label robberStealLabel;
     
-    private final int DEFAULT_CHEF_NUM = 2;
+    private final int DEFAULT_CHEF_NUM = 1;
     private final int DEFAULT_CASHIER_NUM = 1;
-    private final int DEFAULT_MONEY_NUM = 30;
-    private final int DEFAULT_ROBBER_STEAL = 10;
+    private final int DEFAULT_MONEY_NUM = 0;
+    private final int DEFAULT_ROBBER_STEAL = 15;
     
     private int chefNumMama;
     private int cashierNumMama;

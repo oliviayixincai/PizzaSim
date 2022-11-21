@@ -41,6 +41,8 @@ public class Customer extends People
     
     private boolean checkedLocations = false;
     
+    private int enterDIR, exitDIR;
+    
     public Customer (int dir, int spawnX) {
         this.dir = dir;
         this.spawnX = spawnX;
@@ -58,8 +60,12 @@ public class Customer extends People
         
         if (storeRNG == 0){
             store = -1;
+            enterDIR = LEFT;
+            exitDIR = RIGHT;
         } else {
             store = 1;
+            enterDIR = RIGHT;
+            exitDIR = LEFT;
         }
         
         if (imageRNG == 0){

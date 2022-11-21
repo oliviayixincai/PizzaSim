@@ -17,6 +17,8 @@ public class MyWorld extends World
     private int dir, startingY, dirRNG;
     private ArrayList<GreenfootSound> pausedSounds;
     
+    private boolean cash2Mama = false, cash2Papa = false;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -37,17 +39,31 @@ public class MyWorld extends World
         addObject(new Oven(), Utils.oven5X, Utils.ovenY);
         addObject(new Oven(), Utils.oven6X, Utils.ovenY);
         //adds chef objects left
+        
         addObject(new Chef(Utils.chef1Y, 100, 100, -1), Utils.chefXLeft, Utils.chef1Y);
-        addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+        if (settingWorld.getChefNumMama() == 2){
+            addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+        }
+        
         //adds chef objects right
         addObject(new Chef(Utils.chef1Y, 100, 100, 1), Utils.chefXRight, Utils.chef1Y);
-        addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+        if (settingWorld.getChefNumPapa() == 2){
+            addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+        }
+    
         //adds cashier objects left
         addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100, -1), Utils.cashier1X, 460);
-        addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
+        if (settingWorld.getCashierNumMama() == 2){
+            addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
+            cash2Mama = true;
+        }
+        
         //adds cashier objects right
-        addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
         addObject(new Cashier(Utils.cashier4X, Utils.cashierY, 100, 100, 1), Utils.cashier4X, 460);
+        if (settingWorld.getCashierNumPapa() == 2){
+            addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
+            cash2Papa = true;
+        }
         //adds kitchen counters left
         addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
@@ -102,7 +118,7 @@ public class MyWorld extends World
         
         if(rng == 0)
         {
-            addObject(new Customer(dir, customerSpawnX), customerSpawnX, startingY);
+            addObject(new Customer(dir, customerSpawnX, cash2Mama, cash2Papa), customerSpawnX, startingY);
         }
     }
     

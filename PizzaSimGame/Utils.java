@@ -26,7 +26,7 @@ public class Utils extends Actor
     public static final int kitchenCounterXLeft = 70, kitchenCounterXRight = 954, kitchenCounterY1 = 300, kitchenCounterY2 = 400;
     public static final int counterY = 610;
     
-    public static final int oven1X = 160, oven2X = 222, oven3X = 280, oven4X = 744, oven5X = 802, oven6X = 864, ovenY = 190;
+    public static final int oven1X = 160, oven2X = 222, oven3X = 280, oven4X = 864, oven5X = 802, oven6X = 744, ovenY = 190;
     public static final int pizzaFinalY = 550;
     
     public static final int MAMA = -1, PAPA = 1;

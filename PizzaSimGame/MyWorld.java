@@ -37,11 +37,11 @@ public class MyWorld extends World
         addObject(new Oven(), Utils.oven5X, Utils.ovenY);
         addObject(new Oven(), Utils.oven6X, Utils.ovenY);
         //adds chef objects left
-        addObject(new Chef(Utils.chefXLeft, Utils.chef1Y, 100, 100, -1), Utils.chefXLeft, Utils.chef1Y);
-        addObject(new Chef(Utils.chefXLeft, Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+        addObject(new Chef(Utils.chef1Y, 100, 100, -1), Utils.chefXLeft, Utils.chef1Y);
+        addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
         //adds chef objects right
-        addObject(new Chef(Utils.chefXRight, Utils.chef1Y, 100, 100, 1), Utils.chefXRight, Utils.chef1Y);
-        addObject(new Chef(Utils.chefXRight, Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+        addObject(new Chef(Utils.chef1Y, 100, 100, 1), Utils.chefXRight, Utils.chef1Y);
+        addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
         //adds cashier objects left
         addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100, -1), Utils.cashier1X, 460);
         addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);

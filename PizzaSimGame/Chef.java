@@ -159,28 +159,11 @@ public class Chef extends People
                 pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * pizzaria;
                 assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);  
             }
-            if(rotationIndex != -90 * pizzaria && timer.millisElapsed() > 200 && pizzaria == 1)
-            {
-                timer.mark();
-                rotate(-90);
-                rotationIndexRadians = Math.toRadians(rotationIndex);
-                pizzaXCoord = getX() + (50 * Math.sin(rotationIndexRadians));
-                pizzaYCoord = getY() - (50 * Math.cos(rotationIndexRadians) * pizzaria);
-                pizzaXOffset = (int)(50 * Math.sin(rotationIndexRadians));
-                pizzaYOffset = (int)(50 * Math.cos(rotationIndexRadians)) * pizzaria;
-                assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);  
-            }
             //move x axis to oven
             if(getX() != ovenXCoord && rotationIndex == 90)
             {
                 setLocation(getX() + 1, getY());
                 pizzaXCoord += 1;   
-                assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);
-            }
-            if(getX() != ovenXCoord && rotationIndex == -90)
-            {
-                setLocation(getX() - 1, getY());
-                pizzaXCoord -= 1;   
                 assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);
             }
             //rotate to face oven
@@ -214,12 +197,12 @@ public class Chef extends People
     
     public void moveToCounter(int counterXCoord, int counterYCoord)
     {
-        pizzaXOffset = 50 * pizzaria;
+        pizzaXOffset = -50;
         pizzaYOffset = 0;
         if(rotationIndex != 180 && timer.millisElapsed() > 200 && getX() != counterYCoord && getY() != counterYCoord)
         {
             timer.mark();
-            rotate(-90);
+            rotate(90);
         }
         //move chef y axis to counter
         if(getY() != counterYCoord && rotationIndex == 180)
@@ -227,33 +210,12 @@ public class Chef extends People
             setLocation(getX(), getY() + 1);
         }
         //rotate chef
-        if(rotationIndex != 270 && getY() == counterYCoord && pizzaria == -1)
+        if(rotationIndex != 270 && getY() == counterYCoord)
         {
             rotate(90);
         }
-        if(rotationIndex != 90 && getY() == counterYCoord && pizzaria == 1)
-        {
-            rotate(-90);
-        }
         //move chef x axis to counter
-        if(getX() != counterXCoord && rotationIndex == 270 && getY() == counterYCoord && pizzaria == -1)
-        {
-            setLocation(getX() - 1, getY());
-            if(openOven == 1)
-            {
-                oven1.reserve(false);
-            }
-            if(openOven == 2)
-            {
-                oven2.reserve(false);
-            }
-            if(openOven == 3)
-            {
-                oven3.reserve(false);
-            }
-            openOven = 4;
-        }
-        if(getX() != counterXCoord && rotationIndex == 90 && getY() == counterYCoord && pizzaria == 1)
+        if(getX() != counterXCoord && rotationIndex == 270 && getY() == counterYCoord)
         {
             setLocation(getX() - 1, getY());
             if(openOven == 1)

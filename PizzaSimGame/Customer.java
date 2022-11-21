@@ -149,6 +149,12 @@ public class Customer extends People
     }
     
     public void act (){
+        if(waiting){
+            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotation);
+        } else {
+            animate(walkUp, walkDown, walkLeft, walkRight, rotation);
+        }
+        
         //set locations for cashiers and waitingline
         if(!checkedLocations){
             if(store == Utils.MAMA){
@@ -168,13 +174,6 @@ public class Customer extends People
             }
             
             checkedLocations = true;
-        }
-        
-        //does not animate if customer is standing still
-        if(waiting){
-            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotation);
-        } else {
-            animate(walkUp, walkDown, walkLeft, walkRight, rotation);
         }
         
         //moves towards door if havent bought pizza yet, else walks away with pizza

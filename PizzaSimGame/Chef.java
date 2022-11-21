@@ -9,11 +9,11 @@ import java.lang.Math.*;
  */
 public class Chef extends People
 {
-    private int rotationIndex, startRotationIndex, imageIndex = 0, pizzaria;
+    private int rotationIndex, startRotationIndex, pizzaria;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven = 4;
     private int pizzaXOffset, pizzaYOffset = 0;
     private double pizzaXCoord, pizzaYCoord;
-    private boolean currentlyMovingPizza = false, foundPizza = false;
+    private boolean currentlyMovingPizza = false, foundPizza = false, moving;
     private boolean canPickUp, checkedOvenLocation = false;
     private Oven oven1, oven2, oven3;
     
@@ -75,12 +75,15 @@ public class Chef extends People
     }
     
     public void act()
-    {
-        //if (!moving){
-            //standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
-        //} else {
-            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
-        //}
+    {   
+        if(getX() != counterXCoord || getY() != counterYCoord)
+        {
+            moving = true;
+        }
+        else
+        {
+            moving = false;
+        }
         
         if(pizzaria == -1 && !checkedOvenLocation)
         {
@@ -106,6 +109,12 @@ public class Chef extends People
         {
             currentlyMovingPizza = true;
             moveToOven();
+        }
+        
+        if (!moving){
+            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+        } else {
+            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
         }
     }
 
@@ -260,7 +269,7 @@ public class Chef extends People
             rotationIndex = 0;
         }
         if(rotationIndex == 0)
-        {
+        {   
             setImage(walkUp[0]);
         }
         if(rotationIndex == 90 || rotationIndex == -270)

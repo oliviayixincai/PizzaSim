@@ -62,7 +62,7 @@ public class WaittingBar extends Actor
             }
             
             setImage(moodBarGif[gifIndex].getCurrentImage());
-        } else if (c.getInStore() == false && c.getPickedUp() == true){
+        } else if (c.getPickedUp() == true){
             
             /** MONEY INTERFACE
              * getWorld().addObject(new MoneyInterface(tips), x, y);

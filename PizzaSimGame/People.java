@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class People extends Actor
+public abstract class People extends Actor
 {
     private double exactX;
     private double exactY;
@@ -30,44 +30,34 @@ public class People extends Actor
     }
     
     public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
-        correctNegRotation(rotation);
+        rotation = correctNegRotation(rotation);
         
         if(imageIndex == 9){
             imageIndex = 0;
         }
         
-        if (animTimer.millisElapsed() > 100){
+        if (animTimer.millisElapsed() > 200){
             switch (rotation){
                 case UP:
                     setImage(up[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
                     break;
                 case DOWN:
                     setImage(down[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
                     break;
                 case LEFT:
                     setImage(left[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
                     break;
                 case RIGHT:
                     setImage(right[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
                     break;
             }
+            imageIndex++;
+            animTimer.mark();
         }
     }
     
     public void standStill(GreenfootImage up, GreenfootImage down, GreenfootImage left, GreenfootImage right, int rotation){
-        correctNegRotation(rotation);
+        rotation = correctNegRotation(rotation);
         
         switch (rotation){
             case UP:
@@ -83,9 +73,10 @@ public class People extends Actor
                 setImage(right);
                 break;
         }
+        
     }
     
-    public void correctNegRotation(int rotation){
+    public int correctNegRotation(int rotation){
         if (rotation < 0){
             if (rotation == -270){
                 rotation = RIGHT;
@@ -95,6 +86,7 @@ public class People extends Actor
                 rotation = LEFT;
             }
         }
+        return rotation;
     }
     
     public void addCustomer1(){

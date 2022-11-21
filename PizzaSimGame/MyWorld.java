@@ -187,7 +187,7 @@ public class MyWorld extends World
             changedLevelThreeRight = true;
             removeObject(cover4);
             
-            if(settingWorld.getChefNumMama() == 1)
+            if(settingWorld.getChefNumPapa() == 1)
             {
                 addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
             }

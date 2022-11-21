@@ -68,7 +68,7 @@ public class Order extends Actor
     public void addedToWorld(World w){
         drawOrder();
         calculatePrice(sauce, toppings);
-        MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(150, 40, MoneyDisplayer.class).get(0);
+        MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(300, 30, MoneyDisplayer.class).get(0);
         money_displayer.setDisplayer(money_displayer.getMoney()+price);
         makePizza();
     }

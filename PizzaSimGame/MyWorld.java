@@ -66,7 +66,8 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait3X, Utils.counterY);
         
         //addObject(new Pizza(
-        addObject(new MoneyDisplayer(0), 150, 40);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 300, 30);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 724, 30);
         
     }
     

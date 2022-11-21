@@ -20,7 +20,7 @@ public class Order extends Actor
     private GreenfootImage chatBox = getImage();
     private GreenfootImage topping, theSauce, dough;
     private boolean madePizza = false;
-    private static KitchenCounter kitchen1, kitchen2;
+    private KitchenCounter kitchen1, kitchen2;
     
     private Customer c;
     private int store; 
@@ -55,12 +55,16 @@ public class Order extends Actor
             chatBox.drawImage(topping, 12, 7);
         }
     }
+    
     public void makePizza()
     {
-        if (store == Utils.MAMA){
+        if (store == Utils.MAMA)
+        {
             kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
             kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
-        } else {
+        } 
+        if(store == Utils.PAPA)
+        {
             kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
             kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
         }

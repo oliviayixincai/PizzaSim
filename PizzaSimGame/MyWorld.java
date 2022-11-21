@@ -49,11 +49,11 @@ public class MyWorld extends World
         addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
         addObject(new Cashier(Utils.cashier4X, Utils.cashierY, 100, 100, 1), Utils.cashier4X, 460);
         //adds kitchen counters left
-        addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
-        addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
+        addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
+        addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
         //adds kitchen counters right
-        addObject(new KitchenCounter(), Utils.kitchenCounterXRight, Utils.kitchenCounterY1);
-        addObject(new KitchenCounter(), Utils.kitchenCounterXRight, Utils.kitchenCounterY2);
+        addObject(new KitchenCounter(1), Utils.kitchenCounterXRight, Utils.kitchenCounterY1);
+        addObject(new KitchenCounter(1), Utils.kitchenCounterXRight, Utils.kitchenCounterY2);
         //adds doors left
         addObject(new Door(), Utils.door1X, Utils.enterY);
         addObject(new Door(), Utils.door1X, Utils.exitY);

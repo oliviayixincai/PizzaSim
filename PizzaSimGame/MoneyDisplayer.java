@@ -18,7 +18,7 @@ public class MoneyDisplayer extends Actor
         money=value;
     }
     public void addedToWorld(World w){
-        setDisplayer(0);
+        setDisplayer(money);
     }
     public void setDisplayer(int newValue)
     {

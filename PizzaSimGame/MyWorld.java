@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class MyWorld extends World
 {
-    private boolean isSimOver;
+    private boolean isSimOver, changedLevelTwoLeft, changedLevelTwoRight, changedLevelThreeLeft, changedLevelThreeRight;
     private SettingWorld settingWorld;
     private int customerSpawnRate, customerDir;
     //variables for spawning customers
@@ -19,6 +19,14 @@ public class MyWorld extends World
     
     private boolean cash2Mama = false, cash2Papa = false;
     
+    Utils utils = new Utils();
+    
+    CashierCover coverRight = new CashierCover("right");
+    CashierCover coverLeft = new CashierCover("left");
+    OvenCover cover1 = new OvenCover();
+    OvenCover cover2 = new OvenCover();
+    OvenCover cover3 = new OvenCover();
+    OvenCover cover4 = new OvenCover();
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -27,6 +35,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
+        addObject(utils, 0, 0);
         this.settingWorld = settingWorld;
         isSimOver = false;
         pausedSounds = new ArrayList<GreenfootSound>();
@@ -34,15 +43,23 @@ public class MyWorld extends World
         addObject(new Oven(), Utils.oven1X, Utils.ovenY);
         addObject(new Oven(), Utils.oven2X, Utils.ovenY);
         addObject(new Oven(), Utils.oven3X, Utils.ovenY);
+        addObject(cover1, Utils.oven2X - 1, Utils.ovenY);
+        addObject(cover2, Utils.oven3X + 5, Utils.ovenY);
         //adds oven objects right
         addObject(new Oven(), Utils.oven4X, Utils.ovenY);
         addObject(new Oven(), Utils.oven5X, Utils.ovenY);
         addObject(new Oven(), Utils.oven6X, Utils.ovenY);
-        //adds chef objects left
+        addObject(cover3, Utils.oven5X + 5, Utils.ovenY);
+        addObject(cover4, Utils.oven6X - 5, Utils.ovenY);
         
+        //adds chef objects left
         addObject(new Chef(Utils.chef1Y, 100, 100, -1), Utils.chefXLeft, Utils.chef1Y);
         if (settingWorld.getChefNumMama() == 2){
             addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+        }
+        if (settingWorld.getChefNumMama() == 3){
+            addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+            addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
         }
         
         //adds chef objects right
@@ -50,26 +67,36 @@ public class MyWorld extends World
         if (settingWorld.getChefNumPapa() == 2){
             addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
         }
+        if (settingWorld.getChefNumPapa() == 3){
+            addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+            addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
+        }
     
         //adds cashier objects left
         addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100, -1), Utils.cashier1X, 460);
+        addObject(coverLeft, 408, 504);
         if (settingWorld.getCashierNumMama() == 2){
             addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
+            removeObject(coverLeft);
             cash2Mama = true;
         }
         
         //adds cashier objects right
         addObject(new Cashier(Utils.cashier4X, Utils.cashierY, 100, 100, 1), Utils.cashier4X, 460);
+        addObject(coverRight, 617, 507);
         if (settingWorld.getCashierNumPapa() == 2){
             addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
+            removeObject(coverRight);
             cash2Papa = true;
         }
         //adds kitchen counters left
         addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
+        addObject(new KitchenCounter(-1), Utils.kitchenCounterXLeft, Utils.kitchenCounterY3);
         //adds kitchen counters right
         addObject(new KitchenCounter(1), Utils.kitchenCounterXRight, Utils.kitchenCounterY1);
         addObject(new KitchenCounter(1), Utils.kitchenCounterXRight, Utils.kitchenCounterY2);
+        addObject(new KitchenCounter(1), Utils.kitchenCounterXRight, Utils.kitchenCounterY3);
         //adds doors left
         addObject(new Door(), Utils.door1X, Utils.enterY);
         addObject(new Door(), Utils.door1X, Utils.exitY);
@@ -96,6 +123,81 @@ public class MyWorld extends World
     
     public void act() {
         spawnCustomer();
+        checkLevel();
+    }
+    
+    public void checkLevel()
+    {
+        if(utils.getResturantLevelOne() == 2 && !changedLevelTwoLeft)
+        {
+            changedLevelTwoLeft = true;
+            removeObject(cover1);
+            
+            if (settingWorld.getCashierNumMama() == 1)
+            {
+                addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
+                removeObject(coverLeft);
+                cash2Mama = true;
+            }
+            
+            if(settingWorld.getChefNumMama() == 1)
+            {
+                addObject(new Chef(Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+            }
+            if(settingWorld.getChefNumMama() == 2)
+            {
+                addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
+            }
+            
+        }
+        if(utils.getResturantLevelOne() == 3 && !changedLevelThreeLeft)
+        {
+            changedLevelThreeLeft = true;
+            removeObject(cover2);
+            
+            if(settingWorld.getChefNumMama() == 1)
+            {
+                addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
+            }
+        }
+        
+        if(utils.getResturantLevelTwo() == 2 && !changedLevelTwoRight)
+        {
+            changedLevelTwoRight = true;
+            removeObject(cover3);
+            
+            if (settingWorld.getCashierNumPapa() == 1)
+            {
+                addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
+                removeObject(coverRight);
+                cash2Papa = true;
+            }
+            
+            if(settingWorld.getChefNumPapa() == 1)
+            {
+                addObject(new Chef(Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+            }
+            if(settingWorld.getChefNumPapa() == 2)
+            {
+                addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
+            }
+        }
+        if(utils.getResturantLevelTwo() == 3 && !changedLevelThreeRight)
+        {
+            changedLevelThreeRight = true;
+            removeObject(cover4);
+            
+            if(settingWorld.getChefNumMama() == 1)
+            {
+                addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
+            }
+        }
+    }
+    
+    public void changeLevel()
+    {
+        utils.addResturantLevelOne();
+        utils.addResturantLevelTwo();
     }
     
     public void spawnCustomer()

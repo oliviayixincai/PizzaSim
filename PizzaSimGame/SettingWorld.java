@@ -116,7 +116,7 @@ public class SettingWorld extends World
         }
 
         if (isMama) {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 2) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 3) {
                 this.chefNumMama++;
                 this.chefNumLabel.updateLabel(this.chefNumMama);
             }
@@ -150,7 +150,7 @@ public class SettingWorld extends World
             }
         }
         else {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 2) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 3) {
                 this.chefNumPapa++;
                 this.chefNumLabel.updateLabel(this.chefNumPapa);
             }

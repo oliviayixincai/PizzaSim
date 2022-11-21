@@ -98,7 +98,7 @@ public class MyWorld extends World
         }
         
         int rng = Greenfoot.getRandomNumber(120);
-        int customerSpawnX = Greenfoot.getRandomNumber(100) + 473;
+        int customerSpawnX = Greenfoot.getRandomNumber(80) + 470;
         
         if(rng == 0)
         {

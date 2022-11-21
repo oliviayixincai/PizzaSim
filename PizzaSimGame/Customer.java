@@ -41,6 +41,8 @@ public class Customer extends People
     
     private boolean checkedLocations = false;
     
+    private int enterDIR, exitDIR;
+    
     public Customer (int dir, int spawnX) {
         this.dir = dir;
         this.spawnX = spawnX;
@@ -57,9 +59,15 @@ public class Customer extends People
         imageRNG = Greenfoot.getRandomNumber(2);
         
         if (storeRNG == 0){
-            store = -1;
+            store = Utils.MAMA;
+            
+            enterDIR = LEFT;
+            exitDIR = RIGHT;
         } else {
-            store = 1;
+            store = Utils.PAPA;
+            
+            enterDIR = RIGHT;
+            exitDIR = LEFT;
         }
         
         if (imageRNG == 0){
@@ -136,12 +144,21 @@ public class Customer extends People
     public void act (){
         //set locations for cashiers and waitingline
         if(!checkedLocations){
-            cash1 = getWorld().getObjectsAt(Utils.cashier1X, Utils.counterY, CashierCounter.class).get(0);
-            cash2 = getWorld().getObjectsAt(Utils.cashier2X, Utils.counterY, CashierCounter.class).get(0);
+            if(store == Utils.MAMA){
+                cash1 = getWorld().getObjectsAt(Utils.cashier1X, Utils.counterY, CashierCounter.class).get(0);
+                cash2 = getWorld().getObjectsAt(Utils.cashier2X, Utils.counterY, CashierCounter.class).get(0);
         
-            wait1 = getWorld().getObjectsAt(Utils.wait1X, Utils.counterY, WaitingLine.class).get(0);
-            wait2 = getWorld().getObjectsAt(Utils.wait2X, Utils.counterY, WaitingLine.class).get(0);
-            wait3 = getWorld().getObjectsAt(Utils.wait3X, Utils.counterY, WaitingLine.class).get(0);
+                wait1 = getWorld().getObjectsAt(Utils.wait1X, Utils.counterY, WaitingLine.class).get(0);
+                wait2 = getWorld().getObjectsAt(Utils.wait2X, Utils.counterY, WaitingLine.class).get(0);
+                wait3 = getWorld().getObjectsAt(Utils.wait3X, Utils.counterY, WaitingLine.class).get(0);
+            } else {
+                cash1 = getWorld().getObjectsAt(Utils.cashier4X, Utils.counterY, CashierCounter.class).get(0);
+                cash2 = getWorld().getObjectsAt(Utils.cashier3X, Utils.counterY, CashierCounter.class).get(0);
+        
+                wait1 = getWorld().getObjectsAt(Utils.wait6X, Utils.counterY, WaitingLine.class).get(0);
+                wait2 = getWorld().getObjectsAt(Utils.wait5X, Utils.counterY, WaitingLine.class).get(0);
+                wait3 = getWorld().getObjectsAt(Utils.wait4X, Utils.counterY, WaitingLine.class).get(0);
+            }
             
             checkedLocations = true;
         }
@@ -156,7 +173,7 @@ public class Customer extends People
         //moves towards door if havent bought pizza yet, else walks away with pizza
         //also ignores doors if there are more than 5 customers
         if (!inStore) {
-            if (numberOfCustomers1 >= 5){
+            if ((numberOfCustomers1 >= 5 && store == Utils.MAMA) || (numberOfCustomers2 >= 5 && store == Utils.PAPA)){
                 setLocation(getX(), getY() + (Utils.moveSpeed * dir));
                 
                 if (dir == 1){
@@ -289,10 +306,10 @@ public class Customer extends People
         }
         
         //checks if they enter the door
-        if(getX() <= Utils.door1X && getY() == Utils.enterY){
+        if((getX() <= Utils.door1X || getX() >= Utils.door2X) && getY() == Utils.enterY){
             inStore = true;
             //customer counter for each store, static variable in persons class
-            if(store == -1){
+            if(store == Utils.MAMA){
                 addCustomer1();
             } else {
                 addCustomer2();
@@ -314,17 +331,17 @@ public class Customer extends People
     }
     
     public void moveToCashier (){
-        if (rotation == LEFT){
+        if (rotation == enterDIR){
             if (openCash == 1){
                 
-                if(getX() != Utils.cashier1X){
+                if(getX() != cash1.getX()){
                     setLocation(getX() + (Utils.moveSpeed * store), getY());
                 } else {
                     rotation = UP;
                 }
             } else if (openCash == 2){
                 
-                if(getX() != Utils.cashier2X){
+                if(getX() != cash2.getX()){
                     setLocation(getX() + (Utils.moveSpeed * store), getY());
                 } else {
                     rotation = UP;
@@ -337,8 +354,14 @@ public class Customer extends People
                 setLocation(getX(), getY() - 1);
             } else {
                 cashier = (Cashier) getOneObjectAtOffset(0, Utils.cashierY - Utils.counterY, Cashier.class);
-                chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
-                chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
+                
+                if (store == -1){
+                    chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
+                    chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).isEmpty();
+                } else {
+                    chef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).isEmpty();
+                    chef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
+                }
                 
                 waiting = true;
                 
@@ -350,7 +373,7 @@ public class Customer extends People
     public void order (Cashier cashier, boolean chef1, boolean chef2){
         //only orders if there is a cashier infront of them and a chef at the table
         if ((cashier != null && cashier.atStart()) && (!chef1 || !chef2)){
-            getWorld().addObject(new Order(sauce, cheese, toppings, this), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+            getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
             
             /**MONEY INTERFACE
              * getWorld().addObject(new MoneyInterface(costOfPizza), x, y);
@@ -375,10 +398,10 @@ public class Customer extends People
     
     public void lineUp(){
         if (rotation == UP){
-            if (getX() == Utils.cashier1X) {
+            if (getX() == cash1.getX()) {
                 rotation = DOWN;
                 cash1.reserve(false);
-            } else if (getX() == Utils.cashier2X){
+            } else if (getX() == cash2.getX()){
                 rotation = DOWN;
                 cash2.reserve(false);
             } else {
@@ -395,25 +418,25 @@ public class Customer extends People
             setLocation(getX(), getY() + 1);
             
             if (getY() == Utils.enterY){
-                rotation = LEFT;
+                rotation = enterDIR;
             }
         }
         
-        if (rotation == LEFT){
+        if (rotation == enterDIR){
             if (openWait == 1){
-                if(getX() != Utils.wait1X){
+                if(getX() != wait1.getX()){
                     setLocation(getX() + (Utils.moveSpeed * store), getY());
                 } else {
                     rotation = UP;
                 }
             } else if (openWait == 2){
-                if(getX() != Utils.wait2X){
+                if(getX() != wait2.getX()){
                     setLocation(getX() + (Utils.moveSpeed * store), getY());
                 } else {
                     rotation = UP;
                 }
             } else if (openWait == 3){
-                if(getX() != Utils.wait3X){
+                if(getX() != wait3.getX()){
                     setLocation(getX() + (Utils.moveSpeed * store), getY());
                 } else {
                     rotation = UP;
@@ -424,17 +447,17 @@ public class Customer extends People
     
     public void pizzaPickup() {
         //checks all 3 possible locations of pizza, based on current location
-        if (getX() == Utils.wait1X){
+        if (getX() == wait1.getX()){
             pizza1 = (Pizza) getOneObjectAtOffset(0, Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-            pizza2 = (Pizza) getOneObjectAtOffset(Utils.wait2X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-            pizza3 = (Pizza) getOneObjectAtOffset(Utils.wait3X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-        } else if (getX() == Utils.wait2X){
-            pizza1 = (Pizza) getOneObjectAtOffset(Utils.wait1X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+            pizza2 = (Pizza) getOneObjectAtOffset(wait2.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+            pizza3 = (Pizza) getOneObjectAtOffset(wait3.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+        } else if (getX() == wait2.getX()){
+            pizza1 = (Pizza) getOneObjectAtOffset(wait1.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
             pizza2 = (Pizza) getOneObjectAtOffset(0, Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-            pizza3 = (Pizza) getOneObjectAtOffset(Utils.wait3X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-        } else if (getX() == Utils.wait3X){
-            pizza1 = (Pizza) getOneObjectAtOffset(Utils.wait1X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
-            pizza2 = (Pizza) getOneObjectAtOffset(Utils.wait2X - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+            pizza3 = (Pizza) getOneObjectAtOffset(wait3.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+        } else if (getX() == wait3.getX()){
+            pizza1 = (Pizza) getOneObjectAtOffset(wait1.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
+            pizza2 = (Pizza) getOneObjectAtOffset(wait2.getX() - getX(), Utils.pizzaFinalY - Utils.counterY, Pizza.class);
             pizza3 = (Pizza) getOneObjectAtOffset(0, Utils.pizzaFinalY - Utils.counterY, Pizza.class);
         }
         
@@ -463,9 +486,9 @@ public class Customer extends People
         if (rotation == UP){
             rotation = DOWN;
             
-            if (getX() == Utils.wait1X){
+            if (getX() == wait1.getX()){
                 wait1.reserve(false);
-            } else if (getX() == Utils.wait2X){
+            } else if (getX() == wait2.getX()){
                 wait2.reserve(false);
             } else {
                 wait3.reserve(false);
@@ -479,21 +502,21 @@ public class Customer extends People
             if (getY() != Utils.exitY){
                 setLocation(getX(), getY() + 1);
             } else {
-                rotation = RIGHT;
+                rotation = exitDIR;
             }
         }
         
-        if (rotation == RIGHT){
-            if (getX() != Utils.door1X){
-                setLocation(getX() + 1, getY());
+        if (rotation == exitDIR){
+            if (getX() != Utils.door1X || getX() != Utils.door2X){
+                setLocation(getX() + (Utils.moveSpeed * store * -1), getY());
             }
         }
         
-        if (getX() == Utils.door1X && getY() == Utils.exitY){
+        if ((getX() == Utils.door1X || getX() == Utils.door2X) && getY() == Utils.exitY){
             inStore = false;
             
             //removes a customer from the counter
-            if(store == -1){
+            if(store == Utils.MAMA){
                 removeCustomer1();
             } else {
                 removeCustomer2();

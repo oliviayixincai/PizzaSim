@@ -23,8 +23,10 @@ public class Order extends Actor
     private static KitchenCounter kitchen1, kitchen2;
     
     private Customer c;
+    private int store; 
     
-    public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer){
+    public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer, int store){
+        this.store = store;
         toppings = toppingTypes;
         sauce = sauceType;
         dough = new GreenfootImage("pizzaBase.png");
@@ -55,15 +57,21 @@ public class Order extends Actor
     }
     public void makePizza()
     {
-        kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
-        kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+        if (store == Utils.MAMA){
+            kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+            kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+        } else {
+            kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+            kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+        }
+        
         if(kitchen1.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
+            getWorld().addObject(new Pizza(toppings, sauce), kitchen1.getX(), kitchen1.getY());
         }
         else if(kitchen2.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
+            getWorld().addObject(new Pizza(toppings, sauce), kitchen2.getX(), kitchen2.getY());
         }
         
     }

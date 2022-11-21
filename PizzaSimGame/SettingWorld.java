@@ -183,6 +183,8 @@ public class SettingWorld extends World
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }
         }
+        
+        Greenfoot.setWorld(new MyWorld(this));
     }
     
     public void started() {

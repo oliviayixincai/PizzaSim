@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=MoneyDisplayer
+comment0.text=\n\ Write\ a\ description\ of\ class\ Money_displayer\ here.\n\ \n\ @author\ Yuxin\ Li(your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=value
+comment1.target=MoneyDisplayer(int)
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=newValue
+comment3.target=void\ setDisplayer(int)
+comment4.params=
+comment4.target=void\ updateImage()
+comment5.params=
+comment5.target=int\ getMoney()
+numComments=6

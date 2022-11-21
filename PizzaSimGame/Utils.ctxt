@@ -1,4 +1,12 @@
 #BlueJ class context
 comment0.target=Utils
 comment0.text=\n\ Class\ used\ for\ editing\ and\ containing\ global\ static\ variables\ such\ as\ money\ of\ resturants\ and\ speed\ of\ characters.\n\ \n\ @author\ Anson\ Ho\n\ @version\ V1.0\n
-numComments=1
+comment1.params=money
+comment1.target=void\ resturantMoneyOneAdd(int)
+comment2.params=money
+comment2.target=void\ resturantMoneyTwoAdd(int)
+comment3.params=
+comment3.target=int\ getResturantMoneyOne()
+comment4.params=
+comment4.target=int\ getResturantMoneyTwo()
+numComments=5

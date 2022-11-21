@@ -195,7 +195,7 @@ public class Customer extends People
                         rotation = UP;
                     }
                 } else {
-                    setLocation(getX() + Utils.moveSpeed, getY());
+                    setLocation(getX() + (Utils.moveSpeed * store * -1), getY());
                 }
             } else {    
                 moveToDoor();

@@ -18,7 +18,6 @@ public class Chef extends People
     private Oven oven1, oven2, oven3;
     
     private SimpleTimer timer = new SimpleTimer();
-    private SimpleTimer animationTimer = new SimpleTimer();
     
     GreenfootImage walkUp[] = new GreenfootImage[9];
     GreenfootImage walkDown[] = new GreenfootImage[9];
@@ -77,7 +76,11 @@ public class Chef extends People
     
     public void act()
     {
-        animate();
+        //if (!moving){
+            //standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+        //} else {
+            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
+        //}
         
         if(pizzaria == -1 && !checkedOvenLocation)
         {
@@ -103,36 +106,6 @@ public class Chef extends People
         {
             currentlyMovingPizza = true;
             moveToOven();
-        }
-    }
-    
-    public void animate()
-    {
-        if(animationTimer.millisElapsed() < 100)
-        {
-            return;
-        }
-        animationTimer.mark();
-        //Changes actor's image depending on conditions to create animation
-        if(rotationIndex == 0)
-        {
-            setImage(walkUp[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkUp.length;
-        }
-        if(rotationIndex == 90 || rotationIndex == -270)
-        {
-            setImage(walkRight[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkRight.length;
-        }
-        if(rotationIndex == 180 || rotationIndex == -180)
-        {
-            setImage(walkDown[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkDown.length;
-        }
-        if(rotationIndex == 270 || rotationIndex == -90) 
-        {
-            setImage(walkLeft[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkLeft.length;
         }
     }
 
@@ -300,7 +273,7 @@ public class Chef extends People
         }
         if(rotationIndex == 270 || rotationIndex == -90)
         {
-            setImage(walkLeft[0]);
+           setImage(walkLeft[0]);
         }
     }
     

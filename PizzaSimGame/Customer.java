@@ -89,15 +89,6 @@ public class Customer extends People
         } else {
             gender = "girl";
         }
-        //sets stationary images and scales them up
-        upIMG = new GreenfootImage(gender + "_U.png");
-        upIMG.scale((int)(upIMG.getWidth() * 1.5), (int)(upIMG.getHeight() * 1.5));
-        downIMG = new GreenfootImage(gender + "_D.png");
-        downIMG.scale((int)(downIMG.getWidth() * 1.5), (int)(downIMG.getHeight() * 1.5));
-        leftIMG = new GreenfootImage(gender + "_L.png");
-        leftIMG.scale((int)(leftIMG.getWidth() * 1.5), (int)(leftIMG.getHeight() * 1.5));
-        rightIMG = new GreenfootImage(gender + "_R.png");
-        rightIMG.scale((int)(rightIMG.getWidth() * 1.5), (int)(rightIMG.getHeight() * 1.5));
         
         //sets animation images and scales them up
         for(int i = 0; i < 9; i++){
@@ -181,9 +172,9 @@ public class Customer extends People
         
         //does not animate if customer is standing still
         if(waiting){
-            stationary();
+            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotation);
         } else {
-            animation();
+            animate(walkUp, walkDown, walkLeft, walkRight, rotation);
         }
         
         //moves towards door if havent bought pizza yet, else walks away with pizza
@@ -234,67 +225,7 @@ public class Customer extends People
         //removes actor when at edge
         atEdge();
     }
-    
-    //stationary images based on rotation
-    public void stationary(){
-        switch (rotation){
-            case UP:
-                setImage(upIMG);
-                break;
-            case DOWN:
-                setImage(downIMG);
-                break;
-            case LEFT:
-                setImage(leftIMG);
-                break;
-            case RIGHT:
-                setImage(rightIMG);
-                break;
-        }
-    }
-    
-    //animations based on rotation
-    public void animation(){
-        if(imageIndex == 6){
-            imageIndex = 0;
-        }
         
-        switch (rotation){
-            case UP:
-                if (animTimer.millisElapsed() > 100){
-                    setImage(walkUp[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
-                }
-                break;
-            case DOWN:
-                if (animTimer.millisElapsed() > 100){
-                    setImage(walkDown[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
-                }
-                break;
-            case LEFT:
-                if (animTimer.millisElapsed() > 100){
-                    setImage(walkLeft[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
-                }
-                break;
-            case RIGHT:
-                if (animTimer.millisElapsed() > 100){
-                    setImage(walkRight[imageIndex]);
-                    imageIndex++;
-                    
-                    animTimer.mark();
-                }
-                break;
-        }
-    }
-    
     public int getRotation(){
         return rotation;
     }

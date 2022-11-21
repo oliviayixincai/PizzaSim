@@ -31,6 +31,7 @@ public class Cashier extends People
     
     //andy code
     private int startX, startY;
+    private boolean atCashier = true;
     
     public Cashier (int counterXCoord, int counterYCoord, int scaleX, int scaleY, int pizzaria)
     {
@@ -70,7 +71,12 @@ public class Cashier extends People
     
     public void act()
     {
-        animate();
+        if (atCashier){
+            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+        } else {
+            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
+        }
+        
         if(pizzaria == -1 && !checkedOvenLocation)
         {
             oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
@@ -103,35 +109,11 @@ public class Cashier extends People
         
         //moveToCounter(330, 460);
         //moveToCashierCounter(530, 460);
-    }
-    
-    public void animate()
-    {
-        if(animationTimer.millisElapsed() < 100)
-        {
-            return;
-        }
-        animationTimer.mark();
-        //Changes actor's image depending on conditions to create animation
-        if(rotationIndex == 0)
-        {
-            setImage(walkUp[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkUp.length;
-        }
-        if(rotationIndex == 90 || rotationIndex == -270)
-        {
-            setImage(walkRight[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkRight.length;
-        }
-        if(rotationIndex == 180 || rotationIndex == -180)
-        {
-            setImage(walkDown[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkDown.length;
-        }
-        if(rotationIndex == 270 || rotationIndex == -90) 
-        {
-            setImage(walkLeft[imageIndex]);
-            imageIndex = (imageIndex + 1) % walkLeft.length;
+        
+        if (getX() == counterXCoord && getY() == counterYCoord){
+            atCashier = true;
+        } else {
+            atCashier = false;
         }
     }
 

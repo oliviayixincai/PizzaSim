@@ -12,6 +12,9 @@ public class People extends Actor
     private double exactY;
     private double rotation;
     private boolean staticRotation = false;
+    private int imageIndex = 0;
+    
+    private SimpleTimer animTimer = new SimpleTimer();
     /**
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,6 +27,74 @@ public class People extends Actor
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
+        correctNegRotation(rotation);
+        
+        if(imageIndex == 9){
+            imageIndex = 0;
+        }
+        
+        if (animTimer.millisElapsed() > 100){
+            switch (rotation){
+                case UP:
+                    setImage(up[imageIndex]);
+                    imageIndex++;
+                    
+                    animTimer.mark();
+                    break;
+                case DOWN:
+                    setImage(down[imageIndex]);
+                    imageIndex++;
+                    
+                    animTimer.mark();
+                    break;
+                case LEFT:
+                    setImage(left[imageIndex]);
+                    imageIndex++;
+                    
+                    animTimer.mark();
+                    break;
+                case RIGHT:
+                    setImage(right[imageIndex]);
+                    imageIndex++;
+                    
+                    animTimer.mark();
+                    break;
+            }
+        }
+    }
+    
+    public void standStill(GreenfootImage up, GreenfootImage down, GreenfootImage left, GreenfootImage right, int rotation){
+        correctNegRotation(rotation);
+        
+        switch (rotation){
+            case UP:
+                setImage(up);
+                break;
+            case DOWN:
+                setImage(down);
+                break;
+            case LEFT:
+                setImage(left);
+                break;
+            case RIGHT:
+                setImage(right);
+                break;
+        }
+    }
+    
+    public void correctNegRotation(int rotation){
+        if (rotation < 0){
+            if (rotation == -270){
+                rotation = RIGHT;
+            } else if (rotation == -180){
+                rotation = DOWN;
+            } else if (rotation == -90){
+                rotation = LEFT;
+            }
+        }
     }
     
     public void addCustomer1(){

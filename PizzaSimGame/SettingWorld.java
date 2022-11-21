@@ -116,7 +116,7 @@ public class SettingWorld extends World
         }
 
         if (isMama) {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 10) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumMama < 2) {
                 this.chefNumMama++;
                 this.chefNumLabel.updateLabel(this.chefNumMama);
             }
@@ -124,7 +124,7 @@ public class SettingWorld extends World
                 this.chefNumMama--;
                 this.chefNumLabel.updateLabel(this.chefNumMama);
             }
-            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumMama < 10) {
+            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumMama < 2) {
                 this.cashierNumMama++;
                 this.cashierNumLabel.updateLabel(this.cashierNumMama);
             }
@@ -132,25 +132,25 @@ public class SettingWorld extends World
                 this.cashierNumMama--;
                 this.cashierNumLabel.updateLabel(this.cashierNumMama);
             }
-            if (Greenfoot.mouseClicked(moneyPlus) && moneyNumMama < 1000) {
+            if (Greenfoot.mouseClicked(moneyPlus) && moneyNumMama < 250) {
                 this.moneyNumMama += 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumMama);
             }
-            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumMama > 10) {
+            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumMama > 0) {
                 this.moneyNumMama -= 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumMama);
             }
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 100) {
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 25) {
                 this.robberStealMama += 5;
                 this.robberStealLabel.updateLabel(this.robberStealMama);
             }
-            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealMama > 5) {
+            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealMama > 10) {
                 this.robberStealMama -= 5;
                 this.robberStealLabel.updateLabel(this.robberStealMama);
             }
         }
         else {
-            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 10) {
+            if (Greenfoot.mouseClicked(chefPlus) && this.chefNumPapa < 2) {
                 this.chefNumPapa++;
                 this.chefNumLabel.updateLabel(this.chefNumPapa);
             }
@@ -158,7 +158,7 @@ public class SettingWorld extends World
                 this.chefNumPapa--;
                 this.chefNumLabel.updateLabel(this.chefNumPapa);
             }
-            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumPapa < 10) {
+            if (Greenfoot.mouseClicked(cashierPlus) && this.cashierNumPapa < 2) {
                 this.cashierNumPapa++;
                 this.cashierNumLabel.updateLabel(this.cashierNumPapa);
             }
@@ -166,25 +166,23 @@ public class SettingWorld extends World
                 this.cashierNumPapa--;
                 this.cashierNumLabel.updateLabel(this.cashierNumPapa);
             }
-            if (Greenfoot.mouseClicked(moneyPlus) && this.moneyNumPapa < 1000) {
+            if (Greenfoot.mouseClicked(moneyPlus) && this.moneyNumPapa < 250) {
                 this.moneyNumPapa += 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumPapa);
             }
-            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumPapa > 10) {
+            if (Greenfoot.mouseClicked(moneyMinus) && this.moneyNumPapa > 0) {
                 this.moneyNumPapa -= 10;
                 this.moneyNumLabel.updateLabel(this.moneyNumPapa);
             }
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 100) {
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 25) {
                 this.robberStealPapa += 5;
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }
-            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealPapa > 5) {
+            if (Greenfoot.mouseClicked(robberStealMinus) && this.robberStealPapa > 10) {
                 this.robberStealPapa -= 5;
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }
         }
-        
-        Greenfoot.setWorld(new MyWorld(this));
     }
     
     public void started() {

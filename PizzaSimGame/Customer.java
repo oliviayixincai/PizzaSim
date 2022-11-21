@@ -47,7 +47,9 @@ public class Customer extends People
     
     private int enterDIR, exitDIR;
     
-    public Customer (int dir, int spawnX) {
+    private boolean isCash2Open = false;
+    
+    public Customer (int dir, int spawnX, boolean mamaCash2, boolean papaCash2) {
         this.dir = dir;
         this.spawnX = spawnX;
         
@@ -67,11 +69,19 @@ public class Customer extends People
             
             enterDIR = LEFT;
             exitDIR = RIGHT;
+            
+            if(mamaCash2){
+                isCash2Open = true;
+            }
         } else {
             store = Utils.PAPA;
             
             enterDIR = RIGHT;
             exitDIR = LEFT;
+            
+            if(papaCash2){
+                isCash2Open = true;
+            }
         }
         
         if (imageRNG == 0){
@@ -143,6 +153,8 @@ public class Customer extends People
             sauce = "bbq";
             costOfPizza += 2;
         }
+        
+        
     }
     
     public void act (){
@@ -327,7 +339,7 @@ public class Customer extends People
             if (cash1.checkIfEmpty() && !cash1.isReserved()){
                 openCash = 1;
                 cash1.reserve(true);
-            } else if (cash2.checkIfEmpty() && !cash2.isReserved()){
+            } else if (cash2.checkIfEmpty() && !cash2.isReserved() && isCash2Open){
                 openCash = 2;
                 cash2.reserve(true);
             } else {

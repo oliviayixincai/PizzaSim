@@ -338,4 +338,8 @@ public class Chef extends People
         }
         pizza.setLocation(pizzaXCoord, pizzaYCoord);
     }
+    
+    public boolean getCurrentlyMoving(){
+        return currentlyMovingPizza;
+    }
 }

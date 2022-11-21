@@ -236,7 +236,7 @@ public class Pizza extends Actor
     }
     
     public void atEdge(){
-        if(getY() == 81 || getY() == 799){
+        if(getY() <= 81 || getY() >= 799){
             getWorld().removeObject(this);
         }
     }

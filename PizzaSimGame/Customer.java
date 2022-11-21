@@ -17,11 +17,13 @@ public class Customer extends People
     private String sauce, topping;
     private int costOfPizza = 5;
     
-    private int openCash, openWait;
+    private int openCash = -1, openWait = -1;
     
     private CashierCounter cash1, cash2;
     private WaitingLine wait1, wait2, wait3;
-    private boolean chef1, chef2;
+    private KitchenCounter kitchenCounter1, kitchenCounter2;
+    private Chef chef1, chef2;
+    private boolean isChef1, isChef2;
     private Cashier cashier;
     private Pizza pizza1, pizza2, pizza3;
     
@@ -38,6 +40,8 @@ public class Customer extends People
     
     private SimpleTimer animTimer = new SimpleTimer();
     private SimpleTimer waitTimer = new SimpleTimer();
+    
+    private boolean hasEmotionBar = false;
     
     private boolean checkedLocations = false;
     
@@ -313,24 +317,24 @@ public class Customer extends People
                 addCustomer1();
             } else {
                 addCustomer2();
-            }
-            
-            //starts a happiness meter
-            waitTimer.mark();
-            getWorld().addObject(new WaittingBar(this), getX(), getY() + 10);
-            
-            //reserves a cashier
+            }            
+        }
+    }
+    
+    public void moveToCashier (){
+        //reserves an open cash
+        if(openCash == -1){
             if (cash1.checkIfEmpty() && !cash1.isReserved()){
                 openCash = 1;
                 cash1.reserve(true);
             } else if (cash2.checkIfEmpty() && !cash2.isReserved()){
                 openCash = 2;
                 cash2.reserve(true);
+            } else {
+                openCash = -1;
             }
         }
-    }
-    
-    public void moveToCashier (){
+        
         if (rotation == enterDIR){
             if (openCash == 1){
                 
@@ -356,33 +360,73 @@ public class Customer extends People
                 cashier = (Cashier) getOneObjectAtOffset(0, Utils.cashierY - Utils.counterY, Cashier.class);
                 
                 if (store == -1){
-                    chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
-                    chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).isEmpty();
+                    kitchenCounter1 = getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+                    kitchenCounter2 = getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+                    
+                    isChef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
+                    isChef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).isEmpty();
+                    
+                    if(!isChef1){
+                        chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).get(0);
+                    }
+                    if(!isChef2){
+                        chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).get(0);
+                    }
                 } else {
-                    chef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).isEmpty();
-                    chef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
+                    kitchenCounter1 = getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
+                    kitchenCounter2 = getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+                    
+                    isChef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).isEmpty();
+                    isChef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
+                    
+                    if(!isChef1){
+                        chef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).get(0);
+                    }
+                    if(!isChef2){
+                        chef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).get(0);
+                    }
                 }
                 
                 waiting = true;
                 
-                order(cashier, chef1, chef2);
+                //starts a happiness meter
+                
+                if (!hasEmotionBar){
+                    waitTimer.mark();
+                    getWorld().addObject(new WaittingBar(this), getX(), getY() + 10);
+                    hasEmotionBar = true;
+                }
+                
+                //only orders if there is a cashier infront of them, a chef at the table, and the chef isn't making a pizza
+                if ((cashier != null && cashier.atStart())){
+                    if(!isChef1 && kitchenCounter1.checkCanMakePizza()){
+                        if(!chef1.getCurrentlyMoving()){
+                            order();
+                        }
+                    } else if (!isChef2 && kitchenCounter2.checkCanMakePizza()){
+                        if(!chef2.getCurrentlyMoving()){
+                            order();
+                        }
+                    }
+                }
             }
         }
     }
     
-    public void order (Cashier cashier, boolean chef1, boolean chef2){
-        //only orders if there is a cashier infront of them and a chef at the table
-        if ((cashier != null && cashier.atStart()) && (!chef1 || !chef2)){
-            getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
+    public void order (){
+        getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
             
-            /**MONEY INTERFACE
-             * getWorld().addObject(new MoneyInterface(costOfPizza), x, y);
-            **/
+        /**MONEY INTERFACE
+        * getWorld().addObject(new MoneyInterface(costOfPizza), x, y);
+        **/
             
-            ordered = true;
-            waiting = false;
-            
-            //reserves a waiting line
+        ordered = true;
+        waiting = false;
+    }
+    
+    public void lineUp(){
+        //reserves a waiting spot
+        if(openWait == -1){
             if (wait1.checkIfEmpty() && !wait1.isReserved()){
                 openWait = 1;
                 wait1.reserve(true);
@@ -392,11 +436,11 @@ public class Customer extends People
             } else if (wait3.checkIfEmpty() && !wait3.isReserved()){
                 openWait = 3;
                 wait3.reserve(true);
+            } else {
+                openWait = -1;
             }
         }
-    }
-    
-    public void lineUp(){
+        
         if (rotation == UP){
             if (getX() == cash1.getX()) {
                 rotation = DOWN;

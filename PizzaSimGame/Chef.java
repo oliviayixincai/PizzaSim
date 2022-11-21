@@ -311,4 +311,8 @@ public class Chef extends People
             setImage(walkLeft[0]);
         }
     }
+    
+    public boolean getCurrentlyMoving(){
+        return currentlyMovingPizza;
+    }
 }

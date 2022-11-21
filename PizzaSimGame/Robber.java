@@ -25,7 +25,7 @@ public class Robber extends People
         // Add your action code here.
         moveToDoorAndMoney();
 
-        stealMoney();
+        //stealMoney();
     }
 
     public void moveToDoorAndMoney()
@@ -44,7 +44,7 @@ public class Robber extends People
             move3();
         }
     }
-
+    /*
     public void stealMoney()
     {
         if(resturant ==1)
@@ -66,6 +66,7 @@ public class Robber extends People
             }
         }
     }
+    */
     public void checkLocation()
     {
         if(getX()==500&&getY()==100)

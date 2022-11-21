@@ -23,9 +23,10 @@ public class Pizza extends Actor
     private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false;
     private boolean cooked = false;
     private Cashier cashier;
+    private Customer customer;
     private int chef_Xoffset = 50, chef_Yoffset = 0;
     private boolean inOven;
-    
+    private int cookTime;
     private SimpleTimer timer = new SimpleTimer();
 
     
@@ -40,17 +41,17 @@ public class Pizza extends Actor
         new GreenfootImage("dough5.png"),
     };
     */
-
+    private static GreenfootImage crust=new GreenfootImage("cooked.png");
     private int imageIndex = 0, toppingIndex = 0;
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
+    private boolean atCashierCounter = false;
     
     private double exactX;
     private double exactY;
     
     // andy code
     private boolean customerPickedUp = false;
-    private Customer customer;
     
     /**
      * initialize a pizza that correspond to a customer's order after 
@@ -59,6 +60,7 @@ public class Pizza extends Actor
     public Pizza(String[] strings, String sauce){
         toppings = strings;
         this.sauce = sauce;
+        atCashierCounter = false;
     }
     
     public void act()
@@ -154,7 +156,8 @@ public class Pizza extends Actor
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
-        return 300;
+        cookTime=60*(strings.length+2);
+        return cookTime;
     }
     /**
      * if the pizza is cooked and a cashier comes, return has cashier
@@ -172,7 +175,12 @@ public class Pizza extends Actor
         return hasCashier;
     }
     
+    public boolean isInOven(){
+        return inOven;
+    }
+    
     public void goInOven(){
+        getWorld().addObject(new Clock(cookTime, this), getX(), getY());
         inOven = true;
     }
     
@@ -202,7 +210,12 @@ public class Pizza extends Actor
     public boolean isCooked(){
         return cooked;
     }
-    
+    public void setAtCashierCounter(){
+        atCashierCounter=true;
+    }
+    public boolean isAtCashierCounter(){
+        return atCashierCounter;
+    }
     public void burnPizza(){
         //add a dark layer on the pizza
         //drawImage
@@ -211,6 +224,8 @@ public class Pizza extends Actor
     
     public void cookPizza(){
         //add a golden crust layer on pizza
+        crust.setTransparency(80);
+        getImage().drawImage(crust,0,0);
         cooked=true;
     }
     

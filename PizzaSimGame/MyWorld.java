@@ -16,7 +16,7 @@ public class MyWorld extends World
     //variables for spawning customers
     private int dir, startingY, dirRNG;
     private ArrayList<GreenfootSound> pausedSounds;
-
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -27,34 +27,54 @@ public class MyWorld extends World
         super(1024, 800, 1);
         this.settingWorld = settingWorld;
         isSimOver = false;
-        //adds oven objects
+        pausedSounds = new ArrayList<GreenfootSound>();
+        //adds oven objects left
         addObject(new Oven(), Utils.oven1X, Utils.ovenY);
         addObject(new Oven(), Utils.oven2X, Utils.ovenY);
         addObject(new Oven(), Utils.oven3X, Utils.ovenY);
-        //adds chef objects
-        addObject(new Chef(Utils.chefX, Utils.chef1Y, 100, 100), Utils.chefX, Utils.chef1Y);
-        addObject(new Chef(Utils.chefX, Utils.chef2Y, 100, 100), Utils.chefX, Utils.chef2Y);
-        //adds cashier objects
-        addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100), Utils.cashier1X, 460);
-        addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100), Utils.cashier2X, 460);
-        //adds kitchen counters
-        addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY1);
-        addObject(new KitchenCounter(), Utils.kitchenCounterX, Utils.kitchenCounterY2);
-        
+        //adds oven objects right
+        addObject(new Oven(), Utils.oven4X, Utils.ovenY);
+        addObject(new Oven(), Utils.oven5X, Utils.ovenY);
+        addObject(new Oven(), Utils.oven6X, Utils.ovenY);
+        //adds chef objects left
+        addObject(new Chef(Utils.chefXLeft, Utils.chef1Y, 100, 100, -1), Utils.chefXLeft, Utils.chef1Y);
+        addObject(new Chef(Utils.chefXLeft, Utils.chef2Y, 100, 100, -1), Utils.chefXLeft, Utils.chef2Y);
+        //adds chef objects right
+        addObject(new Chef(Utils.chefXRight, Utils.chef1Y, 100, 100, 1), Utils.chefXRight, Utils.chef1Y);
+        addObject(new Chef(Utils.chefXRight, Utils.chef2Y, 100, 100, 1), Utils.chefXRight, Utils.chef2Y);
+        //adds cashier objects left
+        addObject(new Cashier(Utils.cashier1X, Utils.cashierY, 100, 100, -1), Utils.cashier1X, 460);
+        addObject(new Cashier(Utils.cashier2X, Utils.cashierY, 100, 100, -1), Utils.cashier2X, 460);
+        //adds cashier objects right
+        addObject(new Cashier(Utils.cashier3X, Utils.cashierY, 100, 100, 1), Utils.cashier3X, 460);
+        addObject(new Cashier(Utils.cashier4X, Utils.cashierY, 100, 100, 1), Utils.cashier4X, 460);
+        //adds kitchen counters left
+        addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY1);
+        addObject(new KitchenCounter(), Utils.kitchenCounterXLeft, Utils.kitchenCounterY2);
+        //adds kitchen counters right
+        addObject(new KitchenCounter(), Utils.kitchenCounterXRight, Utils.kitchenCounterY1);
+        addObject(new KitchenCounter(), Utils.kitchenCounterXRight, Utils.kitchenCounterY2);
+        //adds doors left
         addObject(new Door(), Utils.door1X, Utils.enterY);
         addObject(new Door(), Utils.door1X, Utils.exitY);
-
+        //adds doors right
         addObject(new Door(), Utils.door2X, Utils.enterY);
         addObject(new Door(), Utils.door2X, Utils.exitY);
-
+        //adds cashier counters left
         addObject(new CashierCounter(), Utils.cashier1X, Utils.counterY);
         addObject(new CashierCounter(), Utils.cashier2X, Utils.counterY);
-
+        //adds cashier counters right
+        addObject(new CashierCounter(), Utils.cashier3X, Utils.counterY);
+        addObject(new CashierCounter(), Utils.cashier4X, Utils.counterY);
+        //adds waiting locations left
         addObject(new WaitingLine(), Utils.wait1X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait2X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait3X, Utils.counterY);
+        //adds waiting locations right
+        addObject(new WaitingLine(), Utils.wait4X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait5X, Utils.counterY);
+        addObject(new WaitingLine(), Utils.wait6X, Utils.counterY);
         
-        //addObject(new Pizza(
         
     }
     
@@ -103,15 +123,14 @@ public class MyWorld extends World
     
     public void stopped() {
         // stop all sounds
-        //pausedSounds.clear();
+        pausedSounds.clear();
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
             int index = sound.getSoundNumber();
-            if (sound.isSoundPlaying(index)){
+            if (sound.isSoundPlaying(index)) {
                 sound.pauseSound(index);
                 pausedSounds.add(sound.getSound(index));
             }
-            
         }
         // stop background sound
         BackgroundSound.getInstance().pauseSound();
@@ -121,8 +140,9 @@ public class MyWorld extends World
         // play all sounds
         ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
         for (ISoundCentre sound : sounds) {
-            
-            sound.playSound(sound.getSoundNumber());
+            if (pausedSounds.contains(sound)) {
+                sound.playSound(sound.getSoundNumber());
+            }
         }
         // play background sound in loop
         BackgroundSound.getInstance().playSound();

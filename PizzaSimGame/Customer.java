@@ -41,8 +41,6 @@ public class Customer extends People
     
     private boolean checkedLocations = false;
     
-    private int enterDIR, exitDIR;
-    
     public Customer (int dir, int spawnX) {
         this.dir = dir;
         this.spawnX = spawnX;
@@ -60,12 +58,8 @@ public class Customer extends People
         
         if (storeRNG == 0){
             store = -1;
-            enterDIR = LEFT;
-            exitDIR = RIGHT;
         } else {
             store = 1;
-            enterDIR = RIGHT;
-            exitDIR = LEFT;
         }
         
         if (imageRNG == 0){
@@ -343,8 +337,8 @@ public class Customer extends People
                 setLocation(getX(), getY() - 1);
             } else {
                 cashier = (Cashier) getOneObjectAtOffset(0, Utils.cashierY - Utils.counterY, Cashier.class);
-                chef1 = getWorld().getObjectsAt(Utils.chefX, Utils.chef1Y, Chef.class).isEmpty();
-                chef2 = getWorld().getObjectsAt(Utils.chefX, Utils.chef1Y, Chef.class).isEmpty();
+                chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
+                chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
                 
                 waiting = true;
                 

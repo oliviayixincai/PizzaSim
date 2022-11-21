@@ -1,10 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class clock here.
+ * Clock is a Greenfoot actor that shows the time rest for the pizza to be cooked.
+ * <p>Displays new a clock image after a certain time passes 
  * 
- * @author (Yuxin Li) 
- * @version (a version number or a date)
+ * @author Yuxin Li
+ * @version November 2022
+ * 
+ * clock sequence by Nendra Beluci from:
+ * <a href="https://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon Cloud Vectors by Vecteezy</a>
  */
 public class Clock extends Actor implements ISound
 {
@@ -37,6 +41,11 @@ public class Clock extends Actor implements ISound
     private int burnTime;
     private int burnAct;
     private int x, y;
+    /**
+     * Clock is a Greenfoot actor that shows the time rest for the pizza to be cooked. 
+     * @param time The amount of time required to cook a pizza
+     * @param pizza The pizza that is put into an oven
+     */
     public Clock(int time, Pizza pizza){
         this.time=time;
         imageIndex=0;
@@ -47,6 +56,9 @@ public class Clock extends Actor implements ISound
         sound = tikSound;
     }
     
+    /**
+     * When the clock is added to the World, start the counting down sound effect
+     */
     public void addedToWorld(World w) {
         tikSound.setVolume(Utils.volume);
         alarmSound.setVolume(Utils.volume);
@@ -55,6 +67,8 @@ public class Clock extends Actor implements ISound
     
     /**
      * countdown act
+     * set a new clock image after a certain time passes.
+     * After the pizza is cooked, start countdown the burn time.
      */
     public void act()
     {
@@ -72,7 +86,6 @@ public class Clock extends Actor implements ISound
             clockAlarm();
             if(burnTime==0){
                 pizza.burnPizza();
-                //smoke flowing
             }
         }
         else if(imageIndex<11&&timeIndex==0){
@@ -99,8 +112,10 @@ public class Clock extends Actor implements ISound
         }
         switchSound();
     }
-    // when the pizza is picked up by the cashier
-    // remove clock
+    /**
+     * when the pizza is picked up by the cashier and is no longer in oven 
+     * remove the clock and stop the alarm sound
+     */
     public void removeClock(){
         if(this.pizza.isInOven()==false){
             getWorld().removeObject(this);

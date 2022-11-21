@@ -118,10 +118,9 @@ public class MyWorld extends World
         pausedSounds.clear();
         ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
         for (ISound sound : sounds) {
-            int index = sound.getSoundNumber();
-            if (sound.isSoundPlaying(index)) {
-                sound.pauseSound(index);
-                pausedSounds.add(sound.getSound(index));
+            if (sound.isSoundPlaying()) {
+                sound.pauseSound();
+                pausedSounds.add(sound.getSound());
             }
         }
         // stop background sound
@@ -133,7 +132,7 @@ public class MyWorld extends World
         ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
         for (ISound sound : sounds) {
             if (pausedSounds.contains(sound)) {
-                sound.playSound(sound.getSoundNumber());
+                sound.playSound();
             }
         }
         // play background sound in loop

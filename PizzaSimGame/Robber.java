@@ -25,7 +25,7 @@ public class Robber extends People
         // Add your action code here.
         moveToDoorAndMoney();
 
-        stealMoney();
+        //stealMoney();
     }
 
     public void moveToDoorAndMoney()

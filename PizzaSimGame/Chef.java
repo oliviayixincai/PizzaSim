@@ -167,6 +167,7 @@ public class Chef extends People
                 assignedPizza.getImage().setTransparency(0);
                 assignedPizza.goInOven();
                 foundPizza = false;
+                interactCounter = 5;
             }
         }
     }
@@ -325,5 +326,9 @@ public class Chef extends People
     
     public boolean getCurrentlyMoving(){
         return currentlyMovingPizza;
+    }
+    
+    public boolean getMoving(){
+        return moving;
     }
 }

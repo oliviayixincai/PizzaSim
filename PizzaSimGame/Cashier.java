@@ -158,6 +158,7 @@ public class Cashier extends People
     {
         if(!foundPizza)
         {
+            interactCounter = 5;
             Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
             assignPizza(pizza);
             foundPizza = true;
@@ -187,6 +188,7 @@ public class Cashier extends People
         
         if(getPizza().getY() == Utils.pizzaFinalY)
         {
+            interactCounter = 5;
             currentlyMovingPizza = false;
             atCounter = true;
         }

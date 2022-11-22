@@ -361,15 +361,15 @@ public class Customer extends People
                 //only orders if there is a cashier infront of them, a chef at the table, and the chef isn't making a pizza
                 if ((cashier != null && cashier.atStart())){
                     if(!isChef1 && kitchenCounter1.checkCanMakePizza()){
-                        if(!chef1.getCurrentlyMoving()){
+                        if(!chef1.getMoving() && !chef1.getCurrentlyMoving()){
                             order();
                         }
                     } else if (!isChef2 && kitchenCounter2.checkCanMakePizza()){
-                        if(!chef2.getCurrentlyMoving()){
+                        if(!chef2.getMoving() && !chef2.getCurrentlyMoving()){
                             order();
                         }
                     } else if (!isChef3 && kitchenCounter3.checkCanMakePizza()){
-                        if(!chef3.getCurrentlyMoving()){
+                        if(!chef3.getMoving() && !chef3.getCurrentlyMoving()){
                             order();
                         }
                     }
@@ -469,18 +469,21 @@ public class Customer extends People
         //only picks up the one that matches the order
         if (pizza1 != null && pizza1.getY() == Utils.pizzaFinalY){
             if (pizza1.getToppings() == toppings && pizza1.getSauce() == sauce){
+                interactCounter = 5;
                 pizza1.setCPU(this);
                 pickedUp = true;
             }
         }
         if (pizza2 != null && pizza2.getY() == Utils.pizzaFinalY){
             if (pizza2.getToppings() == toppings && pizza2.getSauce() == sauce){
+                interactCounter = 5;
                 pizza2.setCPU(this);
                 pickedUp = true;
             }
         }
         if (pizza3 != null && pizza3.getY() == Utils.pizzaFinalY){
             if (pizza3.getToppings() == toppings && pizza3.getSauce() == sauce){
+                interactCounter = 5;
                 pizza3.setCPU(this);
                 pickedUp = true;
             }

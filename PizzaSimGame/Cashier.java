@@ -24,8 +24,10 @@ public class Cashier extends People
     GreenfootImage walkDown[] = new GreenfootImage[9];
     GreenfootImage walkRight[] = new GreenfootImage[9];
     GreenfootImage walkLeft[] = new GreenfootImage[9];
-    GreenfootImage leftInteract[] = new GreenfootImage[6];
     GreenfootImage rightInteract[] = new GreenfootImage[6];
+    GreenfootImage downInteract[] = new GreenfootImage[6];
+    
+    private Pizza assignedPizza;
     
     //andy code
     private int startX, startY;
@@ -53,13 +55,24 @@ public class Cashier extends People
             walkLeft[i].scale(scaleX, scaleY);
         }
         
+        for(int i = 0; i < rightInteract.length; i++)
+        {
+            rightInteract[i] = new GreenfootImage("images/Cashier Animation/interactUp" + i + ".png");
+            rightInteract[i].scale(scaleX, scaleY);
+            downInteract[i] = new GreenfootImage("images/Cashier Animation/interactDown" + i + ".png");
+            downInteract[i].scale(scaleX, scaleY);
+        }
+        
         setImage(walkDown[0]);
         startRotationIndex = rotationIndex;
     }
     
     public void act()
     {
-        if (atCashier){
+        if(interactCounter > 0){
+            interact(rightInteract, downInteract, rotationIndex);
+        } else {
+            if (atCashier){
             standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
         } else {
             animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
@@ -99,6 +112,7 @@ public class Cashier extends People
             atCashier = true;
         } else {
             atCashier = false;
+        }
         }
     }
 
@@ -145,35 +159,38 @@ public class Cashier extends People
     {
         if(!foundPizza)
         {
+            interactCounter = 5;
+            
             Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
             assignPizza(pizza);
             foundPizza = true;
         }
-        getPizza().getImage().setTransparency(255);
-        getPizza().isPickedUp();
+        assignedPizza.getImage().setTransparency(255);
+        assignedPizza.isPickedUp();
         atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != startRotationIndex && timer.millisElapsed() > 200)
         {
             timer.mark();
-            rotate(90, getPizza(), this);             
+            rotate(90, assignedPizza, this);             
         }
         //move y axis to cashier counter
         if(getY() != counterYCoord && rotationIndex == startRotationIndex)
         {
             setLocation(getX(), getY() + 1);
             pizzaYCoord += 1;   
-            getPizza().setLocation(pizzaXCoord, pizzaYCoord);
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);
         }
         
-        if(getPizza().getY() != Utils.pizzaFinalY && getY() == counterYCoord)
+        if(assignedPizza.getY() != Utils.pizzaFinalY && getY() == counterYCoord)
         {
             pizzaYCoord += 1;
-            getPizza().setLocation(pizzaXCoord, pizzaYCoord); 
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord); 
         }
         
-        if(getPizza().getY() == Utils.pizzaFinalY)
+        if(assignedPizza.getY() == Utils.pizzaFinalY)
         {
+            interactCounter = 5;
             currentlyMovingPizza = false;
             atCounter = true;
         }
@@ -221,6 +238,11 @@ public class Cashier extends People
             return true;
         }
         return false;
+    }
+    
+    public void assignPizza(Pizza pizza)
+    {
+        assignedPizza = pizza;
     }
     
     public void checkCookedOven()

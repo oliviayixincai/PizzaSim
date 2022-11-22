@@ -23,8 +23,8 @@ public class Chef extends People
     GreenfootImage walkDown[] = new GreenfootImage[9];
     GreenfootImage walkRight[] = new GreenfootImage[9];
     GreenfootImage walkLeft[] = new GreenfootImage[9];
+    GreenfootImage upInteract[] = new GreenfootImage[6];
     GreenfootImage leftInteract[] = new GreenfootImage[6];
-    GreenfootImage rightInteract[] = new GreenfootImage[6];
     
     private Pizza assignedPizza;
     
@@ -47,7 +47,15 @@ public class Chef extends People
             walkLeft[i] = new GreenfootImage("images/Chef Animation/walkLeft" + i + ".png");
             walkLeft[i].scale(scaleX, scaleY);
         }
-
+        
+        for(int i = 0; i < upInteract.length; i++)
+        {
+            upInteract[i] = new GreenfootImage("images/Chef Animation/interactUp" + i + ".png");
+            upInteract[i].scale(scaleX, scaleY);
+            leftInteract[i] = new GreenfootImage("images/Chef Animation/interactLeft" + i + ".png");
+            leftInteract[i].scale(scaleX, scaleY);
+        }
+        
         if(pizzaria == -1)
         {
             setImage(walkLeft[0]);
@@ -66,7 +74,10 @@ public class Chef extends People
     
     public void act()
     {   
-        if(getX() != counterXCoord || getY() != counterYCoord)
+        if (interactCounter > 0){
+            interact(upInteract, leftInteract, rotationIndex);
+        } else {
+            if(getX() != counterXCoord || getY() != counterYCoord)
         {
             moving = true;
         }
@@ -106,6 +117,8 @@ public class Chef extends People
         } else {
             animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
         }
+        }
+        
     }
 
     public void moveToOven()
@@ -123,7 +136,7 @@ public class Chef extends People
         }
         //rotate chef and pizza
         if(openOven != 4)
-        {
+        {   
             if(rotationIndex != startRotationIndex + (-180 * pizzaria) && timer.millisElapsed() > 200)
             {
                 timer.mark();
@@ -153,6 +166,7 @@ public class Chef extends People
             {
                 currentlyMovingPizza = false;
                 assignedPizza.getImage().setTransparency(0);
+                interactCounter = 5;
                 assignedPizza.goInOven();
                 foundPizza = false;
             }
@@ -313,5 +327,9 @@ public class Chef extends People
     
     public boolean getCurrentlyMoving(){
         return currentlyMovingPizza;
+    }
+    
+    public boolean getMoving(){
+        return moving;
     }
 }

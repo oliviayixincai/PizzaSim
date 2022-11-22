@@ -11,11 +11,13 @@ public abstract class People extends Actor
     private double exactX;
     private double exactY;
     private double rotation;
-    private boolean staticRotation = false, checkedOvenLocation;
+    private boolean staticRotation = false;
     private int imageIndex = 0;
+    private int interactIndex = 0;
     
     private SimpleTimer animTimer = new SimpleTimer();
-    private Pizza assignedPizza;
+    private SimpleTimer timer = new SimpleTimer();
+    protected int interactCounter = 0;
     
     /**
      * Act - do whatever the People wants to do. This method is called whenever
@@ -28,13 +30,13 @@ public abstract class People extends Actor
     
     public void act()
     {
-    
+        // Add your action code here.
     }
     
     public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
         rotation = correctNegRotation(rotation);
         
-        if(imageIndex == 9){
+        if(imageIndex >= up.length){
             imageIndex = 0;
         }
         
@@ -75,12 +77,6 @@ public abstract class People extends Actor
                 setImage(right);
                 break;
         }
-        
-    }
-    
-    public void assignPizza(Pizza pizza)
-    {
-        assignedPizza = pizza;
     }
     
     public int correctNegRotation(int rotation){
@@ -94,6 +90,50 @@ public abstract class People extends Actor
             }
         }
         return rotation;
+    }
+    
+    public void interact(GreenfootImage[] a, GreenfootImage[] b, int rotation){
+        rotation = correctNegRotation(rotation);
+        
+        if(interactIndex == a.length){
+            interactIndex = 0;
+        }
+        
+        if(interactCounter >= 0){
+            if (timer.millisElapsed() > 100){
+                switch (rotation){
+                    case UP:
+                        setImage(a[interactIndex]);
+                        break;
+                    case DOWN:
+                        setImage(b[interactIndex]);
+                        break;
+                    case LEFT:
+                        setImage(b[interactIndex]);
+                        break;
+                    case RIGHT:
+                        setImage(a[interactIndex]);
+                }
+                interactIndex++;
+                interactCounter--;
+                timer.mark();
+            }
+        }
+    }
+    
+    public void interact(GreenfootImage[] up){
+        if(interactIndex == up.length){
+            interactIndex  = 0;
+        }
+        
+        if(interactCounter >= 0){
+            if (timer.millisElapsed() > 100){
+                setImage(up[interactIndex]);
+                interactIndex++;
+                interactCounter--;
+                timer.mark();
+            }
+        }
     }
     
     public void addCustomer1(){
@@ -110,11 +150,6 @@ public abstract class People extends Actor
     
     public void removeCustomer2(){
         numberOfCustomers2--;
-    }
-    
-    public Pizza getPizza()
-    {
-        return assignedPizza;
     }
     
     /**

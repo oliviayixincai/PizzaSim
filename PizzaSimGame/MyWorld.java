@@ -126,8 +126,8 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait5X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait6X, Utils.counterY);
         //addObject
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 300, 30);
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 724, 30);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 335, 37);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 670, 37);
         
     }
     

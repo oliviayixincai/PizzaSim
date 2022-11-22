@@ -40,7 +40,7 @@ public class MoneyDisplayer extends Actor
     public void updateImage()
     {
         //display number for displayer
-        GreenfootImage displayer = new GreenfootImage("Current Income: $ "+ money, 20, Color.BLACK, transparent);
+        GreenfootImage displayer = new GreenfootImage("Current Income: $ "+ money, 25, Color.BLACK, transparent);
         setImage(displayer);
     }
     

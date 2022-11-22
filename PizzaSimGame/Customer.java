@@ -196,6 +196,14 @@ public class Customer extends People
                 } else if (dir == -1){
                     rotation = UP;
                 }
+            } else if (!cash1.checkIfEmpty() && (isCash2Open && !cash2.checkIfEmpty())){
+                setLocation(getX(), getY() + (Utils.moveSpeed * dir));
+                
+                if (dir == 1){
+                    rotation = DOWN;
+                } else if (dir == -1){
+                    rotation = UP;
+                }
             } else if(ordered && pickedUp){
                 if (getX() == spawnX){
                     setLocation(getX(), getY() + (Utils.moveSpeed * dir));

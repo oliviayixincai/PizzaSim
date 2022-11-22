@@ -26,6 +26,7 @@ public class Customer extends People
     private boolean isChef1, isChef2, isChef3;
     private Cashier cashier;
     private Pizza pizza1, pizza2, pizza3;
+    private MoneyInterface moneyInterface;
     
     private int imageRNG, rotation;
     private String gender;
@@ -174,7 +175,7 @@ public class Customer extends People
                 wait2 = getWorld().getObjectsAt(Utils.wait5X, Utils.counterY, WaitingLine.class).get(0);
                 wait3 = getWorld().getObjectsAt(Utils.wait4X, Utils.counterY, WaitingLine.class).get(0);
             }
-            
+            moneyInterface = getWorld().getObjectsAt(0, 0, MoneyInterface.class).get(0);
             checkedLocations = true;
         }
         
@@ -328,7 +329,7 @@ public class Customer extends People
                     
                     isChef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).isEmpty();
                     isChef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
-                    isChef3 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
+                    isChef3 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef3Y, Chef.class).isEmpty();
                     
                     if(!isChef1){
                         chef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).get(0);
@@ -373,7 +374,7 @@ public class Customer extends People
     
     public void order (){
         getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
-        
+        moneyInterface.changeMoney(store, costOfPizza);
         ordered = true;
         waiting = false;
     }
@@ -536,6 +537,11 @@ public class Customer extends People
     
     public boolean getInStore(){
         return inStore;
+    }
+    
+    public int getStore()
+    {
+        return store;
     }
     
     public int getWaitTime(){

@@ -37,6 +37,8 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
         addObject(utils, 0, 0);
+        addObject(new MoneyInterface(utils), 0, 0);
+        addObject(new LevelUp(), 0, 0);
         this.settingWorld = settingWorld;
         isSimOver = false;
         pausedSounds = new ArrayList<GreenfootSound>();
@@ -136,6 +138,7 @@ public class MyWorld extends World
     
     public void checkLevel()
     {
+        //changes level for left store
         if(utils.getResturantLevelOne() == 2 && !changedLevelTwoLeft)
         {
             changedLevelTwoLeft = true;
@@ -168,7 +171,7 @@ public class MyWorld extends World
                 addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
             }
         }
-        
+        //changes level for right store
         if(utils.getResturantLevelTwo() == 2 && !changedLevelTwoRight)
         {
             changedLevelTwoRight = true;
@@ -200,12 +203,6 @@ public class MyWorld extends World
                 addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
             }
         }
-    }
-    
-    public void changeLevel()
-    {
-        utils.addResturantLevelOne();
-        utils.addResturantLevelTwo();
     }
     
     public void spawnCustomer()

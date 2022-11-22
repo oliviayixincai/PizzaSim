@@ -87,8 +87,6 @@ public class Order extends Actor
     
     public void addedToWorld(World w){
         drawOrder();
-        MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(300, 30, MoneyDisplayer.class).get(0);
-        money_displayer.setDisplayer(money_displayer.getMoney() + price);
         makePizza();
     }
 }

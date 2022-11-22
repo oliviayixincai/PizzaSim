@@ -10,7 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * clock sequence by Nendra Beluci from:
  * <a href="https://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon Cloud Vectors by Vecteezy</a>
  */
-public class Clock extends Actor implements ISound
+public class Clock extends Effects implements ISound
 {
     /**
      * Act - do whatever the clock wants to do. This method is called whenever

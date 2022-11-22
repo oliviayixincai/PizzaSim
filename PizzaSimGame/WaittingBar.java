@@ -7,16 +7,17 @@ import java.util.ArrayList;
  * @author Yixin Cai 
  * @version (a version number or a date)
  */
-public class WaittingBar extends Actor
+public class WaittingBar extends Effects
 {
     private GifImage[] moodBarGif = new GifImage[6];
     
     private Customer c;
     private int gifIndex;
-    private int increment = 2400; //time, changeable
+    private int increment = 4800; //time, changeable
     private int tips = 5;
     
     GreenfootSound angry = new GreenfootSound ("hmp.wav");
+    private MoneyInterface moneyInterface;
     
     private boolean playedSound = false;
     
@@ -34,6 +35,7 @@ public class WaittingBar extends Actor
     public void act(){
         //changes the gif based on individual customer wait timer
         //also changes how many tips they give
+        moneyInterface = getWorld().getObjectsAt(0, 0, MoneyInterface.class).get(0);
         if(c.getInStore() && c.getPickedUp() == false){
             if(c.getWaitTime() < increment){
                 gifIndex = 0;
@@ -63,10 +65,7 @@ public class WaittingBar extends Actor
             
             setImage(moodBarGif[gifIndex].getCurrentImage());
         } else if (c.getPickedUp() == true){
-            
-            /** MONEY INTERFACE
-             * getWorld().addObject(new MoneyInterface(tips), x, y);
-             */
+            moneyInterface.changeMoney(c.getStore(), tips);
             
             getWorld().removeObject(this);
         }
@@ -74,27 +73,4 @@ public class WaittingBar extends Actor
         //sets location based on customer
         setLocation(c.getX(), c.getY() + c.getImage().getHeight()/2 + 5);
     }
-    
-    /*private final int WAIT_DELAY = 420;
-    private final int ROUND_COUNT = WAIT_DELAY / moodBarGif.length;
-    
-    private int tik;
-    
-    public WaittingBar() {
-        tik = 0;
-    }
-    
-    /**
-     * Act - do whatever the WaittingBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     
-    public void act()
-    {
-        setImage(moodBarGif[tik / ROUND_COUNT].getCurrentImage());
-        tik++;
-        
-        if (tik > 420) {
-            getWorld().removeObject(this);
-        }
-    }*/
 }

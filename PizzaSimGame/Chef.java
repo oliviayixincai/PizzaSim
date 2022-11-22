@@ -23,8 +23,8 @@ public class Chef extends People
     GreenfootImage walkDown[] = new GreenfootImage[9];
     GreenfootImage walkRight[] = new GreenfootImage[9];
     GreenfootImage walkLeft[] = new GreenfootImage[9];
+    GreenfootImage upInteract[] = new GreenfootImage[6];
     GreenfootImage leftInteract[] = new GreenfootImage[6];
-    GreenfootImage rightInteract[] = new GreenfootImage[6];
     
     private Pizza assignedPizza;
     
@@ -47,6 +47,14 @@ public class Chef extends People
             walkLeft[i] = new GreenfootImage("images/Chef Animation/walkLeft" + i + ".png");
             walkLeft[i].scale(scaleX, scaleY);
         }
+        
+        for(int i = 0; i < upInteract.length; i++)
+        {
+            upInteract[i] = new GreenfootImage("images/Chef Animation/interactUp" + i + ".png");
+            upInteract[i].scale(scaleX, scaleY);
+            leftInteract[i] = new GreenfootImage("images/Chef Animation/interactLeft" + i + ".png");
+            leftInteract[i].scale(scaleX, scaleY);
+        }
 
         if(pizzaria == -1)
         {
@@ -66,45 +74,49 @@ public class Chef extends People
     
     public void act()
     {   
-        if(getX() != counterXCoord || getY() != counterYCoord)
-        {
-            moving = true;
-        }
-        else
-        {
-            moving = false;
-        }
-        
-        if(pizzaria == -1 && !checkedOvenLocation)
-        {
-            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
-            checkedOvenLocation = true;
-        }
-        
-        if(pizzaria == 1 && !checkedOvenLocation)
-        {
-            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven4X, Utils.ovenY, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven5X, Utils.ovenY, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven6X, Utils.ovenY, Oven.class).get(0);
-            checkedOvenLocation = true;
-        }
-        
-        if(!currentlyMovingPizza)
-        {
-            moveToCounter(counterXCoord, counterYCoord);
-        }
-        if(canPickUpPizza() || currentlyMovingPizza)
-        {
-            currentlyMovingPizza = true;
-            moveToOven();
-        }
-        
-        if (!moving){
-            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+        if (interactCounter > 0){
+            interact(upInteract, leftInteract, rotationIndex);
         } else {
-            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
+            if(getX() != counterXCoord || getY() != counterYCoord)
+            {
+                moving = true;
+            }
+            else
+            {
+                moving = false;
+            }
+            
+            if(pizzaria == -1 && !checkedOvenLocation)
+            {
+                oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
+                oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
+                oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
+                checkedOvenLocation = true;
+            }
+            
+            if(pizzaria == 1 && !checkedOvenLocation)
+            {
+                oven1 = (Oven)getWorld().getObjectsAt(Utils.oven4X, Utils.ovenY, Oven.class).get(0);
+                oven2 = (Oven)getWorld().getObjectsAt(Utils.oven5X, Utils.ovenY, Oven.class).get(0);
+                oven3 = (Oven)getWorld().getObjectsAt(Utils.oven6X, Utils.ovenY, Oven.class).get(0);
+                checkedOvenLocation = true;
+            }
+            
+            if(!currentlyMovingPizza)
+            {
+                moveToCounter(counterXCoord, counterYCoord);
+            }
+            if(canPickUpPizza() || currentlyMovingPizza)
+            {
+                currentlyMovingPizza = true;
+                moveToOven();
+            }
+            
+            if (!moving){
+                standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+            } else {
+                animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
+            }   
         }
     }
 

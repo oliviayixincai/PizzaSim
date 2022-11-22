@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Clock
-comment0.text=\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\n\ <p>Displays\ new\ a\ clock\ image\ after\ a\ certain\ time\ passes\ \n\ \n\ @author\ Yuxin\ Li\n\ @version\ November\ 2022\n\ \n\ clock\ sequence\ by\ Nendra\ Beluci\ from\:\n\ \n
+comment0.text=\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\n\ <p>Displays\ new\ a\ clock\ image\ after\ a\ certain\ time\ passes\ \n\ \n\ @author\ Yuxin\ Li\n\ @version\ November\ 2022\n\ \n\ clock\ sequence\ by\ Nendra\ Beluci\ from\:\n\ <a\ href\="https\://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon\ Cloud\ Vectors\ by\ Vecteezy</a>\n
 comment1.params=time\ pizza
 comment1.target=Clock(int,\ Pizza)
 comment1.text=\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\ \n\ @param\ time\ The\ amount\ of\ time\ required\ to\ cook\ a\ pizza\n\ @param\ pizza\ The\ pizza\ that\ is\ put\ into\ an\ oven\n

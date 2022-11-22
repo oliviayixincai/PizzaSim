@@ -19,27 +19,27 @@ public class Order extends Actor
     private String sauce;
     private GreenfootImage chatBox = getImage();
     private GreenfootImage topping, theSauce, dough;
+    private Customer customer;
     private boolean madePizza = false;
-    private KitchenCounter kitchen1, kitchen2;
-    
-    private Customer c;
+    private KitchenCounter kitchen1, kitchen2, kitchen3;
+
     private int store; 
+    private int price = 5;
     
     public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer, int store){
         this.store = store;
         toppings = toppingTypes;
+        this.customer = customer;
         sauce = sauceType;
         dough = new GreenfootImage("pizzaBase.png");
         chatBox.scale(60, 70);
         chatBox.drawImage(dough, 12, 7);
-        
-        c = customer;
     }
     
     public void act(){
-        setLocation(c.getX() + 22, c.getY() - (c.getImage().getHeight() / 2) - (this.getImage().getHeight() / 2) + 16);
+        setLocation(customer.getX() + 22, customer.getY() - (customer.getImage().getHeight() / 2) - (this.getImage().getHeight() / 2) + 16);
         
-        if (c.getPickedUp()){
+        if (customer.getPickedUp()){
             getWorld().removeObject(this);
         }
     }
@@ -62,11 +62,13 @@ public class Order extends Actor
         {
             kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
             kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+            kitchen3 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY3, KitchenCounter.class).get(0);
         } 
         if(store == Utils.PAPA)
         {
             kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
             kitchen2 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+            kitchen3 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY3, KitchenCounter.class).get(0);
         }
         
         if(kitchen1.checkCanMakePizza())
@@ -77,11 +79,16 @@ public class Order extends Actor
         {
             getWorld().addObject(new Pizza(toppings, sauce), kitchen2.getX(), kitchen2.getY());
         }
-        
+        else if(kitchen3.checkCanMakePizza())
+        {
+            getWorld().addObject(new Pizza(toppings, sauce), kitchen3.getX(), kitchen3.getY());
+        }
     }
     
     public void addedToWorld(World w){
         drawOrder();
+        MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(300, 30, MoneyDisplayer.class).get(0);
+        money_displayer.setDisplayer(money_displayer.getMoney() + price);
         makePizza();
     }
 }

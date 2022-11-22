@@ -14,6 +14,7 @@ public class MyWorld extends World
     private SettingWorld settingWorld;
     private int customerSpawnRate, customerDir;
     //variables for spawning customers
+    private Label volumeLabel;
     private int dir, startingY, dirRNG;
     private ArrayList<GreenfootSound> pausedSounds;
     
@@ -39,6 +40,11 @@ public class MyWorld extends World
         this.settingWorld = settingWorld;
         isSimOver = false;
         pausedSounds = new ArrayList<GreenfootSound>();
+        // add volume control
+        volumeLabel = new Label(Utils.volume + "%");
+        addObject(new VolumeButton(false), 850, 40);
+        addObject(new VolumeButton(true), 970, 40);
+        addObject(volumeLabel,910, 40);
         //adds oven objects left
         addObject(new Oven(), Utils.oven1X, Utils.ovenY);
         addObject(new Oven(), Utils.oven2X, Utils.ovenY);
@@ -117,7 +123,9 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait4X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait5X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait6X, Utils.counterY);
-        
+        //addObject
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 300, 30);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 724, 30);
         
     }
     
@@ -242,27 +250,47 @@ public class MyWorld extends World
     public void stopped() {
         // stop all sounds
         pausedSounds.clear();
-        ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
-        for (ISoundCentre sound : sounds) {
-            int index = sound.getSoundNumber();
-            if (sound.isSoundPlaying(index)) {
-                sound.pauseSound(index);
-                pausedSounds.add(sound.getSound(index));
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            if (sound.isSoundPlaying()) {
+                sound.pauseSound();
+                pausedSounds.add(sound.getSound());
             }
         }
         // stop background sound
-        BackgroundSound.getInstance().pauseSound();
+        Utils.backgroundSound.pause();
     }
     
     public void started() {
         // play all sounds
-        ArrayList<ISoundCentre> sounds = (ArrayList<ISoundCentre>) getObjects(ISoundCentre.class);
-        for (ISoundCentre sound : sounds) {
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
             if (pausedSounds.contains(sound)) {
-                sound.playSound(sound.getSoundNumber());
+                sound.playSound();
             }
         }
         // play background sound in loop
-        BackgroundSound.getInstance().playSound();
+        Utils.backgroundSound.playLoop();
+    }
+    
+    /**
+     * Update volume.
+     * @param isUp True if turn volume up, Flase otherwise.
+     */
+    public void updateVolume(boolean isUp) {
+        if(isUp) {
+            Utils.volume = Math.min(Utils.volume + 20, 100);
+        }
+        else {
+            Utils.volume = Math.max(Utils.volume - 20, 0);
+        }
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            sound.setVolume(Utils.volume);
+        }
+        //  Update background sound volume.
+        Utils.backgroundSound.setVolume(Utils.volume);
+        // Update volume label.
+        volumeLabel.updateLabel(Utils.volume + "%");
     }
 }

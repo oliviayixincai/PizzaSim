@@ -21,9 +21,9 @@ public class Customer extends People
     
     private CashierCounter cash1, cash2;
     private WaitingLine wait1, wait2, wait3;
-    private KitchenCounter kitchenCounter1, kitchenCounter2;
-    private Chef chef1, chef2;
-    private boolean isChef1, isChef2;
+    private KitchenCounter kitchenCounter1, kitchenCounter2, kitchenCounter3;
+    private Chef chef1, chef2, chef3;
+    private boolean isChef1, isChef2, isChef3;
     private Cashier cashier;
     private Pizza pizza1, pizza2, pizza3;
     
@@ -44,6 +44,8 @@ public class Customer extends People
     private boolean hasEmotionBar = false;
     
     private boolean checkedLocations = false;
+    
+    private Utils utils;
     
     private int enterDIR, exitDIR;
     
@@ -304,9 +306,11 @@ public class Customer extends People
                 if (store == -1){
                     kitchenCounter1 = getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
                     kitchenCounter2 = getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+                    kitchenCounter3 = getWorld().getObjectsAt(Utils.kitchenCounterXLeft, Utils.kitchenCounterY3, KitchenCounter.class).get(0);
                     
                     isChef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).isEmpty();
                     isChef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).isEmpty();
+                    isChef3 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef3Y, Chef.class).isEmpty();
                     
                     if(!isChef1){
                         chef1 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef1Y, Chef.class).get(0);
@@ -314,18 +318,26 @@ public class Customer extends People
                     if(!isChef2){
                         chef2 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef2Y, Chef.class).get(0);
                     }
+                    if(!isChef3){
+                        chef3 = getWorld().getObjectsAt(Utils.chefXLeft, Utils.chef3Y, Chef.class).get(0);
+                    }
                 } else {
                     kitchenCounter1 = getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
                     kitchenCounter2 = getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY2, KitchenCounter.class).get(0);
+                    kitchenCounter3 = getWorld().getObjectsAt(Utils.kitchenCounterXRight, Utils.kitchenCounterY3, KitchenCounter.class).get(0);
                     
                     isChef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).isEmpty();
                     isChef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
+                    isChef3 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).isEmpty();
                     
                     if(!isChef1){
                         chef1 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef1Y, Chef.class).get(0);
                     }
                     if(!isChef2){
                         chef2 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef2Y, Chef.class).get(0);
+                    }
+                    if(!isChef3){
+                        chef3 = getWorld().getObjectsAt(Utils.chefXRight, Utils.chef3Y, Chef.class).get(0);
                     }
                 }
                 
@@ -349,6 +361,10 @@ public class Customer extends People
                         if(!chef2.getCurrentlyMoving()){
                             order();
                         }
+                    } else if (!isChef3 && kitchenCounter3.checkCanMakePizza()){
+                        if(!chef3.getCurrentlyMoving()){
+                            order();
+                        }
                     }
                 }
             }
@@ -357,11 +373,7 @@ public class Customer extends People
     
     public void order (){
         getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
-            
-        /**MONEY INTERFACE
-        * getWorld().addObject(new MoneyInterface(costOfPizza), x, y);
-        **/
-            
+        
         ordered = true;
         waiting = false;
     }

@@ -27,6 +27,7 @@ public class SettingWorld extends World
     private Label cashierNumLabel;
     private Label moneyNumLabel;
     private Label robberStealLabel;
+    private Label volumeLabel;
     
     private final int DEFAULT_CHEF_NUM = 1;
     private final int DEFAULT_CASHIER_NUM = 1;
@@ -88,6 +89,11 @@ public class SettingWorld extends World
         this.robberStealPlus = new PlusButton();
         this.robberStealMinus = new MinusButton();
         this.robberStealLabel = new Label("");
+        
+        volumeLabel = new Label(Utils.volume + "%");
+        addObject(new VolumeButton(false), 850, 40);
+        addObject(new VolumeButton(true), 970, 40);
+        addObject(volumeLabel,910, 40);
         
         addObject(this.chefPlus, 900, 310);
         addObject(this.chefMinus, 800, 310);
@@ -186,11 +192,11 @@ public class SettingWorld extends World
     }
     
     public void started() {
-        BackgroundSound.getInstance().playSound();
+        Utils.backgroundSound.playLoop();
     }
     
     public void stopped() {
-        BackgroundSound.getInstance().pauseSound();
+        Utils.backgroundSound.pause();
     }
     
     private void switchSettings() {
@@ -275,5 +281,26 @@ public class SettingWorld extends World
     
     public int getRobberStealPapa() {
         return this.robberStealPapa;
+    }
+    
+    /**
+     * Update volume.
+     * @param isUp True if turn volume up, Flase otherwise.
+     */
+    public void updateVolume(boolean isUp) {
+        if(isUp) {
+            Utils.volume = Math.min(Utils.volume + 20, 100);
+        }
+        else {
+            Utils.volume = Math.max(Utils.volume - 20, 0);
+        }
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            sound.setVolume(Utils.volume);
+        }
+        //  Update background sound volume.
+        Utils.backgroundSound.setVolume(Utils.volume);
+        // Update volume label.
+        volumeLabel.updateLabel(Utils.volume + "%");
     }
 }

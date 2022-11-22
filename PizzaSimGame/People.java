@@ -11,10 +11,12 @@ public abstract class People extends Actor
     private double exactX;
     private double exactY;
     private double rotation;
-    private boolean staticRotation = false;
+    private boolean staticRotation = false, checkedOvenLocation;
     private int imageIndex = 0;
     
     private SimpleTimer animTimer = new SimpleTimer();
+    private Pizza assignedPizza;
+    
     /**
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,7 +28,7 @@ public abstract class People extends Actor
     
     public void act()
     {
-        // Add your action code here.
+    
     }
     
     public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
@@ -76,6 +78,11 @@ public abstract class People extends Actor
         
     }
     
+    public void assignPizza(Pizza pizza)
+    {
+        assignedPizza = pizza;
+    }
+    
     public int correctNegRotation(int rotation){
         if (rotation < 0){
             if (rotation == -270){
@@ -103,6 +110,11 @@ public abstract class People extends Actor
     
     public void removeCustomer2(){
         numberOfCustomers2--;
+    }
+    
+    public Pizza getPizza()
+    {
+        return assignedPizza;
     }
     
     /**

@@ -47,17 +47,7 @@ public class Chef extends People
             walkLeft[i] = new GreenfootImage("images/Chef Animation/walkLeft" + i + ".png");
             walkLeft[i].scale(scaleX, scaleY);
         }
-        /*
-        for(int i = 0; i < downWalk.length; i++)
-        {
-            rightIdle[i] = new GreenfootImage("idle" + i + ".png");
-            rightIdle[i].scale(x, y);
 
-            leftIdle[i] = new GreenfootImage("idle" + i + ".png");
-            leftIdle[i].scale(x, y);
-            leftIdle[i].mirrorHorizontally();
-        }
-        */
         if(pizzaria == -1)
         {
             setImage(walkLeft[0]);

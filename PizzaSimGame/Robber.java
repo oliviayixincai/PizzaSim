@@ -12,10 +12,26 @@ public class Robber extends People
     private int location;
     private boolean stolen = false;
     private boolean position = false;
-    private GreenfootImage robberf = new GreenfootImage("robberf.png");
-    private GreenfootImage robberb = new GreenfootImage("robberb.png");
-    private GreenfootImage robberl = new GreenfootImage("robberl.png");
-    private GreenfootImage robberr;
+    private int imageIndexW = 0;
+    private int imageIndexB = 0;
+    private int imageIndexL = 0;
+    private int imageIndexR = 0;
+    private int imageIndexI = 0;
+    private GreenfootImage[] wf = new GreenfootImage[7];
+    private GreenfootImage[] wb = new GreenfootImage[7];
+    private GreenfootImage[] wl = new GreenfootImage[7];
+    private GreenfootImage[] wr = new GreenfootImage[7];
+    private GreenfootImage[] ai = new GreenfootImage[5];
+    
+    private SimpleTimer tw = new SimpleTimer();
+    private SimpleTimer tb = new SimpleTimer();
+    private SimpleTimer tl = new SimpleTimer();
+    private SimpleTimer tr = new SimpleTimer();
+    private SimpleTimer ti = new SimpleTimer();
+    private SimpleTimer it = new SimpleTimer();
+    private Utils utils = new Utils();
+    private MoneyInterface moneyInterface = new MoneyInterface(utils);
+    private SettingWorld settingWorld = new SettingWorld();
     
     /**
      * Act - do whatever the Robber wants to do. This method is called whenever
@@ -24,9 +40,23 @@ public class Robber extends People
     public Robber(int resturant)
     {
         this.resturant = resturant;
-        setImage(robberf);
-        robberr = new GreenfootImage(robberl);
-        robberr.mirrorHorizontally();
+        setImage("images/ra/f0.png");
+        for(int i =0; i< 7; i++)
+        {
+            wf[i] = new GreenfootImage("images/ra/f" + i + ".png");
+            wb[i] = new GreenfootImage("images/ra/b" + i + ".png");
+            wl[i] = new GreenfootImage("images/ra/l" + i + ".png");
+            wr[i] = new GreenfootImage("images/ra/r" + i + ".png");
+        }
+        for(int i =0;i<5;i++)
+        {
+            ai[i] = new GreenfootImage("images/ri/tile00" + i + ".png");
+        }
+        tw.mark();
+        tb.mark();
+        tl.mark();
+        tr.mark();
+        ti.mark();
     }
 
     public void act()
@@ -69,13 +99,16 @@ public class Robber extends People
 
     public void stealMoney()
     {
+        it.mark();
+        if(it.millisElapsed()<1000)
+        {
         if(resturant ==1)
         {
 
             if(getX()==400&&getY()==630)
             {
-                
-                
+                animateI();
+                moneyInterface.changeMoney(1,settingWorld.getRobberStealMama()-((utils.getResturantLevelOne()-1)*5));
             }
         }
         if(resturant ==2)
@@ -83,10 +116,11 @@ public class Robber extends People
 
             if(getX()==610&&getY()==630)
             {
-                
-                
+                animateI();
+                moneyInterface.changeMoney(-1,settingWorld.getRobberStealPapa()-((utils.getResturantLevelTwo()-1)*5));
             }
         }
+    }
     }
 
     public void checkLocation()
@@ -110,7 +144,9 @@ public class Robber extends People
     {
         if(getY() != 710)
         {
+            animateW();
             setLocation(getX(),getY()+1);
+            
         }
     }
 
@@ -120,15 +156,16 @@ public class Robber extends People
         {
             if(getX() != 610)
             {
-                setImage(robberr);
+                animateR();
                 setLocation(getX()+1,getY());
+                
             }
         }
         else if(resturant == 2)
         {
             if(getX() != 400)
             {
-                setImage(robberl);
+                animateL();
                 setLocation(getX()-1,getY());
             }
         }
@@ -138,7 +175,7 @@ public class Robber extends People
     {
         if(getY() != 630)
         {
-            setImage(robberb);
+            animateB();
             setLocation(getX(),getY()-1);
         }
     }
@@ -151,7 +188,7 @@ public class Robber extends People
             
                 if(getX() != 500)
                 {
-                    setImage(robberl);
+                    animateL();
                     setLocation(getX()-1, getY());
                 }
             
@@ -162,7 +199,7 @@ public class Robber extends People
             
                 if(getX() != 500)
                 {
-                    setImage(robberr);
+                    animateR();
                     setLocation(getX()+1,getY());
                 }
             
@@ -174,12 +211,12 @@ public class Robber extends People
     {
         if(getY() != 800)
         {
-            setImage(robberf);
+            animateW();
             setLocation(getX(),getY()+1);
         }
         if(getY() == 800)
         {
-            setImage(robberf);
+            
             getWorld().removeObject(this);
         }
     }
@@ -200,6 +237,55 @@ public class Robber extends People
             position = true;
         }
         
+    }
+    public void animateW()
+    {
+        
+        if(tw.millisElapsed()>80)
+        {
+        setImage(wf[imageIndexW]);
+        imageIndexW = (imageIndexW+1)%7;
+        tw.mark();
+    }
+    }
+    public void animateB()
+    {
+        
+        if(tb.millisElapsed()>80)
+        {
+        setImage(wf[imageIndexB]);
+        imageIndexB = (imageIndexB+1)%7;
+        tb.mark();
+    }
+    }
+    public void animateL()
+    {
+        
+        if(tl.millisElapsed()>80)
+        {
+        setImage(wl[imageIndexW]);
+        imageIndexL = (imageIndexL+1)%7;
+        tl.mark();
+    }
+    }
+    public void animateR()
+    {
+        
+        if(tr.millisElapsed()>80)
+        {
+        setImage(wr[imageIndexR]);
+        imageIndexR = (imageIndexR+1)%7;
+        tr.mark();
+    }
+    }
+    public void animateI()
+    {
+        if(ti.millisElapsed()>80&&imageIndexI<5)
+            {
+                setImage(ai[imageIndexI]);
+                imageIndexI = (imageIndexI+1);
+                
+            }
     }
 
 }

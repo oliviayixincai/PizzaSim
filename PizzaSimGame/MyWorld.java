@@ -142,12 +142,13 @@ public class MyWorld extends World
             utils.addResturantLevelTwo();
             utils.addResturantLevelTwo();
         }
-        addObject(new Robber(1),500,100);
+        
     }
     
     public void act() {
         spawnCustomer();
         checkLevel();
+        spawnRob();
     }
     
     public void checkLevel()
@@ -302,5 +303,16 @@ public class MyWorld extends World
         Utils.backgroundSound.setVolume(Utils.volume);
         // Update volume label.
         volumeLabel.updateLabel(Utils.volume + "%");
+    }
+    public void spawnRob()
+    {
+        if(Greenfoot.getRandomNumber(300) == 0)
+        {
+            addObject(new Robber(1),500,100);
+        }
+        else if(Greenfoot.getRandomNumber(300) == 1)
+        {
+            addObject(new Robber(2),500,100);
+        }
     }
 }

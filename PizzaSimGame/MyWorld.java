@@ -129,6 +129,8 @@ public class MyWorld extends World
         addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 300, 30);
         addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 724, 30);
         
+        utils.resturantMoneyOneAdd(settingWorld.getMoneyNumMama());
+        utils.resturantMoneyTwoAdd(settingWorld.getMoneyNumPapa());
     }
     
     public void act() {

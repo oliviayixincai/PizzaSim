@@ -15,5 +15,5 @@ comment4.target=void\ updateImage()
 comment4.text=\n\ Change\ the\ money\ value\ and\ rewrite\ it\ on\ the\ screen\ \n
 comment5.params=
 comment5.target=int\ getMoney()
-comment5.text=\n\ @return\ money\ the\ int\ current\ money\ of\ restaurant\n
+comment5.text=\n\ @return\ money\ the\ int\ current\ money\ of\ restaurant\n\ @return\ money\ The\ int\ current\ money\n
 numComments=6

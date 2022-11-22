@@ -45,6 +45,7 @@ public class MoneyDisplayer extends Actor
     }
     /**
      * @return money the int current money of restaurant
+     * @return money The int current money
      */
     public int getMoney(){
         return money;

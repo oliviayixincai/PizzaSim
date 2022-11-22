@@ -36,6 +36,7 @@ public class Customer extends People
     GreenfootImage[] walkDown = new GreenfootImage[9];
     GreenfootImage[] walkLeft = new GreenfootImage[9];
     GreenfootImage[] walkRight = new GreenfootImage[9];
+    GreenfootImage[] interact = new GreenfootImage[6];
     
     private int imageIndex = 0;
     
@@ -105,6 +106,11 @@ public class Customer extends People
             walkRight[i].scale((int)(walkRight[i].getWidth() * 1.5), (int)(walkRight[i].getHeight() * 1.5));
         }
         
+        for(int i = 0; i < 6; i++){
+            interact[i] = new GreenfootImage("images/" + gender + "_Animations/Interaction/" + i + ".png");
+            interact[i].scale((int)(interact[i].getWidth() * 1.5), (int)(interact[i].getHeight() * 1.5));
+        }
+        
         if (dir == 1){
             setImage(walkDown[0]);
         } else {
@@ -158,7 +164,10 @@ public class Customer extends People
     }
     
     public void act (){
-        if(waiting){
+        if(interactCounter > 0){
+            interact(interact);
+        } else {
+            if(waiting){
             standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotation);
         } else {
             animate(walkUp, walkDown, walkLeft, walkRight, rotation);
@@ -189,22 +198,12 @@ public class Customer extends People
         //also ignores doors if there are more than 5 customers
         if (!inStore) {
             if ((numberOfCustomers1 >= 5 && store == Utils.MAMA) || (numberOfCustomers2 >= 5 && store == Utils.PAPA)){
-                setLocation(getX(), getY() + (Utils.moveSpeed * dir));
-                
-                if (dir == 1){
-                    rotation = DOWN;
-                } else if (dir == -1){
-                    rotation = UP;
-                }
+                moveVertical();
+            } else if (!cash1.checkIfEmpty() && (isCash2Open && !cash2.checkIfEmpty())){
+                moveVertical();
             } else if(ordered && pickedUp){
                 if (getX() == spawnX){
-                    setLocation(getX(), getY() + (Utils.moveSpeed * dir));
-                
-                    if (dir == 1){
-                        rotation = DOWN;
-                    } else if (dir == -1){
-                        rotation = UP;
-                    }
+                    moveVertical();
                 } else {
                     setLocation(getX() + (Utils.moveSpeed * store * -1), getY());
                 }
@@ -232,6 +231,7 @@ public class Customer extends People
         
         //removes actor when at edge
         atEdge();
+        }
     }
         
     public int getRotation(){
@@ -534,6 +534,16 @@ public class Customer extends People
             getWorld().removeObject(this);
         } else if (dir == -1 && getY() == 81){
             getWorld().removeObject(this);
+        }
+    }
+    
+    public void moveVertical(){
+        setLocation(getX(), getY() + (Utils.moveSpeed * dir));
+                
+        if (dir == 1){
+            rotation = DOWN;
+        } else if (dir == -1){
+            rotation = UP;
         }
     }
     

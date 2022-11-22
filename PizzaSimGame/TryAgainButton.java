@@ -10,17 +10,16 @@ public class TryAgainButton extends Button
 {
     private MyWorld myWorld;
     
-    public TryAgainButton(MyWorld myWorld) {
+    public TryAgainButton() {
         super();
-        this.myWorld = myWorld;
         
-        this.image = new GreenfootImage("tryAgain1.png");
-        this.downImage = new GreenfootImage("tryAgain1.png");
-        this.hoverImage = new GreenfootImage("tryAgain1.png");
+        this.image = new GreenfootImage("tryAgain.png");
+        this.downImage = new GreenfootImage("tryAgainDOWN.png");
+        this.hoverImage = new GreenfootImage("tryAgainHOVER.png");
     }
     
     protected void onClick() {
-        myWorld.removeAllActors();
+        //myWorld.removeAllActors();
         //set up a new sim
         Greenfoot.setWorld(new StartWorld());
     }

@@ -13,7 +13,7 @@ public class Utils extends Actor
     public static int resturantLevelOne = 1;
     public static int resturantLevelTwo = 1;
     
-    public static int volume = 60;
+    public static int volume = 80;
     public static final GreenfootSound backgroundSound = new GreenfootSound("Run-Amok.wav");
     
     public static final int moveSpeed = 1;

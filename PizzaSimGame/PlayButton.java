@@ -18,6 +18,7 @@ public class PlayButton extends Button
     
     protected void onClick() {
         SettingWorld sw = (SettingWorld) getWorld();
+        //System.out.println(sw.getMoneyNumMama());
         Greenfoot.setWorld(new MyWorld(sw));
     }
 }

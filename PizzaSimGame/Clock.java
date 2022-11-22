@@ -52,7 +52,7 @@ public class Clock extends Effects implements ISound
         this.time = time;
         imageIndex = 0;
         timeIndex = time/12;
-        burnTime = 450;
+        burnTime = 600;
         burnAct = 0;
         this.pizza = pizza;
         sound = tikSound;

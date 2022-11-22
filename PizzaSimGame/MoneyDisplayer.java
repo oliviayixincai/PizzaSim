@@ -44,7 +44,7 @@ public class MoneyDisplayer extends Actor
         setImage(displayer);
     }
     /**
-     * return the current money of restaurant
+     * @return money the int current money of restaurant
      */
     public int getMoney(){
         return money;

@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Order here.
+ * Order is a Greenfoot actor used to display a customer's order visually by 
+ * drawing out the order of a customer
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
@@ -46,6 +47,10 @@ public class Order extends Actor
             chatBox.drawImage(topping, 12, 5);
         }
     }
+    /**
+     * If the pizza can be made in the kitchen - there's is no pizza on the counter 
+     * <p> initialize a pizza
+     */
     public void makePizza()
     {
         kitchen1 = (KitchenCounter)getWorld().getObjectsAt(Utils.kitchenCounterX, Utils.kitchenCounterY1, KitchenCounter.class).get(0);
@@ -65,6 +70,10 @@ public class Order extends Actor
         
     }
     
+    /**
+     * when an order is added to world, calculate price and add the money to the restaurant
+     * <p> initialize a pizza based on the order
+     */
     public void addedToWorld(World w){
         drawOrder();
         calculatePrice(sauce, toppings);
@@ -72,12 +81,17 @@ public class Order extends Actor
         money_displayer.setDisplayer(money_displayer.getMoney()+price);
         makePizza();
     }
-    
-    public int calculatePrice(String order, String[] toppingTypes){
-        if(order=="bbq"){
+    /**
+     * calculate the price of pizza based on the sauce and topping types the customer orders
+     * @param sauce the type of sauce
+     * @param toppingTypes the array consisting all the toppings
+     * @return price int price of pizza
+     */
+    public int calculatePrice(String sauce, String[] toppingTypes){
+        if(sauce=="bbq"){
             price+=2;
         }
-        if(order=="tomato"){
+        if(sauce=="tomato"){
             price+=1;
         }
         for(int i=0; i<toppingTypes.length; i++){

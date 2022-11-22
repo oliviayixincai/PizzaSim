@@ -11,10 +11,6 @@ import java.util.ArrayList;
  */
 public class Pizza extends Actor
 {
-    // constructor 
-    // variables: burn, firstStage finish, fully cooked, discard or not
-    // attached to chef, cookTime, burnTime
-
     private String[] toppings;
     private String sauce;
     private boolean burn = false;
@@ -164,38 +160,30 @@ public class Pizza extends Actor
     }
     /**
      * get the cook time required for the pizza
+     * @return cookTime the cook time required for the pizza
      */
     public int getCookTime(){
-        //return cooktime
-        //add the time for all toppings
         return cookTime;
     }
     /**
-     * return if the pizza is in oven, in other word, if the pizza is picked up by a cashier
+     * If the pizza is picked up by cashier from the oven 
+     * <p> set the inOven variable to false
      */
     public void isPickedUp(){
         inOven = false;
     }
-    
     /**
-     * check if the pizza is in oven
+     * return if the pizza is in oven, in other word, if the pizza is picked up by a cashier
+     * @return inOven True if the pizza is in oven, False if the pizza is not in oven
      */
     public boolean isInOven(){
         return inOven;
     }
     
     /**
-     * if the chef put the pizza in oven, initialize a clock 
+     * if the chef put the pizza in oven, initialize a clock and set inOven to true
      */
     public void goInOven(){
-
-        //set transparency to 0 
-        //getImage().setTransparency(0);
-        //start timer
-        //getWorld.addObject(new Timer(cookTime), ovenX, ovenY);
-        //set the oven filled 
-        //find the position of the oven(oven1 oven2 oven3)
-        
         getWorld().addObject(new Clock(cookTime, this), getX(), getY()-50);
         inOven = true;
 
@@ -203,12 +191,14 @@ public class Pizza extends Actor
     
     /**
      * return if the dough is finished 
+     * @return doughFinished True if the dough is finished, False if it is not
      */
     public boolean isDoughFinished(){
         return doughFinished;
     }
     /**
-     * finished adding toppings getter method
+     * return if the topping is finished added 
+     * @return toppingsFinished True if the toppings are finished, False if not
      */
     public boolean toppingsFinished(){
         return toppingsFinished;
@@ -216,6 +206,7 @@ public class Pizza extends Actor
     
     /**
      * return if the pizza is burned
+     * @return burn True if the the pizza is burned, False if the pizza is not burned
      */
     public boolean getBurn(){
         return burn;
@@ -223,17 +214,22 @@ public class Pizza extends Actor
     
     /**
      * return if the pizza is cooked
+     * @return cooked True if the pizza is cooked, False if the pizza is not cooked
      */
     public boolean isCooked(){
         return cooked;
     }
     /**
-     * set if the cashier 
+     * set the variable to true if the pizza is sent to the cashier counter
      */
     public void setAtCashierCounter(){
         atCashierCounter=true;
     }
     
+    /**
+     * return if the cashier is at counter
+     * @return atCashierCounter True if the pizza is at counter, False if not
+     */
     public boolean isAtCashierCounter(){
         return atCashierCounter;
     }

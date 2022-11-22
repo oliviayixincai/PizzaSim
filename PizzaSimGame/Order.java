@@ -18,7 +18,8 @@ public class Order extends Actor
     private String[] toppings = new String[1];
     private String sauce;
     private GreenfootImage chatBox = getImage();
-    private GreenfootImage topping, theSauce, dough;
+    private GreenfootImage topping, theSauce, dough, cheese, crust = new GreenfootImage ("cooked.png");
+    private boolean hasCheese;
     private Customer customer;
     private boolean madePizza = false;
     private KitchenCounter kitchen1, kitchen2, kitchen3;
@@ -31,7 +32,10 @@ public class Order extends Actor
         toppings = toppingTypes;
         this.customer = customer;
         sauce = sauceType;
+        hasCheese = cheese;
+        this.cheese = new GreenfootImage("cheese.png");
         dough = new GreenfootImage("pizzaBase.png");
+        crust.setTransparency(90);
         chatBox.scale(60, 70);
         chatBox.drawImage(dough, 12, 7);
     }
@@ -50,10 +54,17 @@ public class Order extends Actor
     public void drawOrder(){
         theSauce = new GreenfootImage("sauce" + sauce + ".png");
         chatBox.drawImage(theSauce, 12, 7);
+        
+        if(hasCheese){
+            chatBox.drawImage(cheese, 12, 7);
+        }
+        
         for(int i = 0; i < toppings.length - 1; i++){
             topping = new GreenfootImage(toppings[i] + ".png");
             chatBox.drawImage(topping, 12, 7);
         }
+        
+        chatBox.drawImage(crust, 12, 7);
     }
     
     public void makePizza()
@@ -73,15 +84,15 @@ public class Order extends Actor
         
         if(kitchen1.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), kitchen1.getX(), kitchen1.getY());
+            getWorld().addObject(new Pizza(toppings, sauce, hasCheese), kitchen1.getX(), kitchen1.getY());
         }
         else if(kitchen2.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), kitchen2.getX(), kitchen2.getY());
+            getWorld().addObject(new Pizza(toppings, sauce, hasCheese), kitchen2.getX(), kitchen2.getY());
         }
         else if(kitchen3.checkCanMakePizza())
         {
-            getWorld().addObject(new Pizza(toppings, sauce), kitchen3.getX(), kitchen3.getY());
+            getWorld().addObject(new Pizza(toppings, sauce, hasCheese), kitchen3.getX(), kitchen3.getY());
         }
     }
     

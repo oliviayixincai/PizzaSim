@@ -104,6 +104,12 @@ public class Customer extends People
             walkRight[i].scale((int)(walkRight[i].getWidth() * 1.5), (int)(walkRight[i].getHeight() * 1.5));
         }
         
+        if (dir == 1){
+            setImage(walkDown[0]);
+        } else {
+            setImage(walkUp[0]);
+        }
+        
         //randomizes toppings 
         for(int i = 0; i < toppings.length; i++)
         {

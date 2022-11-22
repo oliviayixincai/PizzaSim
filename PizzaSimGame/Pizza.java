@@ -20,7 +20,7 @@ public class Pizza extends Actor
     private String[] toppings;
     private String sauce;
     private boolean burn = false;
-    private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false;
+    private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false, cheeseFinished = false;
     private boolean firstStage_finished = false;
     private boolean cooked = false;
     private Cashier cashier;
@@ -30,7 +30,8 @@ public class Pizza extends Actor
     private int cookTime = 900, price;
     private int toppingTime = 60;
     private SimpleTimer timer = new SimpleTimer();
-
+    
+    private boolean hasCheese;
     
     private GreenfootImage pizza = new GreenfootImage("pizzaBase.png");
     private GreenfootImage imageSauce;
@@ -45,6 +46,7 @@ public class Pizza extends Actor
     */
     private static GreenfootImage crust = new GreenfootImage("cooked.png");
     private static GreenfootImage burned=new GreenfootImage("burned.png");
+    private GreenfootImage cheese = new GreenfootImage("cheese.png");
     private int imageIndex = 0, toppingIndex = 0;
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
@@ -60,9 +62,10 @@ public class Pizza extends Actor
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
     */
-    public Pizza(String[] strings, String sauce){
+    public Pizza(String[] strings, String sauce, boolean cheese){
         toppings = strings;
         this.sauce = sauce;
+        hasCheese = cheese; 
         atCashierCounter = false;
     }
     
@@ -78,7 +81,10 @@ public class Pizza extends Actor
                 toppingTime--;
                 addSauce(sauce);
             }
-            if(doughFinished && sauceFinished && !toppingsFinished)
+            if(doughFinished && sauceFinished && !cheeseFinished){
+                addCheese(hasCheese);
+            }
+            if(doughFinished && sauceFinished && cheeseFinished && !toppingsFinished)
             {
                 toppingTime--;
                 addToppings(toppings);
@@ -124,6 +130,14 @@ public class Pizza extends Actor
             sauceFinished = true;
             toppingTime = 60;
         }
+    }
+    
+    public void addCheese(boolean hasCheese){
+        if (hasCheese){
+            cheese.scale(50, 50);
+            getImage().drawImage(cheese, 0 , 0);
+        }
+        cheeseFinished = true;
     }
     
     /**

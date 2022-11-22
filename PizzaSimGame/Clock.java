@@ -21,18 +21,19 @@ public class Clock extends Actor implements ISound
     private GreenfootSound sound;
     private int time;
     private static GreenfootImage[] clocks={
-        new GreenfootImage("clock_1.png"), 
-        new GreenfootImage("clock_2.png"), 
-        new GreenfootImage("clock_3.png"), 
-        new GreenfootImage("clock_4.png"), 
-        new GreenfootImage("clock_5.png"), 
-        new GreenfootImage("clock_6.png"), 
-        new GreenfootImage("clock_7.png"), 
-        new GreenfootImage("clock_8.png"), 
-        new GreenfootImage("clock_9.png"), 
-        new GreenfootImage("clock_10.png"), 
-        new GreenfootImage("clock_11.png"), 
-        new GreenfootImage("clock_12.png"), 
+        new GreenfootImage("/images/clock_0.png"),
+        new GreenfootImage("/images/clock_1.png"), 
+        new GreenfootImage("/images/clock_2.png"), 
+        new GreenfootImage("/images/clock_3.png"), 
+        new GreenfootImage("/images/clock_4.png"), 
+        new GreenfootImage("/images/clock_5.png"), 
+        new GreenfootImage("/images/clock_6.png"), 
+        new GreenfootImage("/images/clock_7.png"), 
+        new GreenfootImage("/images/clock_8.png"), 
+        new GreenfootImage("/images/clock_9.png"), 
+        new GreenfootImage("/images/clock_10.png"), 
+        new GreenfootImage("/images/clock_11.png"), 
+        new GreenfootImage("/images/clock_12.png"), 
     };
     private int interval;
     private Pizza pizza;
@@ -47,6 +48,7 @@ public class Clock extends Actor implements ISound
      * @param pizza The pizza that is put into an oven
      */
     public Clock(int time, Pizza pizza){
+        setImage(clocks[0]);
         this.time = time;
         imageIndex = 0;
         timeIndex = time/12;
@@ -73,7 +75,7 @@ public class Clock extends Actor implements ISound
     public void act()
     {
         timeIndex--;
-        if(imageIndex==11){
+        if(imageIndex==12){
             x=this.getX();
             y=this.getY();
             setImage(clocks[imageIndex]);
@@ -81,14 +83,14 @@ public class Clock extends Actor implements ISound
             timeIndex=time/12;
             pizza.cookPizza();
         }
-        else if(imageIndex==12){
+        else if(imageIndex==13){
             burnTime--;
             clockAlarm();
             if(burnTime==0){
                 pizza.burnPizza();
             }
         }
-        else if(imageIndex<11&&timeIndex==0){
+        else if(imageIndex < 12 && timeIndex == 0){
             setImage(clocks[imageIndex]);
             imageIndex++;
             timeIndex=time/12;

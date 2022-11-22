@@ -13,8 +13,12 @@ public abstract class People extends Actor
     private double rotation;
     private boolean staticRotation = false;
     private int imageIndex = 0;
+    private int interactIndex = 0;
     
     private SimpleTimer animTimer = new SimpleTimer();
+    private SimpleTimer timer = new SimpleTimer();
+    protected int interactCounter = 0;
+    
     /**
      * Act - do whatever the People wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -32,7 +36,7 @@ public abstract class People extends Actor
     public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
         rotation = correctNegRotation(rotation);
         
-        if(imageIndex == 9){
+        if(imageIndex >= up.length){
             imageIndex = 0;
         }
         
@@ -73,7 +77,6 @@ public abstract class People extends Actor
                 setImage(right);
                 break;
         }
-        
     }
     
     public int correctNegRotation(int rotation){
@@ -87,6 +90,50 @@ public abstract class People extends Actor
             }
         }
         return rotation;
+    }
+    
+    public void interact(GreenfootImage[] a, GreenfootImage[] b, int rotation){
+        rotation = correctNegRotation(rotation);
+        
+        if(interactIndex == a.length){
+            interactIndex = 0;
+        }
+        
+        if(interactCounter >= 0){
+            if (timer.millisElapsed() > 100){
+                switch (rotation){
+                    case UP:
+                        setImage(a[interactIndex]);
+                        break;
+                    case DOWN:
+                        setImage(b[interactIndex]);
+                        break;
+                    case LEFT:
+                        setImage(b[interactIndex]);
+                        break;
+                    case RIGHT:
+                        setImage(a[interactIndex]);
+                }
+                interactIndex++;
+                interactCounter--;
+                timer.mark();
+            }
+        }
+    }
+    
+    public void interact(GreenfootImage[] up){
+        if(interactIndex == up.length){
+            interactIndex  = 0;
+        }
+        
+        if(interactCounter >= 0){
+            if (timer.millisElapsed() > 100){
+                setImage(up[interactIndex]);
+                interactIndex++;
+                interactCounter--;
+                timer.mark();
+            }
+        }
     }
     
     public void addCustomer1(){

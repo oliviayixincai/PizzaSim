@@ -24,8 +24,8 @@ public class Cashier extends People
     GreenfootImage walkDown[] = new GreenfootImage[9];
     GreenfootImage walkRight[] = new GreenfootImage[9];
     GreenfootImage walkLeft[] = new GreenfootImage[9];
-    GreenfootImage leftInteract[] = new GreenfootImage[6];
     GreenfootImage rightInteract[] = new GreenfootImage[6];
+    GreenfootImage downInteract[] = new GreenfootImage[6];
     
     private Pizza assignedPizza;
     
@@ -54,24 +54,25 @@ public class Cashier extends People
             walkLeft[i] = new GreenfootImage("images/Cashier Animation/walkLeft" + i + ".png");
             walkLeft[i].scale(scaleX, scaleY);
         }
-        /*
-        for(int i = 0; i < downWalk.length; i++)
+        
+        for(int i = 0; i < rightInteract.length; i++)
         {
-            rightIdle[i] = new GreenfootImage("idle" + i + ".png");
-            rightIdle[i].scale(x, y);
-
-            leftIdle[i] = new GreenfootImage("idle" + i + ".png");
-            leftIdle[i].scale(x, y);
-            leftIdle[i].mirrorHorizontally();
+            rightInteract[i] = new GreenfootImage("images/Cashier Animation/interactUp" + i + ".png");
+            rightInteract[i].scale(scaleX, scaleY);
+            downInteract[i] = new GreenfootImage("images/Cashier Animation/interactDown" + i + ".png");
+            downInteract[i].scale(scaleX, scaleY);
         }
-        */
+        
         setImage(walkDown[0]);
         startRotationIndex = rotationIndex;
     }
     
     public void act()
     {
-        if (atCashier){
+        if(interactCounter > 0){
+            interact(rightInteract, downInteract, rotationIndex);
+        } else {
+            if (atCashier){
             standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
         } else {
             animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
@@ -107,13 +108,11 @@ public class Cashier extends People
             moveToCashierCounter(counterXCoord, counterYCoord);
         }
         
-        //moveToCounter(330, 460);
-        //moveToCashierCounter(530, 460);
-        
         if (getX() == counterXCoord && getY() == counterYCoord){
             atCashier = true;
         } else {
             atCashier = false;
+        }
         }
     }
 
@@ -160,6 +159,8 @@ public class Cashier extends People
     {
         if(!foundPizza)
         {
+            interactCounter = 5;
+            
             Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
             assignPizza(pizza);
             foundPizza = true;
@@ -189,6 +190,7 @@ public class Cashier extends People
         
         if(assignedPizza.getY() == Utils.pizzaFinalY)
         {
+            interactCounter = 5;
             currentlyMovingPizza = false;
             atCounter = true;
         }

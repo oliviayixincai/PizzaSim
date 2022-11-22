@@ -36,7 +36,7 @@ public abstract class People extends Actor
             imageIndex = 0;
         }
         
-        if (animTimer.millisElapsed() > 200){
+        if (animTimer.millisElapsed() > 80){
             switch (rotation){
                 case UP:
                     setImage(up[imageIndex]);

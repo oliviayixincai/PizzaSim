@@ -26,5 +26,14 @@ public class LevelUp extends Actor
         {
             utils.addResturantLevelTwo();
         }
+        
+        if((utils.getResturantMoneyOne() > 500))
+        {
+            Greenfoot.setWorld(new EndWorld(0, utils.getResturantLevelOne(), utils.getResturantMoneyOne()));
+        }
+        if((utils.getResturantMoneyTwo() > 500))
+        {
+            Greenfoot.setWorld(new EndWorld(1, utils.getResturantLevelTwo(), utils.getResturantMoneyTwo()));
+        }
     }
 }

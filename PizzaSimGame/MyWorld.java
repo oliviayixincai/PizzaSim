@@ -142,6 +142,7 @@ public class MyWorld extends World
             utils.addResturantLevelTwo();
             utils.addResturantLevelTwo();
         }
+        addObject(new Robber(1),500,100);
     }
     
     public void act() {

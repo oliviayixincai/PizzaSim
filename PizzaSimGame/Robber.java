@@ -10,6 +10,13 @@ public class Robber extends People
 {
     private int resturant;
     private int location;
+    private boolean stolen = false;
+    private boolean position = false;
+    private GreenfootImage robberf = new GreenfootImage("robberf.png");
+    private GreenfootImage robberb = new GreenfootImage("robberb.png");
+    private GreenfootImage robberl = new GreenfootImage("robberl.png");
+    private GreenfootImage robberr;
+    
     /**
      * Act - do whatever the Robber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,15 +24,30 @@ public class Robber extends People
     public Robber(int resturant)
     {
         this.resturant = resturant;
-
+        setImage(robberf);
+        robberr = new GreenfootImage(robberl);
+        robberr.mirrorHorizontally();
     }
 
     public void act()
     {
-        // Add your action code here.
-        moveToDoorAndMoney();
 
-        //stealMoney();
+        // Add your action code here.
+        if(stolen == false)
+        {
+            moveToDoorAndMoney();
+            stealMoney();
+            checkStolen();
+        }
+        if(stolen == true)
+        {
+            exit();
+            checkPosition();
+            if(position == true)
+            {
+                leave();
+            }
+        }
     }
 
     public void moveToDoorAndMoney()
@@ -39,12 +61,12 @@ public class Robber extends People
         {
             move2();
         }
-        if(location ==3)
+        else if(location ==3)
         {
             move3();
         }
     }
-    /*
+
     public void stealMoney()
     {
         if(resturant ==1)
@@ -52,8 +74,8 @@ public class Robber extends People
 
             if(getX()==400&&getY()==630)
             {
-                Utils.resturantMoneyOne--;
-                getWorld().removeObject(this);
+                
+                
             }
         }
         if(resturant ==2)
@@ -61,12 +83,12 @@ public class Robber extends People
 
             if(getX()==610&&getY()==630)
             {
-                Utils.resturantMoneyTwo--;
-                getWorld().removeObject(this);
+                
+                
             }
         }
     }
-    */
+
     public void checkLocation()
     {
         if(getX()==500&&getY()==100)
@@ -81,8 +103,9 @@ public class Robber extends People
         {
             location =3;
         }
-        
+
     }
+
     public void move1()
     {
         if(getY() != 710)
@@ -90,29 +113,93 @@ public class Robber extends People
             setLocation(getX(),getY()+1);
         }
     }
+
     public void move2()
     {
         if(resturant ==1)
+        {
+            if(getX() != 610)
             {
-                if(getX() != 610)
-                {
-                    setLocation(getX()+1,getY());
-                }
+                setImage(robberr);
+                setLocation(getX()+1,getY());
             }
-            else if(resturant == 2)
+        }
+        else if(resturant == 2)
+        {
+            if(getX() != 400)
             {
-                if(getX() != 400)
-                {
-                    setLocation(getX()-1,getY());
-                }
+                setImage(robberl);
+                setLocation(getX()-1,getY());
             }
+        }
     }
+
     public void move3()
     {
         if(getY() != 630)
-            {
-             setLocation(getX(),getY()-1);
-            }
+        {
+            setImage(robberb);
+            setLocation(getX(),getY()-1);
+        }
+    }
+
+    public void exit()
+    {
+        if(resturant == 1)
+        {
+           
+            
+                if(getX() != 500)
+                {
+                    setImage(robberl);
+                    setLocation(getX()-1, getY());
+                }
+            
+        }
+        if(resturant == 2)
+        {
+            
+            
+                if(getX() != 500)
+                {
+                    setImage(robberr);
+                    setLocation(getX()+1,getY());
+                }
+            
+        }
+
+    }
+
+    public void leave()
+    {
+        if(getY() != 800)
+        {
+            setImage(robberf);
+            setLocation(getX(),getY()+1);
+        }
+        if(getY() == 800)
+        {
+            setImage(robberf);
+            getWorld().removeObject(this);
+        }
+    }
+
+    public void checkStolen()
+    {
+        if((getX() == 400 || getX() == 610)&&getY() == 630)
+        {
+
+            stolen = true;
+        }
+
+    }
+    public void checkPosition()
+    {
+        if(getX() == 500 && getY() == 630)
+        {
+            position = true;
+        }
+        
     }
 
 }

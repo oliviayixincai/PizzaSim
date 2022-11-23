@@ -24,6 +24,8 @@ public class Pizza extends Actor
     
     private boolean hasCheese;
     
+    private GreenfootSound sound = new GreenfootSound("glope.wav");
+    
     private GreenfootImage pizza = new GreenfootImage("pizzaBase.png");
     private GreenfootImage imageSauce;
 
@@ -120,6 +122,7 @@ public class Pizza extends Actor
             getImage().drawImage(imageSauce, 0 , 0);
             sauceFinished = true;
             toppingTime = 60;
+            sound.play();
         }
     }
     
@@ -130,6 +133,7 @@ public class Pizza extends Actor
         if (hasCheese){
             cheese.scale(50, 50);
             getImage().drawImage(cheese, 0 , 0);
+            sound.play();
         }
         cheeseFinished = true;
     }
@@ -145,6 +149,7 @@ public class Pizza extends Actor
             getImage().drawImage(topping, 0, 0);
             toppingIndex++;
             toppingTime = 60;
+            sound.play();
         }
         if(toppingIndex == strings.length)
         {

@@ -73,7 +73,15 @@ public class Pizza extends Actor
                 addToppings(toppings);
             }
         } else {
-            switch (customer.getRotation()){
+            moveMe();
+        }
+    }
+    
+    /**
+     * have the pizza follow the customer holding it
+     */
+    public void moveMe(){
+        switch (customer.getRotation()){
                 case People.UP:
                     setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
                     break;
@@ -87,8 +95,7 @@ public class Pizza extends Actor
                     setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
                     break;
             }
-            atEdge();
-        }
+        atEdge();
     }
     
     /**
@@ -117,7 +124,6 @@ public class Pizza extends Actor
     }
     
     /**
-     * add the specific types of sauce to pizza
      * @param cheese if the customer ordered cheese
      */
     public void addCheese(boolean hasCheese){
@@ -147,7 +153,6 @@ public class Pizza extends Actor
     }
     
     /**
-     * get the cook time required for the pizza
      * @return cookTime the cook time required for the pizza
      */
     public int getCookTime(String[] strings){

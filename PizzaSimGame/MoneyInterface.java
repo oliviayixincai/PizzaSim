@@ -13,6 +13,7 @@ public class MoneyInterface extends Actor
     public MoneyInterface(Utils utils)
     {
         this.utils = utils;
+        getImage().setTransparency(0);
     }
     
     public void changeMoney(int store, int money)

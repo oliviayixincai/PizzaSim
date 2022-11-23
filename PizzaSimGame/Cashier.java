@@ -72,7 +72,7 @@ public class Cashier extends People
         if(interactCounter > 0){
             interact(rightInteract, downInteract, rotationIndex);
         } else {
-                if (atCashier){
+            if (atCashier){
                 standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
             } else {
                 animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);

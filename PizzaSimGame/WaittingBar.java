@@ -17,6 +17,7 @@ public class WaittingBar extends Effects
     private int tips = 5;
     
     GreenfootSound angry = new GreenfootSound ("hmp.wav");
+    GreenfootSound cashierSound = new GreenfootSound ("cashier.wav");
     private MoneyInterface moneyInterface;
     
     private boolean playedSound = false;
@@ -66,6 +67,7 @@ public class WaittingBar extends Effects
             setImage(moodBarGif[gifIndex].getCurrentImage());
         } else if (c.getPickedUp() == true){
             moneyInterface.changeMoney(c.getStore(), tips);
+            cashierSound.play();
             
             getWorld().removeObject(this);
         }

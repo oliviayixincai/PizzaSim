@@ -18,6 +18,8 @@ public class Robber extends People
     private GreenfootImage[] wr = new GreenfootImage[7];
     private GreenfootImage[] ai = new GreenfootImage[5];
     
+    private GreenfootSound sound = new GreenfootSound("robbery.wav");
+    
     private Utils utils;
     private MoneyInterface moneyInterface;
     private SettingWorld settingWorld;
@@ -174,5 +176,6 @@ public class Robber extends People
         {
             moneyInterface.changeMoney(store, utils.getRobbingMoneyMama());
         }
+        sound.play();
     }
 }

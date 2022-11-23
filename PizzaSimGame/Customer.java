@@ -68,6 +68,9 @@ public class Customer extends People
         storeRNG = Greenfoot.getRandomNumber(2);
         imageRNG = Greenfoot.getRandomNumber(2);
         
+        /**
+         * randomizes the store for each customer
+         */
         if (storeRNG == 0){
             store = Utils.MAMA;
             
@@ -88,13 +91,18 @@ public class Customer extends People
             }
         }
         
+        /**
+         * randomly picks a model for the customer
+         */
         if (imageRNG == 0){
             gender = "boy";
         } else {
             gender = "girl";
         }
         
-        //sets animation images and scales them up
+        /**
+         * initiates the walking and interacting animations for each customer
+         */
         for(int i = 0; i < 9; i++){
             walkUp[i] = new GreenfootImage("images/" + gender + "_Animations/Up/" + (i + 1) + ".png");
             walkUp[i].scale((int)(walkUp[i].getWidth() * 1.5), (int)(walkUp[i].getHeight() * 1.5));
@@ -117,7 +125,9 @@ public class Customer extends People
             setImage(walkUp[0]);
         }
         
-        //randomizes toppings 
+        /**
+         * 
+         */
         for(int i = 0; i < toppings.length; i++)
         {
             toppingRNG = Greenfoot.getRandomNumber(4);

@@ -4,19 +4,11 @@ import java.util.ArrayList;
  * Write a description of class Pizza here.
  * 
  * @Yuxin Li (Yuxin Li) 
- * @version (a version number or a date)
+ * @version Novbember 2022
  * 
  */ 
 public class Pizza extends Actor
 {
-    /**
-     * Act - do whatever the Pizza wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    // constructor 
-    // variables: burn, firstStage finish, fully cooked, discard or not
-    // attached to chef, cookTime, burnTime
-
     private String[] toppings;
     private String sauce;
     private boolean burn = false;
@@ -35,15 +27,7 @@ public class Pizza extends Actor
     
     private GreenfootImage pizza = new GreenfootImage("pizzaBase.png");
     private GreenfootImage imageSauce;
-    /*
-    private static GreenfootImage[] doughSequence={
-        new GreenfootImage("dough1.png"),
-        new GreenfootImage("dough2.png"),
-        new GreenfootImage("dough3.png"),
-        new GreenfootImage("dough4.png"),
-        new GreenfootImage("dough5.png"),
-    };
-    */
+
     private static GreenfootImage crust = new GreenfootImage("cooked.png");
     private static GreenfootImage burned=new GreenfootImage("burned.png");
     private GreenfootImage cheese = new GreenfootImage("cheese.png");
@@ -51,11 +35,7 @@ public class Pizza extends Actor
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
     private boolean atCashierCounter = false, paid = false;
-    
-    private double exactX;
-    private double exactY;
-    
-    // andy code
+
     private boolean customerPickedUp = false;
     
     /**
@@ -90,8 +70,6 @@ public class Pizza extends Actor
                 addToppings(toppings);
             }
         } else {
-            //andy code
-            //if picked up by a customer, set location based on customers direction
             switch (customer.getRotation()){
                 case People.UP:
                     setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
@@ -106,7 +84,6 @@ public class Pizza extends Actor
                     setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
                     break;
             }
-            //removes actor when at edge
             atEdge();
         }
     }
@@ -229,25 +206,10 @@ public class Pizza extends Actor
     }
     
     /**
-     * check if the pizza is burned
-     */
-    public boolean isBurned(){
-        return burn;
-    }
-    
-    /**
      * check if the pizza is cooked 
      */
     public boolean isCooked(){
         return cooked;
-    }
-    
-    public void setAtCashierCounter(){
-        atCashierCounter = true;
-    }
-    
-    public boolean isAtCashierCounter(){
-        return atCashierCounter;
     }
     
     public void burnPizza(){
@@ -288,16 +250,4 @@ public class Pizza extends Actor
         return sauce;
     }
     
-    /**
-     * Set the location using exact coordinates.
-     * 
-     * @param x the new x location
-     * @param y the new y location
-     */
-    public void setLocation(double x, double y) 
-    {
-        exactX = x;
-        exactY = y;
-        super.setLocation((int) (x + 0.5), (int) (y + 0.5));
-    }
 }

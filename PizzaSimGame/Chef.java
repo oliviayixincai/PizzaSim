@@ -12,7 +12,7 @@ public class Chef extends People
     private int rotationIndex, startRotationIndex, pizzaria;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, openOven = 4;
     private int pizzaXOffset, pizzaYOffset = 0;
-    private double pizzaXCoord, pizzaYCoord;
+    private int pizzaXCoord, pizzaYCoord;
     private boolean currentlyMovingPizza = false, foundPizza = false, moving;
     private boolean canPickUp, checkedOvenLocation = false;
     private Oven oven1, oven2, oven3;

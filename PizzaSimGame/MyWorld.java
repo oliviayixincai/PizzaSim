@@ -131,11 +131,11 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait5X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait6X, Utils.counterY);
         //addObject
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 335, 25);
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 670, 25);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 115, 25);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 672, 25);
         
-        addObject(new LevelDisplayer(1), 335, 55);
-        addObject(new LevelDisplayer(1), 670, 55);
+        addObject(new LevelDisplayer(1), 92, 50);
+        addObject(new LevelDisplayer(1), 650, 50);
         
         utils.resturantMoneyOneAdd(settingWorld.getMoneyNumMama());
         utils.resturantMoneyTwoAdd(settingWorld.getMoneyNumPapa());

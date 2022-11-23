@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Pizza
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Pizza\ here.\r\n\ \r\n\ @Yuxin\ Li\ (Yuxin\ Li)\ \r\n\ @version\ Novbember\ 2022\r\n\ \r\n
+comment0.text=\r\n\ The\ pizza\ that\ gets\ cooked\ and\ picked\ up\ by\ the\ various\ actors\r\n\ \r\n\ @Yuxin\ Li\ (Yuxin\ Li)\ \r\n\ @version\ Novbember\ 2022\r\n\ \r\n
 comment1.params=strings\ sauce\ cheese
 comment1.target=Pizza(java.lang.String[],\ java.lang.String,\ boolean)
 comment1.text=\r\n\ initialize\ a\ pizza\ that\ correspond\ to\ a\ customer's\ order\ after\ \r\n\ a\ customer\ comes\ in\ the\ store\ and\ orders\r\n\ \r\n\ @param\ strings\ array\ consists\ of\ the\ customer\ order\r\n\ @param\ sauce\ the\ type\ of\ sauce\ the\ customer\ wants\r\n\ @param\ cheese\ if\ the\ customer\ ordered\ cheese\r\n

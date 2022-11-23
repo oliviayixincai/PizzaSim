@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Customer
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Customer\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ The\ code\ for\ all\ of\ the\ customers\ actions\ </p>\r\n\ <ul>\r\n\ <li>\ \ Moves\ to\ door\ when\ they\ haven't\ ordered\r\n\ <li>\ \ Ignores\ door\ when\ there\ are\ a\ lot\ of\ customers\ in\ the\ store\r\n\ <li>\ \ Checks\ for\ and\ moves\ to\ open\ cashier\r\n\ <li>\ \ Places\ an\ order\ when\ the\ order\ can\ be\ fulfilled\r\n\ <li>\ \ Checks\ for\ and\ moves\ to\ open\ waiting\ line\r\n\ <li>\ \ Picks\ up\ the\ correct\ pizza\ and\ leaves\ the\ store\r\n\ </ul>\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=dir\ spawnX\ mamaCash2\ papaCash2
 comment1.target=Customer(int,\ int,\ boolean,\ boolean)
 comment10.params=

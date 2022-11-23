@@ -131,6 +131,17 @@ public class MyWorld extends World
         
         utils.resturantMoneyOneAdd(settingWorld.getMoneyNumMama());
         utils.resturantMoneyTwoAdd(settingWorld.getMoneyNumPapa());
+        
+        if(utils.getResturantMoneyOne() > 200)
+        {
+            utils.addResturantLevelOne();
+            utils.addResturantLevelOne();
+        }
+        if(utils.getResturantMoneyTwo() > 200)
+        {
+            utils.addResturantLevelTwo();
+            utils.addResturantLevelTwo();
+        }
     }
     
     public void act() {
@@ -141,7 +152,7 @@ public class MyWorld extends World
     public void checkLevel()
     {
         //changes level for left store
-        if(utils.getResturantLevelOne() == 2 && !changedLevelTwoLeft)
+        if((utils.getResturantLevelOne() == 2 || utils.getResturantMoneyOne() > 100) && !changedLevelTwoLeft)
         {
             changedLevelTwoLeft = true;
             removeObject(cover1);
@@ -160,8 +171,7 @@ public class MyWorld extends World
             if(settingWorld.getChefNumMama() == 2)
             {
                 addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
-            }
-            
+            }            
         }
         if(utils.getResturantLevelOne() == 3 && !changedLevelThreeLeft)
         {
@@ -174,7 +184,7 @@ public class MyWorld extends World
             }
         }
         //changes level for right store
-        if(utils.getResturantLevelTwo() == 2 && !changedLevelTwoRight)
+        if((utils.getResturantLevelTwo() == 2 || utils.getResturantMoneyTwo() > 100) && !changedLevelTwoRight)
         {
             changedLevelTwoRight = true;
             removeObject(cover3);

@@ -188,7 +188,28 @@ public class Pizza extends Actor
     }
     
     public void goInOven(){
-        getWorld().addObject(new Clock(cookTime, this), getX(), getY()-50);
+        int x = 0; 
+        switch (getX()){
+            case 160:
+                x = 145;
+                break;
+            case 222:
+                x = 217;
+                break;
+            case 280:
+                x = 290;
+                break;
+            case 744:
+                x = 736;
+                break;
+            case 802:
+                x = 809;
+                break;
+            case 864:
+                x = 880;
+                break;
+        }
+        getWorld().addObject(new Clock(cookTime, this), x, getY() - 49);
         inOven = true;
     }
     

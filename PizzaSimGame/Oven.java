@@ -12,8 +12,8 @@ public class Oven extends Target
     
     public Oven()
     {
+        transparent();
         getImage().scale(50, 50);
-        getImage().setTransparency(255);
     }
     
     public boolean checkIfEmpty()

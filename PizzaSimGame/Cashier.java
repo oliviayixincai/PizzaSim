@@ -72,50 +72,51 @@ public class Cashier extends People
         if(interactCounter > 0){
             interact(rightInteract, downInteract, rotationIndex);
         } else {
-            if (atCashier){
-            standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
-        } else {
-            animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
-        }
-        
-        if(pizzaria == -1 && !checkedOvenLocation)
-        {
-            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
-            checkedOvenLocation = true;
-        }
-        if(pizzaria == 1 && !checkedOvenLocation)
-        {
-            oven1 = (Oven)getWorld().getObjectsAt(Utils.oven4X, Utils.ovenY, Oven.class).get(0);
-            oven2 = (Oven)getWorld().getObjectsAt(Utils.oven5X, Utils.ovenY, Oven.class).get(0);
-            oven3 = (Oven)getWorld().getObjectsAt(Utils.oven6X, Utils.ovenY, Oven.class).get(0);
-            checkedOvenLocation = true;
-        }
-        
-        if((canPickUpPizza() || currentlyMovingToOven) && !atCounter)
-        {
-            currentlyMovingToOven = true;
-            moveToOven();
-        }
-        if(atOven || currentlyMovingPizza)
-        {
-            currentlyMovingPizza = true;
-            moveToCounter(counterYCoord);
-        }
-        if(atCounter)
-        {
-            moveToCashierCounter(counterXCoord, counterYCoord);
-        }
-        
-        if (getX() == counterXCoord && getY() == counterYCoord){
-            atCashier = true;
-        } else {
-            atCashier = false;
-        }
+                if (atCashier){
+                standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotationIndex);
+            } else {
+                animate(walkUp, walkDown, walkLeft, walkRight, rotationIndex);
+            }
+            
+            if(pizzaria == -1 && !checkedOvenLocation)
+            {
+                oven1 = (Oven)getWorld().getObjectsAt(Utils.oven1X, Utils.ovenY, Oven.class).get(0);
+                oven2 = (Oven)getWorld().getObjectsAt(Utils.oven2X, Utils.ovenY, Oven.class).get(0);
+                oven3 = (Oven)getWorld().getObjectsAt(Utils.oven3X, Utils.ovenY, Oven.class).get(0);
+                checkedOvenLocation = true;
+            }
+            if(pizzaria == 1 && !checkedOvenLocation)
+            {
+                oven1 = (Oven)getWorld().getObjectsAt(Utils.oven4X, Utils.ovenY, Oven.class).get(0);
+                oven2 = (Oven)getWorld().getObjectsAt(Utils.oven5X, Utils.ovenY, Oven.class).get(0);
+                oven3 = (Oven)getWorld().getObjectsAt(Utils.oven6X, Utils.ovenY, Oven.class).get(0);
+                checkedOvenLocation = true;
+            }
+            
+            if((canPickUpPizza() || currentlyMovingToOven) && !atCounter)
+            {
+                currentlyMovingToOven = true;
+                moveToOven();
+            }
+            if(atOven || currentlyMovingPizza)
+            {
+                currentlyMovingPizza = true;
+                moveToCounter(counterYCoord);
+            }
+            if(atCounter)
+            {
+                moveToCashierCounter(counterXCoord, counterYCoord);
+            }
+            
+            if (getX() == counterXCoord && getY() == counterYCoord){
+                atCashier = true;
+            } else {
+                atCashier = false;
+            }
         }
     }
 
+    
     public void moveToOven()
     {
         if(cookedOven == 4)
@@ -160,7 +161,6 @@ public class Cashier extends People
         if(!foundPizza)
         {
             interactCounter = 5;
-            
             Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);
             assignPizza(pizza);
             foundPizza = true;

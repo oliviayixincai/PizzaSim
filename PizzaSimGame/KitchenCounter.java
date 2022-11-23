@@ -13,8 +13,8 @@ public class KitchenCounter extends Target
     
     public KitchenCounter(int pizzaria)
     {
+        transparent();
         getImage().scale(25, 25);
-        getImage().setTransparency(0);
         this.pizzaria = pizzaria;
     }
     /**

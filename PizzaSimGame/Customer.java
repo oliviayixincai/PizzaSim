@@ -53,6 +53,8 @@ public class Customer extends People
     
     private boolean isCash2Open = false;
     
+    GreenfootSound cashierSound = new GreenfootSound ("cashier.wav");
+    
     public Customer (int dir, int spawnX, boolean mamaCash2, boolean papaCash2) {
         this.dir = dir;
         this.spawnX = spawnX;
@@ -393,6 +395,7 @@ public class Customer extends People
         moneyInterface.changeMoney(store, costOfPizza);
         ordered = true;
         waiting = false;
+        cashierSound.play();
     }
     
     public void lineUp(){

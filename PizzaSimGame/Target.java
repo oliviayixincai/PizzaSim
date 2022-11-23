@@ -15,6 +15,10 @@ public abstract class Target extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
+    /**
+     * checks if there is a customer at this target
+     * @return isEmpty, a boolean
+     */
     public boolean checkIfEmpty()
     {
         if(getOneObjectAtOffset(0, 0, Customer.class) != null)
@@ -27,6 +31,10 @@ public abstract class Target extends Actor
         return isEmpty;
     }
     
+    /**
+     * sets the reservation to the param
+     * @param reservation: sets a true (reserved) or false (not reserved) for the spot
+     */
     public void reserve(boolean reservation)
     {
         isReserved = reservation;

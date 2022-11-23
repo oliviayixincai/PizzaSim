@@ -128,7 +128,7 @@ public class Customer extends People
         }
         
         /**
-         * 
+         * randomizes each customer's order and adds to the total cost of the order
          */
         for(int i = 0; i < toppings.length; i++)
         {
@@ -153,7 +153,9 @@ public class Customer extends People
             toppings[i] = topping;
         }
         
-        //randomizes if customer wants cheese or not
+        /**
+         * randomizes, is there cheese on the pizza or not
+         */
         cheeseRNG = Greenfoot.getRandomNumber(2);
         if (cheeseRNG == 0){
             cheese = true;
@@ -162,7 +164,9 @@ public class Customer extends People
             cheese = false;
         }
         
-        //randomizes sauce 
+        /**
+         * randomizes the sauce thats on the pizza
+         */
         sauceRNG = Greenfoot.getRandomNumber(2);
         if (sauceRNG == 0){
             sauce = "tomato";
@@ -179,6 +183,7 @@ public class Customer extends People
         if(interactCounter > 0){
             interact(interact);
         } else {
+        //plays necessary animations
             if(waiting){
             standStill(walkUp[0], walkDown[0], walkLeft[0], walkRight[0], rotation);
         } else {
@@ -206,8 +211,11 @@ public class Customer extends People
             checkedLocations = true;
         }
         
-        //moves towards door if havent bought pizza yet, else walks away with pizza
-        //also ignores doors if there are more than 5 customers
+        /**
+         * moves towards door if they haven't bought pizza yet
+         * walks away with the pizza after they receive it
+         * ignores the door if theres more than 5 people in their designated store
+         */
         if (!inStore) {
             if ((utils.numberOfCustomers1 >= 5 && store == Utils.MAMA) || (utils.numberOfCustomers2 >= 5 && store == Utils.PAPA)){
                 moveVertical();
@@ -224,7 +232,9 @@ public class Customer extends People
             }
         }
         
-        //moves to cashier, orders, line up, pickup pizza, leave
+        /**
+         * moves the customer to cashier, then to the lineup, then leaves when they have received their pizza
+         */
         if (inStore){
             if (!ordered && !pickedUp){
                 moveToCashier();
@@ -250,6 +260,9 @@ public class Customer extends People
         return rotation;
     }
     
+    /**
+     * looks for a door, then moves towards the store they are designated
+     */
     public void moveToDoor(){
         //moves towards the door if its in range
         if(this.getObjectsInRange(100, Door.class).size() > 0){
@@ -284,6 +297,11 @@ public class Customer extends People
         }
     }
     
+    /**
+     * checks for empty cashier, and moves towards it
+     * once at cashier, the emotion bar and timer starts
+     * if there is a free cashier and chef, the order is placed and they pay
+     */
     public void moveToCashier (){
         //reserves an open cash
         if(openCash == -1){
@@ -363,7 +381,6 @@ public class Customer extends People
                 waiting = true;
                 
                 //starts a happiness meter
-                
                 if (!hasEmotionBar){
                     waitTimer.mark();
                     getWorld().addObject(new WaittingBar(this), getX(), getY() + 10);
@@ -390,6 +407,9 @@ public class Customer extends People
         }
     }
     
+    /**
+     * places the order, adds money to the store, plays the pay sound
+     */
     public void order (){
         getWorld().addObject(new Order(sauce, cheese, toppings, this, store), getX() + 20, getY() - (getImage().getHeight() / 2) - 20);
         moneyInterface.changeMoney(store, costOfPizza);
@@ -398,6 +418,9 @@ public class Customer extends People
         cashierSound.play();
     }
     
+    /**
+     * checks for an empty waiting spot, then moves towards it
+     */
     public void lineUp(){
         //reserves a waiting spot
         if(openWait == -1){
@@ -463,6 +486,9 @@ public class Customer extends People
         }
     }
     
+    /**
+     * checks for all the pizzas at the counter, picks up the one that matches their order
+     */
     public void pizzaPickup() {
         //checks all 3 possible locations of pizza, based on current location
         if (getX() == wait1.getX()){
@@ -503,6 +529,9 @@ public class Customer extends People
         }
     }
     
+    /**
+     * leaves the store
+     */
     public void leave(){
         if (rotation == UP){
             rotation = DOWN;
@@ -545,6 +574,7 @@ public class Customer extends People
         }
     }
     
+    //removes the actor when they reach the edge of world
     public void atEdge(){
         if (dir == 1 && getY() == 799){
             getWorld().removeObject(this);
@@ -553,6 +583,7 @@ public class Customer extends People
         }
     }
     
+    //standard vertical movement
     public void moveVertical(){
         setLocation(getX(), getY() + (Utils.moveSpeed * dir));
                 

@@ -27,6 +27,14 @@ public class Order extends Actor
     private int store; 
     private int price = 5;
     
+    /**
+     * creates an order actor
+     * @param sauceType: tomato or barbeque
+     * @param cheese: if there's cheese on the pizza or not
+     * @param toppingTypes: the toppings that will be on the pizza
+     * @param customer: the customer that placed the order
+     * @param store: which store the order is for
+     */
     public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer, int store){
         this.store = store;
         toppings = toppingTypes;
@@ -40,6 +48,10 @@ public class Order extends Actor
         chatBox.drawImage(dough, 12, 7);
     }
     
+    /**
+     * sets the location of the order to follow the customer
+     * removes the order box when the customer picks up their pizza
+     */
     public void act(){
         setLocation(customer.getX() + 22, customer.getY() - (customer.getImage().getHeight() / 2) - (this.getImage().getHeight() / 2) + 16);
         
@@ -67,6 +79,9 @@ public class Order extends Actor
         chatBox.drawImage(crust, 12, 7);
     }
     
+    /**
+     * checks for an open kitchen, and starts making the pizza
+     */
     public void makePizza()
     {
         if (store == Utils.MAMA)

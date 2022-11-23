@@ -396,7 +396,7 @@ public class MyWorld extends World
     }
 
     /**
-     * Method to spawn robber based on money of resturants
+     * Method to spawn robber based on how much the returant is making.
      */
     public void spawnRobber()
     {

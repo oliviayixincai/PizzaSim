@@ -4,6 +4,9 @@ import java.util.ArrayList;
 /**
  * Write a description of class WaittingBar here.
  * 
+ * Credits
+ * Mood gifs from Canva (https://www.canva.com/).
+ * 
  * @author Yixin Cai 
  * @version (a version number or a date)
  */

@@ -4,6 +4,11 @@ import java.util.ArrayList;
 /**
  * The World this simulation will start with. Press Enter key to continue
  * 
+ * Credits
+ * "Pixel Chef Illustrations" from iStock (https://www.istockphoto.com/vector/vector-pixel-art-cook-and-chefs-gm616129156-107107145).
+ * "Sprout Lands - UI Pack" by Cup Nooble (https://cupnooble.itch.io/sprout-lands-ui-pack).
+ * "Slice of Life" from Pinterest (https://www.pinterest.ca/pin/349099408595478913/).
+ * 
  * @author Yixin Cai & Gloria Chan
  * @version (a version number or a date)
  */

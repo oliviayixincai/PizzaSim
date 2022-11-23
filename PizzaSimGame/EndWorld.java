@@ -5,6 +5,9 @@ import java.util.ArrayList;
  * EndWorld is an class that show the final result fo the simulation and display
  * confetti effect.
  * 
+ * Credits
+ * "Megapixel" font and "Crown" graphic from Canva (https://www.canva.com/).
+ * 
  * @author Yixin Cai & Gloria Chan
  * @version (a version number or a date)
  */

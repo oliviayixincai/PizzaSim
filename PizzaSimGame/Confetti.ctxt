@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Confetti
-comment0.text=\n\ Class\ to\ hold\ the\ confetti\ effect\ in\ the\ EndWord.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ Class\ to\ hold\ the\ confetti\ effect\ in\ the\ EndWord.\n\ \n\ Credits\n\ (https\://www.canva.com/).\n\ \n\ @author\ Yixin\ Cai\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=Confetti()
 comment2.params=w

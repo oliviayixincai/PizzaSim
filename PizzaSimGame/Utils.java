@@ -12,7 +12,7 @@ public class Utils extends Actor
     {
         getImage().setTransparency(0);
         
-        volume = 60;
+        volume = 80;
         numberOfCustomers1 = 0;
         numberOfCustomers2 = 0;
     }

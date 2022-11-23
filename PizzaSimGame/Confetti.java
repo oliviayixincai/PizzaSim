@@ -3,6 +3,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Class to hold the confetti effect in the EndWord.
  * 
+ * Credits
+ * (https://www.canva.com/).
+ * 
  * @author Yixin Cai
  * @version (a version number or a date)
  */

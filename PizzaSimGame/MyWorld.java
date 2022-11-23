@@ -31,6 +31,11 @@ import java.util.ArrayList;
  * </p>
  * <p>Other Sound clips: https://pixabay.com/music/</p>
  * 
+ * "Aloe Vera Plants" from Pinterest (https://www.pinterest.ca/pin/all-6-plants-pattern-aloe-vera-potted-plant-succulent-ivy-etsy-in-2022--88172105197560932/). 
+ * "Animal Crossing Stepping Stones" by Rose from Pinterest (https://www.pinterest.ca/pin/538672805434277806/).
+ * "16x16 Fence and Well" by William.Thompsonj from OpenGameArt (https://opengameart.org/content/16x16-fence-and-well-tiny-16).
+ * “Pixel Art of Book Shelf Stack” from FreePik (https://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).
+ * 
  * 
  * @author (your name) 
  * @version (a version number or a date)

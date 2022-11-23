@@ -244,7 +244,7 @@ public class MyWorld extends World
             {
                 addObject(new Chef(Utils.chef3Y, 100, 100, -1), Utils.chefXLeft, Utils.chef3Y);
             }
-            if(settingWorld.getOvenNumMama() == 2)
+            if(settingWorld.getOvenNumMama() == 1)
             {
                 removeObject(cover2);
             }
@@ -286,7 +286,7 @@ public class MyWorld extends World
             {
                 addObject(new Chef(Utils.chef3Y, 100, 100, 1), Utils.chefXRight, Utils.chef3Y);
             }
-            if(settingWorld.getOvenNumPapa() == 2)
+            if(settingWorld.getOvenNumPapa() == 1)
             {
                 removeObject(cover4);
             }

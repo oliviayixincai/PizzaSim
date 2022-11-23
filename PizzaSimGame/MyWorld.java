@@ -49,9 +49,9 @@ public class MyWorld extends World
         pausedSounds = new ArrayList<GreenfootSound>();
         // add volume control
         volumeLabel = new Label(Utils.volume + "%");
-        addObject(new VolumeButton(false), 850, 40);
-        addObject(new VolumeButton(true), 970, 40);
-        addObject(volumeLabel,910, 40);
+        addObject(new VolumeButton(false), 450, 40);
+        addObject(new VolumeButton(true), 575, 40);
+        addObject(volumeLabel, 512, 40);
         //adds oven objects left
         addObject(new Oven(), Utils.oven1X, Utils.ovenY);
         addObject(new Oven(), Utils.oven2X, Utils.ovenY);
@@ -131,11 +131,11 @@ public class MyWorld extends World
         addObject(new WaitingLine(), Utils.wait5X, Utils.counterY);
         addObject(new WaitingLine(), Utils.wait6X, Utils.counterY);
         //addObject
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 115, 25);
-        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 672, 25);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 213, 25);
+        addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 795, 25);
         
-        addObject(new LevelDisplayer(1), 115, 50);
-        addObject(new LevelDisplayer(1), 672, 50);
+        addObject(new LevelDisplayer(1), 213, 50);
+        addObject(new LevelDisplayer(1), 795, 50);
         
         utils.resturantMoneyOneAdd(settingWorld.getMoneyNumMama());
         utils.resturantMoneyTwoAdd(settingWorld.getMoneyNumPapa());

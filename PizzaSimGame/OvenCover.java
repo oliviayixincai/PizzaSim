@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class OvenCover here.
+ * A class only for covering up oven using an image
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class OvenCover extends LevelUp
 {

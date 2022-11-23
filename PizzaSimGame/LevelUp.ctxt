@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=LevelUp
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ LevelUpImages\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Creates\ a\ class\ to\ level\ up\ items\ in\ the\ world\r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=LevelUp()
 comment2.params=

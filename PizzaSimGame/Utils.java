@@ -3,11 +3,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Class used for editing and containing global static variables such as money of resturants and speed of characters.
  * 
- * @author Anson Ho
- * @version V1.0
+ * @author Anson Ho/Andy
+ * @version November 2022
  */
 public class Utils extends Actor
 {
+    /**
+     * Constructor of Utilities class
+     */
     public Utils()
     {
         getImage().setTransparency(0);
@@ -46,77 +49,135 @@ public class Utils extends Actor
     
     public static int numberOfCustomers1, numberOfCustomers2;
 
+    /**
+     * Method to add number of customers in store 1 by 1
+     */
     public void addCustomer1(){
         numberOfCustomers1++;
     }
     
+    /**
+     * Method to add number of customers in store 2 by 1
+     */
     public void addCustomer2(){
         numberOfCustomers2++;
     }
     
+    /**
+     * Method to remove number of customers in store 1 by 1
+     */
     public void removeCustomer1(){
         numberOfCustomers1--;
     }
     
+    /**
+     * Method to remove number of customers in store 2 by 1
+     */
     public void removeCustomer2(){
         numberOfCustomers2--;
     }
     
+    /**
+     * Setter method to change total money of store 1
+     * @param money Amount of money to change by
+     */
     public void resturantMoneyOneAdd(int money)
     {
         resturantMoneyOne += money;
     }
     
+    /**
+     * Setter method to change total money of store 2
+     * @param money Amount of money to change by
+     */
     public void resturantMoneyTwoAdd(int money)
     {
         resturantMoneyTwo += money;
     }
     
+    /**
+     * Setter method to change total money that robber robs from store 1
+     * @param money Amount of money to change by
+     */
     public void setRobbingMoneyMama(int money)
     {
         robbingMoneyMama = robbingMoneyMama + money;
     }
     
+    /**
+     * Setter method to change total money that robber robs from store 2
+     * @param money Amount of money to change by
+     */
     public void setRobbingMoneyPapa(int money)
     {
         robbingMoneyPapa = robbingMoneyPapa + money;
     }
     
+    /**
+     * Method to add 1 level to store 1
+     */
     public void addResturantLevelOne()
     {
         resturantLevelOne++;
     }
 
+    /**
+     * Method to add 1 level to store 2
+     */
     public void addResturantLevelTwo()
     {
         resturantLevelTwo++;
     }
     
+    /**
+     * Getter method to get total money of store 1
+     * @return resturantMoneyOne
+     */
     public int getResturantMoneyOne()
     {
         return resturantMoneyOne;
     }
     
+    /**
+     * Getter method to get total money of store 2
+     * @return resturantMoneyTwo
+     */
     public int getResturantMoneyTwo()
     {
         return resturantMoneyTwo;
     }
     
+    /**
+     * Getter method to get level of store 1
+     * @return resturantLevelOne
+     */
     public int getResturantLevelOne()
     {
         return resturantLevelOne;
     }
 
+    /**
+     * Getter method to get level of store 2
+     * @return resturantLevelTwo
+     */
     public int getResturantLevelTwo()
     {
         return resturantLevelTwo;
     }
     
+    /**
+     * Getter method to get amount of money robber robs from store 2
+     * @return robbingMoneyMama
+     */
     public int getRobbingMoneyMama()
     {
         return robbingMoneyMama;
     }
     
+    /**
+     * Getter method to get amount of money robber robs from store 1
+     * @return robbingMoneyMama
+     */
     public int getRobbingMoneyPapa()
     {
         return robbingMoneyPapa;

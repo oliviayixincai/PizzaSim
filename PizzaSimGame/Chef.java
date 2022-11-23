@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math.*;
 
 /**
- * Write a description of class Chef here.
+ * Moves the pizza from the kitchen counter to an oven 
  * 
  * @author Anson Ho 
- * @version V.1
+ * @version November 2022
  */
 public class Chef extends People
 {
@@ -27,7 +27,13 @@ public class Chef extends People
     GreenfootImage leftInteract[] = new GreenfootImage[6];
     
     private Pizza assignedPizza;
-    
+    /**
+     * Constructor of chef class
+     * @param counterYCoord Original Y location of chef
+     * @param scaleX Scale image width 
+     * @param scaleY Scale image height
+     * @param pizzaria Determines which pizzeria chef is in. -1 for left, 1 for right
+     */
     public Chef(int counterYCoord, int scaleX, int scaleY, int pizzaria)
     {
         this.counterYCoord = counterYCoord;
@@ -36,6 +42,7 @@ public class Chef extends People
         pizzaXOffset = 50 * pizzaria;
         pizzaYOffset = 0;
         
+        //Creates all image arrays for animation
         for(int i = 0; i < walkUp.length; i++)
         {
             walkUp[i] = new GreenfootImage("images/Chef Animation/walkUp" + i + ".png");
@@ -55,7 +62,8 @@ public class Chef extends People
             leftInteract[i] = new GreenfootImage("images/Chef Animation/interactLeft" + i + ".png");
             leftInteract[i].scale(scaleX, scaleY);
         }
-
+        
+        //Sets initial starting values
         if(pizzaria == -1)
         {
             setImage(walkLeft[0]);
@@ -119,7 +127,9 @@ public class Chef extends People
             }   
         }
     }
-
+    /**
+     * Moves the chef to the oven with the pizza
+     */
     public void moveToOven()
     {
         if(!foundPizza)
@@ -172,6 +182,11 @@ public class Chef extends People
         }
     }
     
+    /**
+     * Moves the chef back to their original position by the kitchen counter
+     * @param counterXCoord Original X coordinate of chef
+     * @param counterYCoord Original Y coordinate of chef
+     */
     public void moveToCounter(int counterXCoord, int counterYCoord)
     {
         pizzaXOffset = 50 * pizzaria;
@@ -211,11 +226,19 @@ public class Chef extends People
         }
     }
     
+    /**
+     * Assigns pizza instance to chef 
+     * @param pizza Pizza instance
+     */
     public void assignPizza(Pizza pizza)
     {
         assignedPizza = pizza;
     }
     
+    /**
+     * Checks the pizza is fully cooked before picking it up
+     * @return canPickUp
+     */
     public boolean canPickUpPizza()
     {
         Pizza pizza = (Pizza)getOneObjectAtOffset(pizzaXOffset, pizzaYOffset, Pizza.class);        
@@ -233,6 +256,9 @@ public class Chef extends People
         return canPickUp;
     }
         
+    /**
+     * Looks for a oven that is empty and reserves the spot so that no other chef can use it for the moment. Sets oven x coordinates and oven y coordinates
+     */
     public void checkOpenOven()
     {
         //checks for empty oven and reserves it
@@ -263,6 +289,10 @@ public class Chef extends People
         }
     }
     
+    /**
+     * Sets chef images based on rotation
+     * @param degrees amount of degrees you want to turn
+     */
     public void rotate(int degrees)
     {
         //zero degrees starts facing up/north
@@ -289,6 +319,12 @@ public class Chef extends People
         }
     }
     
+    /**
+     * Overrides rotate method with pizza in hand. Sets chef image and pizza location
+     * @param degrees amount of degrees you want to turn
+     * @param pizza Pizza instance
+     * @param chef Chef instance
+     */
     public void rotate(int degrees, Pizza pizza, Chef chef)
     {
         //zero degrees starts facing up/north
@@ -324,10 +360,18 @@ public class Chef extends People
         pizza.setLocation(pizzaXCoord, pizzaYCoord);
     }
     
+    /**
+     * Getter method to check if currently moving pizza
+     * @return currentlyMovingPizza
+     */
     public boolean getCurrentlyMoving(){
         return currentlyMovingPizza;
     }
     
+    /**
+     * Getter method to check if chef is currently moving
+     * @return moving
+     */
     public boolean getMoving(){
         return moving;
     }

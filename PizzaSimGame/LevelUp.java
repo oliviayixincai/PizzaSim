@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LevelUpImages here.
+ * Creates a class to level up items in the world
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class LevelUp extends Actor
 {
@@ -21,6 +21,7 @@ public class LevelUp extends Actor
     public void act()
     {
         this.utils = getWorld().getObjectsAt(0, 0, Utils.class).get(0);
+        //Checks money for resturant 1 and sets variables and labels accordingly 
         if((utils.getResturantMoneyOne() > 100 && utils.getResturantMoneyOne() < 200 && utils.getResturantLevelOne() < 2) || (utils.getResturantMoneyOne() >  200 && utils.getResturantLevelOne() < 3))
         {
             utils.addResturantLevelOne();
@@ -32,6 +33,7 @@ public class LevelUp extends Actor
             level_displayer.setDisplayer(utils.getResturantLevelOne());
         }
         
+        //Checks money for resturant 2 and sets variables and labels accordingly
         if((utils.getResturantMoneyTwo() > 100 && utils.getResturantMoneyTwo() < 200 && utils.getResturantLevelTwo() < 2) || (utils.getResturantMoneyTwo() > 200 && utils.getResturantLevelTwo() < 3))
         {
             utils.addResturantLevelTwo();
@@ -43,6 +45,7 @@ public class LevelUp extends Actor
             level_displayer.setDisplayer(utils.getResturantLevelTwo());
         }
         
+        //Creates win condition 
         if((utils.getResturantMoneyOne() > 500))
         {
             ((MyWorld) getWorld()).stopSounds();

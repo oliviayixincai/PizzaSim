@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 /**
  * EndWorld is an class that show the final result fo the simulation and display
@@ -20,6 +21,7 @@ public class EndWorld extends World
     private TryAgainButton tryAgainButton;
     private Confetti confetti;
     private GreenfootSound winSound;
+    private ArrayList<GreenfootSound> pausedSounds;
     
     /**
      * Constructor for objects of class EndWorld.
@@ -46,6 +48,7 @@ public class EndWorld extends World
         this.confetti = new Confetti();
         winSound = new GreenfootSound("win.wav");
         winSound.play();
+        pausedSounds = new ArrayList<GreenfootSound>();
         if (result == 0 ) {
             setBackground(backgroundImages[result]);
             winFlashingText = new FlashingText(new GreenfootImage(winTexts[result]));
@@ -61,15 +64,30 @@ public class EndWorld extends World
         addObject(confetti, 512, 400);
         addObject(tryAgainButton, 830, 750);
     }
+
+    public void stopped() {
+        // stop all sounds
+        pausedSounds.clear();
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            if (sound.isSoundPlaying()) {
+                sound.pauseSound();
+                pausedSounds.add(sound.getSound());
+            }
+        }
+        // stop background sound
+        Utils.backgroundSound.pause();
+    }
     
     public void started() {
+        // play all sounds
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            if (pausedSounds.contains(sound.getSound())) {
+                sound.playSound();
+            }
+        }
+        // play background sound in loop
         Utils.backgroundSound.playLoop();
-        winSound.play();
-    }
-    
-    public void stopped() {
-        Utils.backgroundSound.pause();
-        winSound.pause();
     }
 }
-

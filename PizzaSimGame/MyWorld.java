@@ -358,6 +358,14 @@ public class MyWorld extends World
         Utils.backgroundSound.playLoop();
     }
     
+    public void stopSounds() {
+        // play all sounds
+        ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
+        for (ISound sound : sounds) {
+            sound.pauseSound();
+        }
+    }
+    
     /**
      * Update volume.
      * @param isUp True if turn volume up, Flase otherwise.

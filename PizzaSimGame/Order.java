@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Order here.
+ * Actor that displays the pizza order of each customer when at cashier
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)

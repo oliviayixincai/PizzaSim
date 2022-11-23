@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Pizza here.
+ * The pizza that gets cooked and picked up by the various actors
  * 
  * @Yuxin Li (Yuxin Li) 
  * @version Novbember 2022

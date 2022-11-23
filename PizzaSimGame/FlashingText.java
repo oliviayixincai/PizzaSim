@@ -6,11 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Gloria Chan
  * @version (a version number or a date)
  */
-<<<<<<< HEAD
+
 public class FlashingText extends Effects
-=======
-public class FlashingText extends Actor
->>>>>>> main
+
 {
     private int time = 0;
     private GreenfootImage pressEnterText;
@@ -28,14 +26,16 @@ public class FlashingText extends Actor
      */
     public void act() 
     {
-        if(time == 0 || time == 250)
-        blink = !blink;
+        if(time == 0 || time == 250){
+            blink = !blink;
+        }
             
-        if(blink)
-        time -= 2;
-            
-        else
-        time += 2;
+        if(blink) {
+            time -= 2;
+        }   
+        else {
+            time += 2;
+        }
         
         if (time % 5 == 0)
         {

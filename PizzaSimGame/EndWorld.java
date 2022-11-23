@@ -1,8 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
->>>>>>> main
 
 /**
  * EndWorld is an class that show the final result fo the simulation and display
@@ -23,11 +20,8 @@ public class EndWorld extends World
     private Label amountMoneyLabel;
     private TryAgainButton tryAgainButton;
     private Confetti confetti;
-<<<<<<< HEAD
     private GreenfootSound winSound;
-=======
     private ArrayList<GreenfootSound> pausedSounds;
->>>>>>> main
     
     /**
      * Constructor for objects of class EndWorld.
@@ -52,12 +46,9 @@ public class EndWorld extends World
         this.amountMoneyLabel = new Label (money, 50, new Color(253, 218, 13));
         this.tryAgainButton = new TryAgainButton();
         this.confetti = new Confetti();
-<<<<<<< HEAD
         winSound = new GreenfootSound("win.wav");
         winSound.play();
-=======
         pausedSounds = new ArrayList<GreenfootSound>();
->>>>>>> main
         if (result == 0 ) {
             setBackground(backgroundImages[result]);
             winFlashingText = new FlashingText(new GreenfootImage(winTexts[result]));
@@ -73,20 +64,7 @@ public class EndWorld extends World
         addObject(confetti, 512, 400);
         addObject(tryAgainButton, 830, 750);
     }
-    
-<<<<<<< HEAD
-    public void started() {
-        Utils.backgroundSound.playLoop();
-        winSound.play();
-    }
-    
-    public void stopped() {
-        Utils.backgroundSound.pause();
-        winSound.pause();
-    }
-}
 
-=======
     public void stopped() {
         // stop all sounds
         pausedSounds.clear();
@@ -113,4 +91,3 @@ public class EndWorld extends World
         Utils.backgroundSound.playLoop();
     }
 }
->>>>>>> main

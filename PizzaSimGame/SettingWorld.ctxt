@@ -13,12 +13,6 @@ comment12.target=int\ getChefNumPapa()
 comment13.params=
 comment13.target=int\ getCashierNumPapa()
 comment14.params=
-<<<<<<< HEAD
-comment14.target=int\ getRobberStealPapa()
-comment15.params=isUp
-comment15.target=void\ updateVolume(boolean)
-comment15.text=\r\n\ Update\ volume.\r\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\r\n
-=======
 comment14.target=int\ getMoneyNumPapa()
 comment15.params=
 comment15.target=int\ getOvenNumPapa()
@@ -26,8 +20,7 @@ comment16.params=
 comment16.target=int\ getRobberStealPapa()
 comment17.params=isUp
 comment17.target=void\ updateVolume(boolean)
-comment17.text=\n\ Update\ volume.\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\n
->>>>>>> main
+comment17.text=\r\n\ Update\ volume.\r\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

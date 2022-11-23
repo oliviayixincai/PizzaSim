@@ -6,15 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Yixin Cai
  * @version (a version number or a date)
  */
-<<<<<<< HEAD
-public class Confetti extends Effects
-{
-    private GifImage confetti;
-    
-    public Confetti() {
-        confetti = new GifImage("confetti.gif");
-        setImage(confetti.getCurrentImage());
-=======
+
 public class Confetti extends Actor implements ISound
 {
     private GifImage confetti;
@@ -30,7 +22,7 @@ public class Confetti extends Actor implements ISound
     public void addedToWorld(World w) {
         winSound.setVolume(Utils.volume);
         playSound();
->>>>>>> main
+
     }
     
     /**
@@ -41,8 +33,6 @@ public class Confetti extends Actor implements ISound
     {
         setImage(confetti.getCurrentImage());
     }
-<<<<<<< HEAD
-=======
     
     /**
      * Set volume
@@ -79,5 +69,4 @@ public class Confetti extends Actor implements ISound
     public GreenfootSound getSound() {
         return winSound;
     }
->>>>>>> main
 }

@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StoryWorld here.
+ * A World that tells a backgroud story about this simulation game.
+ * Click any place on the screen to continue.
  * 
  * @author Gloria Chan & Yixin Cai
  * @version (a version number or a date)

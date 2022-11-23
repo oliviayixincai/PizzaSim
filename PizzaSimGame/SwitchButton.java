@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SwitchButton here.
+ * The switch button to switch setting views betweeen PAPA and MAMA pizzeria.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

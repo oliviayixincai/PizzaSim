@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class TryAgainButton here.
+ * TryAgain button to be displayed in the EndWorld. To be clicked to start over.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

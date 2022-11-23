@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Button here.
+ * Button is the main abstract class for various buttons in this simulation.
+ * It supports basic effect, such as click sound, hover effect, and click effect.
+ * 
+ * It supports multiple clicks and the click sound will play for each click.
+ * 
+ * Specific onClick effects are delegated to subclasses by abstract onClick class.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)
@@ -29,6 +34,10 @@ public abstract class Button extends Actor implements ISound
     private int downTik;
     private boolean isHovered;
     
+    /**
+     * Constructor for objects of class Button.
+     * 
+     */
     public Button() {
         this.downTik = 0;
         this.soundNum = sounds.length;
@@ -37,6 +46,7 @@ public abstract class Button extends Actor implements ISound
     }
     
     public void addedToWorld(World w) {
+        // update volume after being added to world
         for (GreenfootSound sound : sounds) {
             sound.setVolume(Utils.volume);
         }
@@ -72,6 +82,9 @@ public abstract class Button extends Actor implements ISound
         }
     }
     
+    /**
+     * Specific onClick effects to be implemented by subclasses
+     */
     protected abstract void onClick();
     
     /**
@@ -91,6 +104,7 @@ public abstract class Button extends Actor implements ISound
     public void pauseSound() {
         sounds[soundIndex].pause();
     }
+
     public boolean isSoundPlaying () {
         return sounds[soundIndex].isPlaying();
     }

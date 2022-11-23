@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=LevelUp
+comment0.text=\r\n\ Creates\ a\ class\ to\ level\ up\ items\ in\ the\ world\r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ November\ 2022\r\n
+comment1.params=
+comment1.target=LevelUp()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ LevelUpImages\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=3

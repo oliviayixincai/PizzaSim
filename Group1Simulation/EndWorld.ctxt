@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=EndWorld
+comment0.text=\r\n\ EndWorld\ is\ an\ class\ that\ show\ the\ final\ result\ fo\ the\ simulation\ and\ display\r\n\ confetti\ effect.\r\n\ \r\n\ Credits\r\n\ "Megapixel"\ font\ and\ "Crown"\ graphic\ from\ Canva\ (https\://www.canva.com/).\r\n\ \r\n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=result\ level\ money
+comment1.target=EndWorld(int,\ int,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ EndWorld.\r\n\ \r\n
+comment2.params=
+comment2.target=void\ stopped()
+comment3.params=
+comment3.target=void\ started()
+numComments=4

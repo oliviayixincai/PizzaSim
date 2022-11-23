@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=KitchenCounter
+comment0.text=\r\n\ Creates\ location\ and\ methods\ specifically\ for\ kichen\ counters\r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ November\ 2022\r\n
+comment1.params=pizzaria
+comment1.target=KitchenCounter(int)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ KitchenCounter\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=boolean\ checkCanMakePizza()
+comment3.text=\r\n\ Checks\ if\ counter\ is\ available\ to\ make\ a\ pizza\r\n\ @return\ canMakePizza\ Boolean\r\n
+comment4.params=
+comment4.target=boolean\ checkCounterChef()
+comment4.text=\r\n\ Check\ if\ there\ is\ a\ chef\ around\ counter\r\n\ @return\ boolean\r\n
+numComments=5

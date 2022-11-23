@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=People
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ People\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=void\ act()
+comment10.params=x\ y
+comment10.target=void\ setLocation(int,\ int)
+comment10.text=\r\n\ Set\ the\ location\ using\ integer\ coordinates.\r\n\ (Overrides\ the\ method\ in\ Actor.)\ \ \ \ \r\n\ \r\n\ @param\ x\ the\ new\ x\ location\r\n\ @param\ y\ the\ new\ y\ location\r\n
+comment2.params=up\ down\ left\ right\ rotation
+comment2.target=void\ animate(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ int)
+comment3.params=up\ down\ left\ right\ rotation
+comment3.target=void\ standStill(greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ greenfoot.GreenfootImage,\ int)
+comment4.params=pizza
+comment4.target=void\ assignPizza(Pizza)
+comment5.params=rotation
+comment5.target=int\ correctNegRotation(int)
+comment6.params=a\ b\ rotation
+comment6.target=void\ interact(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ int)
+comment7.params=up
+comment7.target=void\ interact(greenfoot.GreenfootImage[])
+comment8.params=
+comment8.target=Pizza\ getPizza()
+comment9.params=x\ y
+comment9.target=void\ setLocation(double,\ double)
+comment9.text=\r\n\ Set\ the\ location\ using\ exact\ coordinates.\r\n\ \r\n\ @param\ x\ the\ new\ x\ location\r\n\ @param\ y\ the\ new\ y\ location\r\n
+numComments=11

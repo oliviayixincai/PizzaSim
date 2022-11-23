@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class People here.
+ * Abstracted class for people, all of the animation code
  * 
- * @author (your name) 
+ * @author Andy Li
  * @version (a version number or a date)
  */
 public abstract class People extends Actor
@@ -32,6 +32,14 @@ public abstract class People extends Actor
     
     }
     
+    /**
+     * Shows the walking animation
+     * @param up, the image arrays for when the person is moving up
+     * @param down, the image arrays for when the person is moving down
+     * @param left, the image arrays for when the person is moving left
+     * @param right, the image arrays for when the person is moving right
+     * @param rotation, the direction that the person is moving in
+     */
     public void animate(GreenfootImage[] up, GreenfootImage[] down, GreenfootImage[] left, GreenfootImage[] right, int rotation){
         rotation = correctNegRotation(rotation);
         
@@ -58,7 +66,15 @@ public abstract class People extends Actor
             animTimer.mark();
         }
     }
-    
+
+    /**
+     * Sets the images for when the actors are not moving
+     * @param up, the image for when the actor is facing up
+     * @param down, the image for when the actor is facing down
+     * @param left, the image for when the actor is facing left
+     * @param right, the image for when the actor is facing right
+     * @param rotation, the direction that the actor is facing
+     */
     public void standStill(GreenfootImage up, GreenfootImage down, GreenfootImage left, GreenfootImage right, int rotation){
         rotation = correctNegRotation(rotation);
         
@@ -84,6 +100,9 @@ public abstract class People extends Actor
         assignedPizza = pizza;
     }
     
+    /**
+     * Some actors have a negative rotation, sets the rotation to the positive value
+     */
     public int correctNegRotation(int rotation){
         if (rotation < 0){
             if (rotation == -270){
@@ -97,6 +116,12 @@ public abstract class People extends Actor
         return rotation;
     }
     
+    /**
+     * Plays the animation when the actors are interacting with the oven
+     * @param a, the array of images for the first direction
+     * @param b, the array of images for the second direction
+     * @param rotation, the direction that the actor is facing
+     */
     public void interact(GreenfootImage[] a, GreenfootImage[] b, int rotation){
         rotation = correctNegRotation(rotation);
         
@@ -126,6 +151,9 @@ public abstract class People extends Actor
         }
     }
     
+    /**
+     * A simpler version of the interact method, allows only for 1 direction
+     */
     public void interact(GreenfootImage[] up){
         if(interactIndex == up.length){
             interactIndex  = 0;

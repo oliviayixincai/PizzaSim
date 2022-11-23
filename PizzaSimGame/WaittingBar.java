@@ -2,12 +2,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class WaittingBar here.
+ * Actor that displays the emotions of each customer
+ * This actor also pays the tips based on happiness level.
  * 
  * Credits
  * Mood gifs from Canva (https://www.canva.com/).
  * 
- * @author Yixin Cai 
+ * @author Yixin Cai and Andy Li
  * @version (a version number or a date)
  */
 public class WaittingBar extends Effects

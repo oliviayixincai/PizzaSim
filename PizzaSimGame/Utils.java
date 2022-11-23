@@ -20,7 +20,7 @@ public class Utils extends Actor
     private int robbingMoneyMama, robbingMoneyPapa;
     public static final int moveSpeed = 1;
     
-    public static int volume = 80;
+    public static int volume = 60;
     public static final GreenfootSound backgroundSound = new GreenfootSound("Run-Amok.wav");
     
     public static final int enterY = 710;

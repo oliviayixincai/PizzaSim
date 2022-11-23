@@ -1,17 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Pizza is a Greenfoot Actor used to show the creation process of the pizza after being ordered by a customer.
- * <p> One pizza topping layer is added after certain acts from the topping added before.
- * <p> It cooks and burns pizza when it remains in the oven for too long.
+ * Write a description of class Pizza here.
  * 
-<<<<<<< HEAD
  * @Yuxin Li (Yuxin Li) 
- * @version (a version number or a date)
-=======
- * @Yuxin Li 
- * @version November 2022
->>>>>>> main
+ * @version Novbember 2022
  * 
  */ 
 public class Pizza extends Actor
@@ -20,7 +13,6 @@ public class Pizza extends Actor
     private String sauce;
     private boolean burn = false;
     private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false, cheeseFinished = false;
-    private boolean firstStage_finished = false;
     private boolean cooked = false;
     private Cashier cashier;
     private Customer customer;
@@ -42,23 +34,18 @@ public class Pizza extends Actor
     private int changeTime = 0;
     private boolean hasCashier = false, hasChef = false;
     private boolean atCashierCounter = false, paid = false;
-    
-    private double exactX;
-    private double exactY;
-    
-    // andy code
+
     private boolean customerPickedUp = false;
     
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
-    */
+     * 
+     * @param strings array consists of the customer order
+     * @param sauce the type of sauce the customer wants
+     * @param cheese if the customer ordered cheese
+     */
     public Pizza(String[] strings, String sauce, boolean cheese){
-        /** 
-         * @param strings array consists of the customer order
-         * @param sauce the type of sauce the customer wants
-         * @customer theCustomer the customer that orders this pizza
-         */
         toppings = strings;
         this.sauce = sauce;
         hasCheese = cheese; 
@@ -86,16 +73,7 @@ public class Pizza extends Actor
                 addToppings(toppings);
             }
         } else {
-            //andy code
-            //if picked up by a customer, set location based on customers direction
-            moveMe();
-        }
-            //removes actor when at edge
-            atEdge();
-        }
-    
-    public void moveMe(){
-        switch (customer.getRotation()){
+            switch (customer.getRotation()){
                 case People.UP:
                     setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
                     break;
@@ -109,6 +87,8 @@ public class Pizza extends Actor
                     setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
                     break;
             }
+            atEdge();
+        }
     }
     
     /**
@@ -136,6 +116,10 @@ public class Pizza extends Actor
         }
     }
     
+    /**
+     * add the specific types of sauce to pizza
+     * @param cheese if the customer ordered cheese
+     */
     public void addCheese(boolean hasCheese){
         if (hasCheese){
             cheese.scale(50, 50);
@@ -163,8 +147,9 @@ public class Pizza extends Actor
     }
     
     /**
-     * calculate the cook time required for the pizza
-    */
+     * get the cook time required for the pizza
+     * @return cookTime the cook time required for the pizza
+     */
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
@@ -173,16 +158,8 @@ public class Pizza extends Actor
     }
     
     /**
-     * get the cook time required for the pizza
-     * @return cookTime the cook time required for the pizza
-     */
-    public int getCookTime(){
-        return cookTime;
-    }
-    
-    /**
      * If the pizza is picked up by cashier from the oven 
-     * <p> set the inOven variable to false
+     * @return hasCashier
      */
     public boolean isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
@@ -251,27 +228,13 @@ public class Pizza extends Actor
     }
     
     /**
-     * @return burn True if the the pizza is burned, False if the pizza is not burned
-     */
-    public boolean isBurned(){
-        return burn;
-    }
-    
-    /**
+     * return if the pizza is cooked
      * @return cooked True if the pizza is cooked, False if the pizza is not cooked
      */
     public boolean isCooked(){
         return cooked;
     }
     
-    /**
-     * return if the cashier is at counter
-     * @return atCashierCounter True if the pizza is at counter, False if not
-     */
-    public boolean isAtCashierCounter(){
-        return atCashierCounter;
-    }
-
     /**
      * burn the pizza by adding a dark layer at the top of the pizza
      */
@@ -316,16 +279,4 @@ public class Pizza extends Actor
         return sauce;
     }
     
-    /**
-     * Set the location using exact coordinates.
-     * 
-     * @param x the new x location
-     * @param y the new y location
-     */
-    public void setLocation(double x, double y) 
-    {
-        exactX = x;
-        exactY = y;
-        super.setLocation((int) (x + 0.5), (int) (y + 0.5));
-    }
 }

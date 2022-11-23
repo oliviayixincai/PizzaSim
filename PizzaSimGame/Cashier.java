@@ -12,7 +12,7 @@ public class Cashier extends People
     private int rotationIndex = 180, startRotationIndex, imageIndex = 0, pizzaria;
     private int ovenXCoord, ovenYCoord, counterXCoord, counterYCoord, cookedOven = 4;
     private int pizzaXOffset = 0, pizzaYOffset = -50;
-    private double pizzaXCoord, pizzaYCoord, rotationIndexRadians;
+    private int pizzaXCoord, pizzaYCoord, rotationIndexRadians;
     private boolean currentlyMovingToOven = false, currentlyMovingPizza = false, atOven = false, atCounter = false, foundPizza = false;
     private boolean canPickUp, checkedOvenLocation = false;
     private Oven oven1, oven2, oven3;

@@ -36,9 +36,10 @@ import java.util.ArrayList;
  * "16x16 Fence and Well" by William.Thompsonj from OpenGameArt (https://opengameart.org/content/16x16-fence-and-well-tiny-16).
  * “Pixel Art of Book Shelf Stack” from FreePik (https://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).
  * 
+ * Credits for the Chef and Customers are in the folder "credits".
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Group 1) 
+ * @version (22/11/22)
  */
 public class MyWorld extends World
 {

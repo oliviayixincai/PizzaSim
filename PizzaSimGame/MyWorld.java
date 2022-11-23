@@ -204,6 +204,9 @@ public class MyWorld extends World
         spawnRobber();
     }
     
+    /**
+     * Checks leveling system to unlock items in the world
+     */
     public void checkLevel()
     {
         //changes level for left store
@@ -293,6 +296,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Method to spawn customer based on random number gen
+     */
     public void spawnCustomer()
     {
         dirRNG = Greenfoot.getRandomNumber(2);
@@ -326,10 +332,6 @@ public class MyWorld extends World
     
     public boolean checkSimOver() {
         return this.isSimOver;
-    }
-    
-    public void setUpNewSim() {
-        
     }
     
     public void stopped() {
@@ -386,7 +388,10 @@ public class MyWorld extends World
         // Update volume label.
         volumeLabel.updateLabel(Utils.volume + "%");
     }
-    
+
+    /**
+     * Method to spawn robber based on money of resturants
+     */
     public void spawnRobber()
     {
         if(utils.getResturantMoneyOne() - previousMoneyMama > 50)

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Robber here.
+ * The robber seeks richness and spawns to take away money from the opponent store, ultimately attempting to stop the other store from winning
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Eric Zheng 
+ * @version November 2022
  */
 public class Robber extends People
 {
@@ -27,10 +27,6 @@ public class Robber extends People
     private boolean isCash2Open = false;
     private int enterDIR, exitDIR;
     
-    /**
-     * Act - do whatever the Robber wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public Robber(int store)
     {
         this.store = store;
@@ -59,7 +55,10 @@ public class Robber extends People
         animate(wb, wf, wl, wr, rotation);
         moveRobber();
     }
-
+    
+    /**
+     * Method for calling move methods for robber based on location in world
+     */
     public void moveRobber()
     {
         checkLocation();
@@ -77,6 +76,9 @@ public class Robber extends People
         }
     }
 
+    /**
+     * Checks location of robber to set sequencing
+     */
     public void checkLocation()
     {
         if(getX() == 512 && getY() == Utils.enterY)
@@ -90,6 +92,9 @@ public class Robber extends People
         }
     }
 
+    /**
+     * Moves robber to the door of resturant 
+     */
     public void moveToDoor()
     {
         if(getY() != 710)
@@ -99,6 +104,9 @@ public class Robber extends People
         }
     }
 
+    /**
+     * Moves robber to cashier of resturant
+     */
     public void moveToCashier()
     {
         if(store == -1)
@@ -131,6 +139,9 @@ public class Robber extends People
         }
     }
 
+    /**
+     * Moves robber to exit of the store and to the edge of the world
+     */
     public void exit()
     {
         if(getY() != Utils.exitY)
@@ -165,6 +176,9 @@ public class Robber extends People
         }
     }
     
+    /**
+     * Accesses money interface methods to change money of resturants
+     */
     public void stealMoney()
     {
         moneyInterface = getWorld().getObjectsAt(0, 0, MoneyInterface.class).get(0);

@@ -12,7 +12,7 @@ public class MyWorld extends World
 {
     private boolean isSimOver, changedLevelTwoLeft, changedLevelTwoRight, changedLevelThreeLeft, changedLevelThreeRight;
     private SettingWorld settingWorld;
-    private int customerSpawnRate, customerDir;
+    private int customerSpawnRate, customerDir, previousMoneyMama = 0, previousMoneyPapa = 0;
     //variables for spawning customers
     private Label volumeLabel;
     private int dir, startingY, dirRNG;
@@ -24,6 +24,7 @@ public class MyWorld extends World
     
     CashierCover coverRight = new CashierCover("right");
     CashierCover coverLeft = new CashierCover("left");
+    
     OvenCover cover1 = new OvenCover();
     OvenCover cover2 = new OvenCover();
     OvenCover cover3 = new OvenCover();
@@ -40,6 +41,10 @@ public class MyWorld extends World
         addObject(new MoneyInterface(utils), 0, 0);
         addObject(new LevelUp(), 0, 0);
         this.settingWorld = settingWorld;
+        
+        utils.setRobbingMoneyMama(settingWorld.getRobberStealMama() * -1);
+        utils.setRobbingMoneyPapa(settingWorld.getRobberStealPapa() * -1);
+        
         isSimOver = false;
         pausedSounds = new ArrayList<GreenfootSound>();
         // add volume control
@@ -148,7 +153,7 @@ public class MyWorld extends World
     public void act() {
         spawnCustomer();
         checkLevel();
-        spawnRob();
+        spawnRobber();
     }
     
     public void checkLevel()
@@ -304,15 +309,18 @@ public class MyWorld extends World
         // Update volume label.
         volumeLabel.updateLabel(Utils.volume + "%");
     }
-    public void spawnRob()
+    
+    public void spawnRobber()
     {
-        if(Greenfoot.getRandomNumber(300) == 0)
+        if(utils.getResturantMoneyOne() - previousMoneyMama > 50)
         {
-            addObject(new Robber(1),500,100);
+            previousMoneyMama = utils.getResturantMoneyOne();
+            addObject(new Robber(1), 512, 100);
         }
-        else if(Greenfoot.getRandomNumber(300) == 1)
+        if(utils.getResturantMoneyTwo() - previousMoneyPapa > 50)
         {
-            addObject(new Robber(2),500,100);
+            previousMoneyPapa = utils.getResturantMoneyTwo();
+            addObject(new Robber(-1), 512, 100);
         }
     }
 }

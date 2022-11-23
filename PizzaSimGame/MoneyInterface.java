@@ -20,13 +20,13 @@ public class MoneyInterface extends Actor
         if(store == -1)
         {
             utils.resturantMoneyOneAdd(money);
-            MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(300, 30, MoneyDisplayer.class).get(0);
+            MoneyDisplayer money_displayer = (MoneyDisplayer)getWorld().getObjectsAt(300, 30, MoneyDisplayer.class).get(0);
             money_displayer.setDisplayer(utils.getResturantMoneyOne());
         }
         if(store == 1)
         {
             utils.resturantMoneyTwoAdd(money);
-            MoneyDisplayer money_displayer=(MoneyDisplayer)getWorld().getObjectsAt(724, 30, MoneyDisplayer.class).get(0);
+            MoneyDisplayer money_displayer = (MoneyDisplayer)getWorld().getObjectsAt(724, 30, MoneyDisplayer.class).get(0);
             money_displayer.setDisplayer(utils.getResturantMoneyTwo());
         }
     }

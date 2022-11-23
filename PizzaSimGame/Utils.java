@@ -17,6 +17,7 @@ public class Utils extends Actor
     private int resturantMoneyTwo = 0;
     private int resturantLevelOne = 1;
     private int resturantLevelTwo = 1;
+    private int robbingMoneyMama, robbingMoneyPapa;
     public static final int moveSpeed = 1;
     
     public static int volume = 60;
@@ -49,6 +50,16 @@ public class Utils extends Actor
         resturantMoneyTwo += money;
     }
     
+    public void setRobbingMoneyMama(int money)
+    {
+        robbingMoneyMama = money;
+    }
+    
+    public void setRobbingMoneyPapa(int money)
+    {
+        robbingMoneyPapa = money;
+    }
+    
     public void addResturantLevelOne()
     {
         resturantLevelOne++;
@@ -77,5 +88,15 @@ public class Utils extends Actor
     public int getResturantLevelTwo()
     {
         return resturantLevelTwo;
+    }
+    
+    public int getRobbingMoneyMama()
+    {
+        return robbingMoneyMama;
+    }
+    
+    public int getRobbingMoneyPapa()
+    {
+        return robbingMoneyPapa;
     }
 }

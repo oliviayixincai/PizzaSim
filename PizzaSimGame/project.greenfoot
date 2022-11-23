@@ -1,12 +1,18 @@
 #Greenfoot project file
 class.Chef.image=baby2.png
 class.MyWorld.image=pizzaKitchen.png
+<<<<<<< HEAD
 class.Order.image=chatbox.png
 class.Pizza.image=pizza_cheese.png
+=======
+class.Order.image=chatBox.png
+class.Pizza.image=pizzaBase.png
+>>>>>>> main
 dependency1.from=StoryWorld
 dependency1.to=FlashingText
 dependency1.type=UsesDependency
 dependency10.from=MyWorld
+<<<<<<< HEAD
 dependency10.to=Label
 dependency10.type=UsesDependency
 dependency11.from=MyWorld
@@ -35,11 +41,42 @@ dependency18.to=Chef
 dependency18.type=UsesDependency
 dependency19.from=MyWorld
 dependency19.to=Cashier
+=======
+dependency10.to=SettingWorld
+dependency10.type=UsesDependency
+dependency11.from=MyWorld
+dependency11.to=Label
+dependency11.type=UsesDependency
+dependency12.from=MyWorld
+dependency12.to=VolumeButton
+dependency12.type=UsesDependency
+dependency13.from=MyWorld
+dependency13.to=Oven
+dependency13.type=UsesDependency
+dependency14.from=MyWorld
+dependency14.to=Chef
+dependency14.type=UsesDependency
+dependency15.from=MyWorld
+dependency15.to=Cashier
+dependency15.type=UsesDependency
+dependency16.from=MyWorld
+dependency16.to=KitchenCounter
+dependency16.type=UsesDependency
+dependency17.from=MyWorld
+dependency17.to=Door
+dependency17.type=UsesDependency
+dependency18.from=MyWorld
+dependency18.to=CashierCounter
+dependency18.type=UsesDependency
+dependency19.from=MyWorld
+dependency19.to=WaitingLine
+>>>>>>> main
 dependency19.type=UsesDependency
 dependency2.from=StoryWorld
 dependency2.to=SettingWorld
 dependency2.type=UsesDependency
 dependency20.from=MyWorld
+<<<<<<< HEAD
 dependency20.to=KitchenCounter
 dependency20.type=UsesDependency
 dependency21.from=MyWorld
@@ -68,11 +105,42 @@ dependency28.to=PlusButton
 dependency28.type=UsesDependency
 dependency29.from=SettingWorld
 dependency29.to=MinusButton
+=======
+dependency20.to=MoneyDisplayer
+dependency20.type=UsesDependency
+dependency21.from=MyWorld
+dependency21.to=Customer
+dependency21.type=UsesDependency
+dependency22.from=MyWorld
+dependency22.to=ISound
+dependency22.type=UsesDependency
+dependency23.from=MyWorld
+dependency23.to=Utils
+dependency23.type=UsesDependency
+dependency24.from=SettingWorld
+dependency24.to=PlusButton
+dependency24.type=UsesDependency
+dependency25.from=SettingWorld
+dependency25.to=MinusButton
+dependency25.type=UsesDependency
+dependency26.from=SettingWorld
+dependency26.to=SwitchButton
+dependency26.type=UsesDependency
+dependency27.from=SettingWorld
+dependency27.to=PlayButton
+dependency27.type=UsesDependency
+dependency28.from=SettingWorld
+dependency28.to=Label
+dependency28.type=UsesDependency
+dependency29.from=SettingWorld
+dependency29.to=VolumeButton
+>>>>>>> main
 dependency29.type=UsesDependency
 dependency3.from=StoryWorld
 dependency3.to=Utils
 dependency3.type=UsesDependency
 dependency30.from=SettingWorld
+<<<<<<< HEAD
 dependency30.to=SwitchButton
 dependency30.type=UsesDependency
 dependency31.from=SettingWorld
@@ -101,10 +169,41 @@ dependency38.to=StoryWorld
 dependency38.type=UsesDependency
 dependency39.from=StartWorld
 dependency39.to=Utils
+=======
+dependency30.to=ISound
+dependency30.type=UsesDependency
+dependency31.from=SettingWorld
+dependency31.to=Utils
+dependency31.type=UsesDependency
+dependency32.from=StartWorld
+dependency32.to=FlashingText
+dependency32.type=UsesDependency
+dependency33.from=StartWorld
+dependency33.to=ISound
+dependency33.type=UsesDependency
+dependency34.from=StartWorld
+dependency34.to=StoryWorld
+dependency34.type=UsesDependency
+dependency35.from=StartWorld
+dependency35.to=Utils
+dependency35.type=UsesDependency
+dependency36.from=Clock
+dependency36.to=Pizza
+dependency36.type=UsesDependency
+dependency37.from=Clock
+dependency37.to=Utils
+dependency37.type=UsesDependency
+dependency38.from=Oven
+dependency38.to=Pizza
+dependency38.type=UsesDependency
+dependency39.from=KitchenCounter
+dependency39.to=Pizza
+>>>>>>> main
 dependency39.type=UsesDependency
 dependency4.from=EndWorld
 dependency4.to=FlashingText
 dependency4.type=UsesDependency
+<<<<<<< HEAD
 dependency40.from=MoneyInterface
 dependency40.to=Utils
 dependency40.type=UsesDependency
@@ -133,11 +232,42 @@ dependency48.from=CashierCounter
 dependency48.to=Customer
 dependency48.type=UsesDependency
 dependency49.from=Oven
+=======
+dependency40.from=Button
+dependency40.to=Utils
+dependency40.type=UsesDependency
+dependency41.from=VolumeButton
+dependency41.to=MyWorld
+dependency41.type=UsesDependency
+dependency42.from=VolumeButton
+dependency42.to=SettingWorld
+dependency42.type=UsesDependency
+dependency43.from=PlayButton
+dependency43.to=SettingWorld
+dependency43.type=UsesDependency
+dependency44.from=PlayButton
+dependency44.to=MyWorld
+dependency44.type=UsesDependency
+dependency45.from=TryAgainButton
+dependency45.to=MyWorld
+dependency45.type=UsesDependency
+dependency46.from=TryAgainButton
+dependency46.to=StartWorld
+dependency46.type=UsesDependency
+dependency47.from=Order
+dependency47.to=Customer
+dependency47.type=UsesDependency
+dependency48.from=Order
+dependency48.to=KitchenCounter
+dependency48.type=UsesDependency
+dependency49.from=Order
+>>>>>>> main
 dependency49.to=Pizza
 dependency49.type=UsesDependency
 dependency5.from=EndWorld
 dependency5.to=Label
 dependency5.type=UsesDependency
+<<<<<<< HEAD
 dependency50.from=Oven
 dependency50.to=OvenCover
 dependency50.type=UsesDependency
@@ -167,10 +297,42 @@ dependency58.to=MyWorld
 dependency58.type=UsesDependency
 dependency59.from=TryAgainButton
 dependency59.to=StartWorld
+=======
+dependency50.from=Order
+dependency50.to=MoneyDisplayer
+dependency50.type=UsesDependency
+dependency51.from=Order
+dependency51.to=Utils
+dependency51.type=UsesDependency
+dependency52.from=Customer
+dependency52.to=Order
+dependency52.type=UsesDependency
+dependency53.from=Customer
+dependency53.to=Pizza
+dependency53.type=UsesDependency
+dependency54.from=Customer
+dependency54.to=Utils
+dependency54.type=UsesDependency
+dependency55.from=Customer
+dependency55.to=Door
+dependency55.type=UsesDependency
+dependency56.from=Chef
+dependency56.to=Oven
+dependency56.type=UsesDependency
+dependency57.from=Chef
+dependency57.to=SimpleTimer
+dependency57.type=UsesDependency
+dependency58.from=Chef
+dependency58.to=Pizza
+dependency58.type=UsesDependency
+dependency59.from=Chef
+dependency59.to=Utils
+>>>>>>> main
 dependency59.type=UsesDependency
 dependency6.from=EndWorld
 dependency6.to=TryAgainButton
 dependency6.type=UsesDependency
+<<<<<<< HEAD
 dependency60.from=Order
 dependency60.to=Customer
 dependency60.type=UsesDependency
@@ -200,10 +362,42 @@ dependency68.to=KitchenCounter
 dependency68.type=UsesDependency
 dependency69.from=Customer
 dependency69.to=Chef
+=======
+dependency60.from=Cashier
+dependency60.to=Oven
+dependency60.type=UsesDependency
+dependency61.from=Cashier
+dependency61.to=SimpleTimer
+dependency61.type=UsesDependency
+dependency62.from=Cashier
+dependency62.to=Pizza
+dependency62.type=UsesDependency
+dependency63.from=Cashier
+dependency63.to=Utils
+dependency63.type=UsesDependency
+dependency64.from=Confetti
+dependency64.to=GifImage
+dependency64.type=UsesDependency
+dependency65.from=Confetti
+dependency65.to=Utils
+dependency65.type=UsesDependency
+dependency66.from=Pizza
+dependency66.to=Cashier
+dependency66.type=UsesDependency
+dependency67.from=Pizza
+dependency67.to=Customer
+dependency67.type=UsesDependency
+dependency68.from=Pizza
+dependency68.to=Clock
+dependency68.type=UsesDependency
+dependency69.from=WaittingBar
+dependency69.to=GifImage
+>>>>>>> main
 dependency69.type=UsesDependency
 dependency7.from=EndWorld
 dependency7.to=Confetti
 dependency7.type=UsesDependency
+<<<<<<< HEAD
 dependency70.from=Customer
 dependency70.to=Cashier
 dependency70.type=UsesDependency
@@ -297,6 +491,20 @@ editor.fx.0.x=-7
 editor.fx.0.y=-7
 height=830
 package.numDependencies=96
+=======
+dependency8.from=EndWorld
+dependency8.to=ISound
+dependency8.type=UsesDependency
+dependency9.from=EndWorld
+dependency9.to=Utils
+dependency9.type=UsesDependency
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=968
+package.numDependencies=69
+>>>>>>> main
 package.numTargets=41
 project.charset=UTF-8
 publish.hasSource=false
@@ -311,7 +519,11 @@ readme.name=@README
 readme.width=49
 readme.x=10
 readme.y=10
+<<<<<<< HEAD
 simulation.speed=67
+=======
+simulation.speed=53
+>>>>>>> main
 target1.height=70
 target1.name=CashierCounter
 target1.showInterface=false
@@ -320,70 +532,114 @@ target1.width=120
 target1.x=0
 target1.y=0
 target10.height=70
+<<<<<<< HEAD
 target10.name=FlashingText
+=======
+target10.name=MoneyDisplayer
+>>>>>>> main
 target10.showInterface=false
 target10.type=ClassTarget
 target10.width=120
 target10.x=0
 target10.y=0
 target11.height=70
+<<<<<<< HEAD
 target11.name=StoryWorld
 target11.showInterface=false
 target11.type=ClassTarget
+=======
+target11.name=ISound
+target11.showInterface=false
+target11.type=InterfaceTarget
+>>>>>>> main
 target11.width=120
 target11.x=0
 target11.y=0
 target12.height=70
+<<<<<<< HEAD
 target12.name=MoneyDisplayer
+=======
+target12.name=Target
+>>>>>>> main
 target12.showInterface=false
 target12.type=ClassTarget
 target12.width=120
 target12.x=0
 target12.y=0
 target13.height=70
+<<<<<<< HEAD
 target13.name=ISound
 target13.showInterface=false
 target13.type=InterfaceTarget
+=======
+target13.name=Button
+target13.showInterface=false
+target13.type=AbstractTarget
+>>>>>>> main
 target13.width=120
 target13.x=0
 target13.y=0
 target14.height=70
+<<<<<<< HEAD
 target14.name=Target
+=======
+target14.name=Oven
+>>>>>>> main
 target14.showInterface=false
 target14.type=ClassTarget
 target14.width=120
 target14.x=0
 target14.y=0
 target15.height=70
+<<<<<<< HEAD
 target15.name=Button
+=======
+target15.name=KitchenCounter
+>>>>>>> main
 target15.showInterface=false
 target15.type=AbstractTarget
 target15.width=120
 target15.x=0
 target15.y=0
 target16.height=70
+<<<<<<< HEAD
 target16.name=Oven
+=======
+target16.name=EndWorld
+>>>>>>> main
 target16.showInterface=false
 target16.type=ClassTarget
 target16.width=120
 target16.x=0
 target16.y=0
 target17.height=70
+<<<<<<< HEAD
 target17.name=EndWorld
+=======
+target17.name=Sauce
+>>>>>>> main
 target17.showInterface=false
 target17.type=ClassTarget
 target17.width=120
 target17.x=0
 target17.y=0
 target18.height=70
+<<<<<<< HEAD
 target18.name=KitchenCounter
+=======
+target18.name=WaitingLine
+>>>>>>> main
 target18.showInterface=false
 target18.type=ClassTarget
 target18.width=120
 target18.x=0
 target18.y=0
 target19.height=70
+<<<<<<< HEAD
 target19.name=WaitingLine
+=======
+target19.name=VolumeButton
+>>>>>>> main
 target19.showInterface=false
 target19.type=ClassTarget
 target19.width=120
@@ -404,63 +660,99 @@ target20.width=120
 target20.x=0
 target20.y=0
 target21.height=70
+<<<<<<< HEAD
 target21.name=VolumeButton
+=======
+target21.name=PlayButton
+>>>>>>> main
 target21.showInterface=false
 target21.type=ClassTarget
 target21.width=120
 target21.x=0
 target21.y=0
 target22.height=70
+<<<<<<< HEAD
 target22.name=PlayButton
+=======
+target22.name=MyWorld
+>>>>>>> main
 target22.showInterface=false
 target22.type=ClassTarget
 target22.width=120
 target22.x=0
 target22.y=0
 target23.height=70
+<<<<<<< HEAD
 target23.name=MyWorld
+=======
+target23.name=Order
+>>>>>>> main
 target23.showInterface=false
 target23.type=ClassTarget
 target23.width=120
 target23.x=0
 target23.y=0
 target24.height=70
+<<<<<<< HEAD
 target24.name=Order
+=======
+target24.name=PlusButton
+>>>>>>> main
 target24.showInterface=false
 target24.type=ClassTarget
 target24.width=120
 target24.x=0
 target24.y=0
 target25.height=70
+<<<<<<< HEAD
 target25.name=PlusButton
+=======
+target25.name=SettingWorld
+>>>>>>> main
 target25.showInterface=false
 target25.type=ClassTarget
 target25.width=120
 target25.x=0
 target25.y=0
 target26.height=70
+<<<<<<< HEAD
 target26.name=SettingWorld
+=======
+target26.name=SimpleTimer
+>>>>>>> main
 target26.showInterface=false
 target26.type=ClassTarget
 target26.width=120
 target26.x=0
 target26.y=0
 target27.height=70
+<<<<<<< HEAD
 target27.name=SimpleTimer
+=======
+target27.name=TryAgainButton
+>>>>>>> main
 target27.showInterface=false
 target27.type=ClassTarget
 target27.width=120
 target27.x=0
 target27.y=0
 target28.height=70
+<<<<<<< HEAD
 target28.name=TryAgainButton
+=======
+target28.name=People
+>>>>>>> main
 target28.showInterface=false
 target28.type=ClassTarget
 target28.width=120
 target28.x=0
 target28.y=0
 target29.height=70
+<<<<<<< HEAD
 target29.name=People
+=======
+target29.name=StartWorld
+>>>>>>> main
 target29.showInterface=false
 target29.type=AbstractTarget
 target29.width=120
@@ -474,14 +766,22 @@ target3.width=120
 target3.x=0
 target3.y=0
 target30.height=70
+<<<<<<< HEAD
 target30.name=StartWorld
+=======
+target30.name=Confetti
+>>>>>>> main
 target30.showInterface=false
 target30.type=ClassTarget
 target30.width=120
 target30.x=0
 target30.y=0
 target31.height=70
+<<<<<<< HEAD
 target31.name=Confetti
+=======
+target31.name=Door
+>>>>>>> main
 target31.showInterface=false
 target31.type=ClassTarget
 target31.width=120
@@ -495,7 +795,11 @@ target32.width=120
 target32.x=0
 target32.y=0
 target33.height=70
+<<<<<<< HEAD
 target33.name=Door
+=======
+target33.name=Pizza
+>>>>>>> main
 target33.showInterface=false
 target33.type=ClassTarget
 target33.width=120
@@ -516,28 +820,44 @@ target35.width=120
 target35.x=0
 target35.y=0
 target36.height=70
+<<<<<<< HEAD
 target36.name=Pizza
+=======
+target36.name=Topping
+>>>>>>> main
 target36.showInterface=false
 target36.type=ClassTarget
 target36.width=120
 target36.x=0
 target36.y=0
 target37.height=70
+<<<<<<< HEAD
 target37.name=MoneySign
+=======
+target37.name=WaittingBar
+>>>>>>> main
 target37.showInterface=false
 target37.type=ClassTarget
 target37.width=120
 target37.x=0
 target37.y=0
 target38.height=70
+<<<<<<< HEAD
 target38.name=WaittingBar
+=======
+target38.name=Utils
+>>>>>>> main
 target38.showInterface=false
 target38.type=ClassTarget
 target38.width=120
 target38.x=0
 target38.y=0
 target39.height=70
+<<<<<<< HEAD
 target39.name=Utils
+=======
+target39.name=Ingredient
+>>>>>>> main
 target39.showInterface=false
 target39.type=ClassTarget
 target39.width=120
@@ -586,14 +906,22 @@ target7.width=120
 target7.x=0
 target7.y=0
 target8.height=70
+<<<<<<< HEAD
 target8.name=Clock
+=======
+target8.name=FlashingText
+>>>>>>> main
 target8.showInterface=false
 target8.type=ClassTarget
 target8.width=120
 target8.x=0
 target8.y=0
 target9.height=70
+<<<<<<< HEAD
 target9.name=MinusButton
+=======
+target9.name=StoryWorld
+>>>>>>> main
 target9.showInterface=false
 target9.type=ClassTarget
 target9.width=120
@@ -602,5 +930,10 @@ target9.y=0
 version=3.0.0
 width=1550
 world.lastInstantiated=StartWorld
+<<<<<<< HEAD
 xPosition=0
 yPosition=0
+=======
+xPosition=164
+yPosition=27
+>>>>>>> main

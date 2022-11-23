@@ -6,7 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Gloria Chan
  * @version (a version number or a date)
  */
+<<<<<<< HEAD
 public class FlashingText extends Effects
+=======
+public class FlashingText extends Actor
+>>>>>>> main
 {
     private int time = 0;
     private GreenfootImage pressEnterText;

@@ -1,9 +1,16 @@
 #BlueJ class context
 comment0.target=Clock
+<<<<<<< HEAD
 comment0.text=\r\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\r\n\ <p>Displays\ new\ a\ clock\ image\ after\ a\ certain\ time\ passes\ \r\n\ \r\n\ @author\ Yuxin\ Li\r\n\ @version\ November\ 2022\r\n\ \r\n\ clock\ sequence\ by\ Nendra\ Beluci\ from\:\r\n\ <a\ href\="https\://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon\ Cloud\ Vectors\ by\ Vecteezy</a>\r\n
 comment1.params=time\ pizza
 comment1.target=Clock(int,\ Pizza)
 comment1.text=\r\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\ \r\n\ @param\ time\ The\ amount\ of\ time\ required\ to\ cook\ a\ pizza\r\n\ @param\ pizza\ The\ pizza\ that\ is\ put\ into\ an\ oven\r\n
+=======
+comment0.text=\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\n\ <p>Displays\ new\ a\ clock\ image\ after\ a\ certain\ time\ passes\ \n\ \n\ @author\ Yuxin\ Li\n\ @version\ November\ 2022\n\ \n\ clock\ sequence\ by\ Nendra\ Beluci\ from\:\n\ <a\ href\="https\://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon\ Cloud\ Vectors\ by\ Vecteezy</a>\n
+comment1.params=time\ pizza
+comment1.target=Clock(int,\ Pizza)
+comment1.text=\n\ Clock\ is\ a\ Greenfoot\ actor\ that\ shows\ the\ time\ rest\ for\ the\ pizza\ to\ be\ cooked.\ \n\ @param\ time\ The\ amount\ of\ time\ required\ to\ cook\ a\ pizza\n\ @param\ pizza\ The\ pizza\ that\ is\ put\ into\ an\ oven\n
+>>>>>>> main
 comment10.params=
 comment10.target=greenfoot.GreenfootSound\ getSound()
 comment11.params=volume
@@ -11,16 +18,27 @@ comment11.target=void\ setVolume(int)
 comment11.text=\r\n\ Update\ volume\ of\ the\ sounds\r\n\ @param\ volume\ The\ current\ volume\r\n
 comment2.params=w
 comment2.target=void\ addedToWorld(greenfoot.World)
+<<<<<<< HEAD
 comment2.text=\r\n\ When\ the\ clock\ is\ added\ to\ the\ World,\ start\ the\ counting\ down\ sound\ effect\r\n
 comment3.params=
 comment3.target=void\ act()
 comment3.text=\r\n\ countdown\ act\r\n\ set\ a\ new\ clock\ image\ after\ a\ certain\ time\ passes.\r\n\ After\ the\ pizza\ is\ cooked,\ start\ countdown\ the\ burn\ time.\r\n
+=======
+comment2.text=\n\ When\ the\ clock\ is\ added\ to\ the\ World,\ start\ the\ counting\ down\ sound\ effect\n
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ countdown\ act\n\ set\ a\ new\ clock\ image\ after\ a\ certain\ time\ passes.\n\ After\ the\ pizza\ is\ cooked,\ start\ countdown\ the\ burn\ time.\n
+>>>>>>> main
 comment4.params=
 comment4.target=void\ clockAlarm()
 comment4.text=\r\n\ When\ the\ countdown\ is\ finished,\ the\ clock\ will\ shake\ and\ alarm\ \r\n
 comment5.params=
 comment5.target=void\ removeClock()
+<<<<<<< HEAD
 comment5.text=\r\n\ when\ the\ pizza\ is\ picked\ up\ by\ the\ cashier\ and\ is\ no\ longer\ in\ oven\ \r\n\ remove\ the\ clock\ and\ stop\ the\ alarm\ sound\r\n
+=======
+comment5.text=\n\ when\ the\ pizza\ is\ picked\ up\ by\ the\ cashier\ and\ is\ no\ longer\ in\ oven\ \n\ remove\ the\ clock\ and\ stop\ the\ alarm\ sound\n
+>>>>>>> main
 comment6.params=
 comment6.target=void\ switchSound()
 comment7.params=

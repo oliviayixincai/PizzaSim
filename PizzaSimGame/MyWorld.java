@@ -281,7 +281,7 @@ public class MyWorld extends World
         // play all sounds
         ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
         for (ISound sound : sounds) {
-            if (pausedSounds.contains(sound)) {
+            if (pausedSounds.contains(sound.getSound())) {
                 sound.playSound();
             }
         }

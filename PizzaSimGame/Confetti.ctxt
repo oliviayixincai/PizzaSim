@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=Confetti
+comment0.text=\n\ Write\ a\ description\ of\ class\ confetti\ here.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Confetti()
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ confetti\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.params=volume
+comment4.target=void\ setVolume(int)
+comment4.text=\n\ Set\ volume\n\ @param\ volume\ The\ current\ volume\n
+comment5.params=
+comment5.target=void\ playSound()
+comment5.text=\n\ Play\ sound\n
+comment6.params=
+comment6.target=void\ pauseSound()
+comment6.text=\n\ Pause\ sound\n
+comment7.params=
+comment7.target=boolean\ isSoundPlaying()
+comment7.text=\n\ Check\ if\ sound\ is\ playing\n
+comment8.params=
+comment8.target=greenfoot.GreenfootSound\ getSound()
+comment8.text=\n\ Get\ sound\n
+numComments=9

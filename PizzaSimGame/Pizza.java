@@ -1,22 +1,21 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Pizza here.
+ * Pizza is a Greenfoot Actor used to show the creation process of the pizza after being ordered by a customer.
+ * <p> One pizza topping layer is added after certain acts from the topping added before.
+ * <p> It cooks and burns pizza when it remains in the oven for too long.
  * 
+<<<<<<< HEAD
  * @Yuxin Li (Yuxin Li) 
  * @version (a version number or a date)
+=======
+ * @Yuxin Li 
+ * @version November 2022
+>>>>>>> main
  * 
  */ 
 public class Pizza extends Actor
 {
-    /**
-     * Act - do whatever the Pizza wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    // constructor 
-    // variables: burn, firstStage finish, fully cooked, discard or not
-    // attached to chef, cookTime, burnTime
-
     private String[] toppings;
     private String sauce;
     private boolean burn = false;
@@ -35,15 +34,7 @@ public class Pizza extends Actor
     
     private GreenfootImage pizza = new GreenfootImage("pizzaBase.png");
     private GreenfootImage imageSauce;
-    /*
-    private static GreenfootImage[] doughSequence={
-        new GreenfootImage("dough1.png"),
-        new GreenfootImage("dough2.png"),
-        new GreenfootImage("dough3.png"),
-        new GreenfootImage("dough4.png"),
-        new GreenfootImage("dough5.png"),
-    };
-    */
+
     private static GreenfootImage crust = new GreenfootImage("cooked.png");
     private static GreenfootImage burned=new GreenfootImage("burned.png");
     private GreenfootImage cheese = new GreenfootImage("cheese.png");
@@ -61,14 +52,24 @@ public class Pizza extends Actor
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
+<<<<<<< HEAD
     */
     public Pizza(String[] strings, String sauce, boolean cheese){
+=======
+     * 
+     * @param strings array consists of the customer order
+     * @param sauce the type of sauce the customer wants
+     * @customer theCustomer the customer that orders this pizza
+     */
+    public Pizza(String[] strings, String sauce, Customer theCustomer){
+>>>>>>> main
         toppings = strings;
         this.sauce = sauce;
         hasCheese = cheese; 
         atCashierCounter = false;
     }
     
+<<<<<<< HEAD
     public void act()
     {
         if(customerPickedUp == false){
@@ -92,7 +93,16 @@ public class Pizza extends Actor
         } else {
             //andy code
             //if picked up by a customer, set location based on customers direction
-            switch (customer.getRotation()){
+            moveMe();
+        }
+            //removes actor when at edge
+            atEdge();
+=======
+
+>>>>>>> main
+    
+    public void moveMe(){
+        switch (customer.getRotation()){
                 case People.UP:
                     setLocation(customer.getX(), customer.getY() - (customer.getImage().getHeight()/2 + getImage().getHeight()/2));
                     break;
@@ -106,20 +116,25 @@ public class Pizza extends Actor
                     setLocation(customer.getX()  + getImage().getWidth() - 5, customer.getY());
                     break;
             }
-            //removes actor when at edge
-            atEdge();
-        }
     }
     
     /**
-     * an animation of the dough spreading process
+     * set the dough Image
      */
     public void spreadDough(){
         pizza.scale(50,50);
         setImage(pizza);
         doughFinished = true;
     }
+<<<<<<< HEAD
     
+=======
+
+    /**
+     * add the specific types of sauce to pizza
+     * @param sauce the type of sauce the customer orders
+     */
+>>>>>>> main
     public void addSauce(String sauce)
     {
         if(toppingTime == 0)
@@ -141,7 +156,8 @@ public class Pizza extends Actor
     }
     
     /**
-     * add one new topping every 60 acts
+     * add one new topping to pizza every 60 acts 
+     * @param strings The string array consists of the topping that the customer orders
      */
     public void addToppings(String[] strings){
         if(toppingIndex < strings.length && toppingTime==0){
@@ -158,19 +174,27 @@ public class Pizza extends Actor
     }
     
     /**
+<<<<<<< HEAD
      * calculate the cook time required for the pizza
     */
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
         cookTime = 60 * (strings.length + 2);
+=======
+     * get the cook time required for the pizza
+     * @return cookTime the cook time required for the pizza
+     */
+    public int getCookTime(){
+>>>>>>> main
         return cookTime;
     }
     
     /**
-     * if the pizza is cooked and a cashier comes, return has cashier
-     * if hasCashier, the clocked will be removed
+     * If the pizza is picked up by cashier from the oven 
+     * <p> set the inOven variable to false
      */
+<<<<<<< HEAD
     public boolean isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
         //find the chef picking up the pizza
@@ -183,10 +207,20 @@ public class Pizza extends Actor
         return hasCashier;
     }
     
+=======
+    public void isPickedUp(){
+        inOven = false;
+    }
+    /**
+     * return if the pizza is in oven, in other word, if the pizza is picked up by a cashier
+     * @return inOven True if the pizza is in oven, False if the pizza is not in oven
+     */
+>>>>>>> main
     public boolean isInOven(){
         return inOven;
     }
     
+<<<<<<< HEAD
     public void goInOven(){
         int x = 0; 
         switch (getX()){
@@ -210,11 +244,19 @@ public class Pizza extends Actor
                 break;
         }
         getWorld().addObject(new Clock(cookTime, this), x, getY() - 49);
+=======
+    /**
+     * if the chef put the pizza in oven, initialize a clock and set inOven to true
+     */
+    public void goInOven(){
+        getWorld().addObject(new Clock(cookTime, this), getX(), getY()-50);
+>>>>>>> main
         inOven = true;
     }
     
     /**
-     * dough finished getter method
+     * return if the dough is finished 
+     * @return doughFinished True if the dough is finished, False if it is not
      */
     public boolean isDoughFinished()
     {
@@ -222,34 +264,58 @@ public class Pizza extends Actor
     }
     
     /**
-     * finished adding toppings getter method
+     * return if the topping is finished added 
+     * @return toppingsFinished True if the toppings are finished, False if not
      */
     public boolean toppingsFinished(){
         return toppingsFinished;
     }
     
     /**
+<<<<<<< HEAD
      * check if the pizza is burned
+=======
+     * return if the pizza is burned
+     * @return burn True if the the pizza is burned, False if the pizza is not burned
+>>>>>>> main
      */
     public boolean isBurned(){
         return burn;
     }
     
     /**
+<<<<<<< HEAD
      * check if the pizza is cooked 
+=======
+     * return if the pizza is cooked
+     * @return cooked True if the pizza is cooked, False if the pizza is not cooked
+>>>>>>> main
      */
     public boolean isCooked(){
         return cooked;
     }
-    
+    /**
+     * set the variable to true if the pizza is sent to the cashier counter
+     */
     public void setAtCashierCounter(){
         atCashierCounter = true;
     }
     
+    /**
+     * return if the cashier is at counter
+     * @return atCashierCounter True if the pizza is at counter, False if not
+     */
     public boolean isAtCashierCounter(){
         return atCashierCounter;
     }
+<<<<<<< HEAD
     
+=======
+
+    /**
+     * burn the pizza by adding a dark layer at the top of the pizza
+     */
+>>>>>>> main
     public void burnPizza(){
         //add a dark layer on the pizza
         //drawImage
@@ -258,7 +324,9 @@ public class Pizza extends Actor
         getImage().drawImage(burned,0,0);
         burn=true;
     }
-    
+    /**
+     * cook the pizza by adding a golden layer at the top of the pizza
+     */
     public void cookPizza(){
         //add a golden crust layer on pizza
         crust.scale(50,50);

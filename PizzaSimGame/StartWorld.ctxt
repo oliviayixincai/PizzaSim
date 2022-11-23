@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=StartWorld
-comment0.text=\n\ The\ World\ this\ simulation\ will\ start\ with.\ Press\ Enter\ key\ to\ continue\n\ \n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ The\ World\ this\ simulation\ will\ start\ with.\ Press\ Enter\ key\ to\ continue\n\ \n\ Credits\n\ "Pixel\ Chef\ Illustrations"\ from\ iStock\ (https\://www.istockphoto.com/vector/vector-pixel-art-cook-and-chefs-gm616129156-107107145).\n\ "Sprout\ Lands\ -\ UI\ Pack"\ by\ Cup\ Nooble\ (https\://cupnooble.itch.io/sprout-lands-ui-pack).\n\ "Slice\ of\ Life"\ from\ Pinterest\ (https\://www.pinterest.ca/pin/349099408595478913/).\n\ \n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=StartWorld()
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ StartWorld.\n

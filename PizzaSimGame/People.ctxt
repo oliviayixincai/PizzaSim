@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=People
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ People\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ People\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=void\ act()
 comment10.params=x\ y
 comment10.target=void\ setLocation(int,\ int)
-comment10.text=\r\n\ Set\ the\ location\ using\ integer\ coordinates.\r\n\ (Overrides\ the\ method\ in\ Actor.)\ \ \ \ \r\n\ \r\n\ @param\ x\ the\ new\ x\ location\r\n\ @param\ y\ the\ new\ y\ location\r\n
+comment10.text=\n\ Set\ the\ location\ using\ integer\ coordinates.\n\ (Overrides\ the\ method\ in\ Actor.)\ \ \ \ \n\ \n\ @param\ x\ the\ new\ x\ location\n\ @param\ y\ the\ new\ y\ location\n
 comment2.params=up\ down\ left\ right\ rotation
 comment2.target=void\ animate(greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ greenfoot.GreenfootImage[],\ int)
 comment3.params=up\ down\ left\ right\ rotation
@@ -22,5 +22,5 @@ comment8.params=
 comment8.target=Pizza\ getPizza()
 comment9.params=x\ y
 comment9.target=void\ setLocation(double,\ double)
-comment9.text=\r\n\ Set\ the\ location\ using\ exact\ coordinates.\r\n\ \r\n\ @param\ x\ the\ new\ x\ location\r\n\ @param\ y\ the\ new\ y\ location\r\n
+comment9.text=\n\ Set\ the\ location\ using\ exact\ coordinates.\n\ \n\ @param\ x\ the\ new\ x\ location\n\ @param\ y\ the\ new\ y\ location\n
 numComments=11

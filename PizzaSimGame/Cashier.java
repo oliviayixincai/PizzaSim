@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.lang.Math.*;
 
 /**
- * Write a description of class Chef here.
+ * Actor that moves pizza from oven to counter for customers to pick up
  * 
  * @author Anson Ho 
- * @version V.1
+ * @version Novemeber 2022
  */
 public class Cashier extends People
 {
@@ -43,6 +43,7 @@ public class Cashier extends People
         startX = counterXCoord;
         startY = counterYCoord;
         
+        //Sets all image arrays for animation
         for(int i = 0; i < walkUp.length; i++)
         {
             walkUp[i] = new GreenfootImage("images/Cashier Animation/walkUp" + i + ".png");
@@ -63,6 +64,7 @@ public class Cashier extends People
             downInteract[i].scale(scaleX, scaleY);
         }
         
+        //Sets initial values
         setImage(walkDown[0]);
         startRotationIndex = rotationIndex;
     }
@@ -116,7 +118,9 @@ public class Cashier extends People
         }
     }
 
-    
+    /**
+     * Moves cashier to oven
+     */
     public void moveToOven()
     {
         if(cookedOven == 4)
@@ -156,6 +160,10 @@ public class Cashier extends People
         }
     }
     
+    /**
+     * Moves cashier to counter with pizza in hand to give to customers
+     * @param counterYCoord Y coordinate of counter
+     */
     public void moveToCounter(int counterYCoord)
     {
         if(!foundPizza)
@@ -196,6 +204,11 @@ public class Cashier extends People
         }
     }
     
+    /**
+     * Moves cashier back to original position
+     * @param counterXCoord original x coordinate 
+     * @param counterYCoord original y coordinate
+     */
     public void moveToCashierCounter(int counterXCoord, int counterYCoord)
     {
         //rotate chef and pizza 
@@ -231,6 +244,10 @@ public class Cashier extends People
         }
     }
     
+    /**
+     * Checks if cashier is able to pick up pizza
+     * @return boolean
+     */
     public boolean canPickUpPizza()
     {
         if(getX() == counterXCoord && getY() == counterYCoord)
@@ -240,11 +257,18 @@ public class Cashier extends People
         return false;
     }
     
+    /**
+     * Assigns pizza instance to cashier
+     * @param pizza Pizza instance
+     */
     public void assignPizza(Pizza pizza)
     {
         assignedPizza = pizza;
     }
     
+    /**
+     * Check for cooked pizza in which oven. Sets oven x coordinates and oven y coordinates
+     */
     public void checkCookedOven()
     {
         //checks for empty oven and reserves it
@@ -275,6 +299,10 @@ public class Cashier extends People
         }
     }
     
+    /**
+     * Sets image based on rotation
+     * @param degrees amount of degrees you want to turn
+     */
     public void rotate(int degrees)
     {
         //zero degrees starts facing up/north
@@ -301,6 +329,12 @@ public class Cashier extends People
         }
     }
     
+    /**
+     * Overrides rotation. Sets image based on rotation as well as sets pizza x and y coordinates
+     * @param degrees degrees you want to turn
+     * @param pizza pizza instance
+     * @param cashier cashier instance
+     */
     public void rotate(int degrees, Pizza pizza, Cashier cashier)
     {
         //zero degrees starts facing up/north

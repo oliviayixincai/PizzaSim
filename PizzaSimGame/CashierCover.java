@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CashierTill here.
+ * A class only for covering up cashier till using an image
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class CashierCover extends LevelUp
 {

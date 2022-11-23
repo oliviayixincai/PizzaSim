@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.target=MoneyDisplayer
-comment0.text=\n\ Money\ displayer\ is\ a\ Greenfoot\ Actor\ used\ to\ display\ and\ update\ the\ current\ money\ of\ each\ kitchen\ \n\ \n\ @author\ Yuxin\ Li\n\ @version\ November\ 2022\n
+comment0.text=\r\n\ Money\ displayer\ is\ a\ Greenfoot\ Actor\ used\ to\ display\ and\ update\ the\ current\ money\ of\ each\ kitchen\ \r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ November\ 2022\r\n
 comment1.params=value
 comment1.target=MoneyDisplayer(int)
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ updateImage()
-comment3.text=\n\ Change\ the\ \ value\ and\ rewrite\ it\ on\ the\ screen\ \n
+comment3.text=\r\n\ Change\ the\ \ value\ and\ rewrite\ it\ on\ the\ screen\ \r\n
 numComments=4

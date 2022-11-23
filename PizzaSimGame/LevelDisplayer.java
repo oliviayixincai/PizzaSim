@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Money displayer is a Greenfoot Actor used to display and update the current money of each kitchen 
+ * Money displayer is a Greenfoot Actor used to display and update the current level of each kitchen 
  * 
  * @author Anson Ho
  * @version November 2022

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Oven here.
+ * Creates location and methods specifically for ovens
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class Oven extends Target
 {
@@ -16,6 +16,10 @@ public class Oven extends Target
         getImage().scale(50, 50);
     }
     
+    /**
+     * Checks if oven is empty
+     * @return isEmpty boolean
+     */
     public boolean checkIfEmpty()
     {
         if(getOneObjectAtOffset(0, 0, Pizza.class) == null && !isTouching(OvenCover.class))
@@ -29,6 +33,10 @@ public class Oven extends Target
         return isEmpty;
     }
     
+    /**
+     * Checks if pizza is ready to be picked up
+     * @return boolean
+     */
     public boolean canPickUp()
     {
         if(!checkIfEmpty() && !isTouching(OvenCover.class))
@@ -43,21 +51,35 @@ public class Oven extends Target
         return false;
     }
     
+    /**
+     * Method to reserve oven for cashier pickup
+     */
     public void pickUpReserve(boolean reservation)
     {
         isPickUpReserved = reservation;
     }
     
+    /**
+     * Method to reserve oven for chef dropoff
+     */
     public void reserve(boolean reservation)
     {
         isReserved = reservation;
     }
     
+    /**
+     * Getter method to check if oven is reserved for dropoff
+     * @return isReserved Boolean
+     */
     public boolean isReserved()
     {
         return isReserved;
     }
     
+    /**
+     * Getter method to check if oven is reserved for pickup
+     * @return isPickUpReserved Boolean
+     */
     public boolean isPickUpReserved()
     {
         return isPickUpReserved;

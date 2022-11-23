@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class KitchenCounter here.
+ * Creates location and methods specifically for kichen counters
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class KitchenCounter extends Target
 {
@@ -25,7 +25,10 @@ public class KitchenCounter extends Target
     {
         // Add your action code here.
     }
-    
+    /**
+     * Checks if counter is available to make a pizza
+     * @return canMakePizza Boolean
+     */
     public boolean checkCanMakePizza()
     {
         if(isTouching(Pizza.class))
@@ -42,9 +45,10 @@ public class KitchenCounter extends Target
         }
         return canMakePizza;
     }
-    /*
+    
     /**
-     * check if there is a chef around counter
+     * Check if there is a chef around counter
+     * @return boolean
      */
     public boolean checkCounterChef(){
         if(!getWorld().getObjectsAt(getX() - (50 * pizzaria), getY(), null).isEmpty()){

@@ -13,7 +13,6 @@ public class Pizza extends Actor
     private String sauce;
     private boolean burn = false;
     private boolean doughFinished = false, toppingsFinished = false, sauceFinished = false, cheeseFinished = false;
-    private boolean firstStage_finished = false;
     private boolean cooked = false;
     private Cashier cashier;
     private Customer customer;
@@ -41,7 +40,11 @@ public class Pizza extends Actor
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
-    */
+     * 
+     * @param strings array consists of the customer order
+     * @param sauce the type of sauce the customer wants
+     * @param cheese if the customer ordered cheese
+     */
     public Pizza(String[] strings, String sauce, boolean cheese){
         toppings = strings;
         this.sauce = sauce;
@@ -89,7 +92,7 @@ public class Pizza extends Actor
     }
     
     /**
-     * an animation of the dough spreading process
+     * set the dough Image
      */
     public void spreadDough(){
         pizza.scale(50,50);
@@ -97,6 +100,10 @@ public class Pizza extends Actor
         doughFinished = true;
     }
     
+    /**
+     * add the specific types of sauce to pizza
+     * @param sauce the type of sauce the customer orders
+     */
     public void addSauce(String sauce)
     {
         if(toppingTime == 0)
@@ -109,6 +116,10 @@ public class Pizza extends Actor
         }
     }
     
+    /**
+     * add the specific types of sauce to pizza
+     * @param cheese if the customer ordered cheese
+     */
     public void addCheese(boolean hasCheese){
         if (hasCheese){
             cheese.scale(50, 50);
@@ -118,7 +129,8 @@ public class Pizza extends Actor
     }
     
     /**
-     * add one new topping every 60 acts
+     * add one new topping to pizza every 60 acts 
+     * @param strings The string array consists of the topping that the customer orders
      */
     public void addToppings(String[] strings){
         if(toppingIndex < strings.length && toppingTime==0){
@@ -135,8 +147,9 @@ public class Pizza extends Actor
     }
     
     /**
-     * calculate the cook time required for the pizza
-    */
+     * get the cook time required for the pizza
+     * @return cookTime the cook time required for the pizza
+     */
     public int getCookTime(String[] strings){
         //return cooktime
         //add the time for all toppings
@@ -145,8 +158,8 @@ public class Pizza extends Actor
     }
     
     /**
-     * if the pizza is cooked and a cashier comes, return has cashier
-     * if hasCashier, the clocked will be removed
+     * If the pizza is picked up by cashier from the oven 
+     * @return hasCashier
      */
     public boolean isPickedUp(){
         //if the pizza is in oven and the pizza is cooked
@@ -160,10 +173,17 @@ public class Pizza extends Actor
         return hasCashier;
     }
     
+    /**
+     * return if the pizza is in oven, in other word, if the pizza is picked up by a cashier
+     * @return inOven True if the pizza is in oven, False if the pizza is not in oven
+     */
     public boolean isInOven(){
         return inOven;
     }
     
+    /**
+     * if the chef put the pizza in oven, initialize a clock and set inOven to true
+     */
     public void goInOven(){
         int x = 0; 
         switch (getX()){
@@ -191,7 +211,8 @@ public class Pizza extends Actor
     }
     
     /**
-     * dough finished getter method
+     * return if the dough is finished 
+     * @return doughFinished True if the dough is finished, False if it is not
      */
     public boolean isDoughFinished()
     {
@@ -199,19 +220,24 @@ public class Pizza extends Actor
     }
     
     /**
-     * finished adding toppings getter method
+     * return if the topping is finished added 
+     * @return toppingsFinished True if the toppings are finished, False if not
      */
     public boolean toppingsFinished(){
         return toppingsFinished;
     }
     
     /**
-     * check if the pizza is cooked 
+     * return if the pizza is cooked
+     * @return cooked True if the pizza is cooked, False if the pizza is not cooked
      */
     public boolean isCooked(){
         return cooked;
     }
     
+    /**
+     * burn the pizza by adding a dark layer at the top of the pizza
+     */
     public void burnPizza(){
         //add a dark layer on the pizza
         //drawImage
@@ -221,6 +247,9 @@ public class Pizza extends Actor
         burn=true;
     }
     
+    /**
+     * cook the pizza by adding a golden layer at the top of the pizza
+     */
     public void cookPizza(){
         //add a golden crust layer on pizza
         crust.scale(50,50);

@@ -9,6 +9,8 @@ import java.util.List;
  */
 public class Customer extends People
 {
+    private Utils utils;
+    
     private int spawnX, dir, storeRNG, store, toppingRNG, cheeseRNG, sauceRNG;
     
     private boolean inStore, ordered, atLineUp, pickedUp, waiting, cheese;
@@ -46,8 +48,6 @@ public class Customer extends People
     private boolean hasEmotionBar = false;
     
     private boolean checkedLocations = false;
-    
-    private Utils utils;
     
     private int enterDIR, exitDIR;
     
@@ -159,11 +159,11 @@ public class Customer extends People
             sauce = "bbq";
             costOfPizza += 2;
         }
-        
-        
     }
     
     public void act (){
+        utils = getWorld().getObjectsAt(0, 0, Utils.class).get(0);
+        
         if(interactCounter > 0){
             interact(interact);
         } else {
@@ -197,7 +197,7 @@ public class Customer extends People
         //moves towards door if havent bought pizza yet, else walks away with pizza
         //also ignores doors if there are more than 5 customers
         if (!inStore) {
-            if ((numberOfCustomers1 >= 5 && store == Utils.MAMA) || (numberOfCustomers2 >= 5 && store == Utils.PAPA)){
+            if ((utils.numberOfCustomers1 >= 5 && store == Utils.MAMA) || (utils.numberOfCustomers2 >= 5 && store == Utils.PAPA)){
                 moveVertical();
             } else if (!cash1.checkIfEmpty() && (isCash2Open && !cash2.checkIfEmpty())){
                 moveVertical();
@@ -265,9 +265,9 @@ public class Customer extends People
             inStore = true;
             //customer counter for each store, static variable in persons class
             if(store == Utils.MAMA){
-                addCustomer1();
+                utils.addCustomer1();
             } else {
-                addCustomer2();
+                utils.addCustomer2();
             }            
         }
     }
@@ -525,9 +525,9 @@ public class Customer extends People
             
             //removes a customer from the counter
             if(store == Utils.MAMA){
-                removeCustomer1();
+                utils.removeCustomer1();
             } else {
-                removeCustomer2();
+                utils.removeCustomer2();
             }
         }
     }

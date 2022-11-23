@@ -27,8 +27,6 @@ public abstract class People extends Actor
     
     public static final int UP = 0, DOWN = 180, LEFT = 270, RIGHT = 90;
     
-    protected static int numberOfCustomers1 = 0, numberOfCustomers2 = 0;
-    
     public void act()
     {
     
@@ -141,22 +139,6 @@ public abstract class People extends Actor
                 timer.mark();
             }
         }
-    }
-    
-    public void addCustomer1(){
-        numberOfCustomers1++;
-    }
-    
-    public void addCustomer2(){
-        numberOfCustomers2++;
-    }
-    
-    public void removeCustomer1(){
-        numberOfCustomers1--;
-    }
-    
-    public void removeCustomer2(){
-        numberOfCustomers2--;
     }
     
     public Pizza getPizza()

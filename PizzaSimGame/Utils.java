@@ -11,6 +11,10 @@ public class Utils extends Actor
     public Utils()
     {
         getImage().setTransparency(0);
+        
+        volume = 60;
+        numberOfCustomers1 = 0;
+        numberOfCustomers2 = 0;
     }
     
     private int resturantMoneyOne = 0;
@@ -20,7 +24,7 @@ public class Utils extends Actor
     private int robbingMoneyMama, robbingMoneyPapa;
     public static final int moveSpeed = 1;
     
-    public static int volume = 60;
+    public static int volume;
     public static final GreenfootSound backgroundSound = new GreenfootSound("Run-Amok.wav");
     
     public static final int enterY = 710;
@@ -39,7 +43,25 @@ public class Utils extends Actor
     public static final int pizzaFinalY = 550;
     
     public static final int MAMA = -1, PAPA = 1;
+    
+    public static int numberOfCustomers1, numberOfCustomers2;
 
+    public void addCustomer1(){
+        numberOfCustomers1++;
+    }
+    
+    public void addCustomer2(){
+        numberOfCustomers2++;
+    }
+    
+    public void removeCustomer1(){
+        numberOfCustomers1--;
+    }
+    
+    public void removeCustomer2(){
+        numberOfCustomers2--;
+    }
+    
     public void resturantMoneyOneAdd(int money)
     {
         resturantMoneyOne += money;

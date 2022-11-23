@@ -20,6 +20,7 @@ public class EndWorld extends World
     private Label amountMoneyLabel;
     private TryAgainButton tryAgainButton;
     private Confetti confetti;
+    private GreenfootSound winSound;
     private ArrayList<GreenfootSound> pausedSounds;
     
     /**
@@ -45,6 +46,8 @@ public class EndWorld extends World
         this.amountMoneyLabel = new Label (money, 50, new Color(253, 218, 13));
         this.tryAgainButton = new TryAgainButton();
         this.confetti = new Confetti();
+        winSound = new GreenfootSound("win.wav");
+        winSound.play();
         pausedSounds = new ArrayList<GreenfootSound>();
         if (result == 0 ) {
             setBackground(backgroundImages[result]);
@@ -61,7 +64,7 @@ public class EndWorld extends World
         addObject(confetti, 512, 400);
         addObject(tryAgainButton, 830, 750);
     }
-    
+
     public void stopped() {
         // stop all sounds
         pausedSounds.clear();

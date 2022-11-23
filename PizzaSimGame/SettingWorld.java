@@ -119,9 +119,6 @@ public class SettingWorld extends World
         addObject(this.moneyMinus, 800, 425);
         addObject(this.moneyNumLabel, 850, 425);
         
-        /**
-         * 
-         */
         addObject(this.ovenPlus, 900, 550);
         addObject(this.ovenMinus, 800, 550);
         addObject(this.ovenNumLabel, 850, 550);

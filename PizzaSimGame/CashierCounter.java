@@ -9,12 +9,14 @@ import java.util.List;
  */
 public class CashierCounter extends Target
 {
+    
     /**
      * Act - do whatever the CashierCounter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
 
-    public void act()
-    {
+    public CashierCounter (){
+        transparent();
     }
+
 }

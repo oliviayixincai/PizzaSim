@@ -16,7 +16,7 @@ public class MoneyDisplayer extends Actor
      * @param value Initial money of the kitchen
      */
     public MoneyDisplayer(int value){
-        money=value;
+        money = value;
     }
     /**
      * when the money displayer is added to world, show the initail money
@@ -40,12 +40,12 @@ public class MoneyDisplayer extends Actor
     public void updateImage()
     {
         //display number for displayer
-        GreenfootImage displayer = new GreenfootImage("Current Income: $ "+ money, 20, Color.BLACK, transparent);
+        GreenfootImage displayer = new GreenfootImage("Current Income: $ "+ money, 25, Color.BLACK, transparent);
         setImage(displayer);
     }
+    
     /**
-     * @return money the int current money of restaurant
-     * @return money The int current money
+     * return the current money of restaurant
      */
     public int getMoney(){
         return money;

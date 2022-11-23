@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=SettingWorld
-comment0.text=\n\ Write\ a\ description\ of\ class\ SettingWorld\ here.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ SettingWorld\ here.\r\n\ \r\n\ @author\ Yixin\ Cai\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=SettingWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SettingWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ SettingWorld.\r\n\ \r\n
 comment10.params=
 comment10.target=int\ getOvenNumMama()
 comment11.params=
@@ -20,7 +20,7 @@ comment16.params=
 comment16.target=int\ getRobberStealPapa()
 comment17.params=isUp
 comment17.target=void\ updateVolume(boolean)
-comment17.text=\n\ Update\ volume.\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\n
+comment17.text=\r\n\ Update\ volume.\r\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=

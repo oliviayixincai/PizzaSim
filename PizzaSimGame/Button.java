@@ -91,7 +91,6 @@ public abstract class Button extends Actor implements ISound
     public void pauseSound() {
         sounds[soundIndex].pause();
     }
-    
     public boolean isSoundPlaying () {
         return sounds[soundIndex].isPlaying();
     }

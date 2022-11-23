@@ -6,6 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Yixin Cai
  * @version (a version number or a date)
  */
+
 public class Confetti extends Actor implements ISound
 {
     private GifImage confetti;
@@ -21,6 +22,7 @@ public class Confetti extends Actor implements ISound
     public void addedToWorld(World w) {
         winSound.setVolume(Utils.volume);
         playSound();
+
     }
     
     /**

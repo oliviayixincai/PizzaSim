@@ -10,7 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * clock sequence by Nendra Beluci from:
  * <a href="https://www.vecteezy.com/free-vector/cartoon-cloud">Cartoon Cloud Vectors by Vecteezy</a>
  */
-public class Clock extends Actor implements ISound
+public class Clock extends Effects implements ISound
 {
     /**
      * Act - do whatever the clock wants to do. This method is called whenever
@@ -20,20 +20,7 @@ public class Clock extends Actor implements ISound
     private GreenfootSound alarmSound = new GreenfootSound("alarm.wav");
     private GreenfootSound sound;
     private int time;
-    private static GreenfootImage[] clocks={
-        new GreenfootImage("clock_1.png"), 
-        new GreenfootImage("clock_2.png"), 
-        new GreenfootImage("clock_3.png"), 
-        new GreenfootImage("clock_4.png"), 
-        new GreenfootImage("clock_5.png"), 
-        new GreenfootImage("clock_6.png"), 
-        new GreenfootImage("clock_7.png"), 
-        new GreenfootImage("clock_8.png"), 
-        new GreenfootImage("clock_9.png"), 
-        new GreenfootImage("clock_10.png"), 
-        new GreenfootImage("clock_11.png"), 
-        new GreenfootImage("clock_12.png"), 
-    };
+    private static GreenfootImage[] clocks= new GreenfootImage[13];
     private int interval;
     private Pizza pizza;
     private int imageIndex;
@@ -47,12 +34,18 @@ public class Clock extends Actor implements ISound
      * @param pizza The pizza that is put into an oven
      */
     public Clock(int time, Pizza pizza){
-        this.time=time;
-        imageIndex=0;
-        timeIndex=time/12;
-        burnTime=450;
-        burnAct=0;
-        this.pizza=pizza;
+        for(int i = 0; i < 13; i++){
+            clocks[i] = new GreenfootImage("/images/clock_" + i + ".png");
+            clocks[i].scale (25, 25);
+        }
+        
+        setImage(clocks[0]);
+        this.time = time;
+        imageIndex = 0;
+        timeIndex = time/12;
+        burnTime = 600;
+        burnAct = 0;
+        this.pizza = pizza;
         sound = tikSound;
     }
     
@@ -73,7 +66,7 @@ public class Clock extends Actor implements ISound
     public void act()
     {
         timeIndex--;
-        if(imageIndex==11){
+        if(imageIndex==12){
             x=this.getX();
             y=this.getY();
             setImage(clocks[imageIndex]);
@@ -81,14 +74,14 @@ public class Clock extends Actor implements ISound
             timeIndex=time/12;
             pizza.cookPizza();
         }
-        else if(imageIndex==12){
+        else if(imageIndex==13){
             burnTime--;
             clockAlarm();
             if(burnTime==0){
                 pizza.burnPizza();
             }
         }
-        else if(imageIndex<11&&timeIndex==0){
+        else if(imageIndex < 12 && timeIndex == 0){
             setImage(clocks[imageIndex]);
             imageIndex++;
             timeIndex=time/12;

@@ -8,111 +8,171 @@ import java.util.ArrayList;
  */
 public class Robber extends People
 {
-    private int resturant;
-    private int location;
+    private int store;
+    private int location = 1, rotation;
+    private boolean position = false, currentlyMovingToCashier;
+    
+    private GreenfootImage[] wf = new GreenfootImage[7];
+    private GreenfootImage[] wb = new GreenfootImage[7];
+    private GreenfootImage[] wl = new GreenfootImage[7];
+    private GreenfootImage[] wr = new GreenfootImage[7];
+    private GreenfootImage[] ai = new GreenfootImage[5];
+    
+    private Utils utils;
+    private MoneyInterface moneyInterface;
+    private SettingWorld settingWorld;
+    
+    private boolean isCash2Open = false;
+    private int enterDIR, exitDIR;
+    
     /**
      * Act - do whatever the Robber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Robber(int resturant)
+    public Robber(int store)
     {
-        this.resturant = resturant;
-
+        this.store = store;
+        setImage("images/ra/f0.png");
+        for(int i =0; i< 7; i++)
+        {
+            wf[i] = new GreenfootImage("images/ra/f" + i + ".png");
+            wf[i].scale(85, 90);
+            wb[i] = new GreenfootImage("images/ra/b" + i + ".png");
+            wb[i].scale(85, 90);
+            wl[i] = new GreenfootImage("images/ra/l" + i + ".png");
+            wl[i].scale(85, 90);
+            wr[i] = new GreenfootImage("images/ra/r" + i + ".png");
+            wr[i].scale(85, 90);
+        }
+        
+        for(int i = 0; i < 5; i++)
+        {
+            ai[i] = new GreenfootImage("images/ra/i" + i + ".png");
+        }
     }
 
     public void act()
     {
-        // Add your action code here.
-        moveToDoorAndMoney();
-
-        //stealMoney();
+        utils = getWorld().getObjectsAt(0, 0, Utils.class).get(0);
+        animate(wb, wf, wl, wr, rotation);
+        moveRobber();
     }
 
-    public void moveToDoorAndMoney()
+    public void moveRobber()
     {
         checkLocation();
-        if(location ==1)
+        if(location == 1)
         {
-            move1();
+            moveToDoor();
         }
-        else if(location ==2)
+        else if(location == 2) 
         {
-            move2();
+            moveToCashier();
         }
-        if(location ==3)
+        else if(location == 3)
         {
-            move3();
-        }
-    }
-    /*
-    public void stealMoney()
-    {
-        if(resturant ==1)
-        {
-
-            if(getX()==400&&getY()==630)
-            {
-                Utils.resturantMoneyOne--;
-                getWorld().removeObject(this);
-            }
-        }
-        if(resturant ==2)
-        {
-
-            if(getX()==610&&getY()==630)
-            {
-                Utils.resturantMoneyTwo--;
-                getWorld().removeObject(this);
-            }
+            exit();
         }
     }
-    */
+
     public void checkLocation()
     {
-        if(getX()==500&&getY()==100)
-        {
-            location =1;
-        }
-        else if(getX() == 500&&getY()==710)
+        if(getX() == 512 && getY() == Utils.enterY)
         {
             location = 2;
         }
-        else if((getX()==400||getX()==610)&&getY() ==710)
+        else if((getX() == Utils.cashier1X ||getX() == Utils.cashier4X) && getY() == Utils.counterY)
         {
-            location =3;
+            stealMoney();
+            location = 3;
         }
-        
     }
-    public void move1()
+
+    public void moveToDoor()
     {
         if(getY() != 710)
         {
+            rotation = DOWN;
             setLocation(getX(),getY()+1);
         }
     }
-    public void move2()
+
+    public void moveToCashier()
     {
-        if(resturant ==1)
+        if(store == -1)
+        {
+            if(getX() != Utils.cashier1X)
             {
-                if(getX() != 610)
-                {
-                    setLocation(getX()+1,getY());
-                }
+                rotation = LEFT;
+                setLocation(getX() - 1, getY());
             }
-            else if(resturant == 2)
+            if((getX() == Utils.cashier1X || currentlyMovingToCashier) && getY() != Utils.counterY)
             {
-                if(getX() != 400)
-                {
-                    setLocation(getX()-1,getY());
-                }
+                currentlyMovingToCashier = true;
+                rotation = UP;
+                setLocation(getX(), getY() - 1);
             }
-    }
-    public void move3()
-    {
-        if(getY() != 630)
+        }
+        else if(store == 1)
+        {
+            if(getX() != Utils.cashier4X)
             {
-             setLocation(getX(),getY()-1);
+                rotation = RIGHT;
+                setLocation(getX() + 1, getY());
             }
+            if((getX() == Utils.cashier4X || currentlyMovingToCashier) && getY() != Utils.counterY)
+            {
+                currentlyMovingToCashier = true;
+                rotation = UP;
+                setLocation(getX(), getY() - 1);
+            }
+        }
     }
 
+    public void exit()
+    {
+        if(getY() != Utils.exitY)
+        {
+            rotation = DOWN;
+            setLocation(getX(), getY() + 1);
+        }
+        if(store == -1)
+        {
+                if(getX() != 512)
+                {
+                    rotation = RIGHT;
+                    setLocation(getX() + 1, getY());
+                }
+        }
+        if(store == 1)
+        {
+                if(getX() != 512)
+                {
+                    rotation = LEFT;
+                    setLocation(getX() - 1,getY());
+                }
+        }
+        if(getX() == 512)
+        {
+            rotation = DOWN;
+            setLocation(getX(), getY() + 1);
+        }
+        if(isAtEdge())
+        {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public void stealMoney()
+    {
+        moneyInterface = getWorld().getObjectsAt(0, 0, MoneyInterface.class).get(0);
+        if(store == -1)
+        {
+            moneyInterface.changeMoney(store, utils.getRobbingMoneyPapa());
+        }
+        else
+        {
+            moneyInterface.changeMoney(store, utils.getRobbingMoneyMama());
+        }
+    }
 }

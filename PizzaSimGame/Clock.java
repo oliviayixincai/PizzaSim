@@ -16,8 +16,8 @@ public class Clock extends Effects implements ISound
      * Act - do whatever the clock wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private GreenfootSound tikSound = new GreenfootSound("tik.wav");
-    private GreenfootSound alarmSound = new GreenfootSound("alarm.wav");
+    private static GreenfootSound tikSound = new GreenfootSound("tik.wav");
+    private static GreenfootSound alarmSound = new GreenfootSound("alarm.wav");
     private GreenfootSound sound;
     private int time;
     private static GreenfootImage[] clocks= new GreenfootImage[13];

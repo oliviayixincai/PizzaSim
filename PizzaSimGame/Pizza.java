@@ -1,7 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Pizza here.
+ * initialize a pizza that correspond to a customer's order after 
+ * a customer comes in the store and orders. Add topping to the 
+ * pizza, cook and burn after the pizza is sent to the oven.
  * 
  * @Yuxin Li (Yuxin Li) 
  * @version Novbember 2022
@@ -44,6 +46,7 @@ public class Pizza extends Actor
      * @param strings array consists of the customer order
      * @param sauce the type of sauce the customer wants
      * @param cheese if the customer ordered cheese
+     * 
      */
     public Pizza(String[] strings, String sauce, boolean cheese){
         toppings = strings;

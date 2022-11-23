@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Order here.
+ * Order is a Greenfoot actor that creates a visual display of a customer's order.
+ * <p> Draw the order and moves with the customer, initialize a pizza if there's no pizza on counter
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
@@ -26,7 +27,15 @@ public class Order extends Actor
 
     private int store; 
     private int price = 5;
-    
+    /**
+     * initialize an order of a customer
+     *
+     * @param sauceType the type of sauce the customer wants
+     * @param cheese if the customer ordered cheese
+     * @param strings array consists of the customer order
+     * @param customer the customer who orders
+     * @param store the store that the customer orders in
+     */
     public Order(String sauceType, boolean cheese, String[] toppingTypes, Customer customer, int store){
         this.store = store;
         toppings = toppingTypes;
@@ -67,6 +76,10 @@ public class Order extends Actor
         chatBox.drawImage(crust, 12, 7);
     }
     
+    /**
+     * check if the kitchen is available to made a new pizza
+     * <p> create a new pizza in the kitchen available
+     */
     public void makePizza()
     {
         if (store == Utils.MAMA)
@@ -96,6 +109,10 @@ public class Order extends Actor
         }
     }
     
+    /**
+     * when the order in added to world
+     * draw the order out and make the pizza
+     */
     public void addedToWorld(World w){
         drawOrder();
         makePizza();

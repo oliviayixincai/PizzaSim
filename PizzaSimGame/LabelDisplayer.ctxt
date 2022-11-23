@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=LabelDisplayer
+comment0.text=\n\ Money\ displayer\ is\ a\ Greenfoot\ Actor\ used\ to\ display\ and\ update\ the\ current\ money\ of\ each\ kitchen\ \n\ \n\ @author\ Anson\ Ho\n\ @version\ November\ 2022\n
+comment1.params=value
+comment1.target=LabelDisplayer(int)
+comment1.text=\n\ Store\ the\ initial\ value\ of\ the\ label\ \n\ @param\ value\ Initial\ value\ of\ the\ label\n
+comment2.params=w
+comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.text=\n\ when\ the\ value\ displayer\ is\ added\ to\ world,\ show\ the\ initial\ value\n
+comment3.params=newValue
+comment3.target=void\ setDisplayer(int)
+comment3.text=\n\ set\ the\ new\ value\ of\ displayer\ and\ update\ the\ displayer\n\ @param\ newValue\ new\ value\ of\ value\ \n
+comment4.params=
+comment4.target=int\ getValue()
+comment4.text=\n\ return\ the\ current\ value\ of\ label\n
+numComments=5

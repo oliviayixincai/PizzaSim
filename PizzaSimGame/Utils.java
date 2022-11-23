@@ -74,12 +74,12 @@ public class Utils extends Actor
     
     public void setRobbingMoneyMama(int money)
     {
-        robbingMoneyMama = money;
+        robbingMoneyMama = robbingMoneyMama + money;
     }
     
     public void setRobbingMoneyPapa(int money)
     {
-        robbingMoneyPapa = money;
+        robbingMoneyPapa = robbingMoneyPapa + money;
     }
     
     public void addResturantLevelOne()

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Utils
-comment0.text=\n\ Class\ used\ for\ editing\ and\ containing\ global\ static\ variables\ such\ as\ money\ of\ resturants\ and\ speed\ of\ characters.\n\ \n\ @author\ Anson\ Ho\n\ @version\ V1.0\n
+comment0.text=\r\n\ Class\ used\ for\ editing\ and\ containing\ global\ static\ variables\ such\ as\ money\ of\ resturants\ and\ speed\ of\ characters.\r\n\ \r\n\ @author\ Anson\ Ho\r\n\ @version\ V1.0\r\n
 comment1.params=
 comment1.target=Utils()
 comment10.params=

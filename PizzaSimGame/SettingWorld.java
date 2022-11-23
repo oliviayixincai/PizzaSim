@@ -194,8 +194,8 @@ public class SettingWorld extends World
                 this.ovenNumMama -= 1;
                 this.ovenNumLabel.updateLabel(this.ovenNumMama);
             }
-            // The maximum number of robber of Mama can steals is 25, the minimum is 10
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 25) {
+            // The maximum number of robber of Mama can steals is 20, the minimum is 10
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealMama < 20) {
                 this.robberStealMama += 5;
                 this.robberStealLabel.updateLabel(this.robberStealMama);
             }
@@ -242,8 +242,8 @@ public class SettingWorld extends World
                 this.ovenNumPapa -= 1;
                 this.ovenNumLabel.updateLabel(this.ovenNumPapa);
             }
-            // The maximum number of robber of Papa can steals is 25, the minimum is 10
-            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 25) {
+            // The maximum number of robber of Papa can steals is 20, the minimum is 10
+            if (Greenfoot.mouseClicked(robberStealPlus) && this.robberStealPapa < 20) {
                 this.robberStealPapa += 5;
                 this.robberStealLabel.updateLabel(this.robberStealPapa);
             }

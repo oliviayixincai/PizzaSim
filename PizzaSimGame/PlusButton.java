@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class AddButton here.
+ * A button with Plus image. To be clicked to increase value in SettingWorld
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

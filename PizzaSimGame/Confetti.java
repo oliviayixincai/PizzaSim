@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class confetti here.
+ * Class to hold the confetti effect in the EndWord.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)
@@ -16,13 +16,11 @@ public class Confetti extends Actor implements ISound
         confetti = new GifImage("confetti.gif");
         winSound = new GreenfootSound("win.wav");
         setImage(confetti.getCurrentImage());
-        //playSound();
     }
     
     public void addedToWorld(World w) {
         winSound.setVolume(Utils.volume);
         playSound();
-
     }
     
     /**

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StartButton here.
+ * The PLAY button to be clicked to start the simulation game.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

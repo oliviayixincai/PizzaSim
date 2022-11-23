@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MinusButton here.
+ * A button with Minus image. To be clicked to reduce value in SettingWorld
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

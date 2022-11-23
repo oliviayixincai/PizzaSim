@@ -2,7 +2,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * default
+ * A World that allows user to setup initial value for the parameters of the simulation game.
+ * The parameters allowed are: Number of Chefs, Number of Cashiers, Number of Ovens, Starting 
+ * money and Amount of money that robber can steal.
+ * 
+ * It also allows modifying the volume for all the sounds in this simulation game.
+ * 
+ * Settings for MAMA and PAPA pizzerias are split in two different views and navigated by button.
+ * 
+ * Click on PLAY button in the PAPA setting view to enter the simulation game.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

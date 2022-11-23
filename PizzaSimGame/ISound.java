@@ -1,6 +1,6 @@
 import greenfoot.*;
 /**
- * Write a description of interface ISound here.
+ * Interface for actors that has sound effect. This is used to collect all such objects in World.
  * 
  * @author Yixin Cai
  * @version (a version number or a date)

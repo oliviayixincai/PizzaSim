@@ -20,21 +20,7 @@ public class Clock extends Effects implements ISound
     private GreenfootSound alarmSound = new GreenfootSound("alarm.wav");
     private GreenfootSound sound;
     private int time;
-    private static GreenfootImage[] clocks={
-        new GreenfootImage("/images/clock_0.png"),
-        new GreenfootImage("/images/clock_1.png"), 
-        new GreenfootImage("/images/clock_2.png"), 
-        new GreenfootImage("/images/clock_3.png"), 
-        new GreenfootImage("/images/clock_4.png"), 
-        new GreenfootImage("/images/clock_5.png"), 
-        new GreenfootImage("/images/clock_6.png"), 
-        new GreenfootImage("/images/clock_7.png"), 
-        new GreenfootImage("/images/clock_8.png"), 
-        new GreenfootImage("/images/clock_9.png"), 
-        new GreenfootImage("/images/clock_10.png"), 
-        new GreenfootImage("/images/clock_11.png"), 
-        new GreenfootImage("/images/clock_12.png"), 
-    };
+    private static GreenfootImage[] clocks= new GreenfootImage[13];
     private int interval;
     private Pizza pizza;
     private int imageIndex;
@@ -48,6 +34,11 @@ public class Clock extends Effects implements ISound
      * @param pizza The pizza that is put into an oven
      */
     public Clock(int time, Pizza pizza){
+        for(int i = 0; i < 13; i++){
+            clocks[i] = new GreenfootImage("/images/clock_" + i + ".png");
+            clocks[i].scale (25, 25);
+        }
+        
         setImage(clocks[0]);
         this.time = time;
         imageIndex = 0;

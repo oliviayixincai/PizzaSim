@@ -24,7 +24,7 @@ public class LevelDisplayer extends LabelDisplayer
     public void updateImage()
     {
         //display number for displayer
-        GreenfootImage displayer = new GreenfootImage("Current Level: $ "+ getValue(), 25, Color.BLACK, transparent);
+        GreenfootImage displayer = new GreenfootImage("Current Level: "+ getValue(), 25, Color.BLACK, transparent);
         setImage(displayer);
     }
 }

@@ -1,8 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Order is a Greenfoot actor used to display a customer's order visually by 
- * drawing out the order of a customer
+ * Write a description of class Order here.
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)
@@ -67,10 +66,7 @@ public class Order extends Actor
         
         chatBox.drawImage(crust, 12, 7);
     }
-    /**
-     * If the pizza can be made in the kitchen - there's is no pizza on the counter 
-     * <p> initialize a pizza
-     */
+    
     public void makePizza()
     {
         if (store == Utils.MAMA)
@@ -100,10 +96,6 @@ public class Order extends Actor
         }
     }
     
-    /**
-     * when an order is added to world, calculate price and add the money to the restaurant
-     * <p> initialize a pizza based on the order
-     */
     public void addedToWorld(World w){
         drawOrder();
         makePizza();

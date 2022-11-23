@@ -1,9 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Pizza is a Greenfoot Actor used to show the creation process of the pizza after being ordered by a customer.
- * <p> One pizza topping layer is added after certain acts from the topping added before.
- * <p> It cooks and burns pizza when it remains in the oven for too long.
+ * Write a description of class Pizza here.
  * 
  * @Yuxin Li (Yuxin Li) 
  * @version Novbember 2022
@@ -43,12 +41,8 @@ public class Pizza extends Actor
     /**
      * initialize a pizza that correspond to a customer's order after 
      * a customer comes in the store and orders
-     * 
-     * @param strings array consists of the customer order
-     * @param sauce the type of sauce the customer wants
-     * @customer theCustomer the customer that orders this pizza
-     */
-    public Pizza(String[] strings, String sauce, Customer theCustomer){
+    */
+    public Pizza(String[] strings, String sauce, boolean cheese){
         toppings = strings;
         this.sauce = sauce;
         hasCheese = cheese; 
@@ -95,7 +89,7 @@ public class Pizza extends Actor
     }
     
     /**
-     * set the dough Image
+     * an animation of the dough spreading process
      */
     public void spreadDough(){
         pizza.scale(50,50);
@@ -124,8 +118,7 @@ public class Pizza extends Actor
     }
     
     /**
-     * add one new topping to pizza every 60 acts 
-     * @param strings The string array consists of the topping that the customer orders
+     * add one new topping every 60 acts
      */
     public void addToppings(String[] strings){
         if(toppingIndex < strings.length && toppingTime==0){
@@ -142,20 +135,31 @@ public class Pizza extends Actor
     }
     
     /**
-     * get the cook time required for the pizza
-     * @return cookTime the cook time required for the pizza
-     */
-    public int getCookTime(){
+     * calculate the cook time required for the pizza
+    */
+    public int getCookTime(String[] strings){
+        //return cooktime
+        //add the time for all toppings
+        cookTime = 60 * (strings.length + 2);
         return cookTime;
     }
     
-    public void isPickedUp(){
-        inOven = false;
-    }
     /**
-     * return if the pizza is in oven, in other word, if the pizza is picked up by a cashier
-     * @return inOven True if the pizza is in oven, False if the pizza is not in oven
+     * if the pizza is cooked and a cashier comes, return has cashier
+     * if hasCashier, the clocked will be removed
      */
+    public boolean isPickedUp(){
+        //if the pizza is in oven and the pizza is cooked
+        //find the chef picking up the pizza
+        if(cooked && inOven == true && hasChef == false){
+            ArrayList<Cashier> cashierNear = (ArrayList<Cashier>)getObjectsInRange(50, Cashier.class);
+            cashier = cashierNear.get(0);
+            hasCashier = true;
+            inOven = false;
+        }
+        return hasCashier;
+    }
+    
     public boolean isInOven(){
         return inOven;
     }
@@ -187,8 +191,7 @@ public class Pizza extends Actor
     }
     
     /**
-     * return if the dough is finished 
-     * @return doughFinished True if the dough is finished, False if it is not
+     * dough finished getter method
      */
     public boolean isDoughFinished()
     {
@@ -196,8 +199,7 @@ public class Pizza extends Actor
     }
     
     /**
-     * return if the topping is finished added 
-     * @return toppingsFinished True if the toppings are finished, False if not
+     * finished adding toppings getter method
      */
     public boolean toppingsFinished(){
         return toppingsFinished;
@@ -218,9 +220,7 @@ public class Pizza extends Actor
         getImage().drawImage(burned,0,0);
         burn=true;
     }
-    /**
-     * cook the pizza by adding a golden layer at the top of the pizza
-     */
+    
     public void cookPizza(){
         //add a golden crust layer on pizza
         crust.scale(50,50);

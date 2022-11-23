@@ -27,6 +27,8 @@ public class Cashier extends People
     GreenfootImage rightInteract[] = new GreenfootImage[6];
     GreenfootImage downInteract[] = new GreenfootImage[6];
     
+    private Pizza assignedPizza;
+    
     //andy code
     private int startX, startY;
     private boolean atCashier = true;
@@ -163,30 +165,30 @@ public class Cashier extends People
             assignPizza(pizza);
             foundPizza = true;
         }
-        getPizza().getImage().setTransparency(255);
-        getPizza().isPickedUp();
+        assignedPizza.getImage().setTransparency(255);
+        assignedPizza.isPickedUp();
         atOven = false; 
         //rotate chef and pizza 
         if(rotationIndex != startRotationIndex && timer.millisElapsed() > 200)
         {
             timer.mark();
-            rotate(90, getPizza(), this);             
+            rotate(90, assignedPizza, this);             
         }
         //move y axis to cashier counter
         if(getY() != counterYCoord && rotationIndex == startRotationIndex)
         {
             setLocation(getX(), getY() + 1);
             pizzaYCoord += 1;   
-            getPizza().setLocation(pizzaXCoord, pizzaYCoord);
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord);
         }
         
-        if(getPizza().getY() != Utils.pizzaFinalY && getY() == counterYCoord)
+        if(assignedPizza.getY() != Utils.pizzaFinalY && getY() == counterYCoord)
         {
             pizzaYCoord += 1;
-            getPizza().setLocation(pizzaXCoord, pizzaYCoord); 
+            assignedPizza.setLocation(pizzaXCoord, pizzaYCoord); 
         }
         
-        if(getPizza().getY() == Utils.pizzaFinalY)
+        if(assignedPizza.getY() == Utils.pizzaFinalY)
         {
             interactCounter = 5;
             currentlyMovingPizza = false;
@@ -236,6 +238,11 @@ public class Cashier extends People
             return true;
         }
         return false;
+    }
+    
+    public void assignPizza(Pizza pizza)
+    {
+        assignedPizza = pizza;
     }
     
     public void checkCookedOven()

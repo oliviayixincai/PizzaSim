@@ -134,8 +134,8 @@ public class MyWorld extends World
         addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumMama()), 115, 25);
         addObject(new MoneyDisplayer(this.settingWorld.getMoneyNumPapa()), 672, 25);
         
-        addObject(new LevelDisplayer(1), 92, 50);
-        addObject(new LevelDisplayer(1), 650, 50);
+        addObject(new LevelDisplayer(1), 115, 50);
+        addObject(new LevelDisplayer(1), 672, 50);
         
         utils.resturantMoneyOneAdd(settingWorld.getMoneyNumMama());
         utils.resturantMoneyTwoAdd(settingWorld.getMoneyNumPapa());

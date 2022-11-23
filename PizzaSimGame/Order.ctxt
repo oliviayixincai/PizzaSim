@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Order
-comment0.text=\n\ Order\ is\ a\ Greenfoot\ actor\ that\ creates\ a\ visual\ display\ of\ a\ customer's\ order.\n\ <p>\ Draw\ the\ order\ and\ moves\ with\ the\ customer,\ initialize\ a\ pizza\ if\ there's\ no\ pizza\ on\ counter\n\ \n\ @Yuxin\ Li\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ \n\ chatBox\ image\ by\ Sallie\ from\:\ \n\ https\://www.vhv.rs/viewpic/oobJ_pixel-chat-bubble-png-transparent-png/\n
+comment0.text=\n\ Order\ is\ a\ Greenfoot\ actor\ that\ creates\ a\ visual\ display\ of\ a\ customer's\ order.\n\ <p>\ Initialize\ a\ pizza\ if\ there's\ no\ pizza\ on\ counter\n\ \n\ @Yuxin\ Li\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ \n\ chatBox\ image\ by\ Sallie\ from\:\ \n\ https\://www.vhv.rs/viewpic/oobJ_pixel-chat-bubble-png-transparent-png/\n
 comment1.params=sauceType\ cheese\ toppingTypes\ customer\ store
 comment1.target=Order(java.lang.String,\ boolean,\ java.lang.String[],\ Customer,\ int)
 comment1.text=\n\ initialize\ an\ order\ of\ a\ customer\n\n\ @param\ sauceType\ the\ type\ of\ sauce\ the\ customer\ wants\n\ @param\ cheese\ if\ the\ customer\ ordered\ cheese\n\ @param\ strings\ array\ consists\ of\ the\ customer\ order\n\ @param\ customer\ the\ customer\ who\ orders\n\ @param\ store\ the\ store\ that\ the\ customer\ orders\ in\n
@@ -14,5 +14,5 @@ comment4.target=void\ makePizza()
 comment4.text=\n\ check\ if\ the\ kitchen\ is\ available\ to\ made\ a\ new\ pizza\n\ <p>\ create\ a\ new\ pizza\ in\ the\ kitchen\ available\n
 comment5.params=w
 comment5.target=void\ addedToWorld(greenfoot.World)
-comment5.text=\n\ when\ the\ order\ in\ added\ to\ world\n\ \n
+comment5.text=\n\ when\ the\ order\ in\ added\ to\ world\n\ draw\ the\ order\ out\ and\ make\ the\ pizza\n
 numComments=6

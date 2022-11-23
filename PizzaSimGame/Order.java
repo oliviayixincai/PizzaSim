@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Order is a Greenfoot actor that creates a visual display of a customer's order.
- * <p> Draw the order and moves with the customer, initialize a pizza if there's no pizza on counter
+ * <p> Initialize a pizza if there's no pizza on counter
  * 
  * @Yuxin Li (your name) 
- * @version (a version number or a date)
+ * @version November 2022
  * 
  * chatBox image by Sallie from: 
  * https://www.vhv.rs/viewpic/oobJ_pixel-chat-bubble-png-transparent-png/

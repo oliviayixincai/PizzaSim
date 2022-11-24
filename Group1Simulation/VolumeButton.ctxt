@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=VolumeButton
-comment0.text=\n\ Volume\ button\ to\ control\ volume\ of\ the\ sounds\ in\ the\ simulation\ game.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ Volume\ button\ to\ control\ volume\ of\ the\ sounds\ in\ the\ simulation\ game.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=isUp
 comment1.target=VolumeButton(boolean)
 comment2.params=

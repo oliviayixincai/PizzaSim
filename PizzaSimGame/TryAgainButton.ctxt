@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=TryAgainButton
-comment0.text=\r\n\ TryAgain\ button\ to\ be\ displayed\ in\ the\ EndWorld.\ To\ be\ clicked\ to\ start\ over.\r\n\ \r\n\ @author\ Yixin\ Cai\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=TryAgainButton()
-comment2.params=
-comment2.target=void\ onClick()
-numComments=3

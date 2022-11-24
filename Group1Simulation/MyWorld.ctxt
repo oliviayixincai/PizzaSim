@@ -1,23 +1,23 @@
 #BlueJ class context
 comment0.target=MyWorld
-comment0.text=\n\ <h1>The\ Pizza\ Simulation\ finished\ by\ Group\ 1.</h1>\n\ <p>\ Group\ member\:\ Yixin\ Cai,\ Anson\ Ho,\ Yuxin\ Li,\ Gloria\ Chan,\ Andy\ Li,\ Eric\ Zheng</p>\n\ <h2>Credit\:</h2>\n\ \n\ <p>\n\ Background\ music\:\n\ Run\ Amok\ by\ Kevin\ MacLeod\ |\ https\://incompetech.com/\n\ Music\ promoted\ by\ https\://www.chosic.com/free-music/all/\n\ Creative\ Commons\ CC\ BY\ 3.0\n\ https\://creativecommons.org/licenses/by/3.0/\n\ </p>\n\ <p>\n\ Click\ music\:\n\ Sound\ Effect\ by\ <a\ href\="https\://pixabay.com/users/sennafoxy-177\n\ 62344/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;ut\n\ m_campaign\=music&amp;utm_content\=14388">SennaFoxy</a>\ from\ <a\ href\n\ \="https\://pixabay.com//?utm_source\=link-attribution&amp;utm_medium\=\n\ referral&amp;utm_campaign\=music&amp;utm_content\=14388">Pixabay</a>\n\ </p>\n\ <p>Angry\ hmp\ sound\ clips\:\ Sound\ Effect\ from\ <a\ href\="https\://pixabay.com/\n\ sound-effects/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;utm\n\ _campaign\=music&amp;utm_content\=38556">Pixabay</a>\n\ </p>\n\ <p>Clock\ tik\ sound\ clip\:\ Sound\ Effect\ from\ <a\ href\="https\://pixabay.com/sound\n\ -effects/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;utm_campaign\n\ \=music&amp;utm_content\=55420">Pixabay</a>\n\ </p>\n\ <p>Other\ Sound\ clips\:\ https\://pixabay.com/music/</p>\n\ \n\ "Aloe\ Vera\ Plants"\ from\ Pinterest\ (https\://www.pinterest.ca/pin/all-6-plants-pattern-aloe-vera-potted-plant-succulent-ivy-etsy-in-2022--88172105197560932/).\ \n\ "Animal\ Crossing\ Stepping\ Stones"\ by\ Rose\ from\ Pinterest\ (https\://www.pinterest.ca/pin/538672805434277806/).\n\ "16x16\ Fence\ and\ Well"\ by\ William.Thompsonj\ from\ OpenGameArt\ (https\://opengameart.org/content/16x16-fence-and-well-tiny-16).\n\ \u201CPixel\ Art\ of\ Book\ Shelf\ Stack\u201D\ from\ FreePik\ (https\://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).\n\ \n\ Credits\ for\ the\ Chef\ and\ Customers\ are\ in\ the\ folder\ "credits".\n\ \n\ @author\ (Group\ 1)\ \n\ @version\ (22/11/22)\n
+comment0.text=\r\n\ <h1>The\ Pizza\ Simulation\ finished\ by\ Group\ 1.</h1>\r\n\ <p>\ Group\ member\:\ Yixin\ Cai,\ Anson\ Ho,\ Yuxin\ Li,\ Gloria\ Chan,\ Andy\ Li,\ Eric\ Zheng</p>\r\n\ <h2>Credit\:</h2>\r\n\ \r\n\ <p>\r\n\ Background\ music\:\r\n\ Run\ Amok\ by\ Kevin\ MacLeod\ |\ https\://incompetech.com/\r\n\ Music\ promoted\ by\ https\://www.chosic.com/free-music/all/\r\n\ Creative\ Commons\ CC\ BY\ 3.0\r\n\ https\://creativecommons.org/licenses/by/3.0/\r\n\ </p>\r\n\ <p>\r\n\ Click\ music\:\r\n\ Sound\ Effect\ by\ <a\ href\="https\://pixabay.com/users/sennafoxy-177\r\n\ 62344/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;ut\r\n\ m_campaign\=music&amp;utm_content\=14388">SennaFoxy</a>\ from\ <a\ href\r\n\ \="https\://pixabay.com//?utm_source\=link-attribution&amp;utm_medium\=\r\n\ referral&amp;utm_campaign\=music&amp;utm_content\=14388">Pixabay</a>\r\n\ </p>\r\n\ <p>Angry\ hmp\ sound\ clips\:\ Sound\ Effect\ from\ <a\ href\="https\://pixabay.com/\r\n\ sound-effects/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;utm\r\n\ _campaign\=music&amp;utm_content\=38556">Pixabay</a>\r\n\ </p>\r\n\ <p>Clock\ tik\ sound\ clip\:\ Sound\ Effect\ from\ <a\ href\="https\://pixabay.com/sound\r\n\ -effects/?utm_source\=link-attribution&amp;utm_medium\=referral&amp;utm_campaign\r\n\ \=music&amp;utm_content\=55420">Pixabay</a>\r\n\ </p>\r\n\ <p>Other\ Sound\ clips\:\ https\://pixabay.com/music/</p>\r\n\ \r\n\ "Aloe\ Vera\ Plants"\ from\ Pinterest\ (https\://www.pinterest.ca/pin/all-6-plants-pattern-aloe-vera-potted-plant-succulent-ivy-etsy-in-2022--88172105197560932/).\ \r\n\ "Animal\ Crossing\ Stepping\ Stones"\ by\ Rose\ from\ Pinterest\ (https\://www.pinterest.ca/pin/538672805434277806/).\r\n\ "16x16\ Fence\ and\ Well"\ by\ William.Thompsonj\ from\ OpenGameArt\ (https\://opengameart.org/content/16x16-fence-and-well-tiny-16).\r\n\ \u201CPixel\ Art\ of\ Book\ Shelf\ Stack\u201D\ from\ FreePik\ (https\://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).\r\n\ \r\n\ Credits\ for\ the\ Chef\ and\ Customers\ are\ in\ the\ folder\ "credits".\r\n\ \r\n\ @author\ (Group\ 1)\ \r\n\ @version\ (22/11/22)\r\n
 comment1.params=settingWorld
 comment1.target=MyWorld(SettingWorld)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MyWorld.\r\n\ \r\n
 comment10.params=isUp
 comment10.target=void\ updateVolume(boolean)
-comment10.text=\n\ Update\ volume.\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\n
+comment10.text=\r\n\ Update\ volume.\r\n\ @param\ isUp\ True\ if\ turn\ volume\ up,\ Flase\ otherwise.\r\n
 comment11.params=
 comment11.target=void\ spawnRobber()
-comment11.text=\n\ Method\ to\ spawn\ robber\ based\ on\ how\ much\ the\ returant\ is\ making.\n
+comment11.text=\r\n\ Method\ to\ spawn\ robber\ based\ on\ money\ of\ resturants\r\n
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
 comment3.target=void\ checkLevel()
-comment3.text=\n\ Checks\ leveling\ system\ to\ unlock\ items\ in\ the\ world\n
+comment3.text=\r\n\ Checks\ leveling\ system\ to\ unlock\ items\ in\ the\ world\r\n
 comment4.params=
 comment4.target=void\ spawnCustomer()
-comment4.text=\n\ Method\ to\ spawn\ customer\ based\ on\ random\ number\ gen\n
+comment4.text=\r\n\ Method\ to\ spawn\ customer\ based\ on\ random\ number\ gen\r\n
 comment5.params=
 comment5.target=void\ removeAllActors()
 comment6.params=

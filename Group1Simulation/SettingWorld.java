@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Click on PLAY button in the PAPA setting view to enter the simulation game.
  * 
  * @author Yixin Cai
- * @version (a version number or a date)
+ * @version November 2022
  */
 public class SettingWorld extends World
 {
@@ -272,7 +272,7 @@ public class SettingWorld extends World
     
     /**
      * This method is called by the Greenfoot system when the execution has stopped.
-     * Pause background sound in loop once the execution has stopped so that when it
+     * Pause background sound once the execution has stopped so that when it
      * started again, the sound will play coherently.
      */ 
     public void stopped() {

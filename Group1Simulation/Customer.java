@@ -2,7 +2,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * Write a description of class Customer here.
+ * The code for all of the customers actions </p>
+ * <ul>
+ * <li>  Moves to door when they haven't ordered
+ * <li>  Ignores door when there are a lot of customers in the store
+ * <li>  Checks for and moves to open cashier
+ * <li>  Places an order when the order can be fulfilled
+ * <li>  Checks for and moves to open waiting line
+ * <li>  Picks up the correct pizza and leaves the store
+ * </ul>
  * 
  * @author (your name) 
  * @version (a version number or a date)

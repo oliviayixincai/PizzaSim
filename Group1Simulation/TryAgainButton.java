@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * TryAgain button to be displayed in the EndWorld. To be clicked to start over.
  * 
  * @author Yixin Cai
- * @version (a version number or a date)
+ * @version November 2022
  */
 public class TryAgainButton extends Button
 {
@@ -12,15 +12,17 @@ public class TryAgainButton extends Button
     
     public TryAgainButton() {
         super();
-        
+        // pre-load files
         this.image = new GreenfootImage("tryAgain.png");
         this.downImage = new GreenfootImage("tryAgainDOWN.png");
         this.hoverImage = new GreenfootImage("tryAgainHOVER.png");
     }
     
+    /**
+     * Set up a new simulation
+     */
     protected void onClick() {
-        //myWorld.removeAllActors();
-        //set up a new sim
+        // create a new StartWorld
         Greenfoot.setWorld(new StartWorld());
     }
 }

@@ -19,7 +19,7 @@ public class Robber extends People
     private GreenfootImage[] ai = new GreenfootImage[5];
     
     private GreenfootSound sound = new GreenfootSound("robbery.wav");
-    //creates reference to access variable to change money values.
+    
     private Utils utils;
     private MoneyInterface moneyInterface;
     private SettingWorld settingWorld;
@@ -77,7 +77,7 @@ public class Robber extends People
     }
 
     /**
-     * Checks location of robber to set sequencing, and if
+     * Checks location of robber to set sequencing
      */
     public void checkLocation()
     {
@@ -85,7 +85,7 @@ public class Robber extends People
         {
             location = 2;
         }
-        else if((getX() == Utils.cashier1X ||getX() == Utils.cashier4X) && getY() == Utils.counterY) //the robber robs when its at the cahsiercounter
+        else if((getX() == Utils.cashier1X ||getX() == Utils.cashier4X) && getY() == Utils.counterY)
         {
             stealMoney();
             location = 3;

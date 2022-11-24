@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Order here.
+ * Order is a Greenfoot actor that creates a visual display of a customer's order.
+ * <p> Initialize a pizza if there's no pizza on counter </p>
  * 
  * @Yuxin Li (your name) 
  * @version (a version number or a date)

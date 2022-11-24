@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Class Label represents a text label on the world.
  * 
  * @author Yixin Cai
- * @version 2022-11-10
+ * @version November 2022
  */
 
 public class Label extends Actor {

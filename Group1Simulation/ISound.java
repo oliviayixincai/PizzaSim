@@ -3,7 +3,7 @@ import greenfoot.*;
  * Interface for actors that has sound effect. This is used to collect all such objects in World.
  * 
  * @author Yixin Cai
- * @version (a version number or a date)
+ * @version November 2022
  */
 public interface ISound
 {
@@ -25,11 +25,13 @@ public interface ISound
     
     /**
      * Check if sound is playing
+     * @return boolean True if the sound is playing, False otherwise.
      */
     public boolean isSoundPlaying();
     
     /**
      * Get sound
+     * @return GreenfootSound a GreenfootSound sound
      */
     public GreenfootSound getSound();
 }

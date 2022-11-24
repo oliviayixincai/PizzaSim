@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=WaittingBar
-comment0.text=\r\n\ Actor\ that\ displays\ the\ emotions\ of\ each\ customer\r\n\ This\ actor\ also\ pays\ the\ tips\ based\ on\ happiness\ level.\r\n\ \r\n\ Credits\r\n\ Mood\ gifs\ from\ Canva\ (https\://www.canva.com/).\r\n\ \r\n\ @author\ Yixin\ Cai\ and\ Andy\ Li\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Actor\ that\ displays\ the\ emotions\ of\ each\ customer\n\ This\ actor\ also\ pays\ the\ tips\ based\ on\ happiness\ level.\n\ \n\ Credits\n\ Mood\ gifs\ from\ Canva\ (https\://www.canva.com/).\n\ \n\ @author\ Yixin\ Cai\ and\ Andy\ Li\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=c
 comment1.target=WaittingBar(Customer)
 comment2.params=

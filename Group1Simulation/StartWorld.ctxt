@@ -1,13 +1,16 @@
 #BlueJ class context
 comment0.target=StartWorld
-comment0.text=\r\n\ The\ World\ this\ simulation\ will\ start\ with.\ Press\ Enter\ key\ to\ continue\r\n\ \r\n\ Credits\r\n\ "Pixel\ Chef\ Illustrations"\ from\ iStock\ (https\://www.istockphoto.com/vector/vector-pixel-art-cook-and-chefs-gm616129156-107107145).\r\n\ "Sprout\ Lands\ -\ UI\ Pack"\ by\ Cup\ Nooble\ (https\://cupnooble.itch.io/sprout-lands-ui-pack).\r\n\ "Slice\ of\ Life"\ from\ Pinterest\ (https\://www.pinterest.ca/pin/349099408595478913/).\r\n\ \r\n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ The\ World\ this\ simulation\ will\ start\ with.\ Press\ Enter\ key\ to\ continue.\n\ \n\ Credits\n\ "Pixel\ Chef\ Illustrations"\ from\ iStock\ (https\://www.istockphoto.com/vector/vector-pixel-art-cook-and-chefs-gm616129156-107107145).\n\ "Sprout\ Lands\ -\ UI\ Pack"\ by\ Cup\ Nooble\ (https\://cupnooble.itch.io/sprout-lands-ui-pack).\n\ "Slice\ of\ Life"\ from\ Pinterest\ (https\://www.pinterest.ca/pin/349099408595478913/).\n\ \n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\n\ @version\ November\ 2022\n
 comment1.params=
 comment1.target=StartWorld()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ StartWorld.\r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ StartWorld.\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ StartWorld\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n\ Go\ to\ the\ story\ world\ once\ the\ player\ press\ enter\ key.\n
 comment3.params=
 comment3.target=void\ started()
+comment3.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ started.\n\ Play\ background\ sound\ in\ loop\ once\ the\ execution\ has\ started.\n
 comment4.params=
 comment4.target=void\ stopped()
+comment4.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ stopped.\n\ Pause\ background\ sound\ once\ the\ execution\ has\ stopped\ so\ that\ when\ it\n\ started\ again,\ the\ sound\ will\ play\ coherently.\n
 numComments=5

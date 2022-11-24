@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=ISound
-comment0.text=\r\n\ Interface\ for\ actors\ that\ has\ sound\ effect.\ This\ is\ used\ to\ collect\ all\ such\ objects\ in\ World.\r\n\ \r\n\ @author\ Yixin\ Cai\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Interface\ for\ actors\ that\ has\ sound\ effect.\ This\ is\ used\ to\ collect\ all\ such\ objects\ in\ World.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ November\ 2022\n
 comment1.params=volume
 comment1.target=void\ setVolume(int)
-comment1.text=\r\n\ Set\ volume\r\n\ @param\ volume\ The\ current\ volume\r\n
+comment1.text=\n\ Set\ volume\n\ @param\ volume\ The\ current\ volume\n
 comment2.params=
 comment2.target=void\ playSound()
-comment2.text=\r\n\ Play\ sound\r\n
+comment2.text=\n\ Play\ sound\n
 comment3.params=
 comment3.target=void\ pauseSound()
-comment3.text=\r\n\ Pause\ sound\r\n
+comment3.text=\n\ Pause\ sound\n
 comment4.params=
 comment4.target=boolean\ isSoundPlaying()
-comment4.text=\r\n\ Check\ if\ sound\ is\ playing\r\n
+comment4.text=\n\ Check\ if\ sound\ is\ playing\n\ @return\ boolean\ True\ if\ the\ sound\ is\ playing,\ False\ otherwise.\n
 comment5.params=
 comment5.target=greenfoot.GreenfootSound\ getSound()
-comment5.text=\r\n\ Get\ sound\r\n
+comment5.text=\n\ Get\ sound\n\ @return\ GreenfootSound\ a\ GreenfootSound\ sound\n
 numComments=6

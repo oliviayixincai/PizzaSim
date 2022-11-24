@@ -1,18 +1,18 @@
 #BlueJ class context
 comment0.target=Order
-comment0.text=\r\n\ Actor\ that\ displays\ the\ pizza\ order\ of\ each\ customer\ when\ at\ cashier\r\n\ \r\n\ @Yuxin\ Li\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n\ \r\n\ chatBox\ image\ by\ Sallie\ from\:\ \r\n\ https\://www.vhv.rs/viewpic/oobJ_pixel-chat-bubble-png-transparent-png/\r\n
+comment0.text=\n\ Order\ is\ a\ Greenfoot\ actor\ that\ creates\ a\ visual\ display\ of\ a\ customer's\ order.\n\ <p>\ Initialize\ a\ pizza\ if\ there's\ no\ pizza\ on\ counter\ </p>\n\ \n\ @Yuxin\ Li\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n\ \n\ chatBox\ image\ by\ Sallie\ from\:\ \n\ https\://www.vhv.rs/viewpic/oobJ_pixel-chat-bubble-png-transparent-png/\n
 comment1.params=sauceType\ cheese\ toppingTypes\ customer\ store
 comment1.target=Order(java.lang.String,\ boolean,\ java.lang.String[],\ Customer,\ int)
-comment1.text=\r\n\ creates\ an\ order\ actor\r\n\ @param\ sauceType\:\ tomato\ or\ barbeque\r\n\ @param\ cheese\:\ if\ there's\ cheese\ on\ the\ pizza\ or\ not\r\n\ @param\ toppingTypes\:\ the\ toppings\ that\ will\ be\ on\ the\ pizza\r\n\ @param\ customer\:\ the\ customer\ that\ placed\ the\ order\r\n\ @param\ store\:\ which\ store\ the\ order\ is\ for\r\n
+comment1.text=\n\ creates\ an\ order\ actor\n\ @param\ sauceType\:\ tomato\ or\ barbeque\n\ @param\ cheese\:\ if\ there's\ cheese\ on\ the\ pizza\ or\ not\n\ @param\ toppingTypes\:\ the\ toppings\ that\ will\ be\ on\ the\ pizza\n\ @param\ customer\:\ the\ customer\ that\ placed\ the\ order\n\ @param\ store\:\ which\ store\ the\ order\ is\ for\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\r\n\ sets\ the\ location\ of\ the\ order\ to\ follow\ the\ customer\r\n\ removes\ the\ order\ box\ when\ the\ customer\ picks\ up\ their\ pizza\r\n
+comment2.text=\n\ sets\ the\ location\ of\ the\ order\ to\ follow\ the\ customer\n\ removes\ the\ order\ box\ when\ the\ customer\ picks\ up\ their\ pizza\n
 comment3.params=
 comment3.target=void\ drawOrder()
-comment3.text=\r\n\ draw\ the\ order\ picture\ above\ the\ head\ of\ each\ customer\r\n
+comment3.text=\n\ draw\ the\ order\ picture\ above\ the\ head\ of\ each\ customer\n
 comment4.params=
 comment4.target=void\ makePizza()
-comment4.text=\r\n\ checks\ for\ an\ open\ kitchen,\ and\ starts\ making\ the\ pizza\r\n
+comment4.text=\n\ checks\ for\ an\ open\ kitchen,\ and\ starts\ making\ the\ pizza\n
 comment5.params=w
 comment5.target=void\ addedToWorld(greenfoot.World)
 numComments=6

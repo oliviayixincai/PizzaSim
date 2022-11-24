@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.target=Target
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Targets\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Targets\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=boolean\ checkIfEmpty()
-comment1.text=\r\n\ checks\ if\ there\ is\ a\ customer\ at\ this\ target\r\n\ @return\ isEmpty,\ a\ boolean\r\n
+comment1.text=\n\ checks\ if\ there\ is\ a\ customer\ at\ this\ target\n\ @return\ isEmpty,\ a\ boolean\n
 comment2.params=reservation
 comment2.target=void\ reserve(boolean)
-comment2.text=\r\n\ sets\ the\ reservation\ to\ the\ param\r\n\ @param\ reservation\:\ sets\ a\ true\ (reserved)\ or\ false\ (not\ reserved)\ for\ the\ spot\r\n
+comment2.text=\n\ sets\ the\ reservation\ to\ the\ param\n\ @param\ reservation\:\ sets\ a\ true\ (reserved)\ or\ false\ (not\ reserved)\ for\ the\ spot\n
 comment3.params=
 comment3.target=boolean\ isReserved()
 comment4.params=

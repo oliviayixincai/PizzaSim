@@ -31,15 +31,15 @@ import java.util.ArrayList;
  * </p>
  * <p>Other Sound clips: https://pixabay.com/music/</p>
  * 
- * "Aloe Vera Plants" from Pinterest (https://www.pinterest.ca/pin/all-6-plants-pattern-aloe-vera-potted-plant-succulent-ivy-etsy-in-2022--88172105197560932/). 
- * "Animal Crossing Stepping Stones" by Rose from Pinterest (https://www.pinterest.ca/pin/538672805434277806/).
- * "16x16 Fence and Well" by William.Thompsonj from OpenGameArt (https://opengameart.org/content/16x16-fence-and-well-tiny-16).
- * “Pixel Art of Book Shelf Stack” from FreePik (https://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).
+ * <p>"Aloe Vera Plants" from Pinterest (https://www.pinterest.ca/pin/all-6-plants-pattern-aloe-vera-potted-plant-succulent-ivy-etsy-in-2022--88172105197560932/).</p> 
+ * <p>"Animal Crossing Stepping Stones" by Rose from Pinterest (https://www.pinterest.ca/pin/538672805434277806/).</p>
+ * <p>"16x16 Fence and Well" by William.Thompsonj from OpenGameArt (https://opengameart.org/content/16x16-fence-and-well-tiny-16).</p>
+ * <p>“Pixel Art of Book Shelf Stack” from FreePik (https://www.freepik.com/premium-vector/pixel-art-book-shelf-stack_16557038.htm).</p>
  * 
  * Credits for the Chef and Customers are in the folder "credits".
  * 
- * @author (Group 1) 
- * @version (22/11/22)
+ * @author Group1 - Yixin Cai, Anson Ho, Yuxin Li, Gloria Chan, Andy Li, Eric Zheng
+ * @version November 2022
  */
 public class MyWorld extends World
 {
@@ -340,6 +340,12 @@ public class MyWorld extends World
         return this.isSimOver;
     }
     
+    /**
+     * This method is called by the Greenfoot system when the execution has stopped.
+     * sound will be store in an arry if it currently playing.
+     * Pause background sound once the execution has stopped so that when it
+     * started again, the sound will play coherently.
+     */
     public void stopped() {
         // stop all sounds
         pausedSounds.clear();
@@ -354,6 +360,11 @@ public class MyWorld extends World
         Utils.backgroundSound.pause();
     }
     
+    /**
+     * This method is called by the Greenfoot system when the execution has started.
+     * Only paused sound will be played once program is started.
+     * Background sound will continously play in loop.
+     */
     public void started() {
         // play all sounds
         ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
@@ -366,8 +377,10 @@ public class MyWorld extends World
         Utils.backgroundSound.playLoop();
     }
     
+    /**
+     * Method to stop all of the sounds
+     */
     public void stopSounds() {
-        // play all sounds
         ArrayList<ISound> sounds = (ArrayList<ISound>) getObjects(ISound.class);
         for (ISound sound : sounds) {
             sound.pauseSound();

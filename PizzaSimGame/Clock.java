@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Clock is a Greenfoot actor that shows the time rest for the pizza to be cooked.
- * <p>Displays new a clock image after a certain time passes 
+ * <p>Displays new a clock image after a certain time passes </p>
  * 
  * @author Yuxin Li
  * @version November 2022

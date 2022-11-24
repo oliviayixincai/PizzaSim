@@ -7,20 +7,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * (https://www.canva.com/).
  * 
  * @author Yixin Cai
- * @version (a version number or a date)
+ * @version November 2022
  */
 
 public class Confetti extends Actor implements ISound
 {
+    // declare objects
     private GifImage confetti;
     private GreenfootSound winSound;
-      
+    
+    /**
+     * Constructor of Confetti
+     */
     public Confetti() {
+        // initialize and pre-load
         confetti = new GifImage("confetti.gif");
         winSound = new GreenfootSound("win.wav");
+        // set gif images
         setImage(confetti.getCurrentImage());
     }
     
+    /**
+     * Once it is added into World, set volume and play sound.
+     * @param w a World
+     */
     public void addedToWorld(World w) {
         winSound.setVolume(Utils.volume);
         playSound();
@@ -29,6 +39,8 @@ public class Confetti extends Actor implements ISound
     /**
      * Act - do whatever the confetti wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
+     * 
+     * update and set gif images
      */
     public void act()
     {
@@ -59,6 +71,7 @@ public class Confetti extends Actor implements ISound
     
     /**
      * Check if sound is playing
+     * @return boolean True if the sound is playing, False otherwise.
      */
     public boolean isSoundPlaying() {
         return winSound.isPlaying();
@@ -66,6 +79,7 @@ public class Confetti extends Actor implements ISound
     
     /**
      * Get sound
+     * @return GreenfootSound a GreenfootSound sound
      */
     public GreenfootSound getSound() {
         return winSound;

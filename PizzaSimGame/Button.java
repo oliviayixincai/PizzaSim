@@ -9,14 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Specific onClick effects are delegated to subclasses by abstract onClick class.
  * 
  * @author Yixin Cai
- * @version (a version number or a date)
+ * @version November 2022
  */
 public abstract class Button extends Actor implements ISound
 {   
+    // Declare and initialize vaiables and objects
     protected GreenfootImage image;
     protected GreenfootImage downImage;
     protected GreenfootImage hoverImage;
 
+    // pre-load sound files
     private static GreenfootSound[] sounds = {
         new GreenfootSound("click.wav"),
         new GreenfootSound("click.wav"),
@@ -36,7 +38,6 @@ public abstract class Button extends Actor implements ISound
     
     /**
      * Constructor for objects of class Button.
-     * 
      */
     public Button() {
         this.downTik = 0;
@@ -45,6 +46,10 @@ public abstract class Button extends Actor implements ISound
         this.isHovered = false;
     }
     
+    /**
+     * Once it is added to the world, set sound volume.
+     * @param w a World
+     */
     public void addedToWorld(World w) {
         // update volume after being added to world
         for (GreenfootSound sound : sounds) {
@@ -55,6 +60,8 @@ public abstract class Button extends Actor implements ISound
     /**
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
+     * 
+     * do onclick behaviour, clicked, hover effect and play sound.
      */
     public void act()
     {
@@ -105,10 +112,18 @@ public abstract class Button extends Actor implements ISound
         sounds[soundIndex].pause();
     }
 
+    /**
+     * Method to determine weather sound is playing.
+     * @return boolean True if the sound is playing, False otherwise.
+     */
     public boolean isSoundPlaying () {
         return sounds[soundIndex].isPlaying();
     }
     
+    /**
+     * Method to get the sound in specific index.
+     * @return GreenfootSound the greenfoot sound
+     */
     public GreenfootSound getSound (){
         return sounds[soundIndex];
     }

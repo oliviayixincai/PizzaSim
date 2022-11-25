@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=EndWorld
-comment0.text=\n\ EndWorld\ is\ an\ class\ that\ show\ the\ final\ result\ fo\ the\ simulation\ and\ display\n\ confetti\ effect\ with\ sound.\n\ TryAgain\ button\ will\ be\ added\ in\ the\ EndWorld\ for\ player\ to\ restart.\n\ \n\ Credits\n\ "Megapixel"\ font\ and\ "Crown"\ graphic\ from\ Canva\ (https\://www.canva.com/).\n\ \n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\n\ @version\ November\ 2022\n
+comment0.text=\r\n\ EndWorld\ is\ an\ class\ that\ show\ the\ final\ result\ fo\ the\ simulation\ and\ display\r\n\ confetti\ effect\ with\ sound.\r\n\ TryAgain\ button\ will\ be\ added\ in\ the\ EndWorld\ for\ player\ to\ restart.\r\n\ \r\n\ Credits\r\n\ "Megapixel"\ font\ and\ "Crown"\ graphic\ from\ Canva\ (https\://www.canva.com/).\r\n\ \r\n\ @author\ Yixin\ Cai\ &\ Gloria\ Chan\r\n\ @version\ November\ 2022\r\n
 comment1.params=result\ level\ money
 comment1.target=EndWorld(int,\ int,\ int)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ EndWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ EndWorld.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ stopped()
-comment2.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ stopped.\n\ sound\ will\ be\ store\ in\ an\ arry\ if\ it\ currently\ playing.\n\ Pause\ background\ sound\ once\ the\ execution\ has\ stopped\ so\ that\ when\ it\n\ started\ again,\ the\ sound\ will\ play\ coherently.\n
+comment2.text=\r\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ stopped.\r\n\ sound\ will\ be\ store\ in\ an\ arry\ if\ it\ currently\ playing.\r\n\ Pause\ background\ sound\ once\ the\ execution\ has\ stopped\ so\ that\ when\ it\r\n\ started\ again,\ the\ sound\ will\ play\ coherently.\r\n
 comment3.params=
 comment3.target=void\ started()
-comment3.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ started.\n\ Only\ paused\ sound\ will\ be\ played\ once\ program\ is\ started.\n\ Background\ sound\ will\ continously\ play\ in\ loop.\n
+comment3.text=\r\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ started.\r\n\ Only\ paused\ sound\ will\ be\ played\ once\ program\ is\ started.\r\n\ Background\ sound\ will\ continously\ play\ in\ loop.\r\n
 numComments=4

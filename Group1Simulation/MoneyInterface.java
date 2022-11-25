@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MoneyInterface here.
+ * A class that allows all other classes to interact with money variable in utils
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public class MoneyInterface extends Actor
 {
@@ -16,6 +16,11 @@ public class MoneyInterface extends Actor
         getImage().setTransparency(0);
     }
     
+    /**
+     * Allows any actor to be able to change the money of each store
+     * @param store Referring to which store
+     * @param money Integer to change variable by
+     */
     public void changeMoney(int store, int money)
     {
         if(store == -1)

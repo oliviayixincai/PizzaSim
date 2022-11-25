@@ -18,14 +18,6 @@ public class KitchenCounter extends Target
         this.pizzaria = pizzaria;
     }
     /**
-     * Act - do whatever the KitchenCounter wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
-    }
-    /**
      * Checks if counter is available to make a pizza
      * @return canMakePizza Boolean
      */

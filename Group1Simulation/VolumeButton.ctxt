@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=VolumeButton
-comment0.text=\n\ Volume\ button\ to\ control\ volume\ of\ the\ sounds\ in\ the\ simulation\ game.\n\ \n\ @author\ Yixin\ Cai\n\ @version\ November\ 2022\n
+comment0.text=\r\n\ Volume\ button\ to\ control\ volume\ of\ the\ sounds\ in\ the\ simulation\ game.\r\n\ \r\n\ @author\ Yixin\ Cai\r\n\ @version\ November\ 2022\r\n
 comment1.params=isUp
 comment1.target=VolumeButton(boolean)
-comment1.text=\n\ Constructor\ of\ VolumeButton\n\ @param\ isUp\ True\ if\ the\ volume\ is\ going\ to\ up,\ False\ otherwise.\n
+comment1.text=\r\n\ Constructor\ of\ VolumeButton\r\n\ @param\ isUp\ True\ if\ the\ volume\ is\ going\ to\ up,\ False\ otherwise.\r\n
 comment2.params=
 comment2.target=void\ onClick()
-comment2.text=\n\ Update\ volumes\ in\ both\ MyWorld\ and\ SettingWorld.\n
+comment2.text=\r\n\ Update\ volumes\ in\ both\ MyWorld\ and\ SettingWorld.\r\n
 numComments=3

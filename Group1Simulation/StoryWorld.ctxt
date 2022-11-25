@@ -1,19 +1,19 @@
 #BlueJ class context
 comment0.target=StoryWorld
-comment0.text=\n\ A\ World\ that\ tells\ a\ backgroud\ story\ about\ this\ simulation\ game.\n\ Click\ any\ place\ on\ the\ screen\ to\ continue.\n\ \n\ Credits\n\ "Living\ Room"\ by\ Emily\ Nyugen\ from\ Dribbble\ (https\://dribbble.com/shots/15230747-living-room).\n\ "Gordon\ Ramsay\ -\ Pixel\ Person"\ from\ OpenSea\ (https\://opensea.io/assets/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/106193816756882454311635148036298702300189172230297614362597037732657916542977).\n\ \n\ @author\ Gloria\ Chan\ &\ Yixin\ Cai\n\ @version\ November\ 2022\n
+comment0.text=\r\n\ A\ World\ that\ tells\ a\ backgroud\ story\ about\ this\ simulation\ game.\r\n\ Click\ any\ place\ on\ the\ screen\ to\ continue.\r\n\ \r\n\ Credits\r\n\ "Living\ Room"\ by\ Emily\ Nyugen\ from\ Dribbble\ (https\://dribbble.com/shots/15230747-living-room).\r\n\ "Gordon\ Ramsay\ -\ Pixel\ Person"\ from\ OpenSea\ (https\://opensea.io/assets/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/106193816756882454311635148036298702300189172230297614362597037732657916542977).\r\n\ \r\n\ @author\ Gloria\ Chan\ &\ Yixin\ Cai\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=StoryWorld()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ storyWorld.\n\ \n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ storyWorld.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ If\ player\ press\ any\ place\ in\ the\ simulation,\ fo\ to\ the\ next\ page.\n\ If\ it\ is\ in\ the\ last\ page,\ go\ to\ the\ SettingWorld\ once\ clicked.\n
+comment2.text=\r\n\ If\ player\ press\ any\ place\ in\ the\ simulation,\ fo\ to\ the\ next\ page.\r\n\ If\ it\ is\ in\ the\ last\ page,\ go\ to\ the\ SettingWorld\ once\ clicked.\r\n
 comment3.params=
 comment3.target=boolean\ checkClicked()
-comment3.text=\n\ Method\ to\ check\ if\ mouse\ clicked\ the\ background\ \n\ image\ and\ the\ falshing\ text\ object\ as\ well.\n\ @return\ boolean\ True\ if\ mouse\ clicked\ the\ background\ image\ and\ \n\ the\ falshing\ text\ object,\ False\ otherwise.\n
+comment3.text=\r\n\ Method\ to\ check\ if\ mouse\ clicked\ the\ background\ \r\n\ image\ and\ the\ falshing\ text\ object\ as\ well.\r\n\ @return\ boolean\ True\ if\ mouse\ clicked\ the\ background\ image\ and\ \r\n\ the\ falshing\ text\ object,\ False\ otherwise.\r\n
 comment4.params=
 comment4.target=void\ started()
-comment4.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ started.\n\ Play\ background\ sound\ in\ loop\ once\ the\ execution\ has\ started.\n
+comment4.text=\r\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ started.\r\n\ Play\ background\ sound\ in\ loop\ once\ the\ execution\ has\ started.\r\n
 comment5.params=
 comment5.target=void\ stopped()
-comment5.text=\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ stopped.\n\ Pause\ background\ sound\ once\ the\ execution\ has\ stopped\ so\ that\ when\ it\n\ started\ again,\ the\ sound\ will\ play\ coherently.\n
+comment5.text=\r\n\ This\ method\ is\ called\ by\ the\ Greenfoot\ system\ when\ the\ execution\ has\ stopped.\r\n\ Pause\ background\ sound\ once\ the\ execution\ has\ stopped\ so\ that\ when\ it\r\n\ started\ again,\ the\ sound\ will\ play\ coherently.\r\n
 numComments=6

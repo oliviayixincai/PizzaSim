@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=MinusButton
-comment0.text=\n\ A\ button\ with\ Minus\ image.\ To\ be\ clicked\ to\ reduce\ value\ in\ SettingWorld\n\ \n\ @author\ Yixin\ Cai\n\ @version\ November\ 2022\n
+comment0.text=\r\n\ A\ button\ with\ Minus\ image.\ To\ be\ clicked\ to\ reduce\ value\ in\ SettingWorld\r\n\ \r\n\ @author\ Yixin\ Cai\r\n\ @version\ November\ 2022\r\n
 comment1.params=
 comment1.target=MinusButton()
-comment1.text=\n\ Constructor\ of\ MinusButton.\n
+comment1.text=\r\n\ Constructor\ of\ MinusButton.\r\n
 comment2.params=
 comment2.target=void\ onClick()
 numComments=3

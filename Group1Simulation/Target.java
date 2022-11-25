@@ -1,19 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Targets here.
+ * Abstract class that has getter method for checks required for logic
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Anson Ho
+ * @version November 2022
  */
 public abstract class Target extends Actor
 {
     private boolean isEmpty, isReserved = false;
     protected GreenfootImage image;
-    /**
-     * Act - do whatever the Targets wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     
     /**
      * checks if there is a customer at this target
@@ -40,6 +36,10 @@ public abstract class Target extends Actor
         isReserved = reservation;
     }
     
+    /**
+     * Returns a boolean indicating whether or not it is reserved or not
+     * @return isReserved Boolean
+     */
     public boolean isReserved()
     {
         return isReserved;

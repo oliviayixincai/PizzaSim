@@ -4,6 +4,84 @@ import java.util.ArrayList;
 /**
  * <h1>The Pizza Simulation finished by Group 1.</h1>
  * <p> Group member: Yixin Cai, Anson Ho, Yuxin Li, Gloria Chan, Andy Li, Eric Zheng</p>
+ * 
+ * <h2>Major Interactions</h2>
+ * 
+ * <h3>People Superclass</h3>
+ * <p> All people subclasses interface with Utils class to determine locations coordinates. Superclass abstracts animation for all subclasses.
+ * 
+ * <p>Chef Main Interactions
+ *   <ul>
+ *     <p>Pizza 
+ *     <li>Chef checks pizza methods to make sure that pizza is fully made and can be moved</li>
+ *     <p>Oven
+ *     <li>Chef checks oven methods to make sure that a pizza can be moved to that oven</li>
+ *     <li>Chef checks oven methods to reserve oven to make sure only 1 chef can put a pizza in at a time</li>
+ *   </ul>
+ *      
+ * <p>Cashier Main Interactions
+ *   <ul>
+ *     <p>Oven
+ *     <li>Checks oven methods to check if pizza is cooked and can be picked up</li>
+ *     <p>Customer
+ *     <li>When a cashier is at a cashier till, it allows a customer to place their order. Customer accesses methods in cashier</li>
+ *   </ul>    
+ *     
+ * <p>Customer Main Interactions
+ *   <ul>
+ *     <p>Door 
+ *     <li>Checks for doors as they walk down the middle path, ignores doors if there are a lot of customers already in the store</li>
+ *     <p>CashierCounter
+ *     <li>Checks and moves towards an empty counter, waits at the door if both cashiers are occupied</li>
+ *     <p>WaitingBar
+ *     <li>Once arrived at the counter, the patience bar appears and displays their current mood, it lowers as their wait time increases</li>
+ *     <p>Order
+ *     <li>When there is a cashier in front of them and an available chef, the customer will randomize and place an order</li>
+ *     <p>MoneyInterface
+ *     <li>After they place an order, the cost of the pizza is added to the store income, indicated by a sound then moves to an empty counter to wait</li>
+ *     <p>Pizza
+ *     <li>Checks and picks up the pizza that corresponds to their order, then leaves the store</li>
+ *   </ul>
+ * 
+ * <p>Robber Interactions
+ *   <ul>
+ *     <p>MoneyInterface
+ *     <li>“Steals” a set amount of money from the store.</li>
+ *   </ul>
+ *   
+ * <h3>Level Superclass</h3>
+ * <p> Constantly checks the money value of both stores to change level variables. MyWorld constantly checks level variable and changes functionality of game accordingly
+ * 
+ * <p>Main Interactions
+ *   <ul>
+ *     <p>Utils
+ *     <li>Changes the utils value of level for each store depending on conditional statements based on money value</li>
+ *   </ul>
+ *   
+ * <h3>Effect Superclass</h3>
+ * <p> Creates in game effects that make the game look more visually appealing and clear
+ * 
+ * <p>Clock Functionality
+ *   <ul>
+ *     <p>Is initialized if the pizza is sent to an oven. Display a sequence of countdown images to show the time left for pizza to be cooked. If the time runs out, the clock will shake and alarm. 
+ *   </ul>
+ *   
+ * <p>WaitingBar Functionality
+ *   <ul>
+ *     <p>The current happiness for the Customer. Each segment has its own unique gif with a total of 6 segments. A sound is played to indicate when a customer has reached the lowest mood. Once they pick up their pizza, tips are paid based on the current mood and a sound is played.  
+ *   </ul>
+ *   
+ * <p>Order Functionality
+ *   <ul>
+ *     <p>Spawned after a customer orders. Visually displays the customer’s order by drawing out the order above the customer, and initializes a pizza.
+ *   </ul>
+ *   
+ * <h2>Known Bugs</h2>
+ * <ul>
+ *     <li>Volume label does not match setting world after worlds change</li>
+ *     <li>Customer leave move method sometimes does not follow specified path. Unknown reason due to rarity</li>
+ * </ul>
+ *
  * <h2>Credit:</h2>
  * 
  * <p>
